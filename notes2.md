@@ -6,9 +6,11 @@
 
 ! la branche "main" représente la production, les merges doivent d'abord etre fait sur la branche "dev".
 
---main-----------------
+--main------------------------
+
     |
-    -dev -------------
+    -dev ------------------
+    
         |-valerie
         |-ayoub
         |-julien
