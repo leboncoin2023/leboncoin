@@ -19,8 +19,6 @@ class Auctions
     #[MongoDB\Field(type: 'string')]
     private string  $lastname;
 
-   
-
 
     public function getId(): string
     {
@@ -36,11 +34,10 @@ class Auctions
 
     public function getlastname(): string
     {
-
         return $this->lastname;
     }
 
-    
+
 
 
     public function setname(string $name)
@@ -57,6 +54,4 @@ class Auctions
 
         return $this;
     }
-
-   
 }
