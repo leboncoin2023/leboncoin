@@ -7,7 +7,7 @@ use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
 use Doctrine\Bundle\MongoDBBundle\Repository\ServiceDocumentRepository;
 
 
-class AuctionsRepository extends ServiceDocumentRepository
+class registrationRepository extends ServiceDocumentRepository
 {
 
     public function __construct(ManagerRegistry $registry)

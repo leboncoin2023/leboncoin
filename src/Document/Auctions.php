@@ -3,9 +3,9 @@
 namespace App\Document;
 
 use App\Repository\AuctionsRepository;
-use DateTime;
+
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
-use PhpParser\Node\Expr\Cast\Double;
+
 
 #[MongoDB\Document]
 class Auctions
@@ -20,29 +20,29 @@ private string $title;
 #[MongoDB\Field(type: 'string')]
 private string $category;
 
-#[MongoDB\Field(type: 'text')]
+#[MongoDB\Field(type: 'string')]
 private string $description;
 
 
 #[MongoDB\Field(type: 'string')]
 private string $subcategory;
 
-#[MongoDB\Field(type:'Double')]
-private Double $start_price;
+#[MongoDB\Field(type:'string')]
+private string $start_price;
 
 
-#[MongoDB\Field(type:'Double')]
-private Double $sold_price;
+#[MongoDB\Field(type:'string')]
+private string $sold_price;
 
-#[MongoDB\Field(type:'Double')]
-private Double $reserve_price;
+#[MongoDB\Field(type:'string')]
+private string $reserve_price;
 
 
-#[MongoDB\Field(type:'Datetime')]
-private DateTime $start_date;
+#[MongoDB\Field(type:'string')]
+private string $start_date;
 
-#[MongoDB\Field(type:'Datetime')]
-private DateTime $duration;
+#[MongoDB\Field(type:'string')]
+private string $duration;
 
 #[MongoDB\Field(type:'string')]
 private string $delivery_mode;
@@ -101,31 +101,31 @@ private string $buyer_id;
         return $this->description;
     }
 
-    public function getStartPrice(): Double
+    public function getStartPrice(): string
     {
 
         return $this->start_price;
     }
 
-    public function getReserve_price(): Double
+    public function getReserve_price(): string
     {
 
         return $this->reserve_price;
     }
 
-    public function getSoldPrice(): Double
+    public function getSoldPrice(): string
     {
 
         return $this->sold_price;
     }
     
-    public function getStartdate(): Datetime
+    public function getStartdate(): string
     {
 
         return $this->start_date;
     }
     
-    public function getDuration(): Datetime
+    public function getDuration(): string
     {
 
         return $this->duration;
@@ -204,7 +204,7 @@ private string $buyer_id;
         return $this;
     }
 
-    public function setStartPrice(Double $start_price)
+    public function setStartPrice(string $start_price)
     {
 
         $this->start_price = $start_price;
@@ -212,7 +212,7 @@ private string $buyer_id;
         return $this;
     }
 
-    public function setReservePrice(Double $reserve_price)
+    public function setReservePrice(string $reserve_price)
     {
 
         $this->reserve_price = $reserve_price;
@@ -220,7 +220,7 @@ private string $buyer_id;
         return $this;
     }
 
-    public function setSoldPrice(Double $sold_price)
+    public function setSoldPrice(string $sold_price)
     {
     
         $this->sold_price = $sold_price;
@@ -228,7 +228,7 @@ private string $buyer_id;
         return $this;
     }
 
-    public function setStartDate(DateTime $start_date)
+    public function setStartDate(string $start_date)
     {
         
         $this->start_price = $start_date;
@@ -236,7 +236,7 @@ private string $buyer_id;
         return $this;
     }
 
-    public function setDuration(DateTime $duration)
+    public function setDuration(string $duration)
     {
         
         $this->start_price = $duration;

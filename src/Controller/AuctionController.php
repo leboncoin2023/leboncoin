@@ -23,7 +23,7 @@ class AuctionController extends AbstractController
     }
 
 
-    #[Route('/test', name: 'app_auction_test')]
+    /*#[Route('/test', name: 'app_auction_test')]
      public function createAction(AuctionsRepository $auctionsRepository)
      {
 
@@ -37,7 +37,7 @@ class AuctionController extends AbstractController
         return new Response('Created auction  id ');
 
          
-     }
+     }*/
 
 
 
