@@ -6,9 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/category')]
 class CategoryController extends AbstractController
 {
-    #[Route('/category', name: 'app_category')]
+    #[Route('/', name: 'app_category')]
     public function category(): Response
     {
         return $this->render('category/category.html.twig', [
@@ -16,7 +17,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/subcategory', name: 'app_subcategory')]
+    #[Route('/', name: 'app_subcategory')]
     public function subCategory(): Response
     {
         return $this->render('category/subcategory.html.twig', [
