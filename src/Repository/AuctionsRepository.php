@@ -18,4 +18,15 @@ class AuctionsRepository extends ServiceDocumentRepository
     {
         return $this->findAll();
     }
+
+
+    public function findAllFromBdd() : array
+    {
+        return $this->findAll();
+    }
+
+    public function findById($userId) : array
+    {
+        return $this->findBy(['id' => $userId]);
+    }
 }

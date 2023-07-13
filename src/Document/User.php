@@ -13,11 +13,9 @@ class User
     private string $id;
 
     #[MongoDB\Field(type: 'string')]
-    private string $firstname;
+    private string $username;
 
-    #[MongoDB\Field(type: 'string')]
-    private string  $lastname;
-
+    
 
 //GET____________________________________
     public function getId(): string
@@ -29,32 +27,21 @@ class User
     public function getname(): string
     {
 
-        return $this->firstname;
+        return $this->username;
     }
 
-    public function getlastname(): string
-    {
-
-        return $this->lastname;
-    }
+    
 
 
 //SET____________________________________
     public function setname(string $name)
     {
 
-        $this->firstname = $name;
+        $this->username = $name;
         return $this;
     }
 
-    public function setLastname(string $lastname)
-    {
-
-        $this->lastname = $lastname;
-
-        return $this;
-    }
-
+    
 
 
 
