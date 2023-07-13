@@ -16,11 +16,13 @@ class AuctionController extends AbstractController
     public function index(): Response
     {
 
+
         return $this->render('auction/index.html.twig', [
             'controller_name' => 'AuctionController',
         ]);
     }
 
+    
 
     #[Route('/auction/test', name: 'app_auction_test')]
      public function createAction(AuctionsRepository $auctionsRepository)

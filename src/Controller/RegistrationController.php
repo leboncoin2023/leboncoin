@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Document\Registers;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\RegistrationsRepository;
 use App\Security\AppCustomAuthenticator;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
@@ -25,13 +27,15 @@ class RegistrationController extends AbstractController
     {
         $this->emailVerifier = $emailVerifier;
     }
+ 
 
+    
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
+        //$form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
@@ -67,6 +71,7 @@ class RegistrationController extends AbstractController
         ]);
     }
 
+
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request): Response
     {
@@ -86,4 +91,31 @@ class RegistrationController extends AbstractController
 
         return $this->redirectToRoute('app_register');
     }
+
+
+
+
+
+
+
+   /*  #[Route('/register/test', name: 'app_register_test')]
+    public function createAction(RegistrationsRepository $RegistrationsRepository)
+    {
+
+       $register = new Registers ();
+       $register->setemail('kiki@gmail.com');
+       
+       
+       $registers = $RegistrationsRepository->findAllRegister();
+       dump($registers);
+
+       return new Response('Created registrory  id ');
+
+        
+    } */
+
+
+
+
+
 }
