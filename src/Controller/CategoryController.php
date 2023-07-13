@@ -17,7 +17,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/', name: 'app_subcategory')]
+    #[Route('/subcategory', name: 'app_subcategory')]
     public function subCategory(): Response
     {
         return $this->render('category/subcategory.html.twig', [
