@@ -26,6 +26,14 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[Route('/auction', name: 'app_user_auction')]
+    public function auction(): Response
+    {
+        return $this->render('user/auction.html.twig', [
+            'controller_name' => 'UserController',
+        ]);
+    }
+
     #[Route('/delete', name: 'app_user_delete')]
     public function delete(): Response
     {
