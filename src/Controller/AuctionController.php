@@ -12,12 +12,39 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/auction')]
 class AuctionController extends AbstractController
 {
-
+//home___________________________________________________________
     #[Route('/', name: 'app_auction')]
     public function index(): Response
     {
 
         return $this->render('auction/index.html.twig', [
+            'controller_name' => 'AuctionController',
+        ]);
+    }
+//Nouvelle annonce, choix entre enchère et vente ___________________________
+    #[Route('/new_choice', name: 'app_auction_new_choice')]
+    public function newChoice(): Response
+    {
+
+        return $this->render('auction/new_choice.html.twig', [
+            'controller_name' => 'AuctionController',
+        ]);
+    }
+//Nouvelle enchère, formulair de création____________________________________
+    #[Route('/new_auction', name: 'app_auction_new_auction')]
+    public function newAuction(): Response
+    {
+
+        return $this->render('auction/new_auction.html.twig', [
+            'controller_name' => 'AuctionController',
+        ]);
+    }
+//Recap et validation de la nouvelle enchère_______________________________
+    #[Route('/new_recap', name: 'app_auction_new_recap')]
+    public function newRecap(): Response
+    {
+
+        return $this->render('auction/new_recap.html.twig', [
             'controller_name' => 'AuctionController',
         ]);
     }
