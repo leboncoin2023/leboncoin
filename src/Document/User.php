@@ -4,15 +4,12 @@
 namespace App\Document;
 
 use App\Repository\UserRepository;
-
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
-
-
-
-
 
 
 
@@ -23,23 +20,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private string $id;
 
     #[MongoDB\Field(type: 'string')]
-    private ?string $username = null;
+    private string $username  ;
 
     #[MongoDB\Field(type: 'string')]
-    private ?string $email = null;
+    private string $email ;
 
     #[MongoDB\Field(type: 'string')]
-    private ?string $password = null;
+    private string $password ;
 
     #[MongoDB\Field(type: 'boolean')]
-    private $isVerified = false;
+    private $isVerified ;
 
     //#[MongoDB\Field(type: 'array')]
     #[MongoDB\Field(type: "collection")]
-    private ?array $roles = [];
+    private array $roles ;
 
     #[MongoDB\Field(type: 'string')]
-    private ?string $phone= null;
+    private string $phone;
 
     
 
