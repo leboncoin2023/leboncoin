@@ -27,3 +27,8 @@ Retourne
     codePostal: '75001',
     libelleAcheminement: 'PARIS' } ]
 ```
+
+
+# API UTILISE
+
+https://happyapi.fr/apis/codePostaux/codePostaux.html
