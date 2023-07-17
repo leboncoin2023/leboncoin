@@ -1,5 +1,13 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Nouvelle enchère{% endblock %}
+
 {% block body %}
-<h1>form ajout new enchère</h1>
+
+<h1>Nouvelle enchère</h1>
+
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+
 {% endblock %}

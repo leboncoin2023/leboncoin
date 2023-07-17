@@ -66,6 +66,28 @@ private string $buyer_id;
 
 
 
+public function __construct()
+{
+    $this->id = '';
+    $this->title = '';
+    $this->category = '';
+    $this->description = '';
+    $this->subcategory = '';
+    $this->start_price = '';
+    $this->sold_price = '';
+    $this->reserve_price = '';
+    $this->start_date = '';
+    $this->duration = '';
+    $this->delivery_mode = '';
+    $this->picture = '';
+    $this->video = '';
+    $this->localisation = '';
+    $this->seller_id = '';
+    $this->buyer_id = '';
+}
+
+
+
 
 
 
@@ -204,7 +226,7 @@ private string $buyer_id;
     }
 
 
-    public function subCategory(string $subcategory)
+    public function setSubCategory(string $subcategory)
     {
 
         $this->subcategory = $subcategory;
