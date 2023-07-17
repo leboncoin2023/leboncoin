@@ -12,7 +12,12 @@
 
 /* FONT */
 
+* {
+  
+    font-family: Satoshi;
+    src: url("/public/assets/font/Satoshi-Medium.woff2");
 
+}
 
 
 body{
@@ -36,3 +41,32 @@ footer{
 }
 
 
+.flex_footer{
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+
+}
+
+.lastp{
+    border-bottom: solid 1px black;
+    border-top: solid 1px black;
+    padding: 1em;
+}
+
+.paddingauto{
+    padding-bottom: 40px;
+}
+
+
+.zeromarg{
+    margin-bottom: 0;
+}
+
+.applipadding{
+    padding-bottom: 51px;
+}
+
+.reseauxpadding{
+    padding-bottom: 69px;
+}
