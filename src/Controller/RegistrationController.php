@@ -3,7 +3,14 @@
 namespace App\Controller;
 
 use App\Document\Registers;
-use App\Entity\User;
+
+
+use App\Document\User;
+//use App\Entity\User;
+
+use App\Repository\UserRepository;
+use Doctrine\ODM\MongoDB\DocumentManager;
+
 use App\Form\RegistrationFormType;
 use App\Repository\RegistrationsRepository;
 use App\Security\AppCustomAuthenticator;
@@ -19,44 +26,76 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
+
 class RegistrationController extends AbstractController
 {
+
+    private DocumentManager $documentManager;
     private EmailVerifier $emailVerifier;
 
-    public function __construct(EmailVerifier $emailVerifier)
+    public function __construct(EmailVerifier $emailVerifier, DocumentManager $documentManager)
     {
         $this->emailVerifier = $emailVerifier;
+        $this->documentManager = $documentManager;
     }
+
+
+
+    
+
+    //public function __construct(EmailVerifier $emailVerifier)
+   // {
+      //  $this->emailVerifier = $emailVerifier;
+   // }
  
 
     
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, DocumentManager $dm): Response
     {
+
+        
+        
+        //$user = new User();
+
         $user = new User();
+
+
         $form = $this->createForm(RegistrationFormType::class, $user);
-        //$form->handleRequest($request);
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // Récupérer la valeur du champ "firstname" du formulaire
+           // $firstname = $form->get('firstname')->getData();
+        
+            //dump($user);
+            // Définir la valeur du prénom dans l'objet User
+           // $user->setFirstname($firstname);
+
+            
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                     $form->get('plainPassword')->getData()
                 )
             );
+            $dm->persist($user);
+            $dm->flush();
 
-            $entityManager->persist($user);
-            $entityManager->flush();
+
+            //$entityManager->persist($user);
+            //$entityManager->flush();
 
             // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+            /* $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
                     ->from(new Address('projet.team.lbc@gmail.com', 'leboncointeam'))
                     ->to($user->getEmail())
                     ->subject('Please Confirm your Email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
-            );
+            ); */
             // do anything else you need here, like send an email
 
             return $userAuthenticator->authenticateUser(
