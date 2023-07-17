@@ -8,10 +8,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
+   <link rel="stylesheet" href="./style.css">
+
+
 </head>
 <body>
 
-    <div classe="address ">
+    <div classe="address">
        <!--
         <div class="m-2">
             <input type="text" id="address_line1" placeholder="adress_line1">
@@ -34,7 +37,26 @@
    
     </div>
 
+    <HR>
+    <div>
+        <div class="address_field">
+            <input type="text">
+        </div>
+
+        <div class="map" id="map m-2">
+            <iframe width="500" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=2.3762521147727966%2C48.897796310063576%2C2.3788619041442876%2C48.8991346334683&amp;layer=mapnik&amp;marker=48.898465476245036%2C2.377557009458542" style="border: 1px solid black">
+            </iframe>
+            <br/>
+            <small>
+                <a href="https://www.openstreetmap.org/?mlat=48.89847&amp;mlon=2.37756#map=19/48.89847/2.37756">Afficher une carte plus grande</a>
+            </small>
+        </div>
+    </div>
+    
+   
+
     <script src="./proj.js"></script>
+    <script src="./maps.js"></script>
     
 </body>
 </html>
