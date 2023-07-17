@@ -1,0 +1,38 @@
+
+/* CSS COMMUN */ 
+
+/* COLORS */
+:root{
+    --lb_orange:#F55E00;
+    --almost_black: #040404;
+    --gris: #C4C4C4;
+    --shade_orange: #FFE5D7;
+    --vintage_white: #FCFBF7;
+}
+
+/* FONT */
+
+
+
+
+body{
+    background: var(--vintage_white);
+}
+
+
+/* CSS COMMUN FOOTER _DOMINIKA 17/07 */
+
+
+footer{
+    background: var(--shade_orange);
+    color: var(--almost_black);
+    width: 1920px;
+    padding: 20px 0px;
+    gap: 40px;
+}
+
+.container{
+    width: 1052px;
+}
+
+
