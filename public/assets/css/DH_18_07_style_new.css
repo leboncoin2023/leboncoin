@@ -1,0 +1,310 @@
+
+/* CSS COMMUN */ 
+
+/* COLORS */
+:root{
+    --lb_orange:#F55E00;
+    --almost_black: #040404;
+    --gris: #C4C4C4;
+    --shade_orange: #FFE5D7;
+    --vintage_white: #FCFBF7;
+}
+
+.container{
+    width: 1052px;
+}
+
+
+/* FONT */
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('/public/assets/font/Satoshi-Regular.woff2');
+}
+
+/* BACKGROUND */
+
+body{
+    background: var(--vintage_white);
+}
+
+/* BOUTONS */
+.bouton_orange{
+    border-radius: 10px;
+    background-color: var(--lb_orange);
+    color: var(--vintage_white);
+}
+
+.bouton_orangeoutline{
+    border-radius: 10px;
+    background-color: var(--vintage_white);
+    border: var(--lb_orange);
+    color: var(--lb_orange);
+}
+
+.boutonS{
+    height: 38px;
+}
+
+.boutonM{
+    height: 52px;
+}
+
+.boutonL{
+    height: 70px;
+}
+
+
+
+/* ------------------------- */
+
+/* CSS HOME _DOMINIKA 18/07 */
+
+h1{
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px; 
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.flex{
+    display: flex;
+
+}
+
+h2{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.banner{
+    background-color: var(--shade_orange);
+    width: 952px;
+    height: 161px;
+    border-radius: 12px;
+    box-shadow: 1px 2px 8px 0px rgba(245, 94, 0, 0.50);
+    text-align: center;
+
+}
+
+
+
+.btn-orange{
+    background-color: var(--lb_orange);
+    color: var(--vintage_white);
+    text-decoration: none;
+    border-radius: 10px;
+    display: flex;
+    height: 52px;
+    padding: 10px 25px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+h3{
+    font-size: 32;
+    font-weight: 700;
+    margin-top: 75px;
+    margin-left: 49.67px;
+}
+
+.text_under_slider{
+    font-size: 12;
+    font-weight: 500;
+    text-align: center;
+    margin:43,73,31,73;
+}
+
+
+h4{
+    font-size: 32;
+    font-weight: 700;
+}
+
+
+
+
+
+
+
+/* CSS FOOTER _DOMINIKA 17/07 */
+
+
+footer{
+    background: var(--shade_orange);
+    color: var(--almost_black);
+    width: 1920px;
+    padding: 20px 0px;
+    gap: 40px;
+}
+.container{
+    width: 1052px;
+}
+
+
+.flex_footer{
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+
+}
+
+.lastp{
+    font-weight: 200;
+    font-size: small;
+    border-bottom: solid 1px black;
+    border-top: solid 1px black;
+    padding: 1em;
+}
+
+.paddingauto{
+    padding-bottom: 40px;
+}
+.zeromarg{
+    margin-bottom: 0;
+}
+
+.applipadding{
+    padding-bottom: 51px;
+}
+
+.reseauxpadding{
+    padding-bottom: 65px;
+}
+
+/*--------GUILLAUME-------------*/
+
+.links_footer>p {
+    font-size: small;
+    font-weight: 200;
+}
+.stars>img{
+    margin-left: 7px;
+}
+.links_footer>a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    font-size: small;
+    font-weight: 200;
+    margin-bottom: 16px;
+}
+.bottom_title{
+    margin-bottom: 40px;
+}
+.bottom_title>h5{
+    font-size: medium;
+}
+.stars{
+    display: flex;
+    justify-content: center;
+}
+.foot{
+    display: inline;
+    justify-content: center;
+}
+.bottom_title>p{
+    font-size: small;
+    font-weight: 200;
+}
+.reseauxlink{
+    margin-left: 10px;
+}
+.links_footer>a:hover {
+    color: var(--lb_orange);
+  }
+
+
+
+
+  /*________________HEADER NAV 2e LIGNE _______________________*/
+  
+/*test ligne 2*/
+
+.navbas{
+    display: flex;
+   justify-content: space-around    ;
+}
+
+#menu {
+	background: var(--vintage_white);
+	color: #FFF;
+	height: 45px;
+	padding-left: 18px;
+	border-radius: 10px;
+}
+#menu ul, #menu li {
+	margin: 0 auto;
+	padding: 0;
+	
+}
+#menu ul {
+	width: 100%;
+}
+#menu li {
+	float: left;
+	display: inline;
+	position: relative;
+}
+#menu a {
+	display: block;
+	line-height: 45px;
+	padding: 0 14px;
+	text-decoration: none;
+	color: var(--almost_black);
+    font-family: satoshi;
+    font-weight: 500;
+	font-size: 12px;
+}
+
+#menu li a:hover {
+	color: var(--lb_orange);
+	
+}
+#menu input {
+	display: none;
+	margin: 0;
+	padding: 0;
+	height: 45px;
+	width: 100%;
+	opacity: 0;
+	cursor: pointer
+}
+#menu label {
+	display: none;
+	line-height: 45px;
+	text-align: center;
+	position: absolute;
+	left: 35px
+}
+#menu label:before {
+	font-size: 1.6em;
+	content: "\2261"; 
+	margin-left: 20px;
+}
+#menu ul.sub-menus{
+	height: auto;
+	overflow: hidden;
+	width: 170px;
+	background: #444444;
+	position: absolute;
+	z-index: 99;
+	display: none;
+}
+#menu ul.sub-menus li {
+	display: block;
+	width: 100%;
+}
+#menu ul.sub-menus a {
+	color: #FFFFFF;
+	font-size: 16px;
+}
+#menu li:hover ul.sub-menus {
+	display: block
+}
+#menu ul.sub-menus a:hover{
+	background: #F2F2F2;
+	color: #444444;
+}
