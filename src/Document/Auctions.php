@@ -89,22 +89,32 @@ private string $buyer_id;
         return $this->category;
     }
    
-    public function getSubCategory(): string
-    {
-
-        return $this->subcategory;
-    }
-
     public function getDescription(): string
     {
 
         return $this->description;
     }
 
+
+
+    public function getSubCategory(): string
+    {
+
+        return $this->subcategory;
+    }
+
+    
+
     public function getStartPrice(): string
     {
 
         return $this->start_price;
+    }
+
+    public function getSoldPrice(): string
+    {
+
+        return $this->sold_price;
     }
 
     public function getReserve_price(): string
@@ -113,11 +123,7 @@ private string $buyer_id;
         return $this->reserve_price;
     }
 
-    public function getSoldPrice(): string
-    {
-
-        return $this->sold_price;
-    }
+    
     
     public function getStartdate(): string
     {
@@ -188,13 +194,6 @@ private string $buyer_id;
         return $this;
     }
 
-    public function subCategory(string $subcategory)
-    {
-
-        $this->subcategory = $subcategory;
-
-        return $this;
-    }
 
     public function setDescription(string $description)
     {
@@ -204,6 +203,17 @@ private string $buyer_id;
         return $this;
     }
 
+
+    public function subCategory(string $subcategory)
+    {
+
+        $this->subcategory = $subcategory;
+
+        return $this;
+    }
+
+    
+
     public function setStartPrice(string $start_price)
     {
 
@@ -211,7 +221,13 @@ private string $buyer_id;
 
         return $this;
     }
+    public function setSoldPrice(string $sold_price)
+    {
+    
+        $this->sold_price = $sold_price;
 
+        return $this;
+    }
     public function setReservePrice(string $reserve_price)
     {
 
@@ -220,18 +236,12 @@ private string $buyer_id;
         return $this;
     }
 
-    public function setSoldPrice(string $sold_price)
-    {
     
-        $this->sold_price = $sold_price;
-
-        return $this;
-    }
 
     public function setStartDate(string $start_date)
     {
         
-        $this->start_price = $start_date;
+        $this->start_date = $start_date;
         
         return $this;
     }
@@ -239,7 +249,7 @@ private string $buyer_id;
     public function setDuration(string $duration)
     {
         
-        $this->start_price = $duration;
+        $this->duration = $duration;
         
         return $this;
     }
@@ -247,7 +257,7 @@ private string $buyer_id;
     public function setDeliveryMode(string $delivery_mode)
     {
         
-        $this->start_price = $delivery_mode;
+        $this->delivery_mode = $delivery_mode;
         
         return $this;
     }
@@ -255,7 +265,7 @@ private string $buyer_id;
     public function setPicture(string $picture)
     {
         
-        $this->start_price = $picture;
+        $this->picture = $picture;
         
         return $this;
     }
@@ -263,7 +273,7 @@ private string $buyer_id;
     public function setVideo(string $video)
     {
         
-        $this->start_price = $video;
+        $this->video = $video;
         
         return $this;
     }
@@ -271,7 +281,7 @@ private string $buyer_id;
     public function setLocalisation(string $localisation)
     {
         
-        $this->start_price = $localisation;
+        $this->localisation = $localisation;
         
         return $this;
     }
@@ -279,7 +289,7 @@ private string $buyer_id;
     public function setSellerId(string $seller_id)
     {
         
-        $this->start_price = $seller_id;
+        $this->seller_id = $seller_id;
         
         return $this;
     }
@@ -287,7 +297,7 @@ private string $buyer_id;
     public function setBuyerId(string $buyer_id)
     {
         
-        $this->start_price = $buyer_id;
+        $this->buyer_id = $buyer_id;
         
         return $this;
     }
