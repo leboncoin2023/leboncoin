@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -40,5 +41,24 @@ class UserController extends AbstractController
         return $this->render('user/index.html.twig', [
             'controller_name' => 'UserController',
         ]);
+        
     }
+  
+ /*#[Route('/{id}', name: 'app_user_show')]
+public function show($id): Response
+{
+    $entityManager = $this->getDoctrine()->getManager();
+    $utilisateur= $entityManager->getRepository(User::class)->find($id);
+
+    if (!$utilisateur) {
+        throw $this->createNotFoundException('utilisateur not found with id '.$id);
+    }
+
+    return $this->render('user/show.html.twig', [
+        'utilisateur' => $utilisateur,
+    ]);
 }
+
+// ... (other actions)*/
+
+

@@ -29,4 +29,5 @@ class AuctionsRepository extends ServiceDocumentRepository
     {
         return $this->findBy(['id' => $userId]);
     }
+    
 }
