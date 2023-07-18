@@ -2,8 +2,19 @@
 
 namespace App\Controller;
 
+
+USE Symfony\Component\Form\FormView;
+
+
+use App\Document\Auctions;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use App\Form\AuctionType;
-use App\Document\auctions;
+//use App\Document\auctions;
+use Symfony\Component\Form\FormFactoryInterface;
+
+
+use Doctrine\ODM\MongoDB\Mapping\Annotations;
+
 use App\Repository\AuctionsRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,11 +56,17 @@ class AuctionController extends AbstractController
 
 //Nouvelle annonce, choix entre enchère et vente ___________________________
     #[Route('/new_choice', name: 'app_auction_new_choice')]
-    public function newChoice(): Response
+    public function newChoice(AuctionsRepository $auctionsRepository, FormFactoryInterface $formFactory): Response
     {
 
+        
+        $auctions = $auctionsRepository->findAllFromBdd();
+        $form = $formFactory->create(AuctionType::class);
+
         return $this->render('auction/new_choice.html.twig', [
-            'controller_name' => 'AuctionController',
+            //'controller_name' => 'AuctionController',
+            'auctions' => $auctions,
+            'form' => $form->createView(),
         ]);
     }
 //Nouvelle enchère, formulair de création____________________________________
@@ -68,18 +85,30 @@ class AuctionController extends AbstractController
         $auction = new Auctions();
         $form = $this->createForm(AuctionType::class, $auction);
         $form->handleRequest($request);
+         
+        ob_start(); // Démarre la capture de sortie
+        var_dump($form); // Utilisation de var_dump()
+        $output = ob_get_clean(); // Récupère la sortie de var_dump() et arrête la capture
 
         if ($form->isSubmitted() && $form->isValid()) {
+        // if ($form->isSubmitted()) {
+           
+            var_dump($auction);
+
             // Sauvegardez l'entité Auctions en base de données
             $documentManager->persist($auction);
             $documentManager->flush();
-
+            //dump('test');
             // Redirigez l'utilisateur vers la page de récapitulatif ou une autre page de votre choix
             return $this->redirectToRoute('app_auction_new_recap');
         }
 
         return $this->render('auction/new_auction.html.twig', [
             'form' => $form->createView(),
+            'auction' => $auction,
+
+            'debug_output' => $output, // Passer la sortie de débogage à la vue
+
         ]);
     }
 
@@ -95,8 +124,10 @@ class AuctionController extends AbstractController
     public function newRecap(): Response
     {
 
+        $auction = new Auctions();
+        //dump('test 2');
         return $this->render('auction/new_recap.html.twig', [
-            'controller_name' => 'AuctionController',
+            'auction' => $auction,
         ]);
     }
 

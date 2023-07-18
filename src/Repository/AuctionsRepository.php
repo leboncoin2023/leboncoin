@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use Doctrine\ODM\MongoDB\Mapping\Annotations;
 use App\Document\Auctions;
 use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
 use Doctrine\Bundle\MongoDBBundle\Repository\ServiceDocumentRepository;

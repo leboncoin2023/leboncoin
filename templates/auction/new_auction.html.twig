@@ -2,12 +2,118 @@
 
 {% block title %}Nouvelle enchère{% endblock %}
 
-{% block body %}
-
-<h1>Nouvelle enchère</h1>
-
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
-
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .hidden-label {
+            display: none;
+        }
+    </style>
 {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mt-5 mb-4">Nouvelle enchère</h1>
+
+
+         {% if debug_output is defined %}
+            <div class="debug-output">
+                {{ debug_output|raw }}
+            </div>
+        {% endif %}
+
+
+
+
+        <form method="post" action="{{ path('app_auction_new_auction') }}">
+            {{ form_start(form) }}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form_label(form.title) }}
+                        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.category) }}
+                        {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.description) }}
+                        {{ form_widget(form.description , {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                     <div class="form-group">
+                        {{ form_label(form.subcategory) }}
+                        {{ form_widget(form.subcategory , {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                     <div class="form-group">
+                        {{ form_label(form.start_price) }}
+                        {{ form_widget(form.start_price  , {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                     <div class="form-group">
+                        {{ form_label(form.sold_price) }}
+                        {{ form_widget(form.sold_price , {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                     <div class="form-group">
+                        {{ form_label(form.reserve_price) }}
+                        {{ form_widget(form.reserve_price , {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                     <div class="form-group">
+                        {{ form_label(form.start_date) }}
+                        {{ form_widget(form.start_date  , {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                     <div class="form-group">
+                        {{ form_label(form.duration) }}
+                        {{ form_widget(form.duration  , {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                     <div class="form-group">
+                        {{ form_label(form.delivery_mode) }}
+                        {{ form_widget(form.delivery_mode , {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                     <div class="form-group">
+                       
+                        {{ form_row(form.pictures, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+
+                     <div class="form-group">
+                        {{ form_label(form.video) }}
+                        {{ form_widget(form.video , {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                     <div class="form-group">
+                        {{ form_label(form.localisation) }}
+                        {{ form_widget(form.localisation , {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.seller_id, null, {'label_attr': {'class': 'hidden-label'}}) }}
+                        {{ form_row(form.seller_id, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.buyer_id, null, {'label_attr': {'class': 'hidden-label'}}) }}
+                        {{ form_row(form.buyer_id, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <!-- Ajoutez ici les autres champs du formulaire -->
+                </div>
+            </div>
+            {{ form_row(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+            {# <button type="submit" class="btn btn-primary">Créer l'enchère</button> #}
+            {{ form_end(form) }}
+        </form>
+    </div>
+{% endblock %}
+
+
+

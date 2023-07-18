@@ -1,17 +1,20 @@
 <?php
 
-
-
 namespace App\Form;
 
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+
+use Doctrine\ODM\MongoDB\Mapping\Annotations;
 use App\Document\Auctions;
-use Doctrine\DBAL\Types\DateTimeType;
-use Doctrine\DBAL\Types\IntegerType;
+//use Doctrine\DBAL\Types\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+//use Doctrine\DBAL\Types\IntegerType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -48,10 +51,19 @@ class AuctionType extends AbstractType
 
             ->add('sold_price', NumberType::class)
 
-            ->add('start_date', DateTimeType::class, [
+           /* ->add('start_date', DateTimeType::class, [
                 'widget' => 'single_text',
                 'format' => 'yyyy-MM-dd HH:mm:ss',
+            ])*/
+
+            ->add('start_date', DateTimeType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'format' => 'yyyy-MM-dd HH:mm:ss',
             ])
+            
+
+
             ->add('duration', IntegerType::class)
 
             ->add('delivery_mode', ChoiceType::class, [
@@ -104,7 +116,7 @@ class AuctionType extends AbstractType
             /*
             Si vous souhaitez permettre à l'utilisateur de saisir manuellement l'identifiant de l'acheteur, vous pouvez utiliser le type TextType 
             */
-            ->add('buyer_id', TextType::class);
+            ->add('buyer_id', TextType::class)
             /*Cependant, si vous avez une entité Buyer associée à vos acheteurs, il est recommandé d'utiliser un champ de type EntityType. 
             Cela permettra de sélectionner l'acheteur à partir d'une liste déroulante ou d'une boîte de recherche. Voici un exemple d'utilisation du type EntityType :
                 ->add('buyer', EntityType::class, [
@@ -112,6 +124,7 @@ class AuctionType extends AbstractType
                         'choice_label' => 'name', // Remplacez 'name' par le nom de l'attribut de votre entité Buyer à afficher dans le champ
                         'placeholder' => 'Sélectionnez un acheteur', // Optionnel : affiche un libellé par défaut dans la liste déroulante
                     ])*/
+            ->add('save', SubmitType::class);
 
             
         ;
