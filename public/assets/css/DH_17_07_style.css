@@ -111,5 +111,8 @@ footer{
 .reseauxlink{
     margin-left: 10px;
 }
+.links_footer>a:hover {
+    color: var(--lb_orange);
+  }
 
 
