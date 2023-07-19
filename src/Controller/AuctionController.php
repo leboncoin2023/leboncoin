@@ -79,6 +79,7 @@ class AuctionController extends AbstractController
         ]);
     }*/
 
+    /*
     #[Route('/new_auction', name: 'app_auction_new_auction')]
     public function newAuction(Request $request, DocumentManager $documentManager): Response
     {
@@ -86,14 +87,15 @@ class AuctionController extends AbstractController
         $form = $this->createForm(AuctionType::class, $auction);
         $form->handleRequest($request);
          
-        ob_start(); // Démarre la capture de sortie
-        var_dump($form); // Utilisation de var_dump()
-        $output = ob_get_clean(); // Récupère la sortie de var_dump() et arrête la capture
+      //  ob_start(); // Démarre la capture de sortie
+     //   var_dump($form); // Utilisation de var_dump()
+      //  $output = ob_get_clean(); // Récupère la sortie de var_dump() et arrête la capture
 
-        if ($form->isSubmitted() && $form->isValid()) {
-        // if ($form->isSubmitted()) {
+      if ($form->isSubmitted() && $form->isValid()) {
+      //if ($form->isSubmitted()) {
+        
            
-            var_dump($auction);
+           // var_dump($auction);
 
             // Sauvegardez l'entité Auctions en base de données
             $documentManager->persist($auction);
@@ -107,10 +109,39 @@ class AuctionController extends AbstractController
             'form' => $form->createView(),
             'auction' => $auction,
 
-            'debug_output' => $output, // Passer la sortie de débogage à la vue
+           // 'debug_output' => $output, // Passer la sortie de débogage à la vue
 
         ]);
+    } */
+
+    #[Route('/new_auction', name: 'app_auction_new_auction')]
+    public function newAuction(Request $request, DocumentManager $documentManager): Response
+    {
+        $auction = new Auctions();
+        $form = $this->createForm(AuctionType::class, $auction);
+        $form->handleRequest($request);
+             
+        if ($form->isSubmitted()) {
+            if (!$form->isValid()) {
+                foreach ($form->getErrors(true, true) as $error) {
+                    echo $error->getMessage()."\n";
+                }
+            } else {
+                // Sauvegardez l'entité Auctions en base de données
+                $documentManager->persist($auction);
+                $documentManager->flush();
+    
+                // Redirigez l'utilisateur vers la page de récapitulatif ou une autre page de votre choix
+                return $this->redirectToRoute('app_auction_new_recap');
+            }
+        }
+    
+        return $this->render('auction/new_auction.html.twig', [
+            'form' => $form->createView(),
+            'auction' => $auction,
+        ]);
     }
+
 
 
 
