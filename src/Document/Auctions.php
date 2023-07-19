@@ -38,8 +38,17 @@ private ?string $sold_price = null;
 private ?string $reserve_price = null;
 
 
-#[MongoDB\Field(type:'string')]
-private ?string $start_date = null;
+
+//#[MongoDB\Field(type:'date')]
+//private ?\DateTimeInterface $start_date = null;
+//private ?string $start_date = null;
+
+#[MongoDB\Field(type: 'date')]
+private ?\DateTimeInterface $start_date = null;
+
+
+////#[MongoDB\Field(type:'string')]
+//private ?string $start_date = null;
 
 #[MongoDB\Field(type:'string')]
 private ?string $duration = null;
@@ -147,12 +156,30 @@ public function __construct()
     }
 
     
-    
+    /*
     public function getStartDate(): ?string
     {
 
         return $this->start_date;
+    }*/
+
+    /*
+    public function getStartDate(): ?string
+    {
+        return $this->start_date instanceof \DateTimeInterface
+            ? $this->start_date->format('Y-m-d H:i:s')
+            : null;
+    }*/
+
+    public function getStartDate(): ?\DateTimeInterface
+    {
+    return $this->start_date;
     }
+
+
+    
+
+
     
     public function getDuration(): ?string
     {
@@ -279,14 +306,39 @@ public function __construct()
     }
 
     
-
+/*
     public function setStartDate(?string $start_date)
     {
         
         $this->start_date = $start_date;
         
         return $this;
+    }*/
+
+/*/
+    public function setStartDate(?string $start_date): self
+    {
+        $this->start_date = $start_date !== null
+            ? new \DateTime($start_date)
+            : null;
+
+        return $this;
+    }*/
+
+    /*
+    public function setStartDate(?string $start_date): self
+    {
+    $this->start_date = $start_date;
+    return $this;
+    }*/
+
+
+    public function setStartDate(?\DateTimeInterface $start_date): self
+    {
+    $this->start_date = $start_date;
+    return $this;
     }
+
 
     public function setDuration(?string $duration)
     {

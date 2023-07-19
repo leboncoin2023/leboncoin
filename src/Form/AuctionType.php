@@ -1,11 +1,13 @@
 <?php
-
+namespace App\Form\DataTransformer; 
 namespace App\Form;
 
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations;
 use App\Document\Auctions;
+use App\Form\DataTransformer\StringToDateTimeTransformer as DataTransformerStringToDateTimeTransformer;
+use PhpParser\Node\Expr\Cast\String_;
 //use Doctrine\DBAL\Types\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 //use Doctrine\DBAL\Types\IntegerType;
@@ -19,6 +21,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use App\Form\DataTransformer\StringToDateTimeTransformer; // Inclure la classe ici
+use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToStringTransformer as DataTransformerDateTimeToStringTransformer;
+//use App\Form\DateTimeToStringTransformer as StringToDateTimeTransformer; // Renommage de la classe
 
 class AuctionType extends AbstractType
 {
@@ -56,14 +61,19 @@ class AuctionType extends AbstractType
                 'format' => 'yyyy-MM-dd HH:mm:ss',
             ])*/
 
+         /*   ->add('start_date', DateTimeType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'format' => 'yyyy-MM-dd HH:mm:ss',
+            ])*/
+
             ->add('start_date', DateTimeType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
                 'format' => 'yyyy-MM-dd HH:mm:ss',
             ])
+           
             
-
-
             ->add('duration', IntegerType::class)
 
             ->add('delivery_mode', ChoiceType::class, [
@@ -88,7 +98,7 @@ class AuctionType extends AbstractType
             //Si vous préférez permettre à l'utilisateur de télécharger une vidéo depuis son appareil,
             // vous pouvez utiliser le type FileType.
             //->add('video', FileType::class)
-
+           
 
             // Si vous souhaitez que l'utilisateur puisse saisir manuellement la localisation, vous pouvez utiliser le type TextType
             ->add('localisation', TextType::class)
@@ -126,9 +136,13 @@ class AuctionType extends AbstractType
                     ])*/
             ->add('save', SubmitType::class);
 
-            
+           // $builder->get('start_date')->addModelTransformer(new StringToDateTimeTransformer());
+        
+    
         ;
     }
+
+   
 
     public function configureOptions(OptionsResolver $resolver)
     {

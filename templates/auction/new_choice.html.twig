@@ -111,6 +111,10 @@
                     {{ form_row(form.buyer_id, {'attr': {'class': 'form-control', 'style': 'display:none;'}, 'label': false}) }}
                 </div>
 
+                <!-- En ajoutant cette ligne dans le formulaire, vous vous assurez que le jeton CSRF est inclus dans le formulaire
+                         lorsqu'il est soumis. Cela garantit la sécurité de votre application en protégeant contre les attaques CSRF.  -->
+                    {{ form_row(form._token) }}
+
                 <button type="submit" class="btn btn-primary">Créer l'enchère</button>
             </div>
         </div>

@@ -16,9 +16,11 @@
         <h1 class="mt-5 mb-4">Nouvelle enchère</h1>
 
 
-         {% if debug_output is defined %}
-            <div class="debug-output">
-                {{ debug_output|raw }}
+        {% if form.vars.errors|length > 0 %}
+            <div class="alert alert-danger">
+                {% for error in form.vars.errors %}
+                    {{ error.message }}
+                {% endfor %}
             </div>
         {% endif %}
 
@@ -105,10 +107,15 @@
                         {{ form_row(form.buyer_id, {'attr': {'class': 'form-control'}}) }}
                     </div>
 
+                    <!-- En ajoutant cette ligne dans le formulaire, vous vous assurez que le jeton CSRF est inclus dans le formulaire
+                         lorsqu'il est soumis. Cela garantit la sécurité de votre application en protégeant contre les attaques CSRF.  -->
+                    {{ form_row(form._token) }}
+
                     <!-- Ajoutez ici les autres champs du formulaire -->
                 </div>
             </div>
             {{ form_row(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+
             {# <button type="submit" class="btn btn-primary">Créer l'enchère</button> #}
             {{ form_end(form) }}
         </form>
