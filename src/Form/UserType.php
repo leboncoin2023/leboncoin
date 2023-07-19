@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -33,6 +34,15 @@ class UserType extends AbstractType
                     'class' => 'btn btn-success form-control'
                 ]
             ])
+            ->add('roles',ChoiceType::class,[
+            'attr'=>['class'=>'form-control'], 
+            'choices' =>[
+                'Seller' =>["yes"=>"ROLE_USER"],
+                'Seller' =>["yes"=>"ROLE_ADMIN"],
+                
+            ]
+            ])           
+
             ->add('annuler', ButtonType::class, [
                 'label' => 'Annuler',
                 'attr' => [

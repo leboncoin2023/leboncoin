@@ -50,23 +50,7 @@ class AuctionController extends AbstractController
     }
 
 
-    /*#[Route('/test', name: 'app_auction_test')]
-     public function createAction(AuctionsRepository $auctionsRepository)
-     {
-
-        $auction = new auctions ();
-        $auction->setName('toto');
-        $auction->setLastname('titi');
-        
-        $auctions = $auctionsRepository->findAllAuction();
-        //dump($auctions);
-
-        return new Response('Created auction  id ');
-
-         
-     }*/
-
-
+    
 
 
      #[Route('/test2', name: 'app_auction_test')]
