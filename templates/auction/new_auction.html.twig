@@ -27,7 +27,8 @@
 
 
 
-        <form method="post" action="{{ path('app_auction_new_auction') }}">
+        
+        <form method="post" action="{{ path('app_auction_new_auction') }}" enctype="multipart/form-data">
             {{ form_start(form) }}
             <div class="row">
                 <div class="col-md-6">
@@ -82,7 +83,7 @@
                     </div>
 
                      <div class="form-group">
-                       
+                        {{ form_label(form.pictures) }}
                         {{ form_row(form.pictures, {'attr': {'class': 'form-control'}}) }}
                     </div>
 
