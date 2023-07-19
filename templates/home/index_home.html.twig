@@ -4,38 +4,111 @@
 
 {% block body %}
 
-
-
-
 <!--     /* CSS HOME _DOMINIKA 18/07 */ -->
-
 
     <main>
         <section class="container">
-
-            <h1> Des millions de petites annonces et autant d’occasions de se faire plaisir </h1>
-
-                <div class="d-flex justify-content-center banner">
-                    <div>
-                        <img src="/assets/icones/marteau/marteau_orange_L.svg" alt="marteau_orange_L">
+            <div>
+                <h1 class="home_title m-5"> Des millions de petites annonces et autant d’occasions de se faire plaisir </h1>
+                <div class="home_top">
+<!-- BANNIERE ENCHERES -->
+                    <div class="row banner">
+                        <div class="col-2 banner_element">
+                            <img class="img_marteau" src="/assets/icones/marteau/marteau_orange_L.svg" alt="marteau_orange_L">
+                        </div>
+                        <div class="col-7 banner_element">
+                            <h2 class="banner_title" >Découvrez notre nouvelle fonctionnalité</h2>
+                            <h2 class="banner_title" >La Vente aux Enchères !</h2>
+                        </div>
+                        <div class="col-3 banner_element"> <a href="#" class="btn-orange mx-4"><img src="assets/icones/marteau/marteau_small_white.svg" alt=""> &nbsp;Enchères</a> </div>
                     </div>
-                    <div>
-                        <h2> Découvrez notre nouvelle fonctionnalité La Vente aux Enchères ! </h2>
-                    </div>
-                    <div> <a href="#" class="btn-orange"><img src="assets/icones/marteau/marteau_small_white.svg" alt=""> &nbsp;Enchères</a> </div>
+<!-- BANNIERE ENCHERES -->
                 </div>
-
+            </div>
             <h3> Top catégories </h3>
 
-            <!-- SLIDER -->
+<!-- SLIDER -->
+            
+            <!-- Slides 
+            <div class="swiper mySwiper mb-5">
+                <div class="swiper-wrapper">
+
+                
+                    <div class="swiper-slide">
+                        <img src="../../public/assets/img_slider/1.jpg" alt="Multimedia">
+                        <div class="center">
+                            <h5>Multimedia</h5>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="../../public/assets/img_slider/2.jpg" alt="Vêtements">
+                        <div class="center">
+                            <h5>Vêtements</h5>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="../../public/assets/img_slider/3.jpg" alt="Ameublement">
+                        <div class="center">
+                            <h5>Ameublement</h5>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="../../public/assets/img_slider/4.jpg" alt="cat4">
+                        <div class="center">
+                            <h5>Categorie 4</h5>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="../../public/assets/img_slider/5.jpg" alt="cat5">
+                        <div class="center">
+                            <h5>Categorie 5</h5>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="../../public/assets/img_slider/6.jpg" alt="cat6">
+                        <div class="center">
+                            <h5>Categorie 6</h5>
+                        </div>
+                    </div>
+                    </div>
+                -->
 
 
-            <p class="text_under_slider">Avec leboncoin, trouvez la bonne affaire sur le site référent de petites annonces de particulier à particulier et de professionnels. Avec des millions de petites annonces, trouvez la bonne occasion dans nos catégories voiture, immobilier, emploi, location de vacances, vêtements, meubles, bricolage, téléphonie, jeux vidéo, etc… Déposez une annonce gratuite en toute simplicité pour vendre, rechercher, donner vos biens de seconde main ou promouvoir vos services. Pour cet été, découvrez nos idées de destination avec notre guide de vacances en France. Achetez en toute sécurité avec notre système de paiement en ligne et de livraison pour les annonces éligibles.</p>
+                <!-- Slider main container -->
+                <div class="swiper">
+                <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                    <!-- Slides -->
+                        <div class="swiper-slide">
+                            <img src="../../public/assets/img_slider/6.jpg" alt="cat6">Slide 1
+                        </div>
+                        <div class="swiper-slide">Slide 2</div>
+                        <div class="swiper-slide">Slide 3</div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
 
+            
+<!-- SLIDER -->
 
-            <h4> RECHERCHE PAR CATÉGORIES </h4>
+        <div class="mb-5">
+            <p class="text_under_slider mb-3">Avec leboncoin, trouvez la bonne affaire sur le site référent de petites annonces de particulier à particulier et de professionnels. Avec des millions de petites annonces, trouvez la bonne occasion dans nos catégories voiture, immobilier, emploi, location de vacances, vêtements, meubles, bricolage, téléphonie, jeux vidéo, etc… Déposez une annonce gratuite en toute simplicité pour vendre, rechercher, donner vos biens de seconde main ou promouvoir vos services. Pour cet été, découvrez nos idées de destination avec notre guide de vacances en France. Achetez en toute sécurité avec notre système de paiement en ligne et de livraison pour les annonces éligibles.</p>
+        </div>
 
-            <div class="dropdown">
+<!-- RECHERCHE PAR CATEGORIES -->
+        <div class="home_title2 text-center">
+            <h2> RECHERCHE PAR CATÉGORIES </h2>
+        </div>
+
+        <!-- Cards deroulement -->
+
+<!--            <div class="dropdown">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Dropdown link
                 </a>
@@ -46,12 +119,202 @@
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </div>
+-->
+    <div >
+        <div class="row rangee">
+           <div class="dropdown col-3">
+                <button class="dropbtn"><span>EMPLOI</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <div class="dropdown col-3">
+                <button class="dropbtn"><span>CATEGORIES</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <div class="dropdown col-3">
+                <button class="dropbtn"><span>MODE</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <div class="dropdown col-3">
+                <button class="dropbtn"><span>MAISON</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+        </div>
 
-            <!-- Cards deroulement -->
+        <div class="row rangee">
+           <div class="dropdown col-3">
+                <button class="dropbtn"><span>VEHICULES</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <div class="dropdown col-3">
+                <button class="dropbtn"><span>LOISIR</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <div class="dropdown col-3">
+                <button class="dropbtn"><span>MULTIMEDIA</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <div class="dropdown col-3">
+                <button class="dropbtn"><span>MATERIEL PROFESSIONNEL</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+        </div>
 
-            <h4> RECHERCHE PAR RÉGIONS </h4>
+
+        <div class="row rangee">
+                <div class="dropdown col-3">
+                        <button class="dropbtn"><span>IMMOBILIER</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                    <div class="dropdown col-3">
+                        <button class="dropbtn"><span>ANIMAUX</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                    <div class="dropdown col-3">
+                        <button class="dropbtn"><span>SERVICES</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                    <div class="dropdown col-3">
+                        <button class="dropbtn"><span>DIVERS</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                </div>
+
+</div>
+
+        <!-- Cards deroulement -->
+
+<!-- RECHERCHE PAR REGIONS -->
+
+        <div class="home_title2 text-center">
+            <h2>RECHERCHE PAR RÉGIONS</h2>
+        </div>
+
+        <div>
+            <div class="row rangee">
+                    <div class="dropdown col-3">
+                            <button class="dropbtn"><span>OUEST</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                            <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                            </div>
+                        </div>
+                        <div class="dropdown col-3">
+                            <button class="dropbtn"><span>SUD-EST</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                            <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                            </div>
+                        </div>
+                        <div class="dropdown col-3">
+                            <button class="dropbtn"><span>NORD</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                            <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                            </div>
+                        </div>
+                        <div class="dropdown col-3">
+                            <button class="dropbtn"><span>DROM</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                            <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row rangee">
+                    <div class="dropdown col-4">
+                            <button class="dropbtn"><span>SUD-OUEST</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                            <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                            </div>
+                        </div>
+                        <div class="dropdown col-4">
+                            <button class="dropbtn"><span>EST</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                            <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                            </div>
+                        </div>
+                        <div class="dropdown col-4">
+                            <button class="dropbtn"><span>CENTRE</span></br><i class="fa-solid fa-chevron-down" style="color: #F55E00"></i></button>
+                            <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+
+
+
 
         </section>
 
     </main>
+    {#
+        {% block javascripts %}
+
+            <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+            <script src="../script.js"></script>
+
+        {% endblock %}
+    #}
+
 {% endblock %}
