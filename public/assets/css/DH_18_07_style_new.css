@@ -11,9 +11,9 @@
 }
 
 .container{
-    width: 1052px;
-}
+    width: 1076px;
 
+}
 
 /* FONT */
 
@@ -57,10 +57,9 @@ body{
 }
 
 
-
 /* ------------------------- */
 
-/* CSS HOME _DOMINIKA 18/07 */
+/* ___________________________CSS HOME _DOMINIKA 18/07 _________________________*/
 
 h1{
     text-align: center;
@@ -90,8 +89,6 @@ h2{
 
 }
 
-
-
 .btn-orange{
     background-color: var(--lb_orange);
     color: var(--vintage_white);
@@ -103,7 +100,6 @@ h2{
     justify-content: center;
     align-items: center;
 }
-
 
 h3{
     font-size: 32;
@@ -119,19 +115,13 @@ h3{
     margin:43,73,31,73;
 }
 
-
 h4{
     font-size: 32;
     font-weight: 700;
 }
 
 
-
-
-
-
-
-/* CSS FOOTER _DOMINIKA 17/07 */
+/* ________________CSS FOOTER _DOMINIKA 17/07_____________________ */
 
 
 footer{
@@ -141,8 +131,6 @@ footer{
     padding: 20px 0px;
     gap: 40px;
 }
-
-
 
 .flex_footer{
     display: flex;
@@ -162,6 +150,7 @@ footer{
 .paddingauto{
     padding-bottom: 40px;
 }
+
 .zeromarg{
     margin-bottom: 0;
 }
@@ -174,15 +163,17 @@ footer{
     padding-bottom: 65px;
 }
 
-/*--------GUILLAUME-------------*/
+/*--------_______________GUILLAUME_________________-------------*/
 
 .links_footer>p {
     font-size: small;
     font-weight: 200;
 }
+
 .stars>img{
     margin-left: 7px;
 }
+
 .links_footer>a {
     display: block;
     text-decoration: none;
@@ -191,12 +182,15 @@ footer{
     font-weight: 200;
     margin-bottom: 16px;
 }
+
 .bottom_title{
     margin-bottom: 40px;
 }
+
 .bottom_title>h5{
     font-size: medium;
 }
+
 .stars{
     display: flex;
     justify-content: center;
@@ -205,19 +199,50 @@ footer{
     display: inline;
     justify-content: center;
 }
+
 .bottom_title>p{
     font-size: small;
     font-weight: 200;
 }
+
 .reseauxlink{
     margin-left: 10px;
 }
+
 .links_footer>a:hover {
     color: var(--lb_orange);
-  }
+}
 
+/*______________________HEADER NAV 1e LIGNE____________________*/
 
+.flexnavhaut{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+header{
+    background-color: var(--vintage_white);
+}
+
+.liens-navhaut{
+    text-align: center;
+    margin: 0 20px;
+}   
+
+.liens-navhaut p{
+    font-family: satoshi;
+    font-size: 8px;
+    font-weight: 500;
+}
+
+.boutonspé{
+    background-color:var(--lb_orange);
+    border-radius: 1em;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--vintage_white);
+}
 
   /*________________HEADER NAV 2e LIGNE _______________________*/
   
@@ -232,23 +257,25 @@ footer{
 	background: var(--vintage_white);
 	color: #FFF;
 	height: 45px;
-	padding-left: 18px;
-	border-radius: 10px;
 }
+
 #menu ul, #menu li {
 	margin: 0 auto;
 	padding: 0;
 	
 }
+
 #menu ul {
 	width: 100%;
 }
+
 #menu li {
 	float: left;
 	display: inline;
 	position: relative;
 }
-#menu a {
+
+#menu .linkhover {
 	display: block;
 	line-height: 45px;
 	padding: 0 14px;
@@ -259,10 +286,31 @@ footer{
 	font-size: 12px;
 }
 
-#menu li a:hover {
+#menu li  .linkhover:hover {
 	color: var(--lb_orange);
 	
 }
+
+.auctionhover{
+   
+    color: #F55E00;
+    border: solid 1px #F55E00;
+    border-radius: 1em;
+    display: block;
+	line-height: 45px;
+	padding: 0 14px;
+	text-decoration: none;
+    font-family: satoshi;
+    font-weight: 500;
+	font-size: 12px;
+}
+
+
+/* .auctionhover:hover{
+    color: #F55E00;
+    background-color: #FCFBF7;
+} */
+
 #menu input {
 	display: none;
 	margin: 0;
@@ -272,6 +320,7 @@ footer{
 	opacity: 0;
 	cursor: pointer
 }
+
 #menu label {
 	display: none;
 	line-height: 45px;
@@ -279,12 +328,14 @@ footer{
 	position: absolute;
 	left: 35px
 }
+
 #menu label:before {
 	font-size: 1.6em;
 	content: "\2261"; 
 	margin-left: 20px;
 }
-#menu ul.sub-menus{
+
+/* #menu ul.sub-menus{
 	height: auto;
 	overflow: hidden;
 	width: 170px;
@@ -293,18 +344,22 @@ footer{
 	z-index: 99;
 	display: none;
 }
+
 #menu ul.sub-menus li {
 	display: block;
 	width: 100%;
 }
+
 #menu ul.sub-menus a {
 	color: #FFFFFF;
 	font-size: 16px;
 }
+
 #menu li:hover ul.sub-menus {
 	display: block
 }
+
 #menu ul.sub-menus a:hover{
 	background: #F2F2F2;
-	color: #444444;
-}
+	color: #444444; 
+}*/
