@@ -33,7 +33,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     //#[MongoDB\Field(type: 'array')]
     #[MongoDB\Field(type: "collection")]
-    private array $roles ;
+    private array $roles = [] ;
 
     #[MongoDB\Field(type: 'string')]
     private string $phone;
@@ -71,7 +71,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getRoles(): array
     {
-        $roles = $this->roles;
+       $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 

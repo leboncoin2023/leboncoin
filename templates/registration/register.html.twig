@@ -10,8 +10,9 @@
     <h1>Register</h1>
 
     {{ form_errors(registrationForm) }}
-
+   
     {{ form_start(registrationForm) }}
+ 
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
@@ -30,10 +31,12 @@
             label: 'phone'
         }) }}
 
-
-
-         
-    
+       <!-- En ajoutant cette ligne dans le formulaire, vous vous assurez que le jeton CSRF est inclus dans le formulaire
+                         lorsqu'il est soumis. Cela garantit la sécurité de votre application en protégeant contre les attaques CSRF.  -->
+                    
+         {{ form_row(registrationForm._token) }}
+       
         <button type="submit" class="btn">Register</button>
+       
     {{ form_end(registrationForm) }}
 {% endblock %}
