@@ -1,4 +1,4 @@
-      {% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Récapitulatif de l'enchère{% endblock %}
 
@@ -9,17 +9,22 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card mb-4 bg-orange text-black">
-                    {% if auction.getPicture() is not null %}
-                        <img src="{{ asset(auction.getPicture()) }}" class="card-img-top" alt="Photo de l'enchère">
+                        {% if auction.getPictures|length > 0 %}
+                        {% for picturePath in auction.getPictures %}
+                             <img src="{{ asset('uploads/pictures/' ~ picturePath) }}" class="card-img-top" alt="Photo de l'enchère">
+                        {% endfor %}
+                    {% else %}
+                        <p>Aucune image disponible</p>
                     {% endif %}
                     <div class="card-body">
-                        <h2 class="card-title">{{ auction.getTitle() }}</h2>
-                        <p class="card-text">Prix : {{ auction.getSoldPrice() }} €</p>
-                        <p class="card-text">Mode de livraison : {{ auction.getDeliveryMode() }}</p>
+                        <h2 class="card-title">title : {{ auction.title }}</h2>
+                        <p class="card-text">Prix de départ : {{ auction.startPrice }} €</p>
+                        <p class="card-text">Mode de livraison : {{ auction.deliveryMode }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-{% endblock %}                
+{% endblock %}
+
 

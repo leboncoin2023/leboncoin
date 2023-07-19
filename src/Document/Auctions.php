@@ -58,9 +58,6 @@ private ?string $delivery_mode = null;
 
 
 #[MongoDB\Field(type:'string')]
-private ?string $picture = null;
-
-#[MongoDB\Field(type:'string')]
 private string $video;
 
 #[MongoDB\Field(type:'string')]
@@ -72,7 +69,8 @@ private ?string $seller_id = null;
 #[MongoDB\Field(type:'string')]
 private ?string $buyer_id = null;
 
-
+#[MongoDB\Field(type:"collection")]
+private $pictures = [];
 
 /*
 public function __construct()
@@ -203,12 +201,19 @@ public function __construct()
 
 
 
-
+    /*
     public function getpicture(): ?string
     {
 
         return $this->picture;
+    }*/
+    public function getPictures(): array
+    {
+        return $this->pictures;
     }
+
+
+
 
     public function getVideo(): string
     {
@@ -364,14 +369,19 @@ public function __construct()
     }
 
 
-
+    /*
     public function setPicture(?string $picture)
     {
         
         $this->picture = $picture;
         
         return $this;
+    }*/
+    public function setPictures(array $pictures): void
+    {
+        $this->pictures = $pictures;
     }
+
 
     public function setVideo(string $video)
     {
