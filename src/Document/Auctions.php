@@ -66,6 +66,11 @@ private string $video;
 #[MongoDB\Field(type:'string')]
 private ?string $localisation = null;
 
+/**
+     * @MongoDB\ReferenceOne(targetDocument=User::class, mappedBy="auctions")
+     */
+    private $buyer;
+
 #[MongoDB\Field(type:'string')]
 private ?string $seller_id = null;
 
@@ -229,6 +234,10 @@ public function __construct()
     return $this->localisation;
     }
 
+    public function getBuyer()
+    {
+        return $this->buyer;
+    }
 
     public function getSellerId(): ?string
     {
@@ -395,7 +404,12 @@ public function __construct()
     {
         $this->localisation = $localisation;
     }
+    
+    public function setBuyer($buyer)
 
+    {
+        $this->buyer = $buyer ;
+    }
 
 
     public function setSellerId(?string $seller_id)
@@ -414,5 +428,5 @@ public function __construct()
         return $this;
     }
 
-
+            
 } 
