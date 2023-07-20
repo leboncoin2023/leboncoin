@@ -1,0 +1,24 @@
+{# templates/auction/detail.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Details des Enchères</h1>
+
+    {% for result in results %}
+        <h2>User: {{ result.userName }}</h2>
+        <ul>
+            {% for auction in result.auctions %}
+                <li>
+                    <strong>Auction ID:</strong> {{ auction.id }}
+                    <br>
+                    <strong>Title:</strong> {{ auction.title }}
+                    <br>
+                    <strong>Price:</strong> {{ auction.price }}
+                    <br>
+                    {# Ajoutez ici d'autres champs de l'enchère que vous souhaitez afficher #}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+{% endblock %}
