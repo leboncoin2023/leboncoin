@@ -405,14 +405,41 @@ header{
 .img_marteau{
     margin: 32px;;
 }
+/*_____ slider_________*/
 
-/*____SLIDER___________________________________*/
+.swiper{
+    /* Largeur de 100% */
+    width: 100%;
+    /* Espacement en haut et en bas de 50 pixels */
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
 
-.swiper {
-    width: 600px;
-    height: 300px;
-  }
+.swiper-slide{
   
+    /* Position de l'arrière-plan au centre */
+    /*background-position: center;*/
+    /* Largeur de 300 pixels */
+    width: 300px;
+    /* Hauteur automatique */
+    height: auto;
+     /* Ombre portée de 6 pixels vers le bas et la droite, couleur noire */
+    box-shadow: 6px 6PX 10px black;
+    /* Arrière-plan blanc */
+    /*background: white;*/
+}
+
+.swiper-slide img{
+    /* Affichage en tant que bloc */
+   display: block;
+   /* Largeur de 100% */
+    width: 100%;
+   /* Hauteur de 250 pixels */
+   height: 250px;
+
+
+}
+/*______________________*/
 
 /*____DROPDOWN CARDS______*/
 
@@ -433,7 +460,8 @@ header{
     border-radius: 12px;
 
     /*box-shadow: 0px 0px 8px 0px rgba(245, 94, 0, 0.50);*/
-
+    /* modif 20/07*/
+    box-shadow: 2px 2px 1px 0px rgba(245, 94, 0, 0.20);
 
   }
   .rangee{
@@ -447,6 +475,7 @@ header{
     position: relative;
     display: inline-block;
 
+        
 
   }
   
@@ -476,6 +505,8 @@ header{
     border-bottom-right-radius: 12px;
 
     margin-top: -20px;
+     /* modif 20/07*/
+     box-shadow: 2px 2px 1px 0px rgba(245, 94, 0, 0.20);
   }
   
   /* Links inside the dropdown */
@@ -488,7 +519,7 @@ header{
   
   /* Change color of dropdown links on hover */
   .dropdown-content a:hover {
-    background-color: #f1f1f1;
+    background-color:var(--shade_orange);
     color: var(--lb_orange);
 }
   
