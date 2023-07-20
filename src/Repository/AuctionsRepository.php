@@ -30,4 +30,47 @@ class AuctionsRepository extends ServiceDocumentRepository
     {
         return $this->findBy(['id' => $userId]);
     }
+
+    public function getAuctionsByCategory(string $category): array {
+
+        // créer tableau résultat vide
+        $result = [];
+
+        // trouver toutes les sous categories de la categories demandée
+
+        // exploser categories et sous categories
+
+        // pour chaque sous categorie
+
+            // trouver en BDD n enchère de cette catégorie/sous catégorie
+
+            // Ajouter les n enchères au tableau de résultat (dans le tiroir sous categories)
+
+        // fin pour
+
+        // obtenir :
+        /****************
+         $result = [
+            'Informatique' => [
+                0 => objet enchère,
+                1 => objet enchère,
+                2 => objet enchère,
+                3 => objet enchère,
+            ],
+            'Consoles' => [
+                0 => objet enchère,
+                1 => objet enchère,
+                2 => objet enchère,
+                3 => objet enchère,
+            ],
+            'Image' => [
+                0 => objet enchère,
+                1 => objet enchère,
+                2 => objet enchère,
+                3 => objet enchère,
+            ],
+         ]
+         ************/
+        return $result;
+    }
 }

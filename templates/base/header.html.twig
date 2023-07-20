@@ -6,13 +6,13 @@
 
     <nav class="container">
         <div class="flexnavhaut">
-            <a class="" href="#"><img src="assets/icones/logo/Property 1=original.png" alt="logo"></a>
+            <a class="" href="#"><img src="../assets/icones/logo/Property 1=original.png" alt="logo"></a>
             <a href="#" class="boutonspé">Déposer&nbsp;une&nbsp;annonce</a>
 
             <form class="form-inline">
                 <div class="input-group">
                     <div class="input-group-prepend input-group-text">
-                        <span class="input-group"><img src="assets/icones/loupe_flitres/loupe_gris.svg" alt="icone loupe"></span>
+                        <span class="input-group"><img src="../assets/icones/loupe_flitres/loupe_gris.svg" alt="icone loupe"></span>
                     </div>
                     <input type="text" class="form-control" placeholder="Rechercher sur Leboncoin" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
@@ -22,7 +22,7 @@
 {# __________________partie droite 1ère ligne, globalement ok, gérer l'espace entre les icones ! #}
                 <div class="liens-navhaut">
                     <div>
-                        <img src="assets/icones/cloches/cloche_noir_pleine.svg" alt="">
+                        <img src="../assets/icones/cloches/cloche_noir_pleine.svg" alt="">
                     </div>
                     <div>
                         <p>Notifications</p>
@@ -31,7 +31,7 @@
 
                 <div class="liens-navhaut">
                     <div>
-                        <img src="assets/icones/coeurs/coeur_noir_plein.svg" alt="">
+                        <img src="../assets/icones/coeurs/coeur_noir_plein.svg" alt="">
                     </div>
                     <div>
                         <p>Favoris</p>
@@ -40,7 +40,7 @@
 
                 <div class="liens-navhaut">
                     <div>
-                        <img src="assets/icones/message/message_plein.svg" alt="">
+                        <img src="../assets/icones/message/message_plein.svg" alt="">
                     </div>
                     <div>
                         <p>Messages</p>
@@ -49,11 +49,18 @@
 
                 <div class="liens-navhaut">
                     <div>
-                        <img src="assets/icones/profil/profil_plein_small.svg" alt="">
+                        <img src="../assets/icones/profil/profil_plein_small.svg" alt="">
                     </div>
+                    {% if app.user %}
                     <div>
-                        <p>Se&nbsp;connecter</p>
+                        <a href="{{path('app_logout') }}">Se&nbsp;Déconnecter</a>
                     </div>
+
+                    {% else %}
+                    <div>
+                        <a href="{{path('app_login') }}">Se&nbsp;Connecter</a>
+                    </div>
+                    {% endif %}
                 </div>
 
             </section>   
