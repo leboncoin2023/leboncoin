@@ -98,14 +98,14 @@
                         {{ form_widget(form.localisation , {'attr': {'class': 'form-control'}}) }}
                     </div>
 
-                    <div class="form-group">
-                        {{ form_label(form.seller_id, null, {'label_attr': {'class': 'hidden-label'}}) }}
+                    <!--<div class="form-group">
+                        {#{{ form_label(form.seller_id, null, {'label_attr': {'class': 'hidden-label'}}) }}
                         {{ form_row(form.seller_id, {'attr': {'class': 'form-control'}}) }}
                     </div>
 
                     <div class="form-group">
                         {{ form_label(form.buyer_id, null, {'label_attr': {'class': 'hidden-label'}}) }}
-                        {{ form_row(form.buyer_id, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_row(form.buyer_id, {'attr': {'class': 'form-control'}}) }}#}
                     </div>
 
                     <!-- En ajoutant cette ligne dans le formulaire, vous vous assurez que le jeton CSRF est inclus dans le formulaire
