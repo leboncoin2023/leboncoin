@@ -38,6 +38,17 @@ class AuctionsRepository extends ServiceDocumentRepository
 
         // trouver toutes les sous categories de la categories demandée
 
+        $result= $this->dm->createQueryBuilder(Auctions::class)
+                        ->distinct('Multimédia/{category}')
+                        ->getQuery()
+                        ->execute();
+
+        
+
+    
+
+
+
         // exploser categories et sous categories
 
         // pour chaque sous categorie

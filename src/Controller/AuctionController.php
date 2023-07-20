@@ -257,21 +257,35 @@ class AuctionController extends AbstractController
 
 
 
-     #[Route('/test2', name: 'app_auction_test')]
-    public function test(AuctionsRepository $auctionsRepository): Response
+    //  #[Route('/test2', name: 'app_auction_test')]
+    // public function test(AuctionsRepository $auctionsRepository): Response
+    // {
+
+    //     $alldata = $auctionsRepository->findAllFromBdd();
+    //      $id = $alldata[1]->getId();
+    //      $auctionById = $auctionsRepository->findById($id);
+
+
+    //     dd($auctionById);
+
+    //     return $this->render('auction/index.html.twig', [
+    //         'controller_name' => 'AuctionController',
+    //     ]);
+    // }
+
+
+
+    #[Route('/test3', name: 'app_auction_test3')]
+    public function test3(AuctionsRepository $auctionsRepository, DocumentManager $dm): Response
     {
 
-        $alldata = $auctionsRepository->findAllFromBdd();
-         $id = $alldata[1]->getId();
-         $auctionById = $auctionsRepository->findById($id);
+        $data =$auctionsRepository->getAuctionsByCategory();
 
-
-        dd($auctionById);
+        dd($data);
 
         return $this->render('auction/index.html.twig', [
             'controller_name' => 'AuctionController',
         ]);
     }
-
 
 }
