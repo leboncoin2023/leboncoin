@@ -2,19 +2,15 @@
 
 namespace App\Controller;
 
-
+use App\Document\User;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-
 use App\Document\Auctions;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use App\Form\AuctionType;
 //use App\Document\auctions;
 use Symfony\Component\Form\FormFactoryInterface;
-
-
 use Doctrine\ODM\MongoDB\Mapping\Annotations;
-
 use App\Repository\AuctionsRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -172,16 +168,10 @@ class AuctionController extends AbstractController
                   }
 
 
-
-
-
-
-
                  // Récupérez l'identifiant de l'enchère nouvellement créée
                 $id = $auction->getId();
 
 
-    
                 // Redirigez l'utilisateur vers la page de récapitulatif ou une autre page de votre choix
                /* return $this->redirectToRoute('app_auction_new_recap');*/
                return $this->redirectToRoute('app_auction_new_recap', ['id' => $id]);
@@ -194,28 +184,6 @@ class AuctionController extends AbstractController
             'auction' => $auction,
         ]);
     }
-
-
-
-
-
-
-
-
-
-//Recap et validation de la nouvelle enchère_______________________________
-/*
-    #[Route('/new_recap', name: 'app_auction_new_recap')]
-    public function newRecap(): Response
-    {
-
-        $auction = new Auctions();
-        //dump('test 2');
-        return $this->render('auction/new_recap.html.twig', [
-            'auction' => $auction,
-        ]);
-    }
-    */
 
     #[Route('/new_recap/{id}', name: 'app_auction_new_recap')]
     public function newRecap($id, AuctionsRepository $auctionsRepository): Response
@@ -234,58 +202,83 @@ class AuctionController extends AbstractController
     ]);
     }
 
-
-
-
-
-    /*#[Route('/test', name: 'app_auction_test')]
-     public function createAction(AuctionsRepository $auctionsRepository)
-     {
-
-        $auction = new auctions ();
-        $auction->setName('toto');
-        $auction->setLastname('titi');
+    #[Route('/detail/{id}', name: 'app_auction_detail')]
+    public function detailAuction(Request $request, DocumentManager $dm ): Response
+    {          
+        $id = $request->get('id');
         
-        $auctions = $auctionsRepository->findAllAuction();
-        //dump($auctions);
+        // récuperez l'objet 'auctions' avec l'id spécifié depuis la basse de données 
+        $dauction = $dm->getRepository(Auctions::class)->find($id);
 
-        return new Response('Created auction  id ');
+         //dump($dauction);
 
-         
-     }*/
-
-
-
-
-    //  #[Route('/test2', name: 'app_auction_test')]
-    // public function test(AuctionsRepository $auctionsRepository): Response
-    // {
-
-    //     $alldata = $auctionsRepository->findAllFromBdd();
-    //      $id = $alldata[1]->getId();
-    //      $auctionById = $auctionsRepository->findById($id);
-
-
-    //     dd($auctionById);
-
-    //     return $this->render('auction/index.html.twig', [
-    //         'controller_name' => 'AuctionController',
-    //     ]);
-    // }
-
-
-
-    #[Route('/test3', name: 'app_auction_test3')]
-    public function test3(AuctionsRepository $auctionsRepository, DocumentManager $dm): Response
-    {
-
-        $data =$auctionsRepository->getAuctionsByCategory();
-
-        dd($data);
-
-        return $this->render('auction/index.html.twig', [
-            'controller_name' => 'AuctionController',
+        // Vérifiez si l'objet "Auctions" a été trouvé
+        if(!$dauction){
+            throw $this->createNotFoundException('Auction not found for ID: ' . $id);
+        }
+      
+       return $this->render('auction/detail.html.twig',[
+            'dauction' =>  $dauction ,
+            'auctionId' => $id
         ]);
     }
+    
+    /**
+     * Ajout une nouvelle enchère
+     *
+     * @param Request $request
+     * @param DocumentManager $dm
+     * @return Response
+     */
+    #[Route('/save', name: 'app_auction_save')]
+    public function saveAuction(Request $request, DocumentManager $dm ): Response {
+
+        // retouve l'id de l'enchère
+        $id = $request->get('auctionId');
+        
+        // recharge l'enchère avec cet id
+        $dauction = $dm->getRepository(Auctions::class)->find($id);
+        // trouver l'id du user actuel
+        $sellerid= $dm->getRepository(User::class)->find($id);
+        // modifie l'enchere en y ajoutant un nouveau montant (de user actuel)
+        $mauction =    
+        // persist de la nouvelle enchere
+        $dm->persist('mauction');
+        $dm->flush();
+
+        // réaffiche le template de l'enchere
+        return $this->render('auction/detail.html.twig',[
+            'dauction' =>  $dauction ,
+            'auctionId' => $id,
+            'seller' => $sellerid,
+             'mauction' => $mauction
+        ]);
+    }
+    
+//     public function fAuction(Request $request, DocumentManager $dm ): Response {          
+//     $id = $request->get('id');
+//     $dauction = $dm->getRepository(Auctions::class)->find($id);
+ 
+//     // Vérifiez si l'objet "Auctions" a été trouvé
+//     if(!$dauction){
+//         throw $this->createNotFoundException('Auction not found for ID: ' . $id);
+//     }
+//     dump($dauction);
+//     $form = $this->createForm(AuctionType::class, $dauction);
+//     $form->handleRequest($request);
+
+//     if ($form->isSubmitted() && $form->isValid()) {
+//         // Sauvegardez l'entité Auctions en base de données
+//         $dm->persist($dauction);
+//         $dm->flush();
+//     }
+
+//     return $this->render('auction/detail.html.twig', [
+//         'dauction' => $dauction,
+//         'form' => $form->createView(),
+//     ]);
+// }
+
+    
 
 }

@@ -12,7 +12,7 @@ class Auctions
 
 {
 #[MongoDB\Id]
-private string $id;
+protected string $id;
 
 #[MongoDB\Field(type:'string')]
 private ?string $title = null;
@@ -28,14 +28,14 @@ private ?string $description = null;
 private ?string $subcategory = null;
 
 #[MongoDB\Field(type:'string')]
-private ?string $start_price = null;
+private ?string $startPrice = null;
 
 
 #[MongoDB\Field(type:'string')]
-private ?string $sold_price = null;
+private ?string $soldPrice = null;
 
 #[MongoDB\Field(type:'string')]
-private ?string $reserve_price = null;
+private ?string $reservePrice = null;
 
 
 
@@ -44,7 +44,7 @@ private ?string $reserve_price = null;
 //private ?string $start_date = null;
 
 #[MongoDB\Field(type: 'date')]
-private ?\DateTimeInterface $start_date = null;
+private ?\DateTimeInterface $startDate = null;
 
 
 ////#[MongoDB\Field(type:'string')]
@@ -54,7 +54,7 @@ private ?\DateTimeInterface $start_date = null;
 private ?string $duration = null;
 
 #[MongoDB\Field(type:'string')]
-private ?string $delivery_mode = null;
+private ?string $deliveryMode = null;
 
 
 #[MongoDB\Field(type:'string')]
@@ -69,13 +69,16 @@ private ?string $localisation = null;
     private $buyer;
 
 #[MongoDB\Field(type:'string')]
-private ?string $seller_id = null;
+private ?string $sellerId = null;
 
 #[MongoDB\Field(type:'string')]
-private ?string $buyer_id = null;
+private ?string $buyerId = null;
 
 #[MongoDB\Field(type:"collection")]
 private $pictures = [];
+
+#[MongoDB\Field(type:"string")]
+private $offre = null;
 
 /*
 public function __construct()
@@ -143,21 +146,26 @@ public function __construct()
     public function getStartPrice(): ?string
     {
 
-        return $this->start_price;
+        return $this->startPrice;
     }
 
     public function getSoldPrice(): ?string
     {
 
-        return $this->sold_price;
+        return $this->soldPrice;
     }
 
     public function getReservePrice(): ?string
     {
 
-        return $this->reserve_price;
+        return $this->reservePrice;
     }
 
+    public function getoffre(): ?string
+    {
+
+        return $this->offre;
+    }
     
     /*
     public function getStartDate(): ?string
@@ -176,7 +184,7 @@ public function __construct()
 
     public function getStartDate(): ?\DateTimeInterface
     {
-    return $this->start_date;
+    return $this->startDate;
     }
 
 
@@ -200,7 +208,7 @@ public function __construct()
 
     public function getDeliveryMode(): ?string
     {
-    return $this->delivery_mode;
+    return $this->deliveryMode;
     }
 
 
@@ -247,13 +255,13 @@ public function __construct()
     public function getSellerId(): ?string
     {
 
-        return $this->seller_id;
+        return $this->sellerId;
     }
 
     public function getBuyerId(): ?string
     {
 
-        return $this->buyer_id;
+        return $this->buyerId;
     }
 
 
@@ -297,24 +305,24 @@ public function __construct()
 
     
 
-    public function setStartPrice(?string $start_price)
+    public function setStartPrice(?string $startPrice)
     {
 
-        $this->start_price = $start_price;
+        $this->startPrice = $startPrice;
 
         return $this;
     }
-    public function setSoldPrice(?string $sold_price)
+    public function setSoldPrice(?string $soldPrice)
     {
     
-        $this->sold_price = $sold_price;
+        $this->soldPrice = $soldPrice;
 
         return $this;
     }
-    public function setReservePrice(?string $reserve_price)
+    public function setReservePrice(?string $reservePrice)
     {
 
-        $this->reserve_price = $reserve_price;
+        $this->reservePrice = $reservePrice;
 
         return $this;
     }
@@ -347,9 +355,9 @@ public function __construct()
     }*/
 
 
-    public function setStartDate(?\DateTimeInterface $start_date): self
+    public function setStartDate(?\DateTimeInterface $startDate): self
     {
-    $this->start_date = $start_date;
+    $this->startDate = $startDate;
     return $this;
     }
 
@@ -372,9 +380,9 @@ public function __construct()
     }*/
 
 
-    public function setDeliveryMode(?string $delivery_mode)
+    public function setDeliveryMode(?string $deliveryMode)
     {
-    $this->delivery_mode = $delivery_mode;
+    $this->deliveryMode = $deliveryMode;
     }
 
 
@@ -422,21 +430,30 @@ public function __construct()
     }
 
 
-    public function setSellerId(?string $seller_id)
+    public function setSellerId(?string $sellerId)
     {
         
-        $this->seller_id = $seller_id;
+        $this->sellerId = $sellerId;
         
         return $this;
     }
 
-    public function setBuyerId(?string $buyer_id)
+    public function setBuyerId(?string $buyerId)
     {
         
-        $this->buyer_id = $buyer_id;
+        $this->buyerId = $buyerId;
         
         return $this;
     }
 
-            
+
+    public function setoffre(?string $offre)
+    {
+        
+        $this->offre = $offre;
+        
+        return $this;
+    }
+
+    
 } 

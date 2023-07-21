@@ -3,19 +3,38 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <h1>Details des Enchères</h1>
 
-    
-        
-        <ul>
-           {% for detail in dauction %}
-
-                 <li>  {{ detail.id }}  </li>
-                 <li> {{ detail.title }}  </li>
-                 <li> {{ detail.category }}  </li>
-                 <li> {{ detail.description }}  </li>
-                 <li> {{ detail.video }}  </li>
+    <ul>
+        {% if dauction.getPictures|length > 0 %}
+            {% for picturePath in dauction.getPictures %}
+                <img src="{{ asset('uploads/pictures/' ~ picturePath) }}" class="card-img-top" alt="Photo de l'enchère">
             {% endfor %}
-        </ul>
+        {% else %}
+            <p>Aucune image disponible</p>
+        {% endif %}
+
+        <li>Title : {{ dauction.title }}</li>
+        <li>Category : {{ dauction.category }}</li>
+        <li>Livraison : {{ dauction.deliveryMode }}</li>
+        <li>Description : {{ dauction.description }}</li>
+        <li>Video : {{ dauction.video }}</li>
+        <li>Seller ID : {{ dauction.sellerId }}</li>
+        <li>Localisation : {{ dauction.localisation }}</li>
+        <li>Solde Price : {{ dauction.soldPrice }}</li>
+        <li>Start Date : {{ dauction.startDate|date('Y-m-d H:i:s') }}</li>
+        {# Formatage de la date de début #}
+    </ul>
+
+    <form action="/auction/save">
+        <input type="hidden" name="form-name" value="placeAuction">
+        <input type="hidden" name="auctionId" value="{{auctionId}}">
+        <input type="int" name="montant">
+        <input type="submit" value="Enchérir">
+    </form>
+       
+    
 
 {% endblock %}
+
