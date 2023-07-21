@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zipcode</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+
+   <link rel="stylesheet" href="../../public/assets/css/DH_18_07_style_new.css">
+
+</head>
+<body>
+
+<!-- affichage des villes en fonction du code postal renseigné  -->
+
+    <div classe="address">
+       <!--
+        <div class="m-2">
+            <input type="text" id="address_line1" placeholder="adress_line1">
+        </div>
+        <div class="m-2">
+            <input type="text" id="address_line2" placeholder="adress_line2">
+        </div>      
+       --> 
+        <div class="m-2">
+            <input type="text" id="zipcode" placeholder="Indiquer le code postal">
+        </div>
+        <div class="m-2">
+            <input type="text" id="city" list="datalistOptions" placeholder="Ajouter une ville">
+            <datalist id="datalistOptions">
+            </datalist>
+        </div>
+    </div>
+   
+    <HR></br>
+        
+        
+<!-- affichage de la carte en fonction de l'adresse renseignée -->
+
+
+    
+<div class="map_frame">
+    <div class="mb-2 d-flex map_input">
+        <input type="text" id="address_input" placeholder="Renseigner l'adresse de livraison">
+        <button class=" btn-orange" id="search">Chercher</button>
+    </div>
+    <div class="mb-2 d-flex map_input">
+        <!-- <i class="fa-solid fa-location-dot" style="color: #ff9200;"></i>-->
+        <div id="maCarte"></div>
+    </div>
+    
+
+</div>
+
+
+<!-- Fichiers Javascript -->
+
+
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+<script src="../../public/assets/js/zipcode.js"></script>
+<script src="../../public/assets/js/maps.js"></script>
+    
+</body>
+</html>

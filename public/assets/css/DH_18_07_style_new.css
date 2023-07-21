@@ -105,7 +105,7 @@ h2{
     text-decoration: none;
     border-radius: 10px;
     display: flex;
-    height: 52px;
+    height: 40px;
     padding: 10px 25px;
     justify-content: center;
     align-items: center;
@@ -475,10 +475,8 @@ header{
     position: relative;
     display: inline-block;
 
-        
-
   }
-  
+
   /* Dropdown Content (Hidden by Default) */
   .dropdown-content {
     display: none;
@@ -508,6 +506,12 @@ header{
      /* modif 20/07*/
      box-shadow: 2px 2px 1px 0px rgba(245, 94, 0, 0.20);
   }
+
+  .dropdown-content_dp {
+
+    
+
+  }
   
   /* Links inside the dropdown */
   .dropdown-content a {
@@ -530,6 +534,10 @@ header{
     display: inline-block;
 
   }
+
+  .dropdown_dp{
+    display:flex;
+  }
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
   /*.dropdown:hover .dropbtn {
@@ -537,4 +545,38 @@ header{
 
   }*/
 
+  /*____________maps & zipcode_____________________*/
+
+ 
+  #address_input{
+    border-color: lightgray;
+    border-radius: 12px;
+    width: 350px;
+    margin-right: 20px;
+  
+  }
+
+  .map_input{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+  #maCarte{
+    height: 70vh;
+    width: 100vh;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    /*background-color: var(--gris);*/
+    background-image: url(../img/france_map.png);
+
+}
+
+.map_frame{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
 
