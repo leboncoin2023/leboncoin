@@ -547,13 +547,7 @@ header{
 
   /*____________maps & zipcode_____________________*/
 
-  .address_map{
-    width: 500px;
-    height: 300px;
-    border: 1px solid lightgrey;
-
-  }
-
+ 
   #address_input{
     border-color: lightgray;
     border-radius: 12px;
@@ -571,12 +565,18 @@ header{
   #maCarte{
     height: 70vh;
     width: 100vh;
-    margin-left: auto;
-    margin-right: auto;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    /*background-color: var(--gris);*/
+    background-image: url(../img/france_map.png);
+
 }
 
 .map_frame{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 

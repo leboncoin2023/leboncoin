@@ -14,6 +14,9 @@
 
 </head>
 <body>
+
+<!-- affichage des villes en fonction du code postal renseigné  -->
+
     <div classe="address">
        <!--
         <div class="m-2">
@@ -33,17 +36,24 @@
         </div>
     </div>
    
-    <HR></br><!-- affichage de la carte en fonction de l'adresse renseignée -->
+    <HR></br>
+        
+        
+<!-- affichage de la carte en fonction de l'adresse renseignée -->
 
 
     
 <div class="map_frame">
-    <div class="mb-1 d-flex map_input">
-        <input type="text" id="address_input" >
+    <div class="mb-2 d-flex map_input">
+        <input type="text" id="address_input" placeholder="Renseigner l'adresse de livraison">
         <button class=" btn-orange" id="search">Chercher</button>
     </div>
+    <div class="mb-2 d-flex map_input">
+        <!-- <i class="fa-solid fa-location-dot" style="color: #ff9200;"></i>-->
+        <div id="maCarte"></div>
+    </div>
+    
 
-    <div id="maCarte"></div>
 </div>
 
 
