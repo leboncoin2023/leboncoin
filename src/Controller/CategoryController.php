@@ -14,6 +14,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
 
+    /**
+     * Construit le html de la nav
+     *
+     * @param CategoryRepository $repo
+     * @param DocumentManager $dm
+     * @return Response
+     */
     #[Route('/nav', name: 'app_category_nav')]
     public function buildCategoriesNav(CategoryRepository $repo, DocumentManager $dm): Response {
 
@@ -26,7 +33,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * Route listant des enchère d'une catégorie avec classement par sous catégories
+     * Route listant des enchères d'une catégorie avec classement par sous-catégories
      *
      * @return Response
      */
@@ -41,7 +48,8 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * Route listant les enchères d'une sous catégorie
+     * Route listant les enchères d'une sous-catégorie
+     * 
      */
     #[Route('/{category}/{subcategory}', name: 'app_subcategory')]
     public function subCategory(Request $request): Response
