@@ -279,13 +279,15 @@ class AuctionController extends AbstractController
     public function test3(AuctionsRepository $auctionsRepository, DocumentManager $dm): Response
     {
 
-        $data =$auctionsRepository->getAuctionsByCategory();
+        $datas =$auctionsRepository->getAuctionsByCategory('Multimédia');
 
-        dd($data);
-
+        
+        dump($datas);
         return $this->render('auction/index.html.twig', [
             'controller_name' => 'AuctionController',
+            'datas' => $datas
         ]);
     }
+
 
 }
