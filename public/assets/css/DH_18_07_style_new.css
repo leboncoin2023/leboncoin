@@ -475,10 +475,8 @@ header{
     position: relative;
     display: inline-block;
 
-        
-
   }
-  
+
   /* Dropdown Content (Hidden by Default) */
   .dropdown-content {
     display: none;
@@ -508,6 +506,12 @@ header{
      /* modif 20/07*/
      box-shadow: 2px 2px 1px 0px rgba(245, 94, 0, 0.20);
   }
+
+  .dropdown-content_dp {
+
+    
+
+  }
   
   /* Links inside the dropdown */
   .dropdown-content a {
@@ -529,6 +533,10 @@ header{
     position: relative;
     display: inline-block;
 
+  }
+
+  .dropdown_dp{
+    display:flex;
   }
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
