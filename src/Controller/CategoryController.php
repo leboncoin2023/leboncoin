@@ -26,7 +26,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * Route listant des enchère d'une catégorie avec classement par sous catégories
+     * Route listant des enchères d'une catégorie avec classement par sous catégories
      *
      * @return Response
      */

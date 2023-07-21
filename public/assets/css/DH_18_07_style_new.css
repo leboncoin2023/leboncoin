@@ -105,7 +105,7 @@ h2{
     text-decoration: none;
     border-radius: 10px;
     display: flex;
-    height: 52px;
+    height: 40px;
     padding: 10px 25px;
     justify-content: center;
     align-items: center;
@@ -545,4 +545,38 @@ header{
 
   }*/
 
+  /*____________maps & zipcode_____________________*/
+
+  .address_map{
+    width: 500px;
+    height: 300px;
+    border: 1px solid lightgrey;
+
+  }
+
+  #address_input{
+    border-color: lightgray;
+    border-radius: 12px;
+    width: 350px;
+    margin-right: 20px;
+  
+  }
+
+  .map_input{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+  #maCarte{
+    height: 70vh;
+    width: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.map_frame{
+    display: flex;
+    flex-direction: column;
+}
 
