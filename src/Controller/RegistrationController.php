@@ -2,11 +2,8 @@
 
 namespace App\Controller;
 
-use App\Document\Registers;
-
 
 use App\Document\User;
-//use App\Entity\User;
 
 use App\Repository\UserRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
