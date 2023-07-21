@@ -6,6 +6,9 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations;
 use App\Document\Auctions;
 use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
 use Doctrine\Bundle\MongoDBBundle\Repository\ServiceDocumentRepository;
+use Doctrine\ODM\MongoDB\DocumentManager;
+
+use function MongoDB\create_field_path_type_map;
 
 class AuctionsRepository extends ServiceDocumentRepository
 {
@@ -73,4 +76,7 @@ class AuctionsRepository extends ServiceDocumentRepository
          ************/
         return $result;
     }
+
+       
+
 }
