@@ -1,5 +1,39 @@
  
  
+
+<script>
+
+//  5-  Recherche via la barre de recherche (quand un mot est saisis, interroger la bdd sur les titres et les description pour trouver le même mot)
+
+// Récupération de l'input de recherche
+const searchInput = document.getElementById('search-input');
+
+// Ajout d'un écouteur d'événement sur l'input de recherche
+searchInput.addEventListener('input', async () => {
+  // Récupération du mot de recherche
+  const searchTerm = searchInput.value.toLowerCase();
+
+  // Interrogation de la base de données pour trouver les enchères correspondantes
+  const auctionCollection = db.collection('auctions');
+  const auctions = await auctionCollection.find({
+    $or: [
+      { title: { $regex: searchTerm, $options: 'i' } },
+      { description: { $regex: searchTerm, $options: 'i' } }
+    ]
+  }).toArray();
+
+  // Affichage des résultats de recherche dans une liste déroulante
+  const searchResults = document.getElementById('search-results');
+  searchResults.innerHTML = '';
+  auctions.forEach(auction => {
+    const option = document.createElement('option');
+    option.value = auction._id;
+    option.text = auction.title;
+    searchResults.appendChild(option);
+  });
+});
+</script>
+
  <header class="">
 
         <!-- ______________________________________nav ligne 1_______________________________________ -->
@@ -14,7 +48,7 @@
                     <div class="input-group-prepend input-group-text">
                         <span class="input-group"><img src="../assets/icones/loupe_flitres/loupe_gris.svg" alt="icone loupe"></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Rechercher sur Leboncoin" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="text" id="search-input" class="form-control" placeholder="Rechercher sur Leboncoin" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
             </form>
 
@@ -25,7 +59,7 @@
                         <img src="../assets/icones/cloches/cloche_noir_pleine.svg" alt="">
                     </div>
                     <div>
-                        <p>Notifications</p>
+                        <a href="#">Notifications</a>
                     </div>
                 </div>
 
@@ -34,7 +68,7 @@
                         <img src="../assets/icones/coeurs/coeur_noir_plein.svg" alt="">
                     </div>
                     <div>
-                        <p>Favoris</p>
+                        <a href="#">Favoris</a>
                     </div>
                 </div>
 
@@ -43,7 +77,7 @@
                         <img src="../assets/icones/message/message_plein.svg" alt="">
                     </div>
                     <div>
-                        <p>Messages</p>
+                        <a href="#">Messages</a>
                     </div>
                 </div>
 
@@ -53,7 +87,7 @@
                     </div>
                     {% if app.user %}
                     <div>
-                        <a href="{{path('app_logout') }}">Se&nbsp;Déconnecter</a>
+                        <a href="{{path('app_user') }}">Profil</a>
                     </div>
 
                     {% else %}
@@ -83,6 +117,23 @@
             <li><a class="linkhover" href="#">Materiel&nbsp;Professionnel&nbsp;</a></li>
             <li><a class="linkhover" href="#">Autres&nbsp;</a></li>
             <li><a class="auctionhover"><img src="assets/icones/marteau/marteau_orange_small.svg" alt="">Enchères</a>
+            <ul class="sub-menus">
+                {% for key, submenu in menu %}
+                <li>
+                    <a href="\category\{{key}}"><p>{{key}}</p></a>
+                    <ul>
+                        {% for subCat in submenu %}
+                            <li>
+                                <a href="\category\{{key}}\{{subCat}}">
+                                    <p>{{subCat}}</p>
+                                </a>
+                            </li>
+                        {% endfor %}    
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+
                 {# <ul class='sub-menus'>
                     <li><a href="#">Multimédia</a></li>
                     <li><a href="#">Mode</a></li>

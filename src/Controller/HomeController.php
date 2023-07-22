@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
+use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -22,10 +24,13 @@ class HomeController extends AbstractController
 class HomeController extends AbstractController
 {
     #[Route('/home', name: 'app_home')]
-    public function index(): Response
+    public function index(CategoryRepository $repo, DocumentManager $dm): Response
     {
+
+        $menu = $repo->getAllCategoriesAndSub($dm);
+
         return $this->render('home/index_home.html.twig', [
-            'controller_name' => 'HomeController',
+            'menu' => $menu,
         ]);
     }
 }

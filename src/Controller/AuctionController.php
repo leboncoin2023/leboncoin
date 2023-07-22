@@ -285,7 +285,7 @@ class AuctionController extends AbstractController
     public function test3(AuctionsRepository $auctionsRepository, DocumentManager $dm): Response
     {
 
-        $data =$auctionsRepository->getAuctionsByCategory();
+        $data =$auctionsRepository->getAuctionsByCategory('Multimédia');
 
         dd($data);
 
