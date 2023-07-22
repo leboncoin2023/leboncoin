@@ -123,4 +123,16 @@ class AuctionsRepository extends ServiceDocumentRepository
 
        
 
+
+    public function findAuctionsByKeyword(string $keyword)
+    {
+        $qb = $this->createQueryBuilder()
+            ->field('$or')
+            ->equals(['title' => new \MongoDB\BSON\Regex($keyword, 'i')])
+            ->equals(['description' => new \MongoDB\BSON\Regex($keyword, 'i')])
+            ->getQuery();
+
+        return $qb->execute();
+    }
+
 }

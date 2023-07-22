@@ -16,4 +16,11 @@ app_auction_detail:
     controller: 'App\Controller\AuctionController::detailAuction'
     methods: GET
 
+    
+# route pour la searchbar
+search_auctions:
+    path: /search
+    controller: App\Controller\AuctionController::searchAction
+    methods: [POST]
+
 

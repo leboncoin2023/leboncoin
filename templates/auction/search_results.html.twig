@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Récapitulatif de l'enchère{% endblock %}
+
+{% block body %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <ul>
+        {% for key, auction in auctions %}
+            <li>
+                <h2>{{ auction.title }}</h2>
+                <p>{{ auction.description }}</p>
+                <p>Starting Price: {{ auction.starting_price }}</p>
+                <p>End Date: {{ auction.end_date|date('Y-m-d H:i:s') }}</p>
+                {# Ajoutez d'autres détails d'enchères selon votre modèle de données #}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+{% endblock %}
+
+

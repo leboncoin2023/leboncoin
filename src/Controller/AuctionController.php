@@ -18,6 +18,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\SearchType;
+
+use MongoDB\Client;
 
 
 #[Route('/auction')]
@@ -291,6 +294,37 @@ class AuctionController extends AbstractController
 
         return $this->render('auction/index.html.twig', [
             'controller_name' => 'AuctionController',
+        ]);
+    }
+
+
+
+
+    
+
+   /**
+     * @Route("/search", methods={"POST"})
+     */
+    public function searchAction(Request $request, AuctionsRepository $auctionsRepository): Response
+    {
+        $form = $this->createForm(SearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $keyword = $form->getData()['keyword'];
+
+            // Rechercher les enchères correspondant au mot clé
+            $results = $auctionsRepository->findAuctionsByKeyword($keyword);
+
+            // Renvoyer les résultats à la vue Twig
+            return $this->render('auction/search_results.html.twig', [
+                'results' => $results,
+            ]);
+        }
+
+        // Renvoyer le formulaire à la vue Twig pour l'affichage initial
+        return $this->render('auction/search_form.html.twig', [
+            'form' => $form->createView(), // Assurez-vous que vous avez ajouté cette ligne
         ]);
     }
 
