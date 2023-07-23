@@ -229,6 +229,8 @@ footer{
 
 /*______________________HEADER NAV 1e LIGNE____________________*/
 
+
+
 .flexnavhaut{
     display: flex;
     justify-content: space-between;
@@ -387,11 +389,36 @@ header{
    
 }
 
+.titlesub{
+    color: var(--almost_black);
+    font-size: 20px;
+    background-color: var(--gris);
+}
+
+
 #menu ul.sub-menus li {
     display: flex;
-    justify-content: center;
-	
+    
+	flex-direction: column;
+    
+}
+
+#menu ul.sub-menus li ul{
+    display: flex;
+  
+	flex-direction: column;
+    
    
+}
+
+.cat{
+    color: var(--almost_black);
+    font-size: 20px;
+}
+
+.cat:hover{
+    color: var(--lb_orange);
+    font-size: 20px;
 }
 
 #menu ul.sub-menus a {
@@ -402,15 +429,17 @@ header{
 
 #menu li:hover ul.sub-menus {
     display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrer verticalement les éléments du sous-menu */
+  /*  justify-content: center; */
+ /*   align-items: center; /* Centrer verticalement les éléments du sous-menu */ 
     background-color: var(--shade_orange);
     border-bottom: solid 1px var(--lb_orange);
     border-top: solid 1px var(--lb_orange);
+    
+    
 }
 
 #menu ul.sub-menus a:hover{
-	background: var(--vintage_white);
+	
     color: var(--lb_orange);
 	/* color: #444444; */
 }

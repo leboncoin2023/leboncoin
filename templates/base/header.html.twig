@@ -86,10 +86,11 @@
             <li><a class="linkhover" href="#">Autres&nbsp;</a></li>
             <li class="sub-menu-container"><a class="auctionhover"><img src="assets/icones/marteau/marteau_orange_small.svg" alt="">Enchères</a>
             <ul class="sub-menus">
+            <li class="titlesub"><h3>Enchères</h3></li>
                 {% for key, submenu in menu %}
                 <li>
-                    <a href="\category\{{key}}"><p>{{key}}</p></a>
-                    <ul>
+                    <a href="\category\{{key}}"><p class="cat">{{key}}</p></a>
+                    <ul class="align-left">
                         {% for subCat in submenu %}
                             <li>
                                 <a href="\category\{{key}}\{{subCat}}">
@@ -102,25 +103,15 @@
                 {% endfor %}
             </ul> 
 
-                 <ul class='sub-menus'>
+              {#    <ul class='sub-menus'>
                     <li><a href="#">Multimédia</a></li>
                     <li><a href="#">Mode</a></li>
                     <li><a href="#">Livres</a></li>
                     <li><a href="#">Maison</a></li>
                 </ul>
             </li>
-        </ul>
+        </ul> #}
     </nav>
-
-
-                    <section>
-
-
-                    </section>
-      
-
-                
-
 
 
     </header>
