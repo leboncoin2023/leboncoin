@@ -246,7 +246,7 @@ class AuctionController extends AbstractController
         // trouver l'id du user actuel
         $sellerid= $dm->getRepository(User::class)->find($id);
         // modifie l'enchere en y ajoutant un nouveau montant (de user actuel)
-        $mauction =    
+        //$mauction = save($dauction); 
         // persist de la nouvelle enchere
         $dm->persist($dauction);
         $dm->flush();
@@ -256,7 +256,7 @@ class AuctionController extends AbstractController
             'dauction' =>  $dauction ,
             'auctionId' => $id,
             'seller' => $sellerid,
-             'mauction' => $mauction
+            // 'mauction' => $mauction
         ]);
     }
     

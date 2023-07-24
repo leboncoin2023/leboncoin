@@ -69,9 +69,6 @@ private ?string $localisation = null;
     private $buyer;
 
 
-
-
-
 #[MongoDB\Field(type:"collection")]
 private $pictures = [];
 
