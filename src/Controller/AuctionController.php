@@ -284,7 +284,7 @@ class AuctionController extends AbstractController
 
     
 
-    #[Route('/test3', name: 'app_auction_test3')]
+   /*  #[Route('/test3', name: 'app_auction_test3')]
     public function test3(AuctionsRepository $auctionsRepository, DocumentManager $dm): Response
     {
 
@@ -295,7 +295,7 @@ class AuctionController extends AbstractController
         return $this->render('category/subcategory.html.twig', [
             'controller_name' => 'AuctionController',
         ]);
-    }
+    } */
 
 
 
