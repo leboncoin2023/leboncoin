@@ -52,7 +52,7 @@ Installation de Symfony :
 ouvrir le terminal , se mettre à la racine du projet et lancer la commande 
 ####composer create-project symfony/skeleton:"6.3.*" my_project_directory
 ![sym.png](/public/assets/images/sym.png)
-installer les Bundles nécessaire dans le terminal avec " composer update
+installer les Bundles nécessaire dans le terminal avec " composer update "
 #### Il est nécessaire lors de toute récupération du projet de lancer la commande " composer update " .
 
 ![composer.png](/public/assets/images/composer.png)
@@ -74,6 +74,7 @@ Faire la connexion avec la bdd mangoDB, dans le fichier .env
 
 -----
 Maintenant il es temps de créer les différentes routes du projet et de créer les controller. 
+
 ####  <u> Le HomeController </u>
 Création d 'un HomeController avec l'invite de commande , il faut taper la commande  : symfony console make:controller HomeController
 
@@ -284,7 +285,7 @@ Suite du readme.md à créer...........................
 
 ![site5.png](/public/assets/images/site5.png) 
 
-### Page d' enregistrement du User
+### Page d' enregistrement d'un User
 
 ![site3.png](/public/assets/images/site3.png) 
 

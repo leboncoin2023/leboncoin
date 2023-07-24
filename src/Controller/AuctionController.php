@@ -314,7 +314,7 @@ class AuctionController extends AbstractController
     'form' => $form->createView(),
     ]);
     }
- }
+ 
 
     
 
@@ -334,11 +334,12 @@ class AuctionController extends AbstractController
 
 
 
-    
+  /*  
 
    /**
      * @Route("/search", methods={"POST"})
      */
+    /*
     public function searchAction(Request $request, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm): Response
     {
         $form = $this->createForm(SearchType::class);
@@ -360,7 +361,7 @@ class AuctionController extends AbstractController
         return $this->render('auction/search_form.html.twig', [
             'form' => $form->createView(), // Assurez-vous que vous avez ajouté cette ligne
         ]);
-    }
+    }*/
 
 
 }
