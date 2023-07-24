@@ -89,11 +89,15 @@
             <li class="titlesub"><h3>Enchères</h3></li>
                 {% for key, submenu in menu %}
                 <li>
-                    <a href="\category\{{key}}"><p class="cat">{{key}}</p></a>
+                    <!--<a href="\category\{{key}}"><p class="cat">{{key}}</p></a>-->
+                    <a href="{{ path('app_category',  {'category':key}) }}"><p class="cat">{{key}}</p></a>
                     <ul class="align-left">
                         {% for subCat in submenu %}
                             <li>
-                                <a href="\category\{{key}}\{{subCat}}">
+                                <!--<a href="\category\{{key}}\{{subCat}}">
+                                    <p>{{subCat}}</p>
+                                </a>-->
+                                <a href="{{ path('app_subcategory', {'category':key, 'subcategory':subCat}) }}">
                                     <p>{{subCat}}</p>
                                 </a>
                             </li>

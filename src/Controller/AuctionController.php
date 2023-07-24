@@ -292,7 +292,7 @@ class AuctionController extends AbstractController
 
         dd($data);
 
-        return $this->render('auction/index.html.twig', [
+        return $this->render('category/subcategory.html.twig', [
             'controller_name' => 'AuctionController',
         ]);
     }
