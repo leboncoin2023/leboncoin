@@ -1,7 +1,7 @@
 # Le Boncode
 
 ![lebon.png](/public/assets/images/lebon.png)
-Adaptation d'une nouvelle  fonctionnalité du site le boncoin
+Adaptation d'une nouvelle  fonctionnalité du site le boncoin qui permet a l' utilisateur d' enchérir.
 
 -----
 ### Outils utilisés : 
@@ -9,6 +9,10 @@ Adaptation d'une nouvelle  fonctionnalité du site le boncoin
 #### Editeur de code :
 ![icone1.png](/public/assets/images/icone1.png) *__VS Code__*
 Visual Studio Code (VS Code) est un éditeur de code source gratuit et open-source développé par Microsoft
+
+#### Interface BDD:
+ ![compass.png](/public/assets/images/compass.png) *__MongoDB Compass__*
+MongoDB Compass est une interface graphique conviviale et officielle fournie par MongoDB pour interagir avec les bases de données MongoDB. C'est un outil visuel destiné à faciliter la gestion et l'exploration des données stockées dans une base de données MongoDB, sans avoir besoin de connaître la syntaxe de la ligne de commande ou de travailler directement avec les requêtes MongoDB en JSON.
 
 #### Framework : 
 ![icone2.png](/public/assets/images/icone2.png) *__Symfony__*
@@ -47,8 +51,8 @@ installer les Bundles nécessaire dans le terminal avec " composer update
 
 ![composer.png](/public/assets/images/composer.png)
 Afin de pouvoir récuper les dernieres fonctionnalitées du projet.
-Installer le package pour MongoDB
 
+Installer le package pour MongoDB
 ![mango.png](/public/assets/images/mango.png)
 
 Lancer le serveur interne a Symfony, avec la commande 
@@ -57,6 +61,10 @@ Lancer le serveur interne a Symfony, avec la commande
 Cela lancera la page d' acceuil de Symfony dans le navigateur
 
 ![start.png](/public/assets/images/start.png)
+
+Faire la connexion avec la bdd mangoDB, dans le fichier .env
+
+![env.png](/public/assets/images/env.png)
 
 -----
 Maintenant il es temps de créer les différentes routes du projet et de créer les controller. 
