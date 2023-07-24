@@ -341,15 +341,24 @@ class AuctionController extends AbstractController
 
         $result = $auctionsRepository->findAuctionsByKeyword($keyword);
         foreach($result as $row){
-            dd($row);
+            
         }
-        dd('ok');
+        
 
 
         // Renvoyer le formulaire à la vue Twig pour l'affichage initial
         return $this->render('auction/search_results.html.twig', [
+            'auctions' => $auctionsRepository->findAllAuction(),
+            'menu' => $repo->getAllCategoriesAndSub($dm),
+            'results' => $row,
+            'keyword' => $keyword
+
         ]);
     }
+
+
+
+
    /**
      * @Route("/search", methods={"POST"})
      */

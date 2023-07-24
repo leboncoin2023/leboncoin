@@ -279,6 +279,11 @@ header{
     border: solid 1px var(--lb_orange);
 }
 
+.loupebtn{
+    border: none;
+    background-color: #e9ecef;
+}
+
   /*________________HEADER NAV 2e LIGNE _______________________*/
   
 /*test ligne 2*/
