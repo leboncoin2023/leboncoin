@@ -11,11 +11,10 @@
             {# Formulaire de recherche dans la navigation #}
             <form class="form-inline" method="post" action="{{ path('app_auction_search') }}">
                 <div class="input-group">
-                    <div class="input-group-prepend input-group-text">
-                        <span class="input-group"><img src="/assets/icones/loupe_flitres/loupe_gris.svg" alt="icone loupe"></span>
-                    </div>
                     <input type="text" id="search-input" class="form-control" placeholder="Rechercher sur Leboncoin" aria-label="Username" aria-describedby="basic-addon1" name="keyword" >
-                    <button type="submit">Search</button>
+                    <div class="input-group-prepend input-group-text">
+                        <span class="input-group"><button class="loupebtn" type="submit"><img src="/assets/icones/loupe_flitres/loupe_gris.svg" alt="icone loupe"></button></span>
+                    </div>
                 </div>
             </form>
 

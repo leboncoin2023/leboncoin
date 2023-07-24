@@ -1,28 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Récapitulatif de l'enchère{% endblock %}
+{% block title %}Lebon<code> | Résultats de la recherche{% endblock %}
 
 {% block body %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Search Results</title>
-</head>
-<body>
-    <h1>Search Results</h1>
-    <ul>
-        {# {% for key, auction in auctions %}
-            <li>
-                <h2>{{ auction.title }}</h2>
-                <p>{{ auction.description }}</p>
-                <p>Starting Price: {{ auction.starting_price }}</p>
-                <p>End Date: {{ auction.end_date|date('Y-m-d H:i:s') }}</p>
-                {# Ajoutez d'autres détails d'enchères selon votre modèle de données #}
-            </li>
-        {% endfor %} #}
-    </ul>
-</body>
-</html>
+
+
+<section class="container">
+  
+          
+           
+
+                <div class="flex category">
+                    <h1 class="h_one_cat">Les résultats contenant {{ keyword }}</h1>
+                </div>
+                {% for keyword, auction in results %}
+                    <div class="row row_cat row_one">
+                        <div class="col-12 col-md-3">
+                            <div class="card">
+                                {% if auction.pictures is empty %}
+                                <div class="card-img-top cardimgbg"> </div>
+                                {% else %}
+                                <div class="card-img-top cardimgbg"><img src="/uploads/pictures/{{ auction.pictures[0] }}" alt="image de l'enchère"></div>
+                                {% endif %}
+                                <div class="card-body">
+                                        <div class="flex title_heart">
+                                            <h5 class="card-title-cat">{{ auction.title }}</h5>
+                                        <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 
+            {% endfor %}   
+
+
+
+        </section>
 {% endblock %}
 
 
