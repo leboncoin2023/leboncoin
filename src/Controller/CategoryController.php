@@ -42,8 +42,6 @@ class CategoryController extends AbstractController
     {
         $auctions = $repo->getAuctionsByCategory($category);
 
-        dd($auctions);
-
         return $this->render('category/category.html.twig', [
             'auctions' => $auctions,
         ]);
@@ -54,13 +52,10 @@ class CategoryController extends AbstractController
      * 
      */
     #[Route('/{category}/{subcategory}', name: 'app_subcategory')]
-    public function subCategory(string $category, string $subcategory, Request $request, AuctionsRepository $auctionsRepository): Response
+    public function subCategory(Request $request): Response
     {      
 
-
-        $auctions = $auctionsRepository->getAuctionsByCategory($subcategory);
-
-        dump($auctions);
+        dump($request->get('subcategory'));
         // Récupérer la sous-catégorie transmise en GET
 
 
@@ -75,7 +70,7 @@ class CategoryController extends AbstractController
 
         // Appeler l'affichage en passant les paramètres nécessaires        
         return $this->render('category/subcategory.html.twig', [
-            'auctions' => $auctions,
+            'controller_name' => 'CategoryController',
         ]);
     }
 }
