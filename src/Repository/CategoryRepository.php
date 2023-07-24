@@ -21,6 +21,12 @@ class CategoryRepository extends ServiceDocumentRepository
         return;
     }
 
+    /**
+     * Crée le tableau des catégories et sous catégories
+     *
+     * @param DocumentManager $dm
+     * @return array
+     */
     public function getAllCategoriesAndSub(DocumentManager $dm): array {
 
         $categoriesRaw = $this->dm->createQueryBuilder(Auctions::class)

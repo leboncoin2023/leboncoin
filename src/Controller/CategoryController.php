@@ -38,12 +38,15 @@ class CategoryController extends AbstractController
      * @return Response
      */
     #[Route('/{category}', name: 'app_category')]
-    public function category(string $category, AuctionsRepository $repo): Response
+    public function category(string $category, AuctionsRepository $Arepo, CategoryRepository $repo, DocumentManager $dm): Response
     {
-        $auctions = $repo->getAuctionsByCategory($category);
+        $auctions = $Arepo->getAuctionsByCategory($category);
+        
+        /* dd($auctions); */
 
         return $this->render('category/category.html.twig', [
             'auctions' => $auctions,
+            'menu' => $repo->getAllCategoriesAndSub($dm)
         ]);
     }
 
@@ -52,10 +55,13 @@ class CategoryController extends AbstractController
      * 
      */
     #[Route('/{category}/{subcategory}', name: 'app_subcategory')]
-    public function subCategory(Request $request): Response
+    public function subCategory(string $category, string $subcategory, Request $request, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm): Response
     {      
 
-        dump($request->get('subcategory'));
+
+        $auctions = $auctionsRepository->getAuctionsByCategory($subcategory);
+
+        /* dump($auctions); */
         // Récupérer la sous-catégorie transmise en GET
 
 
@@ -70,7 +76,8 @@ class CategoryController extends AbstractController
 
         // Appeler l'affichage en passant les paramètres nécessaires        
         return $this->render('category/subcategory.html.twig', [
-            'controller_name' => 'CategoryController',
+            'auctions' => $auctions,
+            'menu' => $repo->getAllCategoriesAndSub($dm)
         ]);
     }
 }

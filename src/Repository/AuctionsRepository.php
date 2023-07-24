@@ -80,14 +80,17 @@ class AuctionsRepository extends ServiceDocumentRepository
         // pour chaque sous categorie
         foreach ($categories as $category) {
             // exploser categories et sous categories
-            $name = explode('/', $category)[1];
+            $stringCategory = explode('/', $category)[1];
+            $stringSubCategory = explode('/', $category)[0];
+
 
             // trouver en BDD n enchères de cette catégorie/sous catégorie
             $datas = $this->findAuctionsByCategoryAndSub($category, 10);
 
             // crée la sous catégorie
-            $result[] = [
-                'name' => $name,
+            $result = [
+                'category' => $stringCategory,
+                'subcategory' => $stringSubCategory,
                 'auctions' => $datas // Ajouter les n enchères au tableau de résultat (dans le tiroir sous categories)
             ];
 
