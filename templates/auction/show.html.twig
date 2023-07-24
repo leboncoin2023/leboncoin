@@ -1,0 +1,14 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Vendeur!{% endblock %}
+
+<div class="utilisateur-info">
+    <h1>utilisateur Information</h1>
+    <p><strong>ID:</strong> {{ utilisateur.id }}</p>
+    <p><strong>Username:</strong> {{ utilisateur.username }}</p>
+    <p><strong>Email:</strong> {{ utilisateur.email }}</p>
+    <p><strong>Photo:</strong> {{ utilisateur.photo }}</p>
+    <!-- Add other fields as needed -->
+</div>
+{% endblock %}
