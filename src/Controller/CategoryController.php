@@ -55,7 +55,6 @@ class CategoryController extends AbstractController
     public function subCategory(Request $request): Response
     {      
 
-
         dump($request->get('subcategory'));
         // Récupérer la sous-catégorie transmise en GET
 

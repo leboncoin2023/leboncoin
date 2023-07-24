@@ -230,6 +230,8 @@ class AuctionController extends AbstractController
      * @param DocumentManager $dm
      * @return Response
      */
+
+
     #[Route('/save', name: 'app_auction_save')]
     public function saveAuction(Request $request, DocumentManager $dm ): Response {
 
@@ -243,7 +245,7 @@ class AuctionController extends AbstractController
         // modifie l'enchere en y ajoutant un nouveau montant (de user actuel)
         $mauction =    
         // persist de la nouvelle enchere
-        $dm->persist('mauction');
+        $dm->persist($dauction);
         $dm->flush();
 
         // réaffiche le template de l'enchere
@@ -255,29 +257,31 @@ class AuctionController extends AbstractController
         ]);
     }
     
-//     public function fAuction(Request $request, DocumentManager $dm ): Response {          
-//     $id = $request->get('id');
-//     $dauction = $dm->getRepository(Auctions::class)->find($id);
+
+    #[Route('/saveform', name: 'app_auction_saveform')]
+     public function fAuction(Request $request, DocumentManager $dm ): Response {          
+   $id = $request->get('id');
+     $dauction = $dm->getRepository(Auctions::class)->find($id);
  
-//     // Vérifiez si l'objet "Auctions" a été trouvé
-//     if(!$dauction){
-//         throw $this->createNotFoundException('Auction not found for ID: ' . $id);
-//     }
-//     dump($dauction);
-//     $form = $this->createForm(AuctionType::class, $dauction);
-//     $form->handleRequest($request);
+    // Vérifiez si l'objet "Auctions" a été trouvé
+    if(!$dauction){
+        throw $this->createNotFoundException('Auction not found for ID: ' . $id);
+    }
+    dump($dauction);
+    $form = $this->createForm(AuctionType::class, $dauction);
+    $form->handleRequest($request);
 
-//     if ($form->isSubmitted() && $form->isValid()) {
-//         // Sauvegardez l'entité Auctions en base de données
-//         $dm->persist($dauction);
-//         $dm->flush();
-//     }
+   if ($form->isSubmitted() && $form->isValid()) {
+       // Sauvegardez l'entité Auctions en base de données
+        $dm->persist($dauction);
+       $dm->flush();
+    }
 
-//     return $this->render('auction/detail.html.twig', [
-//         'dauction' => $dauction,
-//         'form' => $form->createView(),
-//     ]);
-// }
+    return $this->render('auction/detail.html.twig', [
+        'dauction' => $dauction,
+        'form' => $form->createView(),
+    ]);
+ }
 
     
 
@@ -293,5 +297,6 @@ class AuctionController extends AbstractController
             'controller_name' => 'AuctionController',
         ]);
     }
+
 
 }

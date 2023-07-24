@@ -68,11 +68,9 @@ private ?string $localisation = null;
      */
     private $buyer;
 
-#[MongoDB\Field(type:'string')]
-private ?string $sellerId = null;
 
-#[MongoDB\Field(type:'string')]
-private ?string $buyerId = null;
+
+
 
 #[MongoDB\Field(type:"collection")]
 private $pictures = [];
@@ -252,17 +250,7 @@ public function __construct()
         return $this->buyer;
     }
 
-    public function getSellerId(): ?string
-    {
-
-        return $this->sellerId;
-    }
-
-    public function getBuyerId(): ?string
-    {
-
-        return $this->buyerId;
-    }
+    
 
 
 
@@ -430,21 +418,7 @@ public function __construct()
     }
 
 
-    public function setSellerId(?string $sellerId)
-    {
-        
-        $this->sellerId = $sellerId;
-        
-        return $this;
-    }
-
-    public function setBuyerId(?string $buyerId)
-    {
-        
-        $this->buyerId = $buyerId;
-        
-        return $this;
-    }
+    
 
 
     public function setoffre(?string $offre)
