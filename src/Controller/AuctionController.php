@@ -27,7 +27,7 @@ use MongoDB\Client;
 #[Route('/auction')]
 class AuctionController extends AbstractController
 {
-//home___________________________________________________________
+   //home___________________________________________________________
 
     /*
     #[Route('/', name: 'app_auction')]
@@ -257,8 +257,8 @@ class AuctionController extends AbstractController
         // trouver l'id du user actuel
         $sellerid= $dm->getRepository(User::class)->find($id);
         // modifie l'enchere en y ajoutant un nouveau montant (de user actuel)
-        //$mauction = save($dauction); 
-        // persist de la nouvelle enchere
+         //$mauction = save($dauction); 
+       // persist de la nouvelle enchere
         $dm->persist($dauction);
         $dm->flush();
 
@@ -267,29 +267,29 @@ class AuctionController extends AbstractController
             'dauction' =>  $dauction ,
             'auctionId' => $id,
             'seller' => $sellerid,
-            // 'mauction' => $mauction
-             'mauction' => $mauction,
+             // 'mauction' => $mauction
+             //'mauction' => $mauction,
              'menu' => $repo->getAllCategoriesAndSub($dm)
         ]);
     }
     
-//     public function fAuction(Request $request, DocumentManager $dm ): Response {          
-//     $id = $request->get('id');
-//     $dauction = $dm->getRepository(Auctions::class)->find($id);
+   //     public function fAuction(Request $request, DocumentManager $dm ): Response {          
+   //     $id = $request->get('id');
+  //     $dauction = $dm->getRepository(Auctions::class)->find($id);
  
-//     // Vérifiez si l'objet "Auctions" a été trouvé
-//     if(!$dauction){
-//         throw $this->createNotFoundException('Auction not found for ID: ' . $id);
-//     }
-//     dump($dauction);
-//     $form = $this->createForm(AuctionType::class, $dauction);
-//     $form->handleRequest($request);
+  //     // Vérifiez si l'objet "Auctions" a été trouvé
+ //     if(!$dauction){
+ //         throw $this->createNotFoundException('Auction not found for ID: ' . $id);
+ //     }
+  //     dump($dauction);
+  //     $form = $this->createForm(AuctionType::class, $dauction);
+  //     $form->handleRequest($request);
 
-//     if ($form->isSubmitted() && $form->isValid()) {
-//         // Sauvegardez l'entité Auctions en base de données
-//         $dm->persist($dauction);
-//         $dm->flush();
-//     }
+  //     if ($form->isSubmitted() && $form->isValid()) {
+  //         // Sauvegardez l'entité Auctions en base de données
+  //         $dm->persist($dauction);
+  //         $dm->flush();
+  //     }
 
     #[Route('/saveform', name: 'app_auction_saveform')]
     public function fAuction(Request $request, DocumentManager $dm ): Response {
@@ -315,7 +315,7 @@ class AuctionController extends AbstractController
     'form' => $form->createView(),
     ]);
     }
- }
+ 
 
     
 
@@ -340,7 +340,7 @@ class AuctionController extends AbstractController
    /**
      * @Route("/search", methods={"POST"})
      */
-    public function searchAction(Request $request, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm): Response
+   /* public function searchAction(Request $request, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm): Response
     {
         $form = $this->createForm(SearchType::class);
         $form->handleRequest($request);
@@ -361,7 +361,7 @@ class AuctionController extends AbstractController
         return $this->render('auction/search_form.html.twig', [
             'form' => $form->createView(), // Assurez-vous que vous avez ajouté cette ligne
         ]);
-    }
+    }*/
 
 
 }
