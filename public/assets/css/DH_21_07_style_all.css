@@ -439,6 +439,14 @@ a:hover {
     width: 350px;
     height: auto;
     margin-bottom: 30px;
+    border-radius: 20px;
+    
+}
+
+.img_card_detail {
+    /*width: 350px;*/
+    height: 300px;
+    border-radius: 20px;
 }
 
 .rep_gen{

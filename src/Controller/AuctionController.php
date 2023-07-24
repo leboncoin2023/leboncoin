@@ -220,7 +220,7 @@ class AuctionController extends AbstractController
             throw $this->createNotFoundException('Auction not found for ID: ' . $id);
         }
       
-       return $this->render('auction/detail.html.twig',[
+       return $this->render('auction/auction_detail_buyer.html.twig',[
             'dauction' =>  $dauction ,
             'auctionId' => $id
         ]);
@@ -257,7 +257,8 @@ class AuctionController extends AbstractController
              'mauction' => $mauction
         ]);
     }
-    
+
+
 //     public function fAuction(Request $request, DocumentManager $dm ): Response {          
 //     $id = $request->get('id');
 //     $dauction = $dm->getRepository(Auctions::class)->find($id);
@@ -329,15 +330,6 @@ class AuctionController extends AbstractController
     }
 
 
-    //Guillaume : affichage de l'enchere selctionnée par l'acheteur
-    #[Route('/', name: 'app_auction_detail')]
-    public function getAuctionbyId(AuctionsRepository $auctionsRepository): Response
-    {
-    $auctions = $auctionsRepository->findAllFromBdd();
 
-    return $this->render('auction/auction_detail_buyer.html.twig', [
-        'auctions' => $auctions,
-    ]);
-    }
 
 }
