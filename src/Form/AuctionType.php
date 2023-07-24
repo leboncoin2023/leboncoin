@@ -56,6 +56,8 @@ class AuctionType extends AbstractType
 
             ->add('sold_price', NumberType::class)
 
+            
+
            /* ->add('start_date', DateTimeType::class, [
                 'widget' => 'single_text',
                 'format' => 'yyyy-MM-dd HH:mm:ss',
@@ -142,12 +144,33 @@ class AuctionType extends AbstractType
         ;
     }
 
-   
-
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => Auctions::class,
         ]);
     }
+        
+
+   /* public function enchereForm(FormBuilderInterface $builder, array $options)
+    {
+      $builder 
+         
+         ->add('offre' )
+
+        ->add('agreesTerms', CheckboxType::class, [
+                'mapped' => false,
+                'constraints' => [
+                      'message' => 'M\'alerter en cas de nouvelle enchère' 
+                ],
+            ])
+
+        ->add('Valider', SubmitType::class);
+       
+    }*/
+
+
+
+
+
 }

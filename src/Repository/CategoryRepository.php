@@ -41,7 +41,7 @@ class CategoryRepository extends ServiceDocumentRepository
             $category = $matches[1];
             $subCategory = $matches[2];
 
-            // créer le tableau de la catégorie sin elle n'existe pas déjà
+            // créer le tableau de la catégorie si elle n'existe pas déjà
             if (!isset($nav[$category]))
                 $nav[$category] = [];
 
@@ -51,6 +51,8 @@ class CategoryRepository extends ServiceDocumentRepository
 
         return $nav;
     }
+
+   
 
     //    /**
 //     * @return Message[] Returns an array of Message objects

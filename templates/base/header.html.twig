@@ -1,5 +1,4 @@
- 
- 
+
  <header class="">
 
         <!-- ______________________________________nav ligne 1_______________________________________ -->
@@ -9,15 +8,18 @@
             <a class="" href="#"><img src="../assets/icones/logo/Property 1=original.png" alt="logo"></a>
             <a href="#" class="boutonspé">Déposer&nbsp;une&nbsp;annonce</a>
 
-            <form class="form-inline">
+            {# Formulaire de recherche dans la navigation #}
+            <form class="form-inline" method="post" action="{{ path('search_auctions') }}">
                 <div class="input-group">
                     <div class="input-group-prepend input-group-text">
                         <span class="input-group"><img src="../assets/icones/loupe_flitres/loupe_gris.svg" alt="icone loupe"></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Rechercher sur Leboncoin" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="text" id="search-input" class="form-control" placeholder="Rechercher sur Leboncoin" aria-label="Username" aria-describedby="basic-addon1" name="keyword" >
+                    <button type="submit">Search</button>
                 </div>
             </form>
 
+       
             <section class="flexnavhaut">
 {# __________________partie droite 1ère ligne, globalement ok, gérer l'espace entre les icones ! #}
                 <div class="liens-navhaut">
@@ -25,7 +27,7 @@
                         <img src="../assets/icones/cloches/cloche_noir_pleine.svg" alt="">
                     </div>
                     <div>
-                        <p>Notifications</p>
+                        <a href="#">Notifications</a>
                     </div>
                 </div>
 
@@ -34,7 +36,7 @@
                         <img src="../assets/icones/coeurs/coeur_noir_plein.svg" alt="">
                     </div>
                     <div>
-                        <p>Favoris</p>
+                        <a href="#">Favoris</a>
                     </div>
                 </div>
 
@@ -43,7 +45,7 @@
                         <img src="../assets/icones/message/message_plein.svg" alt="">
                     </div>
                     <div>
-                        <p>Messages</p>
+                        <a href="#">Messages</a>
                     </div>
                 </div>
 
@@ -53,7 +55,7 @@
                     </div>
                     {% if app.user %}
                     <div>
-                        <a href="{{path('app_logout') }}">Se&nbsp;Déconnecter</a>
+                        <a href="{{path('app_user') }}">Profil</a>
                     </div>
 
                     {% else %}
@@ -82,26 +84,38 @@
             <li><a class="linkhover" href="#">Multimédia&nbsp;</a></li>
             <li><a class="linkhover" href="#">Materiel&nbsp;Professionnel&nbsp;</a></li>
             <li><a class="linkhover" href="#">Autres&nbsp;</a></li>
-            <li><a class="auctionhover"><img src="assets/icones/marteau/marteau_orange_small.svg" alt="">Enchères</a>
-                {# <ul class='sub-menus'>
+            <li class="sub-menu-container"><a class="auctionhover"><img src="assets/icones/marteau/marteau_orange_small.svg" alt="">Enchères</a>
+            <ul class="sub-menus">
+            <li class="titlesub"><h3>Enchères</h3></li>
+                {% for key, submenu in menu %}
+                <li>
+                    <!--<a href="\category\{{key}}"><p class="cat">{{key}}</p></a>-->
+                    <a href="{{ path('app_category',  {'category':key}) }}"><p class="cat">{{key}}</p></a>
+                    <ul class="align-left">
+                        {% for subCat in submenu %}
+                            <li>
+                                <!--<a href="\category\{{key}}\{{subCat}}">
+                                    <p>{{subCat}}</p>
+                                </a>-->
+                                <a href="{{ path('app_subcategory', {'category':key, 'subcategory':subCat}) }}">
+                                    <p>{{subCat}}</p>
+                                </a>
+                            </li>
+                        {% endfor %}    
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul> 
+
+              {#    <ul class='sub-menus'>
                     <li><a href="#">Multimédia</a></li>
                     <li><a href="#">Mode</a></li>
                     <li><a href="#">Livres</a></li>
                     <li><a href="#">Maison</a></li>
-                </ul> #}
+                </ul>
             </li>
-        </ul>
+        </ul> #}
     </nav>
-
-
-                    <section>
-
-
-                    </section>
-      
-
-                
-
 
 
     </header>

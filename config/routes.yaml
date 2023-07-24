@@ -10,3 +10,17 @@ app_auction_new_recap:
     path: /auction/recap/{id}
     controller: App\Controller\AuctionController::newRecap
     methods: [GET]
+# routes.yaml
+app_auction_detail:
+    path: '/auction/detail/{id}'
+    controller: 'App\Controller\AuctionController::detailAuction'
+    methods: GET
+
+    
+# route pour la searchbar
+search_auctions:
+    path: /search
+    controller: App\Controller\AuctionController::searchAction
+    methods: [POST]
+
+

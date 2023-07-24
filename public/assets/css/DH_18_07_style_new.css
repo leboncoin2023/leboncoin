@@ -229,6 +229,8 @@ footer{
 
 /*______________________HEADER NAV 1e LIGNE____________________*/
 
+
+
 .flexnavhaut{
     display: flex;
     justify-content: space-between;
@@ -244,10 +246,20 @@ header{
     margin: 0 20px;
 }   
 
-.liens-navhaut p{
+.liens-navhaut a{
     font-family: satoshi;
-    font-size: 8px;
+    font-size: 10px;
     font-weight: 500;
+    color: #040404;
+    text-decoration: none;
+}
+
+.liens-navhaut a:hover{
+    font-family: satoshi;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--lb_orange);
+    text-decoration: none;
 }
 
 .boutonspé{
@@ -256,6 +268,15 @@ header{
     padding: 10px;
     text-decoration: none;
     color: var(--vintage_white);
+}
+
+.boutonspé:hover{
+    background-color:var(--shade_orange);
+    border-radius: 1em;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--lb_orange);
+    border: solid 1px var(--lb_orange);
 }
 
   /*________________HEADER NAV 2e LIGNE _______________________*/
@@ -307,8 +328,9 @@ header{
 
 .auctionhover{
    
-    color: #F55E00;
+    color: var(--vintage_white);
     border: solid 1px #F55E00;
+    background-color: var(--lb_orange);
     border-radius: 1em;
     display: block;
 	line-height: 45px;
@@ -319,11 +341,12 @@ header{
 	font-size: 12px;
 }
 
+#menu li  .auctionhover:hover {
+	background-color: var(--shade_orange);
+    color: var(--lb_orange);
+	
+}
 
-/* .auctionhover:hover{
-    color: #F55E00;
-    background-color: #FCFBF7;
-} */
 
 #menu input {
 	display: none;
@@ -349,33 +372,76 @@ header{
 	margin-left: 20px;
 }
 
-/* #menu ul.sub-menus{
-	height: auto;
-	overflow: hidden;
-	width: 170px;
-	background: #444444;
-	position: absolute;
-	z-index: 99;
-	display: none;
+#menu ul.sub-menus {
+    height: auto;
+    overflow: hidden;
+    background: #444444;
+    position: fixed;
+    z-index: 99;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: none;
 }
 
+.sub-menu-container {
+    position: relative;
+   
+}
+
+.titlesub{
+    color: var(--almost_black);
+    font-size: 20px;
+    background-color: var(--gris);
+}
+
+
 #menu ul.sub-menus li {
-	display: block;
-	width: 100%;
+    display: flex;
+    
+	flex-direction: column;
+    
+}
+
+#menu ul.sub-menus li ul{
+    display: flex;
+  
+	flex-direction: column;
+    
+   
+}
+
+.cat{
+    color: var(--almost_black);
+    font-size: 20px;
+}
+
+.cat:hover{
+    color: var(--lb_orange);
+    font-size: 20px;
 }
 
 #menu ul.sub-menus a {
-	color: #FFFFFF;
+	color: var(--almost_black);
 	font-size: 16px;
+    text-decoration: none;
 }
 
 #menu li:hover ul.sub-menus {
-	display: block
+    display: flex;
+  /*  justify-content: center; */
+ /*   align-items: center; /* Centrer verticalement les éléments du sous-menu */ 
+    background-color: var(--shade_orange);
+    border-bottom: solid 1px var(--lb_orange);
+    border-top: solid 1px var(--lb_orange);
+    
+    
 }
 
 #menu ul.sub-menus a:hover{
-	background: #F2F2F2;
-	color: #444444;
+	
+    color: var(--lb_orange);
+	/* color: #444444; */
 }
 
 /*=====================HOME PAGE___GUILLAUME=========================================*/

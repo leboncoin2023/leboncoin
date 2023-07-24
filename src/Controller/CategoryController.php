@@ -14,6 +14,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
 
+    /**
+     * Construit le html de la nav
+     *
+     * @param CategoryRepository $repo
+     * @param DocumentManager $dm
+     * @return Response
+     */
     #[Route('/nav', name: 'app_category_nav')]
     public function buildCategoriesNav(CategoryRepository $repo, DocumentManager $dm): Response {
 
@@ -26,7 +33,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * Route listant des enchères d'une catégorie avec classement par sous catégories
+     * Route listant des enchères d'une catégorie avec classement par sous-catégories
      *
      * @return Response
      */
@@ -35,20 +42,25 @@ class CategoryController extends AbstractController
     {
         $auctions = $repo->getAuctionsByCategory($category);
 
+        dd($auctions);
+
         return $this->render('category/category.html.twig', [
             'auctions' => $auctions,
         ]);
     }
 
     /**
-     * Route listant les enchères d'une sous catégorie
+     * Route listant les enchères d'une sous-catégorie
+     * 
      */
     #[Route('/{category}/{subcategory}', name: 'app_subcategory')]
-    public function subCategory(Request $request): Response
+    public function subCategory(string $category, string $subcategory, Request $request, AuctionsRepository $auctionsRepository): Response
     {      
 
 
-        dump($request->get('subcategory'));
+        $data = $auctionsRepository->getAuctionsByCategory($subcategory);
+
+        dump($data);
         // Récupérer la sous-catégorie transmise en GET
 
 
