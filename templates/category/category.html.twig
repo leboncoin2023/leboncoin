@@ -7,108 +7,38 @@
 
  <!-- ***** PRODUITS CAT *****  -->
         <section class="container">
+  
+          
+            {% for sub in subcategory %}
 
-            <div class="flex category">
-                <h1 class="h_one_cat">Informatique</h1>
-            </div>
-
-            <div class="row row_cat row_one">
-                <div class="col-12 col-md-3">
-                    <div class="card">
-                        <div class="card-img-top cardimgbg"> </div>
-                        <div class="card-body">
-                                <div class="flex title_heart">
-                                    <h5 class="card-title-cat">Title</h5>
-                                   <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
+                <div class="flex category">
+                    <h1 class="h_one_cat">{{ sub.subcategory }}</h1>
+                </div>
+                {% for auction in sub.auctions %}
+                    <div class="row row_cat row_one">
+                        <div class="col-12 col-md-3">
+                            <div class="card">
+                                {% if auction.pictures is empty %}
+                                <div class="card-img-top cardimgbg"> </div>
+                                {% else %}
+                                <div class="card-img-top cardimgbg"><img src="/uploads/pictures/{{ auction.pictures[0] }}" alt="image de l'enchère"></div>
+                                {% endif %}
+                                <div class="card-body">
+                                        <div class="flex title_heart">
+                                            <h5 class="card-title-cat">{{ auction.title }}</h5>
+                                        <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
+                                        </div>
                                 </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endfor %}   
+            {% endfor %}   
 
-               
 
-
-            </div>
 
         </section>
 
-        <section class="container">
-
-            <div class="flex category">
-                <h1 class="h_one_cat">Console & Jeux vidéos</h1>
-            </div>
-
-            <div class="row row_cat row_one">
-                <div class="col-12 col-md-3">
-                    <div class="card">
-                        <div class="card-img-top cardimgbg"> </div>
-                        <div class="card-body">
-                                <div class="flex title_heart">
-                                    <h5 class="card-title-cat">Title</h5>
-                                   <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
-                                </div>
-                        </div>
-                    </div>
-                </div>
-
-               
-
-
-            </div>
-
-        </section>
-
-        <section class="container">
-
-            <div class="flex category">
-                <h1 class="h_one_cat">Image et son</h1>
-            </div>
-
-            <div class="row row_cat row_one">
-                <div class="col-12 col-md-3">
-                    <div class="card">
-                        <div class="card-img-top cardimgbg"> </div>
-                        <div class="card-body">
-                                <div class="flex title_heart">
-                                    <h5 class="card-title-cat">Title</h5>
-                                   <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
-                                </div>
-                        </div>
-                    </div>
-                </div>
-
-               
-
-
-            </div>
-
-        </section>
-
-        <section class="container">
-
-            <div class="flex category">
-                <h1 class="h_one_cat">Téléphonie</h1>
-            </div>
-
-            <div class="row row_cat row_one">
-                <div class="col-12 col-md-3">
-                    <div class="card">
-                        <div class="card-img-top cardimgbg"> </div>
-                        <div class="card-body">
-                                <div class="flex title_heart">
-                                    <h5 class="card-title-cat">Title</h5>
-                                   <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
-                                </div>
-                        </div>
-                    </div>
-                </div>
-
-               
-
-
-            </div>
-
-        </section>
-
+       
     </main>
 {% endblock %}

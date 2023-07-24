@@ -45,7 +45,6 @@ class AuctionsRepository extends ServiceDocumentRepository
      */
     public function findAuctionsByCategoryAndSub(string $category, int $limit = 0): array{
 
-
         $qb = $this->dm->createQueryBuilder(Auctions::class)
                 ->field('category')->equals($category);
         
@@ -53,13 +52,7 @@ class AuctionsRepository extends ServiceDocumentRepository
             $qb->limit($limit);
 
 
-        $iter = $qb->getQuery()->execute();
-
-        $results = [];
-        while ($iter->valid()) {
-            $results[] = $iter->current();
-            $iter->next();
-        }
+        $results = $qb->getQuery()->execute()->toArray();
 
         return $results;
     }
@@ -80,9 +73,11 @@ class AuctionsRepository extends ServiceDocumentRepository
         // pour chaque sous categorie
         foreach ($categories as $category) {
             // exploser categories et sous categories
-            $stringCategory = explode('/', $category)[1];
-            $stringSubCategory = explode('/', $category)[0];
-
+            $stringCategory = explode('/', $category)[0];
+            $stringSubCategory = '';
+            if(isset(explode('/', $category)[1])){
+                $stringSubCategory = explode('/', $category)[1];
+            }
 
             // trouver en BDD n enchères de cette catégorie/sous catégorie
             $datas = $this->findAuctionsByCategoryAndSub($category, 10);
@@ -129,13 +124,50 @@ class AuctionsRepository extends ServiceDocumentRepository
 
     public function findAuctionsByKeyword(string $keyword)
     {
-        $qb = $this->createQueryBuilder()
-            ->field('$or')
-            ->equals(['title' => new \MongoDB\BSON\Regex($keyword, 'i')])
-            ->equals(['description' => new \MongoDB\BSON\Regex($keyword, 'i')])
-            ->getQuery();
 
-        return $qb->execute();
+        $qb = $this->createQueryBuilder(Auctions::class)
+        ->field('$or')
+        ->equals([
+            ['title' => new \MongoDB\BSON\Regex($keyword, 'i')],
+            ['description' => new \MongoDB\BSON\Regex($keyword, 'i')]
+        ]);
+
+        return $qb->getQuery()->execute()->toArray();
     }
+
+    public function getAuctionByCategory(string $category){
+        // créer tableau résultat vide
+        $result = [];
+
+        // trouver toutes les sous categories de la categories demandée
+        $categories = $this->createQueryBuilder(Auctions::class)
+                        ->field('category')->equals(new \MongoDB\BSON\Regex($category, 'i'))
+                        ->distinct('category')
+                        ->getQuery()
+                        ->execute();
+
+        foreach ($categories as $category) {
+            // exploser categories et sous categories
+            $stringCategory = explode('/', $category)[0];
+            $stringSubCategory = '';
+            if(isset(explode('/', $category)[1])){
+                $stringSubCategory = explode('/', $category)[1];
+            }
+            if($stringSubCategory != ""){
+
+                $tab = array(
+                    'subcategory' => $stringSubCategory,
+                    'auctions' => $this->findAuctionsByCategoryAndSub($stringCategory.'/'.$stringSubCategory, 10)
+                );
+
+                $result[] = $tab;
+
+            }
+        }
+
+        return $result;
+    }
+
+ 
 
 }
