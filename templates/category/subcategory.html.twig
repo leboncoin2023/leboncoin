@@ -8,14 +8,14 @@
  <!-- ***** PRODUITS SUB CAT *****  -->
         <section class="container">
 
-{{ auctions.category }}
+{# {{ auctions.category }}
 {{ auctions.subcategory }}
 
 {% for auction in auctions.auctions %}
 
     {{ auction.title }}
 
-{% endfor %}
+{% endfor %} #}
 
             <div class="flex sub_cat">
                 <img src="/assets/icones/marteau/marteau_black_M.svg" alt="marteau_noir">
@@ -26,13 +26,17 @@
             {% for auction in auctions.auctions %}
                 <div class="col-12 col-md-3">
                     <div class="card">
-                        <div class="card-img-top cardimgbg">{# {{ auction.pictures }} #}</div>
+                    {% if auction.pictures is empty %}
+                        <div class="card-img-top cardimgbg"> </div>
+                    {% else %}
+                        <div {# class="card-img-top cardimgbg" #}><img src="/uploads/pictures/{{ auction.pictures[0] }}" alt="Image du produit"></div>
+                    {% endif %}
                         <div class="card-body">
                             <h5 class="card-title-sub-cat">{{ auction.title }}</h5>
                             <h6 class="card_offre_sub_cat">OFFRE ACTUELLE</h6>
-                            <h5 class="card-title-sub-cat"> PRICE</h5>
+                            <h5 class="card-title-sub-cat"> {{ auction.soldPrice }}</h5>
                             <p class="description_sub_cat">{{ auction.description }}</p>
-                            <p class="time">IL RESTE 2h</p>
+                            <p class="time">IL RESTE {{ auction.duration }}</p>
                             <div class="flex local_heart">
                                 <div class="flex local_heart_two">
                                     <img src="/assets/icones/localisation/localisation_small_noir.svg" alt="localisation">
@@ -45,156 +49,7 @@
                 </div>
                 {% endfor %}
 
-                <div class="col-12 col-md-3">
-                    <div class="card">
-                        <div class="card-img-top cardimgbg"> </div>
-                        <div class="card-body">
-                            <h5 class="card-title-sub-cat">Title</h5>
-                            <h6 class="card_offre_sub_cat">OFFRE ACTUELLE</h6>
-                            <h5 class="card-title-sub-cat"> PRICE</h5>
-                            <p class="description_sub_cat">Description du produit Description du produit Description du produit Description du produit Description du produit</p>
-                            <p class="time">IL RESTE 2h</p>
-                            <div class="flex local_heart">
-                                <div class="flex local_heart_two">
-                                    <img src="/assets/icones/localisation/localisation_small_noir.svg" alt="localisation">
-                                    <p class="localisation">Paris 15eme</p>
-                                </div>
-                                <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-3">
-                    <div class="card">
-                        <div class="card-img-top cardimgbg"> </div>
-                        <div class="card-body">
-                            <h5 class="card-title-sub-cat">Title</h5>
-                            <h6 class="card_offre_sub_cat">OFFRE ACTUELLE</h6>
-                            <h5 class="card-title-sub-cat"> PRICE</h5>
-                            <p class="description_sub_cat">Description du produit Description du produit Description du produit Description du produit Description du produit</p>
-                            <p class="time">IL RESTE 2h</p>
-                            <div class="flex local_heart">
-                                <div class="flex local_heart_two">
-                                    <img src="/assets/icones/localisation/localisation_small_noir.svg" alt="localisation">
-                                    <p class="localisation">Paris 15eme</p>
-                                </div>
-                                <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-3">
-                    <div class="card">
-                        <div class="card-img-top cardimgbg"> </div>
-                        <div class="card-body">
-                            <h5 class="card-title-sub-cat">Title</h5>
-                            <h6 class="card_offre_sub_cat">OFFRE ACTUELLE</h6>
-                            <h5 class="card-title-sub-cat"> PRICE</h5>
-                            <p class="description_sub_cat">Description du produit Description du produit Description du produit Description du produit Description du produit</p>
-                            <p class="time">IL RESTE 2h</p>
-                            <div class="flex local_heart">
-                                <div class="flex local_heart_two">
-                                    <img src="/assets/icones/localisation/localisation_small_noir.svg" alt="localisation">
-                                    <p class="localisation">Paris 15eme</p>
-                                </div>
-                                <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-               
-
-
-            </div>
-
-            <div class="row row_sub_cat row_second">
-                <div class="col-12 col-md-3">
-                    <div class="card">
-                        <div class="card-img-top cardimgbg"> </div>
-                        <div class="card-body">
-                            <h5 class="card-title-sub-cat">Title</h5>
-                            <h6 class="card_offre_sub_cat">OFFRE ACTUELLE</h6>
-                            <h5 class="card-title-sub-cat"> PRICE</h5>
-                            <p class="description_sub_cat">Description du produit Description du produit Description du produit Description du produit Description du produit</p>
-                            <p class="time">IL RESTE 2h</p>
-                            <div class="flex local_heart">
-                                <div class="flex local_heart_two">
-                                    <img src="/assets/icones/localisation/localisation_small_noir.svg" alt="localisation">
-                                    <p class="localisation">Paris 15eme</p>
-                                </div>
-                                <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-3">
-                    <div class="card">
-                        <div class="card-img-top cardimgbg"> </div>
-                        <div class="card-body">
-                            <h5 class="card-title-sub-cat">Title</h5>
-                            <h6 class="card_offre_sub_cat">OFFRE ACTUELLE</h6>
-                            <h5 class="card-title-sub-cat"> PRICE</h5>
-                            <p class="description_sub_cat">Description du produit Description du produit Description du produit Description du produit Description du produit</p>
-                            <p class="time">IL RESTE 2h</p>
-                            <div class="flex local_heart">
-                                <div class="flex local_heart_two">
-                                    <img src="/assets/icones/localisation/localisation_small_noir.svg" alt="localisation">
-                                    <p class="localisation">Paris 15eme</p>
-                                </div>
-                                <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-3">
-                    <div class="card">
-                        <div class="card-img-top cardimgbg"> </div>
-                        <div class="card-body">
-                            <h5 class="card-title-sub-cat">Title</h5>
-                            <h6 class="card_offre_sub_cat">OFFRE ACTUELLE</h6>
-                            <h5 class="card-title-sub-cat"> PRICE</h5>
-                            <p class="description_sub_cat">Description du produit Description du produit Description du produit Description du produit Description du produit</p>
-                            <p class="time">IL RESTE 2h</p>
-                            <div class="flex local_heart">
-                                <div class="flex local_heart_two">
-                                    <img src="/assets/icones/localisation/localisation_small_noir.svg" alt="localisation">
-                                    <p class="localisation">Paris 15eme</p>
-                                </div>
-                                <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-3">
-                    <div class="card">
-                        <div class="card-img-top cardimgbg"> </div>
-                        <div class="card-body">
-                            <h5 class="card-title-sub-cat">Title</h5>
-                            <h6 class="card_offre_sub_cat">OFFRE ACTUELLE</h6>
-                            <h5 class="card-title-sub-cat"> PRICE</h5>
-                            <p class="description_sub_cat">Description du produit Description du produit Description du produit Description du produit Description du produit</p>
-                            <p class="time">IL RESTE 2h</p>
-                            <div class="flex local_heart">
-                                <div class="flex local_heart_two">
-                                    <img src="/assets/icones/localisation/localisation_small_noir.svg" alt="localisation">
-                                    <p class="localisation">Paris 15eme</p>
-                                </div>
-                                <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-               
-
-
-            </div>
+                
 
         </section>
 
