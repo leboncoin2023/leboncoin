@@ -5,11 +5,11 @@
 
     <nav class="container">
         <div class="flexnavhaut">
-            <a class="" href="#"><img src="/assets/icones/logo/Property 1=original.png" alt="logo"></a>
+            <a class="" href="{{path('app_home') }}"><img src="/assets/icones/logo/Property 1=original.png" alt="logo"></a>
             <a href="{{path('app_auction_new_auction') }}" class="boutonspé">Déposer&nbsp;une&nbsp;annonce</a>
 
             {# Formulaire de recherche dans la navigation #}
-            <form class="form-inline" method="post" action="{{ path('search_auctions') }}">
+            <form class="form-inline" method="post" action="{{ path('app_auction_search') }}">
                 <div class="input-group">
                     <div class="input-group-prepend input-group-text">
                         <span class="input-group"><img src="/assets/icones/loupe_flitres/loupe_gris.svg" alt="icone loupe"></span>
@@ -87,7 +87,7 @@
             <li class="sub-menu-container"><a class="auctionhover"><img src="/assets/icones/marteau/marteau_orange_small.svg" alt="">Enchères</a>
             <ul class="sub-menus">
             <li class="titlesub"><h3>Enchères</h3></li>
-            {#    {% for key, submenu in menu %}
+               {% for key, submenu in menu %}
                 <li>
                     <!--<a href="\category\{{key}}"><p class="cat">{{key}}</p></a>-->
                     <a href="{{ path('app_category',  {'category':key}) }}"><p class="cat">{{key}}</p></a>
@@ -105,7 +105,7 @@
                     </ul>
                 </li>
                 {% endfor %}
-            </ul> #}
+            </ul>
 
               {#    <ul class='sub-menus'>
                     <li><a href="#">Multimédia</a></li>
