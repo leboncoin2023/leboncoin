@@ -12,6 +12,7 @@ use App\Form\AuctionType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Doctrine\ODM\MongoDB\Mapping\Annotations;
 use App\Repository\AuctionsRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -42,12 +43,13 @@ class AuctionController extends AbstractController
     */
 
     #[Route('/', name: 'app_auction')]
-    public function index(AuctionsRepository $auctionsRepository): Response
+    public function index(AuctionsRepository $auctionsRepository, DocumentManager $dm, CategoryRepository $repo): Response
     {
     $auctions = $auctionsRepository->findAllFromBdd();
 
     return $this->render('auction/index.html.twig', [
         'auctions' => $auctions,
+        'menu' => $repo->getAllCategoriesAndSub($dm)
     ]);
     }
 
@@ -56,7 +58,7 @@ class AuctionController extends AbstractController
 
 //Nouvelle annonce, choix entre enchère et vente ___________________________
     #[Route('/new_choice', name: 'app_auction_new_choice')]
-    public function newChoice(AuctionsRepository $auctionsRepository, FormFactoryInterface $formFactory): Response
+    public function newChoice(AuctionsRepository $auctionsRepository, FormFactoryInterface $formFactory, CategoryRepository $repo, DocumentManager $dm): Response
     {
 
         
@@ -67,6 +69,7 @@ class AuctionController extends AbstractController
             //'controller_name' => 'AuctionController',
             'auctions' => $auctions,
             'form' => $form->createView(),
+            'menu' => $repo->getAllCategoriesAndSub($dm)
         ]);
     }
 //Nouvelle enchère, formulair de création____________________________________
@@ -115,12 +118,15 @@ class AuctionController extends AbstractController
     } */
 
     #[Route('/new_auction', name: 'app_auction_new_auction')]
-    public function newAuction(Request $request, DocumentManager $documentManager): Response
+    public function newAuction(Request $request, DocumentManager $documentManager, CategoryRepository $catRepo): Response
     {
         $auction = new Auctions();
+        
+        $_SESSION['categoriesList'] = $catRepo->getAllCategoriesAndSub($documentManager);
+
         $form = $this->createForm(AuctionType::class, $auction);
         $form->handleRequest($request);
-             
+
         if ($form->isSubmitted()) {
             if (!$form->isValid()) {
                 // Afficher les erreurs de validation du formulaire
@@ -128,6 +134,8 @@ class AuctionController extends AbstractController
                     echo $error->getMessage()."\n";
                 }
             } else {
+                $auction->setSellerId($this->getUser()->getId());
+                $auction->setBuyerId('');
                 // Sauvegardez l'entité Auctions en base de données
                 $documentManager->persist($auction);
                 $documentManager->flush();
@@ -185,11 +193,12 @@ class AuctionController extends AbstractController
         return $this->render('auction/new_auction.html.twig', [
             'form' => $form->createView(),
             'auction' => $auction,
+            'menu' => $catRepo->getAllCategoriesAndSub($documentManager),
         ]);
     }
 
     #[Route('/new_recap/{id}', name: 'app_auction_new_recap')]
-    public function newRecap($id, AuctionsRepository $auctionsRepository): Response
+    public function newRecap($id, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm): Response
     {
     // Récupérez l'enchère à partir de la base de données en utilisant l'identifiant passé en paramètre
     $auction = $auctionsRepository->find($id);
@@ -202,11 +211,12 @@ class AuctionController extends AbstractController
     // Affichez les détails de l'enchère dans la vue
     return $this->render('auction/new_recap.html.twig', [
         'auction' => $auction,
+        'menu' => $repo->getAllCategoriesAndSub($dm)
     ]);
     }
 
     #[Route('/detail/{id}', name: 'app_auction_detail')]
-    public function detailAuction(Request $request, DocumentManager $dm ): Response
+    public function detailAuction(Request $request, DocumentManager $dm, CategoryRepository $repo ): Response
     {          
         $id = $request->get('id');
         
@@ -222,7 +232,8 @@ class AuctionController extends AbstractController
       
        return $this->render('auction/auction_detail_buyer.html.twig',[
             'dauction' =>  $dauction ,
-            'auctionId' => $id
+            'auctionId' => $id,
+            'menu' => $repo->getAllCategoriesAndSub($dm)
         ]);
     }
     
@@ -233,8 +244,10 @@ class AuctionController extends AbstractController
      * @param DocumentManager $dm
      * @return Response
      */
+
+
     #[Route('/save', name: 'app_auction_save')]
-    public function saveAuction(Request $request, DocumentManager $dm ): Response {
+    public function saveAuction(Request $request, DocumentManager $dm, CategoryRepository $repo ): Response {
 
         // retouve l'id de l'enchère
         $id = $request->get('auctionId');
@@ -246,7 +259,7 @@ class AuctionController extends AbstractController
         // modifie l'enchere en y ajoutant un nouveau montant (de user actuel)
         $mauction =    
         // persist de la nouvelle enchere
-        $dm->persist('mauction');
+        $dm->persist($dauction);
         $dm->flush();
 
         // réaffiche le template de l'enchere
@@ -254,11 +267,11 @@ class AuctionController extends AbstractController
             'dauction' =>  $dauction ,
             'auctionId' => $id,
             'seller' => $sellerid,
-             'mauction' => $mauction
+             'mauction' => $mauction,
+             'menu' => $repo->getAllCategoriesAndSub($dm)
         ]);
     }
-
-
+    
 //     public function fAuction(Request $request, DocumentManager $dm ): Response {          
 //     $id = $request->get('id');
 //     $dauction = $dm->getRepository(Auctions::class)->find($id);
@@ -277,11 +290,11 @@ class AuctionController extends AbstractController
 //         $dm->flush();
 //     }
 
-//     return $this->render('auction/detail.html.twig', [
-//         'dauction' => $dauction,
-//         'form' => $form->createView(),
-//     ]);
-// }
+    return $this->render('auction/detail.html.twig', [
+        'dauction' => $dauction,
+        'form' => $form->createView(),
+    ]);
+ }
 
     
 
@@ -306,7 +319,7 @@ class AuctionController extends AbstractController
    /**
      * @Route("/search", methods={"POST"})
      */
-    public function searchAction(Request $request, AuctionsRepository $auctionsRepository): Response
+    public function searchAction(Request $request, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm): Response
     {
         $form = $this->createForm(SearchType::class);
         $form->handleRequest($request);
@@ -328,8 +341,6 @@ class AuctionController extends AbstractController
             'form' => $form->createView(), // Assurez-vous que vous avez ajouté cette ligne
         ]);
     }
-
-
 
 
 }

@@ -66,13 +66,15 @@ private ?string $localisation = null;
 /**
      * @MongoDB\ReferenceOne(targetDocument=User::class, mappedBy="auctions")
      */
-    private $buyer;
+/*     private $buyer; */
 
 #[MongoDB\Field(type:'string')]
-private ?string $sellerId = null;
+private ?string $seller_id = null;
 
 #[MongoDB\Field(type:'string')]
-private ?string $buyerId = null;
+private ?string $buyer_id = null;
+
+
 
 #[MongoDB\Field(type:"collection")]
 private $pictures = [];
@@ -247,22 +249,19 @@ public function __construct()
     return $this->localisation;
     }
 
-    public function getBuyer()
-    {
-        return $this->buyer;
-    }
-
     public function getSellerId(): ?string
     {
 
-        return $this->sellerId;
+        return $this->seller_id;
     }
 
     public function getBuyerId(): ?string
     {
 
-        return $this->buyerId;
+        return $this->buyer_id;
     }
+
+    
 
 
 
@@ -423,28 +422,24 @@ public function __construct()
         $this->localisation = $localisation;
     }
     
-    public function setBuyer($buyer)
-
+    public function setSellerId(?string $seller_id)
     {
-        $this->buyer = $buyer ;
-    }
 
+        $this->seller_id = $seller_id;
 
-    public function setSellerId(?string $sellerId)
-    {
-        
-        $this->sellerId = $sellerId;
-        
         return $this;
     }
 
-    public function setBuyerId(?string $buyerId)
+    public function setBuyerId(?string $buyer_id)
     {
-        
-        $this->buyerId = $buyerId;
-        
+
+        $this->buyer_id = $buyer_id;
+
         return $this;
     }
+
+
+    
 
 
     public function setoffre(?string $offre)
