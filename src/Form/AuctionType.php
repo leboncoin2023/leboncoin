@@ -22,6 +22,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use App\Form\DataTransformer\StringToDateTimeTransformer; // Inclure la classe ici
+use App\Repository\CategoryRepository;
 use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToStringTransformer as DataTransformerDateTimeToStringTransformer;
 //use App\Form\DateTimeToStringTransformer as StringToDateTimeTransformer; // Renommage de la classe
 
@@ -29,16 +30,18 @@ class AuctionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        
+        $categories = $_SESSION['categoriesList'];
+        $selectCategories = [];
+        foreach ($categories as $cat => $subCat) {
+            $selectCategories[$cat] = $cat;
+        }
+
         $builder
             ->add('title', TextType::class)
 
             ->add('category', ChoiceType::class, [
-                'choices' => [
-                    // Ajoutez d'autres catégories ici
-                    'Catégorie 1' => 'categorie1',
-                    'Catégorie 2' => 'categorie2',
-                    'Catégorie 3' => 'categorie3',
-                ],
+                'choices' => $selectCategories,
             ])
             ->add('subcategory', ChoiceType::class, [
                 'choices' => [
@@ -72,11 +75,18 @@ class AuctionType extends AbstractType
             ->add('start_date', DateTimeType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'format' => 'yyyy-MM-dd HH:mm:ss',
+                'format' => 'yyyy',
             ])
            
             
-            ->add('duration', IntegerType::class)
+            ->add('duration', ChoiceType::class, [
+                'choices' => [
+                   
+                    '6h' => '6h',
+                    '12h' => '12h',
+                    '24h' => '24h',        
+                ],
+            ])
 
             ->add('delivery_mode', ChoiceType::class, [
                 'choices' => [

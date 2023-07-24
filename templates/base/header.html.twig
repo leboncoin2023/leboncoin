@@ -87,7 +87,7 @@
             <li class="sub-menu-container"><a class="auctionhover"><img src="assets/icones/marteau/marteau_orange_small.svg" alt="">Enchères</a>
             <ul class="sub-menus">
             <li class="titlesub"><h3>Enchères</h3></li>
-                {% for key, submenu in menu %}
+                {# {% for key, submenu in menu %}
                 <li>
                     <!--<a href="\category\{{key}}"><p class="cat">{{key}}</p></a>-->
                     <a href="{{ path('app_category',  {'category':key}) }}"><p class="cat">{{key}}</p></a>
@@ -104,7 +104,7 @@
                         {% endfor %}    
                     </ul>
                 </li>
-                {% endfor %}
+                {% endfor %} #}
             </ul> 
 
               {#    <ul class='sub-menus'>

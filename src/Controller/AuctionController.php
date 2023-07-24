@@ -12,6 +12,7 @@ use App\Form\AuctionType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Doctrine\ODM\MongoDB\Mapping\Annotations;
 use App\Repository\AuctionsRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -115,12 +116,15 @@ class AuctionController extends AbstractController
     } */
 
     #[Route('/new_auction', name: 'app_auction_new_auction')]
-    public function newAuction(Request $request, DocumentManager $documentManager): Response
+    public function newAuction(Request $request, DocumentManager $documentManager, CategoryRepository $catRepo): Response
     {
         $auction = new Auctions();
+        
+        $_SESSION['categoriesList'] = $catRepo->getAllCategoriesAndSub($documentManager);
+
         $form = $this->createForm(AuctionType::class, $auction);
         $form->handleRequest($request);
-             
+
         if ($form->isSubmitted()) {
             if (!$form->isValid()) {
                 // Afficher les erreurs de validation du formulaire
@@ -128,6 +132,8 @@ class AuctionController extends AbstractController
                     echo $error->getMessage()."\n";
                 }
             } else {
+                $auction->setSellerId($this->getUser()->getId());
+                $auction->setBuyerId('');
                 // Sauvegardez l'entité Auctions en base de données
                 $documentManager->persist($auction);
                 $documentManager->flush();
