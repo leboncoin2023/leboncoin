@@ -1,7 +1,13 @@
 # Le Boncode
 
+Une équipe composé au total de 9 personnes
+4 *_ux/ui_*
+2 *_dev full-stack_*
+3 *_dev back-end_*
+
+
 ![lebon.png](/public/assets/images/lebon.png)
-Adaptation d'une nouvelle  fonctionnalité du site le boncoin qui permet a l' utilisateur d' enchérir.
+Adaptation d'une nouvelle  fonctionnalité du site le boncoin qui permet a l' utilisateur d' enchérir sur une enchère.
 
 -----
 ### Outils utilisés : 
