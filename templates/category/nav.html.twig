@@ -1,0 +1,16 @@
+<ul>
+    {% for key, submenu in menu %}
+    <li>
+        <a href="\category\{{key}}"><h3>{{key}}</h3></a>
+        <ul>
+            {% for subCat in submenu %}
+                <li>
+                    <a href="\category\{{key}}\{{subCat}}">
+                        <h3>{{subCat}}</h3>
+                    </a>
+                </li>
+            {% endfor %}    
+        </ul>
+    </li>
+    {% endfor %}
+</ul>

@@ -1,5 +1,126 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Nouveau choix{% endblock %}
+
 {% block body %}
-<h1>Choix vente/enchère</h1>
+    <div class="container">
+        <h1 class="mt-5 mb-4">Nouveau choix</h1>
+
+        {% if auctions is empty %}
+            <p>Aucune enchère disponible pour le moment.</p>
+        {% else %}
+            <div class="row">
+                {% for auction in auctions %}
+                    <div class="col-md-6">
+                        <div class="card mb-4 bg-orange text-black">
+                            <div class="card-body">
+                                <h2 class="card-title">{{ auction.getTitle() }}</h2>
+                                <p class="card-text">Description : {{ auction.getDescription() }}</p>
+                                <p class="card-text">Prix de départ : {{ auction.getStartPrice() }} €</p>
+                                <p class="card-text">Catégorie : {{ auction.getCategory() }}</p>
+                                <p class="card-text">Date de début : {{ auction.getStartDate()|date('Y-m-d H:i:s') }}</p>
+                                <p class="card-text">Durée : {{ auction.getDuration() }} jours</p>
+                                <p class="card-text">Sous-catégorie : {{ auction.getSubCategory() }}</p>
+                                <p class="card-text">Prix de réserve : {{ auction.getReservePrice() }} €</p>
+                                <p class="card-text">Prix de vente : {{ auction.getSoldPrice() }} €</p>
+                                <p class="card-text">Mode de livraison : {{ auction.getDeliveryMode() }}</p>
+                                <p class="card-text">Localisation : {{ auction.getLocalisation() }}</p>
+                                {# Seller ID and Buyer ID are omitted in the "new_choice" page #}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <h2 class="mt-5">Nouvelle enchère</h2>
+
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form_label(form.title) }}
+                    {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.category) }}
+                    {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.description) }}
+                    {{ form_widget(form.description , {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.subcategory) }}
+                    {{ form_widget(form.subcategory , {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.start_price) }}
+                    {{ form_widget(form.start_price  , {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.sold_price) }}
+                    {{ form_widget(form.sold_price , {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.reserve_price) }}
+                    {{ form_widget(form.reserve_price , {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.start_date) }}
+                    {{ form_widget(form.start_date  , {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.duration) }}
+                    {{ form_widget(form.duration  , {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.delivery_mode) }}
+                    {{ form_widget(form.delivery_mode , {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.pictures) }}
+                    {{ form_widget(form.pictures, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.video) }}
+                    {{ form_widget(form.video , {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.localisation) }}
+                    {{ form_widget(form.localisation , {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_row(form.seller_id, {'attr': {'class': 'form-control', 'style': 'display:none;'}, 'label': false}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_row(form.buyer_id, {'attr': {'class': 'form-control', 'style': 'display:none;'}, 'label': false}) }}
+                </div>
+
+                <!-- En ajoutant cette ligne dans le formulaire, vous vous assurez que le jeton CSRF est inclus dans le formulaire
+                         lorsqu'il est soumis. Cela garantit la sécurité de votre application en protégeant contre les attaques CSRF.  -->
+                    {{ form_row(form._token) }}
+
+                <button type="submit" class="btn btn-primary">Créer l'enchère</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
+
+
+

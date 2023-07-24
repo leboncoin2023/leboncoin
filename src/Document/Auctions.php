@@ -12,60 +12,100 @@ class Auctions
 
 {
 #[MongoDB\Id]
-private string $id;
+protected string $id;
 
 #[MongoDB\Field(type:'string')]
-private string $title;
+private ?string $title = null;
 
 #[MongoDB\Field(type: 'string')]
-private string $category;
+private ?string $category = null;
 
 #[MongoDB\Field(type: 'string')]
-private string $description;
+private ?string $description = null;
 
 
 #[MongoDB\Field(type: 'string')]
-private string $subcategory;
+private ?string $subcategory = null;
 
 #[MongoDB\Field(type:'string')]
-private string $start_price;
-
-
-#[MongoDB\Field(type:'string')]
-private string $sold_price;
-
-#[MongoDB\Field(type:'string')]
-private string $reserve_price;
+private ?string $startPrice = null;
 
 
 #[MongoDB\Field(type:'string')]
-private string $start_date;
+private ?string $soldPrice = null;
 
 #[MongoDB\Field(type:'string')]
-private string $duration;
+private ?string $reservePrice = null;
+
+
+
+//#[MongoDB\Field(type:'date')]
+//private ?\DateTimeInterface $start_date = null;
+//private ?string $start_date = null;
+
+#[MongoDB\Field(type: 'date')]
+private ?\DateTimeInterface $startDate = null;
+
+
+////#[MongoDB\Field(type:'string')]
+//private ?string $start_date = null;
 
 #[MongoDB\Field(type:'string')]
-private string $delivery_mode;
-
+private ?string $duration = null;
 
 #[MongoDB\Field(type:'string')]
-private string $picture;
+private ?string $deliveryMode = null;
+
 
 #[MongoDB\Field(type:'string')]
 private string $video;
 
 #[MongoDB\Field(type:'string')]
-private string $localisation;
+private ?string $localisation = null;
+
+/**
+     * @MongoDB\ReferenceOne(targetDocument=User::class, mappedBy="auctions")
+     */
+/*     private $buyer; */
 
 #[MongoDB\Field(type:'string')]
-private string $seller_id;
+private ?string $seller_id = null;
 
 #[MongoDB\Field(type:'string')]
-private string $buyer_id;
+private ?string $buyer_id = null;
 
 
 
+#[MongoDB\Field(type:"collection")]
+private $pictures = [];
 
+#[MongoDB\Field(type:"string")]
+private $offre = null;
+
+/*
+public function __construct()
+{
+    $this->id = '';
+    $this->title = '';
+    $this->category = '';
+    $this->description = '';
+    $this->subcategory = '';
+    $this->start_price = '';
+    $this->sold_price = '';
+    $this->reserve_price = '';
+    $this->start_date = '';
+    $this->duration = '';
+    $this->delivery_mode = '';
+    $this->picture = '';
+    $this->video = '';
+    $this->localisation = '';
+    $this->seller_id = '';
+    $this->buyer_id = '';
+
+
+
+}    
+*/
 
 
 
@@ -76,20 +116,20 @@ private string $buyer_id;
 
         return $this->id;
     }
-
-    public function getTitle(): string
+    
+    public function getTitle(): ?string
     {
 
         return $this->title;
     }
 
-    public function getCategory(): string
+    public function getCategory(): ?string
     {
 
         return $this->category;
     }
    
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
 
         return $this->description;
@@ -97,7 +137,7 @@ private string $buyer_id;
 
 
 
-    public function getSubCategory(): string
+    public function getSubCategory(): ?string
     {
 
         return $this->subcategory;
@@ -105,49 +145,90 @@ private string $buyer_id;
 
     
 
-    public function getStartPrice(): string
+    public function getStartPrice(): ?string
     {
 
-        return $this->start_price;
+        return $this->startPrice;
     }
 
-    public function getSoldPrice(): string
+    public function getSoldPrice(): ?string
     {
 
-        return $this->sold_price;
+        return $this->soldPrice;
     }
 
-    public function getReserve_price(): string
+    public function getReservePrice(): ?string
     {
 
-        return $this->reserve_price;
+        return $this->reservePrice;
     }
 
+    public function getoffre(): ?string
+    {
+
+        return $this->offre;
+    }
     
-    
-    public function getStartdate(): string
+    /*
+    public function getStartDate(): ?string
     {
 
         return $this->start_date;
+    }*/
+
+    /*
+    public function getStartDate(): ?string
+    {
+        return $this->start_date instanceof \DateTimeInterface
+            ? $this->start_date->format('Y-m-d H:i:s')
+            : null;
+    }*/
+
+    public function getStartDate(): ?\DateTimeInterface
+    {
+    return $this->startDate;
     }
+
+
     
-    public function getDuration(): string
+
+
+    
+    public function getDuration(): ?string
     {
 
         return $this->duration;
     }
 
-    public function getDelivery_mode(): string
+    
+    /*
+    public function getDelivery_mode(): ?string    
     {
 
         return $this->delivery_mode;
+    } */
+
+    public function getDeliveryMode(): ?string
+    {
+    return $this->deliveryMode;
     }
 
-    public function getpicture(): string
+
+
+
+    /*
+    public function getpicture(): ?string
     {
 
         return $this->picture;
+    }*/
+    public function getPictures(): array
+    {
+        return $this->pictures;
     }
+
+
+
 
     public function getVideo(): string
     {
@@ -155,23 +236,32 @@ private string $buyer_id;
         return $this->video;
     }
 
-    public function getLocation(): string
+
+    /*
+    public function getLocation(): ?string
     {
 
         return $this->localisation;
+    }*/
+
+    public function getLocalisation(): ?string
+    {
+    return $this->localisation;
     }
 
-    public function getSellerId(): string
+    public function getSellerId(): ?string
     {
 
         return $this->seller_id;
     }
 
-    public function getBuyerId(): string
+    public function getBuyerId(): ?string
     {
 
         return $this->buyer_id;
     }
+
+    
 
 
 
@@ -179,14 +269,14 @@ private string $buyer_id;
 
 
 
-    public function setTitle(string $title)
+    public function setTitle(?string $title)
     {
 
         $this->title = $title;
         return $this;
     }
 
-    public function setCategory(string $category)
+    public function setCategory(?string $category)
     {
 
         $this->category = $category;
@@ -195,7 +285,7 @@ private string $buyer_id;
     }
 
 
-    public function setDescription(string $description)
+    public function setDescription(?string $description)
     {
 
         $this->description = $description;
@@ -204,7 +294,7 @@ private string $buyer_id;
     }
 
 
-    public function subCategory(string $subcategory)
+    public function setSubCategory(?string $subcategory)
     {
 
         $this->subcategory = $subcategory;
@@ -214,39 +304,64 @@ private string $buyer_id;
 
     
 
-    public function setStartPrice(string $start_price)
+    public function setStartPrice(?string $startPrice)
     {
 
-        $this->start_price = $start_price;
+        $this->startPrice = $startPrice;
 
         return $this;
     }
-    public function setSoldPrice(string $sold_price)
+    public function setSoldPrice(?string $soldPrice)
     {
     
-        $this->sold_price = $sold_price;
+        $this->soldPrice = $soldPrice;
 
         return $this;
     }
-    public function setReservePrice(string $reserve_price)
+    public function setReservePrice(?string $reservePrice)
     {
 
-        $this->reserve_price = $reserve_price;
+        $this->reservePrice = $reservePrice;
 
         return $this;
     }
 
     
-
-    public function setStartDate(string $start_date)
+/*
+    public function setStartDate(?string $start_date)
     {
         
         $this->start_date = $start_date;
         
         return $this;
+    }*/
+
+/*/
+    public function setStartDate(?string $start_date): self
+    {
+        $this->start_date = $start_date !== null
+            ? new \DateTime($start_date)
+            : null;
+
+        return $this;
+    }*/
+
+    /*
+    public function setStartDate(?string $start_date): self
+    {
+    $this->start_date = $start_date;
+    return $this;
+    }*/
+
+
+    public function setStartDate(?\DateTimeInterface $startDate): self
+    {
+    $this->startDate = $startDate;
+    return $this;
     }
 
-    public function setDuration(string $duration)
+
+    public function setDuration(?string $duration)
     {
         
         $this->duration = $duration;
@@ -254,21 +369,35 @@ private string $buyer_id;
         return $this;
     }
 
-    public function setDeliveryMode(string $delivery_mode)
+    /*
+    public function setDelivery_mode(?string $delivery_mode)
     {
         
         $this->delivery_mode = $delivery_mode;
         
         return $this;
+    }*/
+
+
+    public function setDeliveryMode(?string $deliveryMode)
+    {
+    $this->deliveryMode = $deliveryMode;
     }
 
-    public function setPicture(string $picture)
+
+    /*
+    public function setPicture(?string $picture)
     {
         
         $this->picture = $picture;
         
         return $this;
+    }*/
+    public function setPictures(array $pictures): void
+    {
+        $this->pictures = $pictures;
     }
+
 
     public function setVideo(string $video)
     {
@@ -278,28 +407,48 @@ private string $buyer_id;
         return $this;
     }
 
-    public function setLocalisation(string $localisation)
+
+    /*
+    public function setLocalisation(?string $localisation)
     {
         
         $this->localisation = $localisation;
         
         return $this;
-    }
+    }*/
 
-    public function setSellerId(string $seller_id)
+    public function setLocalisation(?string $localisation)
     {
-        
+        $this->localisation = $localisation;
+    }
+    
+    public function setSellerId(?string $seller_id)
+    {
+
         $this->seller_id = $seller_id;
-        
+
         return $this;
     }
 
-    public function setBuyerId(string $buyer_id)
+    public function setBuyerId(?string $buyer_id)
+    {
+
+        $this->buyer_id = $buyer_id;
+
+        return $this;
+    }
+
+
+    
+
+
+    public function setoffre(?string $offre)
     {
         
-        $this->buyer_id = $buyer_id;
+        $this->offre = $offre;
         
         return $this;
     }
 
-    }
+    
+} 

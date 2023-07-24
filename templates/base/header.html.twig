@@ -1,0 +1,121 @@
+
+ <header class="">
+
+        <!-- ______________________________________nav ligne 1_______________________________________ -->
+
+    <nav class="container">
+        <div class="flexnavhaut">
+            <a class="" href="#"><img src="/assets/icones/logo/Property 1=original.png" alt="logo"></a>
+            <a href="{{path('app_auction_new_auction') }}" class="boutonspé">Déposer&nbsp;une&nbsp;annonce</a>
+
+            {# Formulaire de recherche dans la navigation #}
+            <form class="form-inline" method="post" action="{{ path('search_auctions') }}">
+                <div class="input-group">
+                    <div class="input-group-prepend input-group-text">
+                        <span class="input-group"><img src="/assets/icones/loupe_flitres/loupe_gris.svg" alt="icone loupe"></span>
+                    </div>
+                    <input type="text" id="search-input" class="form-control" placeholder="Rechercher sur Leboncoin" aria-label="Username" aria-describedby="basic-addon1" name="keyword" >
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+
+       
+            <section class="flexnavhaut">
+{# __________________partie droite 1ère ligne, globalement ok, gérer l'espace entre les icones ! #}
+                <div class="liens-navhaut">
+                    <div>
+                        <img src="/assets/icones/cloches/cloche_noir_pleine.svg" alt="">
+                    </div>
+                    <div>
+                        <a href="#">Notifications</a>
+                    </div>
+                </div>
+
+                <div class="liens-navhaut">
+                    <div>
+                        <img src="/assets/icones/coeurs/coeur_noir_plein.svg" alt="">
+                    </div>
+                    <div>
+                        <a href="#">Favoris</a>
+                    </div>
+                </div>
+
+                <div class="liens-navhaut">
+                    <div>
+                        <img src="/assets/icones/message/message_plein.svg" alt="">
+                    </div>
+                    <div>
+                        <a href="#">Messages</a>
+                    </div>
+                </div>
+
+                <div class="liens-navhaut">
+                    <div>
+                        <img src="/assets/icones/profil/profil_plein_small.svg" alt="">
+                    </div>
+                    {% if app.user %}
+                    <div>
+                        <a href="{{path('app_user') }}">Profil</a>
+                    </div>
+
+                    {% else %}
+                    <div>
+                        <a href="{{path('app_login') }}">Se&nbsp;Connecter</a>
+                    </div>
+                    {% endif %}
+                </div>
+
+            </section>   
+
+
+
+        </div>
+    </nav>
+
+<!-- _______________________________nav ligne 2 ____________________-->
+    <nav id='menu' class="container">
+        <ul class="navbas">
+            <li><a class="linkhover" href="#">Immobilier&nbsp;</a></li>
+            <li><a class="linkhover" href="#">Véhicules&nbsp;</a></li>
+            <li><a class="linkhover" href="#">Vancances&nbsp;</a></li>
+            <li><a class="linkhover" href="#">Emplois&nbsp;</a></li>
+            <li><a class="linkhover" href="#">Mode&nbsp;</a></li>
+            <li><a class="linkhover" href="#">Maison&nbsp;</a></li>
+            <li><a class="linkhover" href="#">Multimédia&nbsp;</a></li>
+            <li><a class="linkhover" href="#">Materiel&nbsp;Professionnel&nbsp;</a></li>
+            <li><a class="linkhover" href="#">Autres&nbsp;</a></li>
+            <li class="sub-menu-container"><a class="auctionhover"><img src="/assets/icones/marteau/marteau_orange_small.svg" alt="">Enchères</a>
+            <ul class="sub-menus">
+            <li class="titlesub"><h3>Enchères</h3></li>
+                {% for key, submenu in menu %}
+                <li>
+                    <!--<a href="\category\{{key}}"><p class="cat">{{key}}</p></a>-->
+                    <a href="{{ path('app_category',  {'category':key}) }}"><p class="cat">{{key}}</p></a>
+                    <ul class="align-left">
+                        {% for subCat in submenu %}
+                            <li>
+                                <!--<a href="\category\{{key}}\{{subCat}}">
+                                    <p>{{subCat}}</p>
+                                </a>-->
+                                <a href="{{ path('app_subcategory', {'category':key, 'subcategory':subCat}) }}">
+                                    <p>{{subCat}}</p>
+                                </a>
+                            </li>
+                        {% endfor %}    
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul> 
+
+              {#    <ul class='sub-menus'>
+                    <li><a href="#">Multimédia</a></li>
+                    <li><a href="#">Mode</a></li>
+                    <li><a href="#">Livres</a></li>
+                    <li><a href="#">Maison</a></li>
+                </ul>
+            </li>
+        </ul> #}
+    </nav>
+
+
+    </header>

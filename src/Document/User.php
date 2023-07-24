@@ -33,11 +33,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     //#[MongoDB\Field(type: 'array')]
     #[MongoDB\Field(type: "collection")]
-    private array $roles ;
+    private array $roles = [] ;
 
     #[MongoDB\Field(type: 'string')]
     private string $phone;
+   // @ODM\Document\(collection="User")
+   //   private $auctions;
 
+  /**
+     * @MongoDB\ReferenceMany(targetDocument="Auctions::class", inversedBy="buyer")
+     */
+    private $auctions;
+
+    // ...
     
 
 //GET____________________________________
@@ -71,12 +79,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getRoles(): array
     {
-        $roles = $this->roles;
+       $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 
-        return array_unique($roles);
+       return array_unique($roles);
     }
+
+        
+    
+
+        public function getAuctions(): Collection
+       {
+        return $this->auctions;
+        }
+
+        
+
+    
 
     
 
@@ -155,3 +175,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
 }
+

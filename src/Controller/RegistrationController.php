@@ -2,11 +2,8 @@
 
 namespace App\Controller;
 
-use App\Document\Registers;
-
 
 use App\Document\User;
-//use App\Entity\User;
 
 use App\Repository\UserRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
@@ -39,27 +36,17 @@ class RegistrationController extends AbstractController
         $this->documentManager = $documentManager;
     }
 
-
-
-    
-
     //public function __construct(EmailVerifier $emailVerifier)
    // {
       //  $this->emailVerifier = $emailVerifier;
    // }
  
-
-    
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, DocumentManager $dm): Response
     {
 
-        
-        
         //$user = new User();
-
         $user = new User();
-
 
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -67,13 +54,11 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             // Récupérer la valeur du champ "firstname" du formulaire
-           // $firstname = $form->get('firstname')->getData();
-        
+            // $firstname = $form->get('firstname')->getData();
             //dump($user);
             // Définir la valeur du prénom dans l'objet User
-           // $user->setFirstname($firstname);
+            // $user->setFirstname($firstname);
 
-            
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -132,11 +117,7 @@ class RegistrationController extends AbstractController
     }
 
 
-
-
-
-
-
+    
    /*  #[Route('/register/test', name: 'app_register_test')]
     public function createAction(RegistrationsRepository $RegistrationsRepository)
     {
@@ -152,9 +133,6 @@ class RegistrationController extends AbstractController
 
         
     } */
-
-
-
 
 
 }
