@@ -15,6 +15,10 @@ Visual Studio Code (VS Code) est un éditeur de code source gratuit et open-sour
 Symfony suit le modèle de conception du patron de conception MVC (Modèle-Vue-Contrôleur).Symfony est largement utilisé pour développer des applications web de toutes tailles, des petites applications aux projets d'entreprise complexes. 
 Base de données : MongoDB est une base de données orientée documents de type NoSQL (Not Only SQL). C'est un système de gestion de base de données (SGBD) open-source conçu pour stocker et gérer de grandes quantités de données de manière flexible et évolutive.
 
+#### Base de données :
+![bdd.png](/public/assets/images/bdd.png)*__MangoDB__*
+MongoDB est une base de données NoSQL (Not Only SQL) qui appartient à la famille des bases de données orientées documents. Contrairement aux bases de données relationnelles traditionnelles (SQL), MongoDB ne stocke pas les données dans des tables avec des lignes et des colonnes, mais utilise un format flexible et semi-structuré appelé BSON (Binary JSON) pour stocker les données sous forme de documents JSON
+
 #### language de développement :
 ![icone3.png](/public/assets/images/icone3.png) *__HTML__* 
 HTML (HyperText Markup Language) est le langage de balisage standard utilisé pour créer et structurer le contenu d'une page web. 
@@ -94,8 +98,9 @@ La page Home a été créer , il faudra configurer le reste des controller pour 
 
 ---------
 Il faudra faire aussi un formulaire pour enregistrer les enchères
-####AuctionsType.php:
- il faudra ajouter les différents ->add et de bien choisir les type correspondant 
+####AuctionsType.php: ![form.png](/public/assets/images/form.png) 
+ il faudra ajouter les différents ' ->add ' et de bien choisir les type correspondant et vérifié que le Use s 'incrémente automatiquement sinon il faudra le rajouter.
+
  ```php
  Auctionstype
 
@@ -144,7 +149,33 @@ private ?string $title = null;
     }
 }
  ```
+Dans le fichier AuctionController , il faudra créer la route pour le rediriger ver le template twig
 
+```php
+ #[Route('/new_auction', name: 'app_auction_new_auction')]
+    public function newAuction(Request $request, DocumentManager $documentManager): Response
+    {
+        $auction = new Auctions();
+        $form = $this->createForm(AuctionType::class, $auction);
+        $form->handleRequest($request);
+             
+        if ($form->isSubmitted()) {
+            if (!$form->isValid()) {
+                // Afficher les erreurs de validation du formulaire
+                foreach ($form->getErrors(true, true) as $error) {
+                    echo $error->getMessage()."\n";
+                }
+            } else {
+                // Sauvegardez l'entité Auctions en base de données
+                $documentManager->persist($auction);
+                $documentManager->flush();
+
+            return $this->redirectToRoute('app_auction_new_recap', ['id' => $id]);
+
+            }
+```
+
+Pour le template auction/index.html.twig
 
 
 
