@@ -55,7 +55,7 @@ class CategoryController extends AbstractController
      * 
      */
     #[Route('/{category}/{subcategory}', name: 'app_subcategory')]
-    public function subCategory(string $category, string $subcategory, Request $request, AuctionsRepository $auctionsRepository): Response
+    public function subCategory(string $category, string $subcategory, Request $request, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm): Response
     {      
 
 

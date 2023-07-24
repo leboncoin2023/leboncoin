@@ -6,7 +6,7 @@
     <nav class="container">
         <div class="flexnavhaut">
             <a class="" href="#"><img src="/assets/icones/logo/Property 1=original.png" alt="logo"></a>
-            <a href="#" class="boutonspé">Déposer&nbsp;une&nbsp;annonce</a>
+            <a href="{{path('app_auction_new_auction') }}" class="boutonspé">Déposer&nbsp;une&nbsp;annonce</a>
 
             {# Formulaire de recherche dans la navigation #}
             <form class="form-inline" method="post" action="{{ path('search_auctions') }}">

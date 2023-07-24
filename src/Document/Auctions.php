@@ -66,9 +66,13 @@ private ?string $localisation = null;
 /**
      * @MongoDB\ReferenceOne(targetDocument=User::class, mappedBy="auctions")
      */
-    private $buyer;
+/*     private $buyer; */
 
+#[MongoDB\Field(type:'string')]
+private ?string $seller_id = null;
 
+#[MongoDB\Field(type:'string')]
+private ?string $buyer_id = null;
 
 
 
@@ -245,9 +249,16 @@ public function __construct()
     return $this->localisation;
     }
 
-    public function getBuyer()
+    public function getSellerId(): ?string
     {
-        return $this->buyer;
+
+        return $this->seller_id;
+    }
+
+    public function getBuyerId(): ?string
+    {
+
+        return $this->buyer_id;
     }
 
     
@@ -411,10 +422,20 @@ public function __construct()
         $this->localisation = $localisation;
     }
     
-    public function setBuyer($buyer)
-
+    public function setSellerId(?string $seller_id)
     {
-        $this->buyer = $buyer ;
+
+        $this->seller_id = $seller_id;
+
+        return $this;
+    }
+
+    public function setBuyerId(?string $buyer_id)
+    {
+
+        $this->buyer_id = $buyer_id;
+
+        return $this;
     }
 
 
