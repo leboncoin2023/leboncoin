@@ -328,4 +328,16 @@ class AuctionController extends AbstractController
         ]);
     }
 
+
+    //Guillaume : affichage de l'enchere selctionnée par l'acheteur
+    #[Route('/', name: 'app_auction_detail')]
+    public function getAuctionbyId(AuctionsRepository $auctionsRepository): Response
+    {
+    $auctions = $auctionsRepository->findAllFromBdd();
+
+    return $this->render('auction/auction_detail_buyer.html.twig', [
+        'auctions' => $auctions,
+    ]);
+    }
+
 }
