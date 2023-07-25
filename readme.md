@@ -99,7 +99,7 @@ En résumé, ce code définit un contrôleur HomeController avec une méthode in
 
 
 
-Création d' un template twig associé au HomeController nomé  par défaut index.html.twig  dans le fichier templates/home.
+Création d' un template twig associé au HomeController nommé  par défaut index.html.twig  dans le fichier templates/home.
 
 ![twig.png](/public/assets/images/twig.png)
 
