@@ -21,15 +21,18 @@
                             </ol>
                         </nav>
             <!-- catalogue de photos -->
-                <div class="row">
+                <div class="row my-5">
+
                             {% if dauction.getPictures|length > 0 %}
                                 {% for picturePath in dauction.getPictures %}
-                                <div class="col-5 img_card_detail m-2">
-                                    <img src="{{ asset('uploads/pictures/' ~ picturePath) }}" class="card-img" alt="Photo de l'enchère">
+                                <div class="col-5 img_auction m-2 p-0">
+                                    <img src="{{ asset('uploads/pictures/' ~ picturePath) }}" class="cropped3 m-2" alt="Photo de l'enchère">
                                 </div>
                                 {% endfor %}
                             {% else %}
+                                <div class="col-5 card-img-lbc_detail m-2">
                                     <p>Aucune image disponible</p>
+                                </div>
                             {% endif %}
                         
                         <div class="col-6 voir_plus">
@@ -43,21 +46,12 @@
 
 
 
-                        </div>
 
 
                         <div class="">
                             <div class="d-flex">
                                 <div>
-                                    <h1>Iphone 13</h1>
-                                </div>
-
-
-                                <div>
-                                    <p>Année:</p>
-                                </div>
-                                <div>
-                                    <p>2020</p>
+                                    <h1>{{ dauction.title }}</h1>
                                 </div>
                                 <div>
                                     <p>État:</p>
@@ -65,98 +59,76 @@
                                 <div>
                                     <p> Très bon</p>
                                 </div>
-
                             </div>
                             <div>
-                                <p>Annonce publiée le: 17/07/2023 à 13:45</p>
+                                <p>Annonce publiée le: xxxxxxx</p>
                             </div>
                         </div>
 
                         <hr>
 
                         <div>
-                            <h2>Description</h2>
-
+                            <h2 class="mb-3">Description</h2>
                             <div>
-                                <p>Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Labore tempore neque exercitationem enim? Totam, alias minus.
-                                    Animi,
-                                    quos
-                                    adipisci deserunt, fugiat tempore eos asperiores inventore explicabo rem
-                                    reiciendis
-                                    iure
-                                    nemo?
-                                </p>
+                                <p>{{ dauction.description }}</p>
                             </div>
-
                         </div>
 
                         <hr>
 
                         <div>
-                            <h2>Critères</h2>
-                            <div class="d-flex">
+                            <h2 class="mb-3">Critères</h2>
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex">
+                                        <img src="/assets/icones/criteres/critere_etat.svg" alt="etat">
+                                        <span>État: Très bon état</span>
+                                    </div>
 
-                                <div class="d-flex">
-                                    <img src="assets/icones/criteres/critere_etat.svg" alt="etat">
-                                    <p>État</p>
-                                    <span>Très bon état</span>
+                                    <div class="d-flex">
+                                        <img src="/assets/icones/criteres/critere_marque.svg" alt="marque">
+                                        <span>Marque: Apple</span>
+                                    </div>
+
+                                    <div class="d-flex">
+                                        <img src="/assets/icones/criteres/critere_marque.svg" alt="Modèle">
+                                        <span>Modèle: Iphone 13</span>
+                                    </div>
+
+                                    <div class="d-flex">
+                                        <img src="/assets/icones/criteres/criteres_couleur.svg" alt="Couleur">
+                                        <span>Couleur: Noir</span>
+                                    </div>
+
+                                    <div class="d-flex">
+                                        <img src="/assets/icones/criteres/criteres_stockage.svg" alt="Stockage">
+                                        <span>Stockage: 128 GO</span>
+                                    </div>
                                 </div>
-
-
-                                <div class="d-flex">
-                                    <img src="assets/icones/criteres/critere_marque.svg" alt="marque">
-
-                                    <p>Marque</p>
-                                    <span>Apple</span>
-                                </div>
-
-
-                                <div class="d-flex">
-                                    <img src="assets/icones/criteres/critere_marque.svg" alt="">
-                                    <p>Modèle</p>
-                                    <span>Iphone 13</span>
-                                </div>
-
-
-                                <div class="d-flex">
-                                    <img src="assets/icones/criteres/criteres_couleur.svg" alt="">
-                                    <p>Couleur</p>
-                                    <span>Noir</span>
-                                </div>
-
-
-                                <div class="d-flex">
-                                    <img src="assets/icones/criteres/criteres_stockage.svg" alt="">
-                                    <p>Stockage</p>
-                                    <span>128 GO</span>
-                                </div>
-
-
-                            </div>
-
                         </div>
 
                         <hr>
 
                         <div>
-                            <h2>Remise en main propre avec paiement sécurisé </h2>
-                            <div class="d-flex">
-                                <img src="assets/icones/badge_certif/badge_certif_euro.svg" alt="">
-                                <p>Réservez ce bien jusqu’au rendez-vous avec le vendeur</p>
+                            <h2 class="mb-3">Livraison :  </h2>
+                            <div class="d-flex flex-row align-content-between">
+                                <div class="d-flex flex-column align-items-center">
+                                    <img src="/assets/icones/badge_certif/badge_certif_euro.svg" class="icon_liv mx-2" alt="badge_certif">
+                                    <img src="/assets/icones/information/smiley.svg" class="icon_liv2 mx-2" alt="smiley">
+                                </div>
+
+                                <div class="d-flex flex-column">
+                                    <span class="mx-5 my-1">Restez libre de refuser ce bien s’il ne correspond pas à vos attentes</span>
+                                    <span class="mx-5 my-2">Réservez ce bien jusqu’au rendez-vous avec le vendeur</span>
+                                </div>
                             </div>
-                            <div class="d-flex">
-                                <img src="assets/icones/information/smiley.svg" alt="">
-                                <p>Restez libre de refuser ce bien s’il ne correspond pas à vos attentes</p>
-                            </div>
-                            <a href="#">Comment ça marche ?</a>
+                            <a href="#" class="link-liv" >Comment ça marche ?</a>
                         </div>
 
                         <hr>
 
                         <div>
 
-                            <h2>Livraison</h2>
+                            <h2 class="mb-3">Livraison : {{ dauction.deliveryMode }}</h2>
                             <p>Recevez ce bien à domicile ou a deux pas de chez vous</p>
                             <div class="d-flex">
                                 <div>
