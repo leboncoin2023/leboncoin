@@ -11,7 +11,7 @@
 <body>
     <h1>Search Results</h1>
     <ul>
-        {% for key, auction in auctions %}
+        {# {% for key, auction in auctions %}
             <li>
                 <h2>{{ auction.title }}</h2>
                 <p>{{ auction.description }}</p>
@@ -19,7 +19,7 @@
                 <p>End Date: {{ auction.end_date|date('Y-m-d H:i:s') }}</p>
                 {# Ajoutez d'autres détails d'enchères selon votre modèle de données #}
             </li>
-        {% endfor %}
+        {% endfor %} #}
     </ul>
 </body>
 </html>
