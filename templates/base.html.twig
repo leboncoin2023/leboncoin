@@ -28,15 +28,16 @@
     <body>
         {% for label, messages in app.flashes %}
             {% for message in messages %}
-                <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-                    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                        <div class="toast-header text-white bg-{{ label }}">
-                            <strong class="me-auto">Notification</strong>
-                            <small>Maintenant</small>
-                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                <div class=" position-fixed top-50 start-50 translate-middle p-3" style="z-index: 11">
+                    <div id="liveToast" class="  popup" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="popheader">
+                            <button type="button" class="btn-close closepopup" data-bs-dismiss="toast" aria-label="Close"></button>
                         </div>
                         <div class="toast-body">
-                            {{ message }}
+                        <strong>{{ message }}</strong>
+                            <p class="popupstatus">Nous la transmettons auprès du vendeur.<br>
+                            Vous serez informé si une nouvelle enchère intervient.</p>
+                            <button type="button" class="btnpopup closepopup" data-bs-dismiss="toast" aria-label="Close">Ok</button>
                         </div>
                     </div>
                 </div>

@@ -759,3 +759,33 @@ header{
 
 
   /* ********************** */
+
+
+
+
+  /*___________________________POP-UP ALEX___________________________________*/
+
+  .popheader{
+    display: flex;
+    justify-content: flex-end;
+    
+  }
+
+  .popup{
+    text-align: center;
+    background-color: var(--vintage_white);
+    border-radius: 12px;
+  }
+
+  .btnpopup{
+    border: solid 1px var(--lb_orange);
+    background-color: var(--lb_orange);
+    color: var(--vintage_white);
+    padding: 10px 25px 10px 25px;
+    border-radius: 8px;
+  }
+
+  .popupstatus{
+   padding-top: 50px;
+   padding-bottom: 30px;
+  }

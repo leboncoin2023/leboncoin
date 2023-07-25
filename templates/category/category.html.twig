@@ -15,9 +15,10 @@
                     <h1 class="h_one_cat">{{ sub.subcategory }}</h1>
                 </div>
                 
-                <div class="d-flex flex-row mt-2 mb-5">
+                <a class="d-flex flex-row mt-2 mb-5" href="€">
 
                     {% for auction in sub.auctions %}
+                    
                         <div class="col-3 mx-3">
                             <div class="cardlbc">
                                 {% if auction.pictures is empty %}
@@ -42,7 +43,7 @@
                         </div>
                     {% endfor %} 
 
-                </div>
+                </a>
 
             {% endfor %}   
 

@@ -221,7 +221,7 @@ class AuctionController extends AbstractController
 
                 $this->addFlash(
                     'success',
-                    'Offre validée !'
+                    'Votre offre a bien été enregistrée.'
                 );
 
             }else {
