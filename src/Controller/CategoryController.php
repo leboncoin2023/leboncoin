@@ -56,7 +56,6 @@ class CategoryController extends AbstractController
     public function subCategory(string $category, string $subcategory, Request $request, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm): Response
     {      
 
-
         $auctions = $auctionsRepository->getAuctionsByCategory($subcategory);
 
         // dd($auctions);
@@ -73,7 +72,7 @@ class CategoryController extends AbstractController
 
 
         // Appeler l'affichage en passant les paramètres nécessaires        
-        return $this->render('category/subcategory.html.twig', [
+        return $this->render('category/subcategory_test.html.twig', [
             'auctions' => $auctions,
             'menu' => $repo->getAllCategoriesAndSub($dm)
         ]);
