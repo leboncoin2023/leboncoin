@@ -149,9 +149,9 @@ class AuctionController extends AbstractController
         }
     
         return $this->render('auction/new_auction.html.twig', [
-            'form' => $form->createView(),
-            'auction' => $auction,
-            'menu' => $catRepo->getAllCategoriesAndSub($documentManager),
+            'form'      => $form->createView(),
+            'auction'   => $auction,
+            'menu'      => $catRepo->getAllCategoriesAndSub($documentManager),
             
         ]);
     }
@@ -175,8 +175,8 @@ class AuctionController extends AbstractController
 
         // Affichez les détails de l'enchère dans la vue
         return $this->render('auction/new_recap.html.twig', [
-            'auction' => $auction,
-            'menu' => $repo->getAllCategoriesAndSub($dm)
+            'auction'   => $auction,
+            'menu'      => $repo->getAllCategoriesAndSub($dm)
         ]);
     }
 
@@ -194,23 +194,40 @@ class AuctionController extends AbstractController
         // récuperez l'objet 'auctions' avec l'id spécifié depuis la basse de données 
         $dauction = $dm->getRepository(Auctions::class)->find($id);
 
+
+
+
+        $tabOffre = $dauction->getoffre();
+        usort($tabOffre, fn($a, $b) => $b['offre'] <=> $a['offre']);
+        $oldMaxPrice    = $tabOffre[0]['offre'];
+        
+
+
         if(null != $request->request->get('offre')){
 
-            $tabOffre       = $dauction->getoffre();
-            usort($tabOffre, fn($a, $b) => $b['offre'] <=> $a['offre']);
-            $oldMaxPrice    = $tabOffre[0]['offre'];
-            $offre          = $request->request->get('offre');
+
+            if(empty($tabOffre)){
+            
+                $oldMaxPrice = 0;
+            }
+            $offre  = $request->request->get('offre');
 
             if($offre > $oldMaxPrice){
                 $tabOffre[] = ['offerUserId' => $this->getUser()->getId(), 'offre' => $offre, 'date' => date('Y-m-d h:i:s')];
                 $dauction   ->setoffre($tabOffre);
                 $dm         ->persist($dauction);
                 $dm         ->flush();
+                $oldMaxPrice = $offre;
+
+                $this->addFlash(
+                    'success',
+                    'Offre validée !'
+                );
 
             }else {
                 $this->addFlash(
                     'danger',
-                    'Montant insuffisant'
+                    'Montant insuffisant !'
                 );
             }
 
@@ -222,9 +239,10 @@ class AuctionController extends AbstractController
         }
       
        return $this->render('auction/auction_detail_buyer.html.twig',[
-            'dauction' =>  $dauction ,
-            'auctionId' => $id,
-            'menu' => $repo->getAllCategoriesAndSub($dm)
+            'dauction'      =>  $dauction ,
+            'auctionId'     => $id,
+            'menu'          => $repo->getAllCategoriesAndSub($dm),
+            'CurrentValue'  => $oldMaxPrice
         ]);
     }
     
@@ -256,11 +274,11 @@ class AuctionController extends AbstractController
 
         // réaffiche le template de l'enchere
         return $this->render('auction/detail.html.twig',[
-            'dauction' =>  $dauction ,
+            'dauction'  =>  $dauction ,
             'auctionId' => $id,
-            'seller' => $sellerid,
+            'seller'    => $sellerid,
              'mauction' => $mauction,
-             'menu' => $repo->getAllCategoriesAndSub($dm)
+             'menu'     => $repo->getAllCategoriesAndSub($dm)
         ]);
     }
     
