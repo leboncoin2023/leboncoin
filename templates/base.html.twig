@@ -29,7 +29,23 @@
         {% include 'base/header.html.twig' %}
         {% block body %}
         
-          
+           <header>
+        <h1>Mon Application</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ path('app_user') }}">Accueil</a></li>
+                <li><a href="{{ path('app_user_edit') }}">Éditer l'utilisateur</a></li>
+                <li><a href="{{ path('app_user_auction') }}">Enchères de l'utilisateur</a></li>
+                <li><a href="{{ path('app_user_delete') }}">Supprimer l'utilisateur</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; {{ "now"|date("Y") }} Mon Application. Tous droits réservés.</p>
+    </footer>
                 
 
             
@@ -49,6 +65,3 @@
 
 
 </html>
-
-
-
