@@ -120,7 +120,9 @@ private $offre = [];
 
     public function getStartDate(): ?\DateTimeInterface
     {
+
     return $this->startDate;
+
     }
 
     public function getDuration(): ?string
@@ -131,7 +133,9 @@ private $offre = [];
 
     public function getDeliveryMode(): ?string
     {
+        
     return $this->deliveryMode;
+
     }
 
     public function getPictures(): array
