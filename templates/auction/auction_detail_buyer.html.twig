@@ -20,54 +20,38 @@
                                 <li class="breadcrumb-item active" aria-current="page">Iphone 13</li>
                             </ol>
                         </nav>
-                        <!-- catalogue de photos -->
-                        <div class="row">
-                               
-                            <div class="photo">
-                                    <div class="row">
-   
-                                        <div class=" col-5 img_card_detail">
-                                            <!--<img width="100%" src="/assets/img/iphone.jpg" alt="image 1">-->
-                                        </div>
+            <!-- catalogue de photos -->
+                <div class="row my-5">
 
-                                        <div class="col-5 img_card">
-                                            <img width="100%" src="/assets/img/iphone.jpg" alt="image 2">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row">
-                                        <div class="col-6 img_card">
-                                            <img width="100%" src="/assets/img/iphone.jpg" alt="image 3">
-                                        </div>
-                                        <div class="col-6 voir_plus">
-                                            <a href="#">
-                                                <img src="assets/icones/fleches/fleche_voirplus.svg" alt="fleche voir plus">
-                                                <p>Voir plus</p>   
-                                            </a>
-                                        </div>
-
-                                    </div>
-                            </div>
-
-
-
-
+                            {% if dauction.getPictures|length > 0 %}
+                                {% for picturePath in dauction.getPictures %}
+                                <div class="col-5 img_auction m-2 p-0">
+                                    <img src="{{ asset('uploads/pictures/' ~ picturePath) }}" class="cropped3 m-2" alt="Photo de l'enchère">
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="col-5 card-img-lbc_detail m-2">
+                                    <p>Aucune image disponible</p>
+                                </div>
+                            {% endif %}
+                        
+                        <div class="col-6 voir_plus">
+                            <a href="#">
+                                <img src="/assets/icones/fleches/fleche_voirplus.svg" alt="fleche voir plus">
+                                <p>Voir plus</p>   
+                            </a>
                         </div>
+                </div>
+            <!-- catalogue de photos -->
+
+
+
 
 
                         <div class="">
                             <div class="d-flex">
                                 <div>
-                                    <h1>Iphone 13</h1>
-                                </div>
-
-
-                                <div>
-                                    <p>Année:</p>
-                                </div>
-                                <div>
-                                    <p>2020</p>
+                                    <h1>{{ dauction.title }}</h1>
                                 </div>
                                 <div>
                                     <p>État:</p>
@@ -75,136 +59,138 @@
                                 <div>
                                     <p> Très bon</p>
                                 </div>
-
                             </div>
                             <div>
-                                <p>Annonce publiée le: 17/07/2023 à 13:45</p>
+                                <p>Annonce publiée le: xxxxxxx</p>
                             </div>
                         </div>
 
                         <hr>
 
                         <div>
-                            <h2>Description</h2>
-
+                            <h2 class="mb-3">Description</h2>
                             <div>
-                                <p>Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Labore tempore neque exercitationem enim? Totam, alias minus.
-                                    Animi,
-                                    quos
-                                    adipisci deserunt, fugiat tempore eos asperiores inventore explicabo rem
-                                    reiciendis
-                                    iure
-                                    nemo?
-                                </p>
+                                <p>{{ dauction.description }}</p>
                             </div>
-
                         </div>
 
-                        <hr>
+                        <hr> <!--   CRITERES  -->
 
                         <div>
-                            <h2>Critères</h2>
-                            <div class="d-flex">
+                            <h2 class="mb-5">Critères</h2>
+                                <div class="d-flex flex-row">
+                                    <div class="col-4 d-flex flex-column">
+                                        <div class="d-flex mb-5">
+                                            <img src="/assets/icones/criteres/critere_etat.svg" class="me-2" alt="etat">
+                                            <span>État: Très bon état</span>
+                                        </div>
+                                        <div class="d-flex mb-1">
+                                            <img src="/assets/icones/criteres/criteres_couleur.svg" class="me-2" alt="Couleur">
+                                            <span>Couleur: Noir</span>
+                                        </div>
+                                    </div>
 
-                                <div class="d-flex">
-                                    <img src="assets/icones/criteres/critere_etat.svg" alt="etat">
-                                    <p>État</p>
-                                    <span>Très bon état</span>
+                                    <div class="col-4 d-flex flex-column mb-4">
+                                        <div class="d-flex mb-5">
+                                            <img src="/assets/icones/criteres/critere_marque.svg" class="me-2" alt="marque">
+                                            <span>Marque: Apple</span>
+                                        </div>
+
+                                        <div class="d-flex mb-1">
+                                            <img src="/assets/icones/criteres/criteres_stockage.svg" class="me-2" alt="Stockage">
+                                            <span>Stockage: 128 GO</span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-4 d-flex flex-column mb-4">
+                                        <div class="d-flex mb-5">
+                                            <img src="/assets/icones/criteres/critere_marque.svg" class="me-2" alt="Modèle">
+                                            <span>Modèle: Iphone 13</span>
+                                        </div>
+                                    </div>
                                 </div>
-
-
-                                <div class="d-flex">
-                                    <img src="assets/icones/criteres/critere_marque.svg" alt="marque">
-
-                                    <p>Marque</p>
-                                    <span>Apple</span>
-                                </div>
-
-
-                                <div class="d-flex">
-                                    <img src="assets/icones/criteres/critere_marque.svg" alt="">
-                                    <p>Modèle</p>
-                                    <span>Iphone 13</span>
-                                </div>
-
-
-                                <div class="d-flex">
-                                    <img src="assets/icones/criteres/criteres_couleur.svg" alt="">
-                                    <p>Couleur</p>
-                                    <span>Noir</span>
-                                </div>
-
-
-                                <div class="d-flex">
-                                    <img src="assets/icones/criteres/criteres_stockage.svg" alt="">
-                                    <p>Stockage</p>
-                                    <span>128 GO</span>
-                                </div>
-
-
-                            </div>
-
                         </div>
-
-                        <hr>
+                        
+                        <hr> <!--  REMIS EN MAIN PROPRE -->
 
                         <div>
-                            <h2>Remise en main propre avec paiement sécurisé </h2>
-                            <div class="d-flex">
-                                <img src="assets/icones/badge_certif/badge_certif_euro.svg" alt="">
-                                <p>Réservez ce bien jusqu’au rendez-vous avec le vendeur</p>
+                            <h2 class="mb-5">Remise en main propre avec paiement sécurisé</h2>
+                            <div class="d-flex flex-row align-content-between">
+                                <div class="d-flex flex-column align-items-center">
+                                    <img src="/assets/icones/badge_certif/badge_certif_euro.svg" class="icon_liv mx-2" alt="badge_certif">
+                                    <img src="/assets/icones/information/smiley.svg" class="icon_liv2 mx-2" alt="smiley">
+                                </div>
+
+                                <div class="d-flex flex-column">
+                                    <span class="mx-5 my-1">Restez libre de refuser ce bien s’il ne correspond pas à vos attentes</span>
+                                    <span class="mx-5 my-2">Réservez ce bien jusqu’au rendez-vous avec le vendeur</span>
+                                </div>
                             </div>
-                            <div class="d-flex">
-                                <img src="assets/icones/information/smiley.svg" alt="">
-                                <p>Restez libre de refuser ce bien s’il ne correspond pas à vos attentes</p>
+                            <div class="mt-3 mb-5">
+                                <a href="#" class="link-liv" >Comment ça marche ?</a>
                             </div>
-                            <a href="#">Comment ça marche ?</a>
                         </div>
 
-                        <hr>
+                        <hr> <!--  MODE DE LIVRAISON -->
 
                         <div>
 
-                            <h2>Livraison</h2>
+                            <h2 class="mb-5">Livraison : {{ dauction.deliveryMode }}</h2>
                             <p>Recevez ce bien à domicile ou a deux pas de chez vous</p>
-                            <div class="d-flex">
-                                <div>
-                                    <div class="d-flex">
-                                        <p>Mondiale Replay</p>
-                                        <img src="assets/icones/rs_livraison/mondialrelay.svg"
-                                            alt="logo Mondial Replay">
+                            
+                            <div class="d-flex flex-row">
+                            
+                                    <div class="d-flex flex-column align-items-center mx-3 me-5">
+                                        <div class="d-flex flex-row mb-3">
+                                            <div>
+                                                <span class="fw-bolder me-2">Mondial Relay</span>
+                                            </div>
+                                            <div>
+                                                <img src="/assets/icones/rs_livraison/mondialrelay.svg" alt="logo Mondial Replay">
+                                            </div>
+                                        </div>
+                                        <span class="subtitle">En point Mondial Relay</span> 
+                                        <span class="subtitle mb-3">sous 3-5 jours</span>
                                     </div>
-                                    <p>En point Mondial Relay <br> sous 3-5 jours</p>
-                                </div>
-                                <div>
-                                    <div class="d-flex">
-                                        <p>Chronopost</p>
-                                        <img src="assets/icones/rs_livraison/chronopost.svg" alt="logo Chronopost">
+
+                                    <div class="d-flex flex-column align-items-center mx-3">
+                                        <div class="d-flex flex-row mb-3">
+                                            <div>
+                                                <span class="fw-bolder me-2">Chronopost</span>
+                                            </div>
+                                            <div>
+                                                <img src="/assets/icones/rs_livraison/chronopost.svg" alt="logo Chronopost">
+                                            </div>
+                                        </div>
+                                        <span class="subtitle">En point Pickup</span> 
+                                        <span class="subtitle mb-3">sous 3-5 jours</span>
                                     </div>
-                                    <p>En point Pickup <br> sous 3-5 jours</p>
-                                </div>
                             </div>
 
                         </div>
 
-                        <hr>
+                        <hr> <!--  PROTECTIONS -->
 
-                        <div>
-                            <h2>Protection leboncoin</h2>
-                            <div class="d-flex">
-                                <img src="assets/icones/badge_certif/badge_certifie_noir.svg" alt="badge certif">
-                                <p>Votre argent est sécurisé jusqu’à la confirmation de récupération de
-                                    l’article</p>
+                        <div class="mb-5">
+                            <h2 class="mb-5">Protection leboncoin</h2>
+                            <div class="d-flex flex-row align-content-between">
+                                <div class="d-flex flex-column align-items-center">
+                                    <img src="/assets/icones/badge_certif/badge_certifie_noir.svg" class="icon_liv mx-2" alt="badge_certif">
+                                    <img src="/assets/icones/information/team.svg" class="icon_liv2 mx-2" alt="icone team">
+                                </div>
+
+                                <div class="d-flex flex-column">
+                                    <span class="mx-5 my-1">Votre argent est sécurisé jusqu’à la confirmation de récupération de l’article</span>
+                                    <span class="mx-5 my-2">Une équipe dédiée à votre service</span>
+                                </div>
                             </div>
-                            <div class="d-flex">
-                                <img src="assets/icones/information/team.svg" alt="icone team">
-                                <p>Une équipe dédiée à votre service</p>
+                            <div class="mt-3 mb-5">
+                                <a href="#" class="link-liv">Plus d’informations sur le paiement sécurisé</a>
                             </div>
-                            <a href="#">Plus d’informations sur le paiement sécurisé</a>
                         </div>
 
-                        <hr>
+                        <hr> <!--  MAPS  -->
 
                         <div>
                             <div class="d-flex">
@@ -274,31 +260,38 @@
                                     Enchères actuelle :
                                 </h2>
                                 <h3>
-                                    180 €
+                                    {{ CurrentValue}}€
                                 </h3>
                             </div>
-                            <div>
-                                <p>Votre offre :</p>
-                                <div class="input-group">
-                                    <input type="text" class="form-control"
-                                        aria-label="Dollar amount (with dot and two decimal places)">
-                                    <span class="input-group-text">€</span>
-                                </div>
-                            </div>
 
-                            <div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        M’alerter en cas de nouvelle enchère
-                                    </label>
-                                </div>
-                            </div>
+                            <form method="POST">
 
-                            <div>
-                                    <a class="bouton bouton_orange boutonS" href="#">Valider</a>
-                                
-                            </div>
+                                <div>
+                                    <p>Votre offre :</p>
+                                    <div class="input-group">
+                                        <input name="offre" type="text" class="form-control"
+                                            aria-label="Dollar amount (with dot and two decimal places)">
+                                        <span class="input-group-text">€</span>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            M’alerter en cas de nouvelle enchère
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div>
+                                <input class="bouton bouton_orange boutonS" type="submit" value="Valider">
+                                        
+                                    
+                                </div>
+
+                            </form>
+
 
                         </div>
 

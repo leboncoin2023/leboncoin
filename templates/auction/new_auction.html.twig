@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouvelle enchère{% endblock %}
+{% block title %}Lebon<code> | Nouvelle enchère{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -106,7 +106,7 @@
                     <div class="form-group">
                         {{ form_label(form.buyer_id, null, {'label_attr': {'class': 'hidden-label'}}) }}
                         {{ form_row(form.buyer_id, {'attr': {'class': 'form-control'}}) }}#}
-                    </div>
+                    </div>-->
 
                     <!-- En ajoutant cette ligne dans le formulaire, vous vous assurez que le jeton CSRF est inclus dans le formulaire
                          lorsqu'il est soumis. Cela garantit la sécurité de votre application en protégeant contre les attaques CSRF.  -->
@@ -118,7 +118,7 @@
             {{ form_row(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
 
             {# <button type="submit" class="btn btn-primary">Créer l'enchère</button> #}
-            {{ form_end(form) }}
+           {{ form_end(form, {render_rest: false}) }}
         </form>
     </div>
 {% endblock %}

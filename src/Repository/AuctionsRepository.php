@@ -19,12 +19,22 @@ class AuctionsRepository extends ServiceDocumentRepository
         parent::__construct($registry, Auctions::class);
     }
    
+
+    /**
+     * Trouve toutes les enchères
+     *
+     * @return void
+     */
     public function findAllAuction()
     {
         return $this->findAll();
     }
 
-
+    /**
+     * trouve aussi toutes les enchères....
+     *
+     * @return array
+     */
     public function findAllFromBdd() : array
     {
         return $this->findAll();
@@ -91,60 +101,50 @@ class AuctionsRepository extends ServiceDocumentRepository
 
         }
             
-        // fin pour
-
-        // obtenir :
-        /****************
-         $result = [
-            'Informatique' => [
-                0 => objet enchère,
-                1 => objet enchère,
-                2 => objet enchère,
-                3 => objet enchère,
-            ],
-            'Consoles' => [
-                0 => objet enchère,
-                1 => objet enchère,
-                2 => objet enchère,
-                3 => objet enchère,
-            ],
-            'Image' => [
-                0 => objet enchère,
-                1 => objet enchère,
-                2 => objet enchère,
-                3 => objet enchère,
-            ],
-         ]
-         ************/
         return $result;
     }
 
        
 
-
+    /**
+     * trouve des enchère correspondant au mot tapé dans la barre de recherche
+     *
+     * @param string $keyword
+     * @return void
+     */
     public function findAuctionsByKeyword(string $keyword)
     {
 
-        $qb = $this->createQueryBuilder(Auctions::class)
-        ->field('$or')
-        ->equals([
-            ['title' => new \MongoDB\BSON\Regex($keyword, 'i')],
-            ['description' => new \MongoDB\BSON\Regex($keyword, 'i')]
+        $qb = $this ->createQueryBuilder(Auctions::class)
+                    ->field('$or')
+                    ->equals([
+                        ['title' => new \MongoDB\BSON\Regex($keyword, 'i')],
+                        ['description' => new \MongoDB\BSON\Regex($keyword, 'i')]
         ]);
 
         return $qb->getQuery()->execute()->toArray();
     }
 
+
+
+
+
+    /**
+     * Trouve des enchères par catégorie
+     *
+     * @param string $category
+     * @return void
+     */
     public function getAuctionByCategory(string $category){
         // créer tableau résultat vide
         $result = [];
 
         // trouver toutes les sous categories de la categories demandée
-        $categories = $this->createQueryBuilder(Auctions::class)
-                        ->field('category')->equals(new \MongoDB\BSON\Regex($category, 'i'))
-                        ->distinct('category')
-                        ->getQuery()
-                        ->execute();
+        $categories = $this ->createQueryBuilder(Auctions::class)
+                            ->field('category')->equals(new \MongoDB\BSON\Regex($category, 'i'))
+                            ->distinct('category')
+                            ->getQuery()
+                            ->execute();
 
         foreach ($categories as $category) {
             // exploser categories et sous categories

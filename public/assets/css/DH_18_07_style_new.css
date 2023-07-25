@@ -279,6 +279,11 @@ header{
     border: solid 1px var(--lb_orange);
 }
 
+.loupebtn{
+    border: none;
+    background-color: #e9ecef;
+}
+
   /*________________HEADER NAV 2e LIGNE _______________________*/
   
 /*test ligne 2*/
@@ -646,3 +651,111 @@ header{
     margin-right: auto;
 }
 
+/*=======GA======25/07===============================================*/
+/*
+.img_auction{
+    height: 400px;
+    width: 450px;
+    border-radius: 15px;
+    background-color: lightgray;
+    text-align: center;
+    overflow: hidden;
+}*/
+
+.img_auction {
+  width: 450px; 
+  height: 400px; 
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--shade_orange);
+}
+
+/*
+.cropped2 {
+    object-fit: contain;
+    text-align: center;
+}*/
+
+.cropped3 {
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .icon_liv{
+    height: 30px;
+    width: 30px;
+  }
+  .icon_liv2{
+    height: 45px;
+    width: 45px;
+  }
+
+  .link-liv{
+    /*text-decoration: none;*/
+    color: black;
+  }
+
+  .link-liv:hover{
+    /*text-decoration: none;*/
+    color: var(--lb_orange);
+  }
+
+  .subtitle{
+    font-size: smaller;
+  }
+
+
+  /* ****** CATEGORY ******* */
+
+.cardlbc{
+    background-color: var(--shade_orange);
+    border-radius: 20px;
+    border-style: none;
+    /*border-color: var(--lb_orange);*/
+    overflow: hidden;
+}
+
+.card-img-top{
+    height: 250px;
+    display: block;
+}
+
+.cardimglbc{
+    background-image: url('/assets/img/leboncoin_1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-bottom: 22px;
+
+}
+
+
+.img_card_auction{
+    max-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    
+}
+
+.card-body{
+    object-fit: cover;
+    padding: 0;
+}
+
+
+  /* ********************** */
