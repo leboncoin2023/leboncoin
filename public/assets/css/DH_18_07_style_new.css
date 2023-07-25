@@ -651,7 +651,7 @@ header{
     margin-right: auto;
 }
 
-/*=======GA======25/07====================================*/
+/*=======GA======25/07===============================================*/
 /*
 .img_auction{
     height: 400px;
@@ -705,4 +705,8 @@ header{
   .link-liv:hover{
     /*text-decoration: none;*/
     color: var(--lb_orange);
+  }
+
+  .subtitle{
+    font-size: smaller;
   }
