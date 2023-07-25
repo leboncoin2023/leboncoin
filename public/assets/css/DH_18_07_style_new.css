@@ -710,3 +710,52 @@ header{
   .subtitle{
     font-size: smaller;
   }
+
+
+  /* ****** CATEGORY ******* */
+
+.cardlbc{
+    background-color: var(--shade_orange);
+    border-radius: 20px;
+    border-style: none;
+    /*border-color: var(--lb_orange);*/
+    overflow: hidden;
+}
+
+.card-img-top{
+    height: 250px;
+    display: block;
+}
+
+.cardimglbc{
+    background-image: url('/assets/img/leboncoin_1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-bottom: 22px;
+
+}
+
+
+.img_card_auction{
+    max-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    
+}
+
+.card-body{
+    object-fit: cover;
+    padding: 0;
+}
+
+
+  /* ********************** */
