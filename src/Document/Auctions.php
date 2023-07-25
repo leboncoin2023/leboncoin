@@ -79,8 +79,8 @@ private ?string $buyer_id = null;
 #[MongoDB\Field(type:"collection")]
 private $pictures = [];
 
-#[MongoDB\Field(type:"string")]
-private $offre = null;
+#[MongoDB\Field(type:"collection")]
+private $offre = [];
 
 /*
 public function __construct()
@@ -163,7 +163,7 @@ public function __construct()
         return $this->reservePrice;
     }
 
-    public function getoffre(): ?string
+    public function getoffre(): ?array
     {
 
         return $this->offre;
@@ -442,7 +442,7 @@ public function __construct()
     
 
 
-    public function setoffre(?string $offre)
+    public function setoffre(?array $offre)
     {
         
         $this->offre = $offre;

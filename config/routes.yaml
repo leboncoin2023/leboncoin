@@ -14,7 +14,7 @@ app_auction_new_recap:
 app_auction_detail:
     path: '/auction/detail/{id}'
     controller: 'App\Controller\AuctionController::detailAuction'
-    methods: GET
+    methods: [GET,POST]
 
     
 # route pour la searchbar

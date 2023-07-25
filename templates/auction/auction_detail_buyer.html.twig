@@ -277,28 +277,30 @@
                                     180 €
                                 </h3>
                             </div>
-                            <div>
-                                <p>Votre offre :</p>
-                                <div class="input-group">
-                                    <input type="text" class="form-control"
-                                        aria-label="Dollar amount (with dot and two decimal places)">
-                                    <span class="input-group-text">€</span>
+                            <form method="POST">
+                                <div>
+                                    <p>Votre offre :</p>
+                                    <div class="input-group">
+                                    
+                                        <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" name="offre">
+                                        <span class="input-group-text">€</span>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        M’alerter en cas de nouvelle enchère
-                                    </label>
+                                <div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            M’alerter en cas de nouvelle enchère
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div>
-                                    <a class="bouton bouton_orange boutonS" href="#">Valider</a>
-                                
-                            </div>
+                                <div>
+                                    <input class="bouton bouton_orange boutonS" type="submit" value="Valider">
+                                    
+                                </div>
+                            </form>
 
                         </div>
 

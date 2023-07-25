@@ -219,9 +219,27 @@ class AuctionController extends AbstractController
     public function detailAuction(Request $request, DocumentManager $dm, CategoryRepository $repo ): Response
     {          
         $id = $request->get('id');
+
+        
         
         // récuperez l'objet 'auctions' avec l'id spécifié depuis la basse de données 
         $dauction = $dm->getRepository(Auctions::class)->find($id);
+
+        if(null != $request->request->get('offre')){
+
+            $tabOffre = $dauction->getoffre();
+
+            $offre = $request->request->get('offre');
+
+            $tabOffre[] = ['offerUserId' => $this->getUser()->getId(), 'offer' => $offre, 'date' => date('Y-m-d h:i:s')];
+
+            $dauction->setoffre($tabOffre);
+
+            
+            $dm->persist($dauction);
+            $dm->flush();
+
+        }
 
          //dump($dauction);
 
@@ -340,9 +358,6 @@ class AuctionController extends AbstractController
 
 
         $result = $auctionsRepository->findAuctionsByKeyword($keyword);
-        foreach($result as $row){
-            
-        }
         
 
 
@@ -350,7 +365,7 @@ class AuctionController extends AbstractController
         return $this->render('auction/search_results.html.twig', [
             'auctions' => $auctionsRepository->findAllAuction(),
             'menu' => $repo->getAllCategoriesAndSub($dm),
-            'results' => $row,
+            'results' => $result,
             'keyword' => $keyword
 
         ]);

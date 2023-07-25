@@ -118,7 +118,7 @@
             {{ form_row(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
 
             {# <button type="submit" class="btn btn-primary">Créer l'enchère</button> #}
-            {{ form_end(form) }}
+           {{ form_end(form, {render_rest: false}) }}
         </form>
     </div>
 {% endblock %}

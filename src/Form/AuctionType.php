@@ -75,7 +75,7 @@ class AuctionType extends AbstractType
             ->add('start_date', DateTimeType::class, [
                 'widget' => 'single_text',
                 'html5' => false,
-                'format' => 'yyyy',
+                'format' => 'dd/mm/yyyy',
             ])
            
             
@@ -106,7 +106,7 @@ class AuctionType extends AbstractType
             ])
 
             //UrlType si vous souhaitez que l'utilisateur saisisse une URL de vidéo.
-            ->add('video', UrlType::class)
+            ->add('video', TextType::class)
             //Si vous préférez permettre à l'utilisateur de télécharger une vidéo depuis son appareil,
             // vous pouvez utiliser le type FileType.
             //->add('video', FileType::class)
