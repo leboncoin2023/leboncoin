@@ -9,6 +9,7 @@ use App\Repository\UserRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
 
 use App\Form\RegistrationFormType;
+use App\Repository\CategoryRepository;
 use App\Repository\RegistrationsRepository;
 use App\Security\AppCustomAuthenticator;
 use App\Security\EmailVerifier;
@@ -42,7 +43,7 @@ class RegistrationController extends AbstractController
    // }
  
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, DocumentManager $dm): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, DocumentManager $dm, CategoryRepository $repo): Response
     {
 
         //$user = new User();
@@ -92,6 +93,7 @@ class RegistrationController extends AbstractController
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'menu' => $repo->getAllCategoriesAndSub($dm)
         ]);
     }
 

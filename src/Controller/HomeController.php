@@ -30,7 +30,7 @@ class HomeController extends AbstractController
     #[Route('/home', name: 'app_home')]
     public function index(CategoryRepository $repo, DocumentManager $dm): Response
     {
-
+        //dump($this->getUser());
         $menu = $repo->getAllCategoriesAndSub($dm);
 
         return $this->render('home/index_home.html.twig', [
