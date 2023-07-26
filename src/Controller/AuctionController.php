@@ -87,6 +87,10 @@ class AuctionController extends AbstractController
     #[Route('/new_auction', name: 'app_auction_new_auction')]
     public function newAuction(Request $request, DocumentManager $documentManager, CategoryRepository $catRepo): Response
     {
+
+        if (!$this->getUser())
+            return $this->redirectToRoute('app_login');
+
         $auction = new Auctions();
         
         $_SESSION['categoriesList'] = $catRepo->getAllCategoriesAndSub($documentManager);
@@ -189,18 +193,22 @@ class AuctionController extends AbstractController
     #[Route('/detail/{id}', name: 'app_auction_detail')]
     public function detailAuction(Request $request, DocumentManager $dm, CategoryRepository $repo ): Response
     {          
+
         $id = $request->get('id');
 
         // récuperez l'objet 'auctions' avec l'id spécifié depuis la basse de données 
         $dauction = $dm->getRepository(Auctions::class)->find($id);
 
-
+        
 
 
         $tabOffre = $dauction->getoffre();
-        usort($tabOffre, fn($a, $b) => $b['offre'] <=> $a['offre']);
-        $oldMaxPrice    = $tabOffre[0]['offre'];
-        
+        if(!empty($tabOffre)){
+            usort($tabOffre, fn($a, $b) => $b['offre'] <=> $a['offre']);
+            $oldMaxPrice    = $tabOffre[0]['offre'];
+        }else{
+            $oldMaxPrice = $dauction->getStartPrice();
+        }
 
 
         if(null != $request->request->get('offre')){
@@ -208,7 +216,7 @@ class AuctionController extends AbstractController
 
             if(empty($tabOffre)){
             
-                $oldMaxPrice = 0;
+                $oldMaxPrice = $dauction->getStartPrice();
             }
             $offre  = $request->request->get('offre');
 

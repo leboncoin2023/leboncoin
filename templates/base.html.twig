@@ -35,8 +35,13 @@
                         </div>
                         <div class="toast-body">
                         <strong>{{ message }}</strong>
-                            <p class="popupstatus">Nous la transmettons auprès du vendeur.<br>
-                            Vous serez informé si une nouvelle enchère intervient.</p>
+                            {% if message  == 'Votre offre a bien été enregistrée.' %}
+                                <p class="popupstatus">Nous la transmettons auprès du vendeur.<br>
+                                Vous serez informé si une nouvelle enchère intervient.</p>
+                            {% else %}
+                                <p class="popupstatus">Votre enchère ne peut être prise en compte.<br>
+                                Pensez à vérifier le montant actuel de l'enchère.</p>
+                            {% endif %}
                             <button type="button" class="btnpopup closepopup" data-bs-dismiss="toast" aria-label="Close">Ok</button>
                         </div>
                     </div>

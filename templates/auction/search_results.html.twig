@@ -15,7 +15,7 @@
                 </div>
                 {% for keyword, auction in results %}
                     <div class="row row_cat row_one">
-                        <a class="col-12 col-md-3" href="#">
+                        <a class="col-12 col-md-3" href="{{ path('app_auction_detail', {'id': auction.id}) }}">
                             <div class="card">
                                 {% if auction.pictures is empty %}
                                 <div class="card-img-top cardimgbg"> </div>
