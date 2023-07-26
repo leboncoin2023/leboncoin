@@ -15,35 +15,37 @@
                     <h1 class="h_one_cat">{{ sub.subcategory }}</h1>
                 </div>
                 
-                <a class="d-flex flex-row mt-2 mb-5" href="€">
+                <div class="card-title-cat">
+                    <a class="d-flex flex-row mt-2 mb-5" href="#">
 
-                    {% for auction in sub.auctions %}
-                    
-                        <div class="col-3 mx-3">
-                            <div class="cardlbc">
-                                {% if auction.pictures is empty %}
-                                <div class="card-img-top cardimglbc"></div>
-                                {% else %}
-                                    <div class="card-img-top cardimglbc">
-                                        <img src="/uploads/pictures/{{ auction.pictures[0] }}" class="img_card_auction" alt="image de l'enchère">
-                                    </div>
-                                {% endif %}
-                                <div class="card-body">
-                                        <div class="d-flex flex-row justify-content-between">
-                                            <div>
-                                                <h5 class="card-title-cat">{{ auction.title }}</h5>
-                                            </div>
-                                            <div class="me-2">
-                                                <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
-                                            </div>
-                                           
+                        {% for auction in sub.auctions %}
+                        
+                            <div class="col-3 mx-3">
+                                <div class="cardlbc">
+                                    {% if auction.pictures is empty %}
+                                    <div class="card-img-top cardimglbc"></div>
+                                    {% else %}
+                                        <div class="card-img-top cardimglbc">
+                                            <img src="/uploads/pictures/{{ auction.pictures[0] }}" class="img_card_auction" alt="image de l'enchère">
                                         </div>
+                                    {% endif %}
+                                    <div class="card-body">
+                                            <div class="d-flex flex-row justify-content-between">
+                                                <div class="card-title-cart">
+                                                    <span class="h5">{{ auction.title }}</span>
+                                                </div>
+                                                <div class="me-2">
+                                                    <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
+                                                </div>
+                                            
+                                            </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %} 
+                        {% endfor %} 
 
-                </a>
+                    </a>
+                </div>
 
             {% endfor %}   
 

@@ -32,30 +32,57 @@ body{
 }
 
 /* BOUTONS */
-.bouton_orange{
+/*********** BOUTONS **********************/
+
+.bouton {
+    text-decoration: none;
     border-radius: 10px;
-    background-color: var(--lb_orange);
-    color: var(--vintage_white);
+    border: none;
+    background-color: transparent;
+    padding: 10px 25px;
 }
 
-.bouton_orangeoutline{
-    border-radius: 10px;
+.bouton_orange {
+    background-color: var(--lb_orange);
+    color: var(--vintage_white);
+    font-weight: 700;
+
+}
+
+.bouton_orangeoutline {
+   
     background-color: var(--vintage_white);
-    border: var(--lb_orange);
+    border: 1px solid var(--lb_orange);
     color: var(--lb_orange);
 }
 
-.boutonS{
-    height: 38px;
+
+.boutonS {
+    padding: 10px 25px;
+    font-size: 15px;
 }
 
-.boutonM{
-    height: 52px;
+.boutonM {
+    padding: 10px 55px;
+    font-size: 24px;
 }
 
-.boutonL{
-    height: 70px;
+.boutonL {
+    padding: 20px 60px;
+    font-size: 24px;
 }
+
+/****** LIENS ********/
+a{
+    text-decoration: none;
+    color: var(--almost_black);
+    font-weight: 700;   
+}
+
+a:hover {
+    color: var(--lb_orange)
+  }
+
 
 
 /* ------------------------- */
@@ -70,7 +97,7 @@ body{
         */
 
 h1{
-    text-align: center;
+    /*text-align: center;*/
     /*font-weight: 700;
     font-size: 20px; 
     margin-top: 40px;
@@ -785,3 +812,29 @@ header{
    padding-top: 50px;
    padding-bottom: 30px;
   }
+
+/*=======GA======26/07===============================================*/
+
+.card_border_top{
+    box-shadow: 1px 1px 1px 2px #C4C4C4;
+    border-radius: 20px;
+}
+.rep_gen{
+    font-size: smaller;
+    font-weight: bolder;
+}
+.detail_vend>a{
+    color: black;
+    font-size: small;
+}
+.detail_vend>a:hover{
+    color: var(--lb_orange);
+}
+.card_border_bot{
+    box-shadow: 1px 1px 1px 2px #FFE5D7;
+    border-radius: 20px;
+}
+.card-title-cart>a{
+    text-decoration: none;
+    color: black;
+}
