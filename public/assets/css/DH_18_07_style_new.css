@@ -522,9 +522,9 @@ header{
     /* Hauteur automatique */
     height: auto;
      /* Ombre portée de 6 pixels vers le bas et la droite, couleur noire */
-    box-shadow: 6px 6PX 10px black;
-    /* Arrière-plan blanc */
-    /*background: white;*/
+    box-shadow: 6px 6PX 10px var(--gris);
+    border-radius: 15px;
+   
 }
 
 .swiper-slide img{
@@ -534,6 +534,7 @@ header{
     width: 100%;
    /* Hauteur de 250 pixels */
    height: 250px;
+   border-radius: 15px;
 
 
 }
@@ -858,9 +859,7 @@ a>*{
 a:hover>*{
     color: var(--lb_orange);
 }
-.testa>a{
-    text-decoration: none;
-}
+
 
 /*___________________Bryan Profil User _____________________________*/
 
