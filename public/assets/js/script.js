@@ -15,7 +15,7 @@ const swiper = new Swiper(".mySwiper",{
 
   slidesPerView:"auto",// Définit le nombre de diapositives visibles par vue, "auto" signifie autant de diapositives que possible
    
-  /*pagination:{
+  pagination:{
       el:".swiper-pagination"// Sélectionne l'élément avec la classe "swiper-pagination" pour afficher la pagination
-  }   */
+  }   
 })
