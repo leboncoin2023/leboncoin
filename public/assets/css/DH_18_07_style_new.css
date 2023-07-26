@@ -858,6 +858,9 @@ a>*{
 a:hover>*{
     color: var(--lb_orange);
 }
+.testa>a{
+    text-decoration: none;
+}
 
 /*___________________Bryan Profil User _____________________________*/
 
