@@ -13,6 +13,8 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Doctrine\ODM\MongoDB\Mapping\Annotations;
 use App\Repository\AuctionsRepository;
 use App\Repository\CategoryRepository;
+use DateInterval;
+use DateTime;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -29,18 +31,7 @@ class AuctionController extends AbstractController
 {
 //home___________________________________________________________
 
-    /*
-    #[Route('/', name: 'app_auction')]
-    public function index(): Response
-    {
 
-        
-        return $this->render('auction/index.html.twig', [
-            'controller_name' => 'AuctionController',
-        ]);
-    }
-
-    */
 
     #[Route('/', name: 'app_auction')]
     public function index(AuctionsRepository $auctionsRepository, DocumentManager $dm, CategoryRepository $repo): Response
@@ -56,7 +47,15 @@ class AuctionController extends AbstractController
 
 
 
-//Nouvelle annonce, choix entre enchère et vente ___________________________
+/**
+ * Propose de choisir entre une vente classique et une enchère
+ *
+ * @param AuctionsRepository $auctionsRepository
+ * @param FormFactoryInterface $formFactory
+ * @param CategoryRepository $repo
+ * @param DocumentManager $dm
+ * @return Response
+ */
     #[Route('/new_choice', name: 'app_auction_new_choice')]
     public function newChoice(AuctionsRepository $auctionsRepository, FormFactoryInterface $formFactory, CategoryRepository $repo, DocumentManager $dm): Response
     {
@@ -67,56 +66,24 @@ class AuctionController extends AbstractController
 
         return $this->render('auction/new_choice.html.twig', [
             //'controller_name' => 'AuctionController',
-            'auctions' => $auctions,
-            'form' => $form->createView(),
-            'menu' => $repo->getAllCategoriesAndSub($dm)
+            'auctions'  => $auctions,
+            'form'      => $form->createView(),
+            'menu'      => $repo->getAllCategoriesAndSub($dm)
         ]);
     }
-//Nouvelle enchère, formulair de création____________________________________
-/*    #[Route('/new_auction', name: 'app_auction_new_auction')]
-    public function newAuction(): Response
-    {
 
-        return $this->render('auction/new_auction.html.twig', [
-            'controller_name' => 'AuctionController',
-        ]);
-    }*/
 
-    /*
-    #[Route('/new_auction', name: 'app_auction_new_auction')]
-    public function newAuction(Request $request, DocumentManager $documentManager): Response
-    {
-        $auction = new Auctions();
-        $form = $this->createForm(AuctionType::class, $auction);
-        $form->handleRequest($request);
-         
-      //  ob_start(); // Démarre la capture de sortie
-     //   var_dump($form); // Utilisation de var_dump()
-      //  $output = ob_get_clean(); // Récupère la sortie de var_dump() et arrête la capture
 
-      if ($form->isSubmitted() && $form->isValid()) {
-      //if ($form->isSubmitted()) {
-        
-           
-           // var_dump($auction);
 
-            // Sauvegardez l'entité Auctions en base de données
-            $documentManager->persist($auction);
-            $documentManager->flush();
-            //dump('test');
-            // Redirigez l'utilisateur vers la page de récapitulatif ou une autre page de votre choix
-            return $this->redirectToRoute('app_auction_new_recap');
-        }
 
-        return $this->render('auction/new_auction.html.twig', [
-            'form' => $form->createView(),
-            'auction' => $auction,
-
-           // 'debug_output' => $output, // Passer la sortie de débogage à la vue
-
-        ]);
-    } */
-
+    /**
+     * Création d'une nouvelle enchère
+     *
+     * @param Request $request
+     * @param DocumentManager $documentManager
+     * @param CategoryRepository $catRepo
+     * @return Response
+     */
     #[Route('/new_auction', name: 'app_auction_new_auction')]
     public function newAuction(Request $request, DocumentManager $documentManager, CategoryRepository $catRepo): Response
     {
@@ -134,48 +101,39 @@ class AuctionController extends AbstractController
                     echo $error->getMessage()."\n";
                 }
             } else {
+                //Enregistrement de l'id du user dans le seller_id et dans le buyer_id.
                 $auction->setSellerId($this->getUser()->getId());
                 $auction->setBuyerId('');
+
+                //calcule de la date de fin
+                $time   =  $auction->getStartDate()->format('Y-m-d').' '.date('H:i:s');
+                $dt     = new DateTime($time);
+                /** @var DateTime $time */
+                $dt->add(new DateInterval('PT'.$auction->getDuration().'H'));
+
+                
+
                 // Sauvegardez l'entité Auctions en base de données
                 $documentManager->persist($auction);
                 $documentManager->flush();
 
-               
-                    //   UploadedFile
+                $uploadedPictures = $request->files->get('auction')['pictures'];
+                if (is_array($uploadedPictures)) {
+                    $fileNames = [];
+                    foreach ($uploadedPictures as $uploadedPicture) {
+                        if ($uploadedPicture instanceof UploadedFile) {
+                            // Generate a unique filename for the picture and move it to a directory
+                            $newFilename = uniqid().'.'.$uploadedPicture->getClientOriginalExtension();
+                            $uploadedPicture->move($this->getParameter('pictures_directory'), $newFilename);
+                            $fileNames[] = $newFilename;
+                        }
+                    }
+                    // Save the picture filenames in the database
+                    $auction->setPictures($fileNames);
 
-                // Handle the uploaded picture
-              /*  $uploadedPicture = $form->get('pictures')->getData();
-                if ($uploadedPicture instanceof UploadedFile) {
-                    // Generate a unique filename for the picture and move it to a directory
-                    $newFilename = uniqid().'.'.$uploadedPicture->getClientOriginalExtension();
-                    $uploadedPicture->move($this->getParameter('pictures_directory'), $newFilename);
-
-                    // Save the picture's filename in the database
-                    $auction->setPicture($newFilename);
-
-                    // Persist the updated Auctions entity with the picture filename
+                    // Persist the updated Auctions entity with the picture filenames
                     $documentManager->persist($auction);
                     $documentManager->flush();
-                }*/
-
-                  // Handle the uploaded pictures
-                  $uploadedPictures = $request->files->get('auction')['pictures'];
-                  if (is_array($uploadedPictures)) {
-                      $fileNames = [];
-                      foreach ($uploadedPictures as $uploadedPicture) {
-                          if ($uploadedPicture instanceof UploadedFile) {
-                              // Generate a unique filename for the picture and move it to a directory
-                              $newFilename = uniqid().'.'.$uploadedPicture->getClientOriginalExtension();
-                              $uploadedPicture->move($this->getParameter('pictures_directory'), $newFilename);
-                              $fileNames[] = $newFilename;
-                          }
-                      }
-                      // Save the picture filenames in the database
-                      $auction->setPictures($fileNames);
-  
-                      // Persist the updated Auctions entity with the picture filenames
-                      $documentManager->persist($auction);
-                      $documentManager->flush();
                   }
 
 
@@ -191,79 +149,113 @@ class AuctionController extends AbstractController
         }
     
         return $this->render('auction/new_auction.html.twig', [
-            'form' => $form->createView(),
-            'auction' => $auction,
-            'menu' => $catRepo->getAllCategoriesAndSub($documentManager),
+            'form'      => $form->createView(),
+            'auction'   => $auction,
+            'menu'      => $catRepo->getAllCategoriesAndSub($documentManager),
+            
         ]);
     }
 
+
+
+
+    /**
+     * Récapitulatif de l'enchère venant d'être créée
+     */
     #[Route('/new_recap/{id}', name: 'app_auction_new_recap')]
     public function newRecap($id, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm): Response
     {
-    // Récupérez l'enchère à partir de la base de données en utilisant l'identifiant passé en paramètre
-    $auction = $auctionsRepository->find($id);
+        // Récupérez l'enchère à partir de la base de données en utilisant l'identifiant passé en paramètre
+        $auction = $auctionsRepository->find($id);
 
-    // Vérifiez si l'enchère existe
-    if (!$auction) {
-        throw $this->createNotFoundException('L\'enchère n\'existe pas.');
+        // Vérifiez si l'enchère existe
+        if (!$auction) {
+            throw $this->createNotFoundException('L\'enchère n\'existe pas.');
+        }
+
+        // Affichez les détails de l'enchère dans la vue
+        return $this->render('auction/new_recap.html.twig', [
+            'auction'   => $auction,
+            'menu'      => $repo->getAllCategoriesAndSub($dm)
+        ]);
     }
 
-    // Affichez les détails de l'enchère dans la vue
-    return $this->render('auction/new_recap.html.twig', [
-        'auction' => $auction,
-        'menu' => $repo->getAllCategoriesAndSub($dm)
-    ]);
-    }
 
+
+
+    /**
+     * Affichage du détail de l'enchère ( page permettant d'enchérir )
+     */
     #[Route('/detail/{id}', name: 'app_auction_detail')]
     public function detailAuction(Request $request, DocumentManager $dm, CategoryRepository $repo ): Response
     {          
         $id = $request->get('id');
 
-        
-        
         // récuperez l'objet 'auctions' avec l'id spécifié depuis la basse de données 
         $dauction = $dm->getRepository(Auctions::class)->find($id);
 
+
+
+
+        $tabOffre = $dauction->getoffre();
+        usort($tabOffre, fn($a, $b) => $b['offre'] <=> $a['offre']);
+        $oldMaxPrice    = $tabOffre[0]['offre'];
+        
+
+
         if(null != $request->request->get('offre')){
 
-            $tabOffre = $dauction->getoffre();
 
-            $offre = $request->request->get('offre');
-
-            $tabOffre[] = ['offerUserId' => $this->getUser()->getId(), 'offer' => $offre, 'date' => date('Y-m-d h:i:s')];
-
-            $dauction->setoffre($tabOffre);
-
+            if(empty($tabOffre)){
             
-            $dm->persist($dauction);
-            $dm->flush();
+                $oldMaxPrice = 0;
+            }
+            $offre  = $request->request->get('offre');
+
+            if($offre > $oldMaxPrice){
+                $tabOffre[] = ['offerUserId' => $this->getUser()->getId(), 'offre' => $offre, 'date' => date('Y-m-d h:i:s')];
+                $dauction   ->setoffre($tabOffre);
+                $dm         ->persist($dauction);
+                $dm         ->flush();
+                $oldMaxPrice = $offre;
+
+                $this->addFlash(
+                    'success',
+                    'Votre offre a bien été enregistrée.'
+                );
+
+            }else {
+                $this->addFlash(
+                    'danger',
+                    'Montant insuffisant !'
+                );
+            }
+
 
         }
-
-         //dump($dauction);
-
         // Vérifiez si l'objet "Auctions" a été trouvé
         if(!$dauction){
             throw $this->createNotFoundException('Auction not found for ID: ' . $id);
         }
       
        return $this->render('auction/auction_detail_buyer.html.twig',[
-            'dauction' =>  $dauction ,
-            'auctionId' => $id,
-            'menu' => $repo->getAllCategoriesAndSub($dm)
+            'dauction'      =>  $dauction ,
+            'auctionId'     => $id,
+            'menu'          => $repo->getAllCategoriesAndSub($dm),
+            'CurrentValue'  => $oldMaxPrice
         ]);
     }
     
-    /**
-     * Ajout une nouvelle enchère
-     *
-     * @param Request $request
-     * @param DocumentManager $dm
-     * @return Response
-     */
+  
 
-
+/**
+ * Ayoub sais ce que c'est....
+ *
+ * @param Request $request
+ * @param DocumentManager $dm
+ * @param CategoryRepository $repo
+ * @return Response
+ */
     #[Route('/save', name: 'app_auction_save')]
     public function saveAuction(Request $request, DocumentManager $dm, CategoryRepository $repo ): Response {
 
@@ -282,123 +274,75 @@ class AuctionController extends AbstractController
 
         // réaffiche le template de l'enchere
         return $this->render('auction/detail.html.twig',[
-            'dauction' =>  $dauction ,
+            'dauction'  =>  $dauction ,
             'auctionId' => $id,
-            'seller' => $sellerid,
+            'seller'    => $sellerid,
              'mauction' => $mauction,
-             'menu' => $repo->getAllCategoriesAndSub($dm)
+             'menu'     => $repo->getAllCategoriesAndSub($dm)
         ]);
     }
     
-//     public function fAuction(Request $request, DocumentManager $dm ): Response {          
-//     $id = $request->get('id');
-//     $dauction = $dm->getRepository(Auctions::class)->find($id);
- 
-//     // Vérifiez si l'objet "Auctions" a été trouvé
-//     if(!$dauction){
-//         throw $this->createNotFoundException('Auction not found for ID: ' . $id);
-//     }
-//     dump($dauction);
-//     $form = $this->createForm(AuctionType::class, $dauction);
-//     $form->handleRequest($request);
 
-//     if ($form->isSubmitted() && $form->isValid()) {
-//         // Sauvegardez l'entité Auctions en base de données
-//         $dm->persist($dauction);
-//         $dm->flush();
-//     }
-
+    /**
+     * Ayoub sais ce que c'est....
+     *
+     * @param Request $request
+     * @param DocumentManager $dm
+     * @return Response
+     */
     #[Route('/saveform', name: 'app_auction_saveform')]
     public function fAuction(Request $request, DocumentManager $dm ): Response {
-    $id = $request->get('id');
-    $dauction = $dm->getRepository(Auctions::class)->find($id);
+        $id = $request->get('id');
+        $dauction = $dm->getRepository(Auctions::class)->find($id);
 
-    // Vérifiez si l'objet "Auctions" a été trouvé
-    if(!$dauction){
-    throw $this->createNotFoundException('Auction not found for ID: ' . $id);
-    }
-    dump($dauction);
-    $form = $this->createForm(AuctionType::class, $dauction);
-    $form->handleRequest($request);
+        // Vérifiez si l'objet "Auctions" a été trouvé
+        if(!$dauction){
+        throw $this->createNotFoundException('Auction not found for ID: ' . $id);
+        }
+            $form = $this->createForm(AuctionType::class, $dauction);
+            $form->handleRequest($request);
 
-    if ($form->isSubmitted() && $form->isValid()) {
-    // Sauvegardez l'entité Auctions en base de données
-    $dm->persist($dauction);
-    $dm->flush();
-    }
+        if ($form->isSubmitted() && $form->isValid()) {
+        // Sauvegardez l'entité Auctions en base de données
+            $dm->persist($dauction);
+            $dm->flush();
+        }
 
-    return $this->render('auction/detail.html.twig', [
-    'dauction' => $dauction,
-    'form' => $form->createView(),
-    ]);
+        return $this->render('auction/detail.html.twig', [
+            'dauction' => $dauction,
+            'form' => $form->createView(),
+        ]);
     }
  
 
-    
-
-   /*  #[Route('/test3', name: 'app_auction_test3')]
-    public function test3(AuctionsRepository $auctionsRepository, DocumentManager $dm): Response
-    {
-
-        $data =$auctionsRepository->getAuctionsByCategory('Multimédia');
-
-        dd($data);
-
-        return $this->render('category/subcategory.html.twig', [
-            'controller_name' => 'AuctionController',
-        ]);
-    } */
-
-
-
-
+    /**
+     * Permet de faire une recherche dans la barre de recherche du header
+     *
+     * @param Request $request
+     * @param AuctionsRepository $auctionsRepository
+     * @param CategoryRepository $repo
+     * @param DocumentManager $dm
+     * @return Response
+     */
     #[Route('/search', name: 'app_auction_search')]
     public function searchAuction(Request $request, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm): Response {
-        $keyword = $request->get('keyword');
 
-
-        $result = $auctionsRepository->findAuctionsByKeyword($keyword);
+        $keyword    = $request->get('keyword');
+        $result     = $auctionsRepository->findAuctionsByKeyword($keyword);
         
-
-
         // Renvoyer le formulaire à la vue Twig pour l'affichage initial
         return $this->render('auction/search_results.html.twig', [
-            'auctions' => $auctionsRepository->findAllAuction(),
-            'menu' => $repo->getAllCategoriesAndSub($dm),
-            'results' => $result,
-            'keyword' => $keyword
+            'auctions'  => $auctionsRepository->findAllAuction(),
+            'menu'      => $repo->getAllCategoriesAndSub($dm),
+            'results'   => $result,
+            'keyword'   => $keyword
 
         ]);
     }
 
 
-
-
-   /**
-     * @Route("/search", methods={"POST"})
-     */
-    /* public function searchAction(Request $request, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm): Response
-    {
-        $form = $this->createForm(SearchType::class);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $keyword = $form->getData()['keyword'];
-
-            // Rechercher les enchères correspondant au mot clé
-            $results = $auctionsRepository->findAuctionsByKeyword($keyword);
-
-            // Renvoyer les résultats à la vue Twig
-            return $this->render('auction/search_results.html.twig', [
-                'results' => $results,
-            ]);
-        }
-
-        // Renvoyer le formulaire à la vue Twig pour l'affichage initial
-        return $this->render('auction/search_form.html.twig', [
-            'form' => $form->createView(), // Assurez-vous que vous avez ajouté cette ligne
-        ]);
-    } */
-
+ 
+    
+    
 
 }

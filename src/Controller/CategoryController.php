@@ -57,22 +57,8 @@ class CategoryController extends AbstractController
     {      
 
         $auctions = $auctionsRepository->getAuctionsByCategory($subcategory);
-
-        // dd($auctions);
-        // Récupérer la sous-catégorie transmise en GET
-
-
-        // Rechercher dans la base de données les enchères qui correspondent à cette sous-catégorie
-
-
-        // Vérifier l'existence de données trouvées dans la bdd
-
-
-        // Traiter les données récupérées (filtres à ta discrétion)
-
-
-        // Appeler l'affichage en passant les paramètres nécessaires        
-        return $this->render('category/subcategory_test.html.twig', [
+    
+        return $this->render('category/subcategory.html.twig', [
             'auctions' => $auctions,
             'menu' => $repo->getAllCategoriesAndSub($dm)
         ]);

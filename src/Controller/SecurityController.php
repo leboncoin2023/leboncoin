@@ -11,6 +11,15 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
+
+    /**
+     * Connexion de l'utilisateur
+     *
+     * @param AuthenticationUtils $authenticationUtils
+     * @param CategoryRepository $repo
+     * @param DocumentManager $dm
+     * @return Response
+     */
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils, CategoryRepository $repo, DocumentManager $dm): Response
     {
@@ -29,6 +38,12 @@ class SecurityController extends AbstractController
         ]);
     }
 
+
+    /**
+     * Déconnexion de l'utilisateur
+     *
+     * @return void
+     */
     #[Route(path: '/logout', name: 'app_logout')]
     public function logout()
     {

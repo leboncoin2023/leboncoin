@@ -24,7 +24,7 @@
 
             <div class="row row_sub_cat row_one">
             {% for auction in auctions.auctions %}
-                <div class="col-12 col-md-3">
+                <a class="col-12 col-md-3" href="#">
                     <div class="card">
                     {% if auction.pictures is empty %}
                         <div class="card-img-top cardimgbg"> </div>
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
                 {% endfor %}
 
                 

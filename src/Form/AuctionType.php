@@ -24,6 +24,8 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use App\Form\DataTransformer\StringToDateTimeTransformer; // Inclure la classe ici
 use App\Repository\CategoryRepository;
 use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToStringTransformer as DataTransformerDateTimeToStringTransformer;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+
 //use App\Form\DateTimeToStringTransformer as StringToDateTimeTransformer; // Renommage de la classe
 
 class AuctionType extends AbstractType
@@ -59,32 +61,18 @@ class AuctionType extends AbstractType
 
             ->add('sold_price', NumberType::class)
 
-            
-
-           /* ->add('start_date', DateTimeType::class, [
-                'widget' => 'single_text',
-                'format' => 'yyyy-MM-dd HH:mm:ss',
-            ])*/
-
-         /*   ->add('start_date', DateTimeType::class, [
-                'widget' => 'single_text',
-                'html5' => false,
-                'format' => 'yyyy-MM-dd HH:mm:ss',
-            ])*/
-
-            ->add('start_date', DateTimeType::class, [
-                'widget' => 'single_text',
-                'html5' => false,
-                'format' => 'dd/mm/yyyy',
+            ->add('start_date', DateType::class, [
+                /* 'widget' => 'single_text',*/
+                'html5' => false, 
+                'format' => 'dd/MM/yyyy',
             ])
            
-            
             ->add('duration', ChoiceType::class, [
                 'choices' => [
                    
-                    '6h' => '6h',
-                    '12h' => '12h',
-                    '24h' => '24h',        
+                    '6h' => '6',
+                    '12h' => '12',
+                    '24h' => '24',        
                 ],
             ])
 
@@ -161,26 +149,5 @@ class AuctionType extends AbstractType
         ]);
     }
         
-
-   /* public function enchereForm(FormBuilderInterface $builder, array $options)
-    {
-      $builder 
-         
-         ->add('offre' )
-
-        ->add('agreesTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                      'message' => 'M\'alerter en cas de nouvelle enchère' 
-                ],
-            ])
-
-        ->add('Valider', SubmitType::class);
-       
-    }*/
-
-
-
-
 
 }

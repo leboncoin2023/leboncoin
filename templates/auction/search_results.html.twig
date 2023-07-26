@@ -15,7 +15,7 @@
                 </div>
                 {% for keyword, auction in results %}
                     <div class="row row_cat row_one">
-                        <div class="col-12 col-md-3">
+                        <a class="col-12 col-md-3" href="#">
                             <div class="card">
                                 {% if auction.pictures is empty %}
                                 <div class="card-img-top cardimgbg"> </div>
@@ -29,7 +29,7 @@
                                         </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                  
             {% endfor %}   
