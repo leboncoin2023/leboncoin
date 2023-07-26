@@ -13,6 +13,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Doctrine\ODM\MongoDB\Mapping\Annotations;
 use App\Repository\AuctionsRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\UserRepository;
 use DateInterval;
 use DateTime;
 use Doctrine\ODM\MongoDB\DocumentManager;
@@ -191,7 +192,7 @@ class AuctionController extends AbstractController
      * Affichage du détail de l'enchère ( page permettant d'enchérir )
      */
     #[Route('/detail/{id}', name: 'app_auction_detail')]
-    public function detailAuction(Request $request, DocumentManager $dm, CategoryRepository $repo ): Response
+    public function detailAuction(Request $request, DocumentManager $dm, CategoryRepository $repo, UserRepository $userRepository ): Response
     {          
 
         $id = $request->get('id');
@@ -199,8 +200,8 @@ class AuctionController extends AbstractController
         // récuperez l'objet 'auctions' avec l'id spécifié depuis la basse de données 
         $dauction = $dm->getRepository(Auctions::class)->find($id);
 
-        
-
+        $seller = $userRepository->findUserById($dauction->getSellerId());
+       
 
         $tabOffre = $dauction->getoffre();
         if(!empty($tabOffre)){
@@ -250,7 +251,8 @@ class AuctionController extends AbstractController
             'dauction'      =>  $dauction ,
             'auctionId'     => $id,
             'menu'          => $repo->getAllCategoriesAndSub($dm),
-            'CurrentValue'  => $oldMaxPrice
+            'CurrentValue'  => $oldMaxPrice,
+            'seller'        => $seller
         ]);
     }
     

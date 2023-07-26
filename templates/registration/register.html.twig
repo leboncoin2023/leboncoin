@@ -1,11 +1,206 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Lebon<code> | Register{% endblock %}
 
 {% block body %}
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
+
+
+
+
+
+
+<main class="container">
+
+
+        <section class="text-start">
+
+
+            <div class="etapes-inscription">
+
+                <div>
+                    <h3>Créer un compte</h3>
+                </div>
+
+
+                <h4>Bénéficiez d’une expérience personnalisée avec du contenu en lien avec votre activité et vos centres
+                    d’intérêt sur notre service</h4>
+
+                <div>
+                    <input type="radio" id="typecompte1" name="contact" value="perso">
+                    <label for="contactChoice1">Pour vous*</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="typecompte2" name="contact" value="pro">
+                    <label for="contactChoice2">Pour votre entreprise</label>
+                </div>
+
+
+                <div>
+                    <p>Vous avez déjà un compte ?<a href="{{ path('app_login')}}"> Me connecter</a></p>
+                </div>
+
+                <div>
+                    <p class="info-inscription">*Vous agissez à titre professionnel ? <a href="#">Créez plutôt un compte
+                            pro !</a></p>
+
+                </div>
+
+
+                <!-- revoir espaces avant balise a -->
+
+                <div>
+                    <p class="info-inscription">
+                        A défaut, en application de l’article L 132-2 du Code de la consommation qui sanctionne les
+                        pratiques commerciales trompeuses, vous encourez une peine d’emprisonnement de 2 ans et une
+                        amende de 300 000 euros.
+                    </p>
+                </div>
+            </div>
+
+
+
+
+
+            <form>
+
+                <!-- étape email -->
+
+                <div class="etapes-inscription">
+
+                    <div>
+                        <h3>Commençons par un email</h3>
+                    </div>
+
+                    <div>
+                        <label for="email">E-mail</label>
+                    </div>
+                    <div>
+                        <input type="email" name="email" id="email" class="input-transforme">
+                    </div>
+
+
+                    <div>
+
+                        <p><a href="#">Me renseigner</a> sur les finalités du traitement de mes données personnelles,
+                            les destinataires, le responsable du traitement, les durées de conversation, les coordonnées
+                            du DPO et mes droits.</p>
+
+                    </div>
+
+                    <!-- revoir espace après balise a -->
+                </div>
+
+
+                <!-- étape mot de passe -->
+
+                <div class="etapes-inscription">
+
+                    <div>
+                        <h3>Définissez votre mot de passe</h3>
+                        <h4>Choisissez un mot de passe que vous n'utilisez nulle part ailleurs</h4>
+                    </div>
+
+
+                    <div>
+                        <div>
+                            <label for="userPassword">Mot de passe</label>
+                        </div>
+                        <div>
+                            <input id="userPassword" type="password" class="input-transforme">
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- étape telephone -->
+
+                <div class="etapes-inscription">
+
+                    <div>
+                        <h3>Complétons avec un numéro de téléphone</h3>
+                    </div>
+
+                    <div>
+                        <div>
+                            <label for="phone">Numéro de téléphone</label>
+                        </div>
+                        <div>
+                            <input type="tel" name="tel" id="tel" class="input-transforme">
+                        </div>
+                    </div>
+
+                    <div>
+                        <a href="#"><img src="assets/icones/information/information.svg" alt="icone information">
+                            Recevoir les bons plans de nos sites partenaires</a>
+                    </div>
+
+
+                </div>
+
+                <!-- étape user name -->
+
+                <div class="etapes-inscription">
+
+                    <div>
+                        <h3>Et pour finir, choisissez un nom d'utilisateur</h3>
+                    </div>
+
+                    <div>
+                        <label for="name">Nom d'utilisateur</label>
+                    </div>
+                    <div>
+                        <input type="text" id="name" name="name" placeholder="Ex: Camille" class="input-transforme">
+                    </div>
+
+                    <p class="info-inscription">Votre nom d’utilisateur sera visible sur votre profil ainsi que sur vos
+                        futures annonces. Vous pourrez le modifier quand vous le souhaitez !</p>
+
+                </div>
+
+                <div class="acceptation-conditions">
+                    <button type="submit" class="bouton-inscription">Créer un compte</button>
+
+                    <div>
+                        <p>En créant mon compte, je reconnais avoir lu et accepté les <a href="#">Conditions Générales de ventes</a> et les <a href="#">Conditions Générales d’utilisation</a> et je confirme être âgé d’au moins 18
+                            ans.</p>
+                    </div>
+
+
+                </div>
+
+
+
+            </form>
+
+            <div class="illustration-bienvenue">
+                <img src="assets/illustrations/connection.png" alt="illustration bienvenue">
+            </div>
+
+            <!-- <div>
+                <img src="assets/illustrations/connection.png" alt="illustration bienvenue" class="illustration-bienvenue">
+            </div> -->
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+
+{# _________________________________________________________________________________ #}
 
     <h1>Register</h1>
 
