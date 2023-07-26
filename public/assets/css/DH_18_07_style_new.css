@@ -845,8 +845,18 @@ header{
 .link-auction>a{
     color: black;
 }
+.link-auction>a:hover{
+    color: var(--lb_orange);
+}
 .h_one_sub_cat{
     font-weight: bolder;
+}
+a>*{
+    text-decoration: none;
+    color: black;
+}
+a:hover>*{
+    color: var(--lb_orange);
 }
 
 /*___________________Bryan Profil User _____________________________*/
