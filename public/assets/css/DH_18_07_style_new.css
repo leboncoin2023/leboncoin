@@ -661,12 +661,11 @@ header{
 }
 
   #maCarte{
-    height: 70vh;
-    width: 100vh;
+    height: 500px;
+    width: 800px;
     border: 1px solid lightgray;
     border-radius: 20px;
-    /*background-color: var(--gris);*/
-    background-image: url(../img/france_map.png);
+    background-color: var(--gris);
 
 }
 

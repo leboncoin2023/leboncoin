@@ -2,9 +2,14 @@
 
 {% block title %}Détail de l'enchère{% endblock %}
 
+    {% block stylesheets %}
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    {% endblock %}
+
 {% block body %}
 
-    <main>
+ <main>
+
 
 
         <article>
@@ -34,13 +39,14 @@
                                     <p>Aucune image disponible</p>
                                 </div>
                             {% endif %}
-                        
+                        <!--
                         <div class="col-6 voir_plus">
                             <a href="#">
                                 <img src="/assets/icones/fleches/fleche_voirplus.svg" alt="fleche voir plus">
                                 <p>Voir plus</p>   
                             </a>
                         </div>
+                        -->
                 </div>
             <!-- catalogue de photos -->
 
@@ -184,8 +190,10 @@
                             </div>
                         </div>
 
-                        <hr> <!--  MAPS  -->
+                        <hr> 
 
+                <!--  MAPS  -->
+                     <!--   
                         <div>
                             <div class="d-flex">
                                 <img src="assets/icones/localisation/localisation_noir.svg" alt="">
@@ -201,6 +209,21 @@
                                     referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
+                    -->
+                        <div class="map_frame">
+                            <div>
+                                <h2 class="mt-2 mb-5">Adresse de {{ dauction.deliveryMode }}</h2>
+                            </div>
+                            <div class="d-flex align-items-center mb-2 ms-2">
+                                <span id="address_input">{{ dauction.localisation }}</span>
+                            </div>
+                            <div class="mb-2 d-flex map_input">
+                                <div id="maCarte"></div>
+                            </div>
+                        </div>
+
+                <!--  MAPS  -->
+
 
                     </div>
 
@@ -364,4 +387,9 @@
     </main>
 
 
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>               
+<script src="/assets/js/script_maps.js"></script>
 {% endblock %}
