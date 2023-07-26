@@ -6,12 +6,13 @@ if (toastLiveExample) {
 }
 
 function closePopUp() {
-    toastLiveExample.classList.remove('show');
+    toastLiveExample.remove();
+    
 }
 
-//TODO: ajout de la possibilité de fermer le pop-up avec un addeventlistener et un display : none + refaire le html css du pop-up en suivant le modèle des ux/ui
 
-closepop.addEventListener('click', closePopUp);
+closepop.forEach(element => {
+    
+    element.addEventListener('click', closePopUp);
+});
 
-
-console.log( toastLiveExample);
