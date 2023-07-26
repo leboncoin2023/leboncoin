@@ -838,7 +838,16 @@ header{
     color: black;
 }
 
+.rep_ft{
+    font-size: smaller;
+}
 
+.link-auction>a{
+    color: black;
+}
+.h_one_sub_cat{
+    font-weight: bolder;
+}
 
 /*___________________Bryan Profil User _____________________________*/
 

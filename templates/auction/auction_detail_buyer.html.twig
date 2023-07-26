@@ -16,15 +16,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-8">
+            
+        <!-- FIL D'ARIANE -->
+            <div class="col-11 mt-3">
+                <span class="h_one_sub_cat">Accueil > Ventes aux enchères > {{ dauction.category }} > {#{{ dauction.subcategory }} >#} </span>
+            </div>            
+        <!-- FIL D'ARIANE -->
 
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                                <li class="breadcrumb-item"><a href="#">Multimédia</a></li>
-                                <li class="breadcrumb-item"><a href="#">Smartphone</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Iphone 13</li>
-                            </ol>
-                        </nav>
             <!-- catalogue de photos -->
                 <div class="row my-5">
 
@@ -59,9 +57,9 @@
                             <div>
                                 <h1 class="text-start">{{ dauction.title }}</h1>
                             </div>
-                            <div>
+                            <!--  <div>
                                 <p>Annonce publiée le: xxxxxxx</p>
-                            </div>
+                            </div>-->
                         </div>
 
 
@@ -338,38 +336,42 @@
                     </div>
                 </div>
             </div>
+
             <div class="my-4">
                 <span class="fw-bolder">Membre depuis janvier 2023</span>
             </div>
 
-            <div class="d-flex flex-row tps_restant align-items-center justify-content-start my-4">
-                <div class="d-flex col-1 justify-content-start">
+            <div class="d-flex flex-row tps_restant align-items-center my-4">
+                <div class="d-flex justify-content-start">
                     <img src="/assets/icones/timer/chrono_noir.svg" alt="timer">
                 </div>
-                <div class="col-11 d-flex justify-content-start">
-                    <span class="rep_gen">Répond généralement dans les 6 heures</span>
+                <div class="d-flex justify-content-start">
+                    <span class="rep_ft">Répond généralement dans les 6 heures</span>
                 </div>
             </div>
-
-
-                        <a href="#">Voir les annonces d'Antoine</a>
-
-                        <div class="d-flex">
-                            <div class="d-flex">
-                                <img src="assets/icones/information/drapeau.svg" alt="drapeau signaler">
-                                <p>Signaler l'annonce</p>
-                            </div>
-                            <div class="d-flex">
-                                <img src="assets/icones/information/information.svg" alt="icone information">
-                                <p>Vos droits et obligations</p>
-                            </div>
-                        </div>
+            <div class="my-4 link-auction">
+                <a href="#">Voir les annonces d'Antoine</a>
+            </div>
+            <div class="d-flex flex-row mb-5">
+                <div class="d-flex me-5">
+                    <div class="me-2">
+                        <img src="/assets/icones/information/drapeau.svg" alt="drapeau signaler">
+                    </div>
+                    <div>
+                        <sapn>Signaler l'annonce</span>
                     </div>
                 </div>
-                
-                <hr>
-            </div>
 
+                <div class="d-flex">
+                    <div class="me-2">
+                        <img src="/assets/icones/information/information.svg" alt="icone information">
+                    </div>
+                    <div>
+                        <span>Vos droits et obligations</span>
+                    </div>
+                </div>
+            </div>
+    <!--  DETAIL PROFIL VENDEUR  -->
         </section>
 
     </main>
