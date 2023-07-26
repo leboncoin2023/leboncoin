@@ -52,7 +52,7 @@ body{
 .bouton_orangeoutline {
    
     background-color: var(--vintage_white);
-    border: 1px solid var(--lb_orange);
+    border: 2px solid var(--lb_orange);
     color: var(--lb_orange);
 }
 
@@ -68,7 +68,7 @@ body{
 }
 
 .boutonL {
-    padding: 20px 60px;
+    padding: 10px 60px;
     font-size: 24px;
 }
 
@@ -815,8 +815,8 @@ header{
 /*=======GA======26/07===============================================*/
 
 .card_border_top{
-    box-shadow: 1px 1px 1px 2px #C4C4C4;
-    border-radius: 20px;
+    box-shadow: 1px 6px 8px 1px #C4C4C4;
+    border-radius: 15px;
 }
 .rep_gen{
     font-size: smaller;
@@ -830,8 +830,8 @@ header{
     color: var(--lb_orange);
 }
 .card_border_bot{
-    box-shadow: 1px 1px 1px 2px #FFE5D7;
-    border-radius: 20px;
+    border: 1px solid var(--lb_orange);
+    border-radius: 15px;
 }
 .card-title-cart>a{
     text-decoration: none;
