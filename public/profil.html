@@ -1,9 +1,22 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="fr">
 
-{% block title %}Lebon<code> | Profil{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{% block body %}
-<main class="container">
+    <title>leboncoin</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css%22%3E">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="assets/css/profil.css">
+</head>
+
+<body>
+
+    <main class="container">
 
         <div class="d-flex">
             <div class="col-12 col-md-8">
@@ -108,11 +121,12 @@
                 <p>FAQ</p>
             </div>
             <div class="se_deconnceter col-12 col-md-4">
-                <a class="bouton bouton_orangeoutline boutonS" href="{{path('app_logout')}}">Se deconnecter</a>
+                <a class="bouton bouton_orangeoutline boutonS" href="#">Se deconnecter</a>
             </div class="card_profil">
         </div>
 
     </main>
-{% endblock %}
 
+</body>
 
+</html>

@@ -1,26 +1,51 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="fr">
 
-{% block title %}Lebon<code> | Nouvelle enchère{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{% block stylesheets %}
- 
-{% endblock %}
+    <title>leboncoin</title>
 
-{% block body %}
-    <div class="container">
-        <h1 class="mt-5 mb-4">Nouvelle enchère</h1>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css%22%3E">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
 
 
-        {% if form.vars.errors|length > 0 %}
-            <div class="alert alert-danger">
-                {% for error in form.vars.errors %}
-                    {{ error.message }}
-                {% endfor %}
+
+<body>
+    <header>
+
+        <div class="container">
+            <div class="headerflex">
+
+                <div class="elemheaderflex">
+                    <div>
+                        <img src="assets/img/logo.png" alt="logo leboncoin">
+                    </div>
+                    <div class="m-2">
+                        <p class="slogan">Déposer une annonce</p>
+                    </div>
+
+                </div>
+
+                <div class="#">
+                    <a href="#" class="btn btn-outline-dark quit_hover">Quitter</a>
+
+                </div>
+
             </div>
-        {% endif %}
+        </div>
+
+    </header>
 
 
-<main>
+
+    <main>
 
         <div class="container">
             <div class="row">
@@ -217,99 +242,9 @@
 
     </main>
 
-       {#  ___________________________________________________________________________________________________________________ #}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
 
-
-
-        <form method="post" action="{{ path('app_auction_new_auction') }}" enctype="multipart/form-data">
-            {{ form_start(form) }}
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        {{ form_label(form.title) }}
-                        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
-                    </div>
-                    
-                    <div class="form-group">
-                        {{ form_label(form.category) }}
-                        {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                    {#  <div class="form-group">
-                        {{ form_label(form.subcategory) }}
-                        {{ form_widget(form.subcategory , {'attr': {'class': 'form-control'}}) }}
-                    </div> #}
-                    
-                    <div class="form-group">
-                        {{ form_label(form.description) }}
-                        {{ form_widget(form.description , {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                     <div class="form-group">
-                        {{ form_label(form.start_price) }}
-                        {{ form_widget(form.start_price  , {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                     <div class="form-group">
-                        {{ form_label(form.reserve_price) }}
-                        {{ form_widget(form.reserve_price , {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                     <div class="form-group">
-                        {{ form_label(form.start_date) }}
-                        {{ form_widget(form.start_date  , {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                     <div class="form-group">
-                        {{ form_label(form.duration) }}
-                        {{ form_widget(form.duration  , {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                     <div class="form-group">
-                        {{ form_label(form.delivery_mode) }}
-                        {{ form_widget(form.delivery_mode , {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                     <div class="form-group">
-                        {# {{ form_label(form.pictures) }} #}
-                        {{ form_row(form.pictures, {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-
-                     <div class="form-group">
-                        {{ form_label(form.video) }}
-                        {{ form_widget(form.video , {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                     <div class="form-group">
-                        {{ form_label(form.localisation) }}
-                        {{ form_widget(form.localisation , {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                    <!--<div class="form-group">
-                        {#{{ form_label(form.seller_id, null, {'label_attr': {'class': 'hidden-label'}}) }}
-                        {{ form_row(form.seller_id, {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ form_label(form.buyer_id, null, {'label_attr': {'class': 'hidden-label'}}) }}
-                        {{ form_row(form.buyer_id, {'attr': {'class': 'form-control'}}) }}#}
-                    </div>-->
-
-                    <!-- En ajoutant cette ligne dans le formulaire, vous vous assurez que le jeton CSRF est inclus dans le formulaire
-                         lorsqu'il est soumis. Cela garantit la sécurité de votre application en protégeant contre les attaques CSRF.  -->
-                    {{ form_row(form._token) }}
-
-                    <!-- Ajoutez ici les autres champs du formulaire -->
-                </div>
-            </div>
-            {{ form_row(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
-
-            {# <button type="submit" class="btn btn-primary">Créer l'enchère</button> #}
-           {{ form_end(form, {render_rest: false}) }}
-        </form>
-    </div>
-{% endblock %}
-
-
-
+</html>

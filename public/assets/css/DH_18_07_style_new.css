@@ -837,3 +837,234 @@ header{
     text-decoration: none;
     color: black;
 }
+
+
+
+/*___________________Bryan Profil User _____________________________*/
+
+.card_profil{
+    
+    border-radius: 8px;
+    margin-bottom: 2em;
+    padding: 1em;
+   
+    
+    box-shadow: 0px 4px 7px 0px rgba(4, 4, 4, 0.50);
+}
+
+.se_deconnceter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    text-decoration:none;
+    text-align: center;
+}
+
+.icones_profil{
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+}
+
+p{
+    font-size: 14px;
+}
+
+.pp{
+    border: solid 2px var(--lb_orange);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-right: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.porte_monnaie{
+    padding: 1rem;
+    border: solid 2px var(--lb_orange);
+    border-radius: 8px;
+}
+
+
+
+
+
+
+/* ********* VENDEUR Déposer_annoce _ ENSAR **************/
+
+/********* HEADER ***************/
+
+.headerflex{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+
+
+.elemheaderflex{
+    display: flex;
+    justify-content: center;
+}
+
+.slogan{
+    font-weight: bold;
+}
+/****** HOVER BOUTTON******/
+
+
+.quit_hover:hover {
+    color: var(--almost_black);
+    background-color: var(--shade_orange);
+    border-color: var(--shade_orange);
+}
+
+/******END HEADER ******/
+
+
+/****** MAIN  ******/
+
+.cardensar{
+    background-color: var(--vintage_white);
+    border : solid 1.5px var(--gris);
+    margin-bottom: 50px;
+    padding: 40px;
+    border-radius: 10px;
+   }
+
+.auction-title{
+    display: flex;
+    flex-direction: column;
+    }
+
+.largeurinput{
+        
+        max-width: 400px;
+        
+        border-radius: 5px;
+        border: solid 1px var(--gris);
+        margin-bottom: 50px;
+        
+        margin-top: 2%;
+       }
+
+.choix{
+        border: solid 1px var(--gris);
+        max-width: 250px;
+        height: 30%;
+        border-radius: 5px;
+    }
+
+.amp_right{
+        display: flex;
+        flex-direction: column;
+        margin-left: 30px;
+       }    
+    
+.desc_ampoule{
+        font-size:small;
+        text-align: center;
+        font-weight: bold;
+    }
+
+.title_texarea{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 85%;
+    }
+
+
+ .chps_req{
+        font-size: x-small;
+        color: var(--gris);
+        padding-top: 6px;
+    }
+
+.description{
+        border-radius: 5px;
+        border: solid 1px var(--gris);
+        max-width: 100%;
+    }
+
+.priceflex{
+        display: flex;
+        justify-content:space-around;
+      }
+
+.priceflexcol{
+    display: flex;
+    flex-direction: column;
+}
+/* .inputradius{
+        max-width: 200px;
+        margin-right: 200px; */
+        /* border: solid 1px var(--gris); */
+       /*  border-radius: 5px;
+        margin: 2% 0;
+       } */
+    
+.dimension{
+        max-width: 75%;
+    }
+
+.border{
+        border-radius: 10px;
+        padding: 2%;
+        margin: 2% 0;
+        }
+
+.radius{
+            background-color: var(--shade_orange);
+            border-radius: 50px;
+            text-align: center;
+            margin-left: 10px;
+            display: inline-block;
+            padding: 5px 12px;
+        }
+
+.cardensar h4{
+            display: inline-block;
+        }
+        
+.nouveau{
+        padding-top: 2%;
+        }
+
+.active{
+    display: flex;
+
+}
+.livraison{
+    display: flex;
+    
+}
+.livré{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2%;
+}
+
+/****** BOUTON RETOUR ET CONTINUER ******/
+.continuer{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3 0px;
+    padding-top: 50px;
+}
+
+.btn-secondary{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--lb_orange);
+    border-color: var(--vintage_white);
+}
+
+.btn-outline-dark{
+    display: flex;
+    background-color: var(--vintage_white);
+}
+
+/* ********* VENDEUR Déposer_annoce _ ENSAR **************/

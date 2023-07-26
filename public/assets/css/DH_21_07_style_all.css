@@ -788,3 +788,50 @@ header p{
     }
 }
 
+/*_______________________________________________________________________________________*/
+
+
+.card_profil{
+    
+    border-radius: 8px;
+    margin-bottom: 2em;
+    padding: 1em;
+   
+    
+    box-shadow: 0px 4px 7px 0px rgba(4, 4, 4, 0.50);
+}
+
+.se_deconnceter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    text-decoration:none;
+    text-align: center;
+}
+
+.icones_profil{
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+}
+
+p{
+    font-size: 14px;
+}
+
+.pp{
+    border: solid 2px var(--lb_orange);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-right: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.porte_monnaie{
+    padding: 1rem;
+    border: solid 2px var(--lb_orange);
+    border-radius: 8px;
+}

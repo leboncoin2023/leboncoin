@@ -1,0 +1,160 @@
+
+/****************** CSS COMMUN *********************/ 
+
+/***** COLORS ******/
+:root{
+    --lb_orange:#F55E00;
+    --almost_black: #040404;
+    --gris: #C4C4C4;
+    --shade_orange: #FFE5D7;
+    --vintage_white: #FCFBF7;
+}
+
+
+/***** FONT ********/
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('../fonts/Satoshi-Regular.woff2');
+}
+
+/****** BACKGROUND ********/
+
+body{
+    background: var(--vintage_white);
+    font-family: 'Satoshi';
+    color: var(--almost_black);
+}
+
+/*********** BOUTONS **********************/
+
+.bouton {
+    text-decoration: none;
+    border-radius: 10px;
+    border: none;
+    background-color: transparent;
+    padding: 10px 25px;
+}
+
+.bouton_orange {
+    background-color: var(--lb_orange);
+    color: var(--vintage_white);
+    font-weight: 700;
+
+}
+
+.bouton_orangeoutline {
+    background-color: var(--vintage_white);
+    border: 1px solid var(--lb_orange);
+    color: var(--lb_orange);
+}
+
+
+.boutonS {
+    padding: 10px 25px;
+    font-size: 15px;
+}
+
+.boutonM {
+    padding: 10px 55px;
+    font-size: 24px;
+}
+
+.boutonL {
+    padding: 20px 60px;
+    font-size: 24px;
+}
+
+/****** LIENS ********/
+a{
+    text-decoration: none;
+    color: var(--almost_black);
+    font-weight: 700;   
+}
+
+a:hover {
+    color: var(--lb_orange)
+  }
+
+/****** FORMULAIRES ********/
+
+.h3-formulaires{
+    font-weight: 700;
+    padding: 50px 10px;
+    text-align: center;
+}
+
+.h4-formulaires{
+    font-size: 1.2rem;
+}
+
+.input-transforme{
+    border-radius: 5px;
+    border: solid 1px var(--gris);
+    margin: 2% 0;
+    max-width: 200px;          
+}
+
+
+@media screen and (min-width:1200px) {
+    .container{
+        width: 1052px;
+    }
+}
+
+@media screen and (min-width:1400px) {
+    .container{
+        width: 1052px;
+    }
+}
+
+
+
+/* MON CSS */
+
+
+.card_profil{
+    
+    border-radius: 8px;
+    margin-bottom: 2em;
+    padding: 1em;
+   
+    
+    box-shadow: 0px 4px 7px 0px rgba(4, 4, 4, 0.50);
+}
+
+.se_deconnceter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    text-decoration:none;
+    text-align: center;
+}
+
+.icones_profil{
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+}
+
+p{
+    font-size: 14px;
+}
+
+.pp{
+    border: solid 2px var(--lb_orange);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-right: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.porte_monnaie{
+    padding: 1rem;
+    border: solid 2px var(--lb_orange);
+    border-radius: 8px;
+}
+
