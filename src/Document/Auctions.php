@@ -38,6 +38,9 @@ private ?string $reservePrice = null;
 #[MongoDB\Field(type: 'date')]
 private ?\DateTimeInterface $startDate = null;
 
+#[MongoDB\Field(type: 'date')]
+private ?\DateTimeInterface $endDate = null;
+
 #[MongoDB\Field(type:'string')]
 private ?string $duration = null;
 
@@ -122,6 +125,13 @@ private $offre = [];
     {
 
     return $this->startDate;
+
+    }
+
+    public function getEndDate(): ?\DateTimeInterface
+    {
+
+    return $this->endDate;
 
     }
 
@@ -235,6 +245,14 @@ private $offre = [];
     {
 
         $this->startDate = $startDate;
+        
+        return $this;
+    }
+
+    public function setEndDate(?\DateTimeInterface $endDate): self
+    {
+
+        $this->endDate = $endDate;
         
         return $this;
     }

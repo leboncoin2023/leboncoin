@@ -116,7 +116,7 @@ class AuctionController extends AbstractController
                 /** @var DateTime $time */
                 $dt->add(new DateInterval('PT'.$auction->getDuration().'H'));
 
-                
+                $auction->setEndDate($dt);  
 
                 // Sauvegardez l'entité Auctions en base de données
                 $documentManager->persist($auction);
