@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\CategoryRepository;
 use App\Repository\UserRepository;
+use App\Services\AuctionService;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,8 +16,10 @@ class UserController extends AbstractController
 {
     
     #[Route('/', name: 'app_user')]
-    public function index(Request $request, DocumentManager $dm,CategoryRepository $repo): Response
+    public function index(Request $request, DocumentManager $dm,CategoryRepository $repo, AuctionService $auctionService): Response
     {
+
+        //dump($auctionService->test());
 
         if (!$this->getUser())
         return $this->redirectToRoute('app_login');

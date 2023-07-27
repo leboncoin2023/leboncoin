@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-class TestService
+class AuctionService
 {
     public function test(): string
     {
