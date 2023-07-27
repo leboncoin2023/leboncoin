@@ -13,7 +13,7 @@ const swiper = new Swiper(".mySwiper",{
       slidesshadow:true // Active les ombres portées pour les diapositives en mode coverflow
   },*/
 
-  slidesPerView:"auto",// Définit le nombre de diapositives visibles par vue, "auto" signifie autant de diapositives que possible
+  slidesPerView:"3",// Définit le nombre de diapositives visibles par vue, "auto" signifie autant de diapositives que possible
    /*
   pagination:{
       el:".swiper-pagination"// Sélectionne l'élément avec la classe "swiper-pagination" pour afficher la pagination
