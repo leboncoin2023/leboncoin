@@ -3,15 +3,20 @@
 {% block title %}Lebon<code> | Recherche par sous-catégorie{% endblock %}
 
 {% block body %}
+
 <main>
 
- <!-- ***** PRODUITS SUB CAT *****  -->
     <section class="container">
-        <div class="flex sub_cat">
-            <img src="/assets/icones/marteau/marteau_black_M.svg" alt="marteau_noir">
-            <h1 class="h_one_sub_cat">{{ auctions.category }} > {{ auctions.subcategory }}</h1>
-        </div>
 
+<!-- FIL D'ARIANE --> 
+        <div class="flex sub_cat mt-4">
+            <img src="/assets/icones/marteau/marteau_black_M.svg" alt="marteau_noir">
+            <span class="h_one_sub_cat ms-3">{{ auctions.category }} > {{ auctions.subcategory }}</span>
+        </div>
+<!-- FIL D'ARIANE -->
+
+
+ <!-- ***** PRODUITS SUB CAT *****  -->
         <div class="row row_sub_cat row_one my-4">
         {% for auction in auctions.auctions %}
             <a class="col-3 mx-3 cardlink" href="{{ path('app_auction_detail', {'id': auction.id}) }}">
@@ -52,7 +57,7 @@
 
 <!-- ***** PRODUITS SUB CAT /VENTES ENCHERES A VENIR *****  -->
 
-
+{#
         <section class="container">
 
             <div class="flex ventes_venir">
@@ -79,6 +84,56 @@
             </div>
 
         </section>
+#}
+  
+
+    <section class="container my-4">
+
+        <div class="flex ventes_venir mt-5 mb-2">
+            <img src="/assets/icones/marteau/marteau_orange_L.svg" alt="marteauorange">
+            <h1 class="ve_venir_title ms-3">Ventes enchères à venir</h1>
+        </div>
+
+
+<!-- SLIDER -->
+    <section class="container my-4">
+                <!-- Slider main container -->
+            <div class="swiper mySwiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                <!-- Slides -->
+                    
+
+                {% for auction in auctions.auctions %}
+                    <div class="swiper-slide mx-5">
+                        <div class="col-3 mx-3 cardlink" href="{{ path('app_auction_detail', {'id': auction.id}) }}">
+                            <div class="cardlbc">
+                                {% if auction.pictures is empty %}
+                                    <div class="card-img-top cardimglbc"></div>
+                                {% else %}
+                                    <div class="card-img-top cardimglbc">
+                                        <img src="/uploads/pictures/{{ auction.pictures[0] }}" class="img_card_auction" alt="image de l'enchère">
+                                    </div>
+                                {% endif %}
+
+                                <div class="card-body-subcat px-3 d-flex flex-column">
+                                    <span class="cat-card-title myb-1">{{ auction.title }}</span>
+                                    <span class="cat-card-title mb-1"> 100 € </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}        
+
+                   
+                </div>
+            </div>            
+     </section>
+<!-- /SLIDER -->
+
+<!-- /SLIDER -->
+
+
 
 <!-- ***** PRODUITS SUB CAT /SUGGESTIONS*****  -->
 
@@ -199,4 +254,8 @@
 
 
     </main>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>               
+    <script src="/assets/js/script.js"></script>
 {% endblock %}

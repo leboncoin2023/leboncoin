@@ -31,6 +31,10 @@ body{
     margin-right: auto;
 }
 
+.body_bg{
+    background-color: var(--vintage_white);
+}
+
 /* BOUTONS */
 /*********** BOUTONS **********************/
 
@@ -520,7 +524,7 @@ header{
     /* Largeur de 300 pixels */
     width: 300px;
     /* Hauteur automatique */
-    height: auto;
+    height: 400px;
      /* Ombre portée de 6 pixels vers le bas et la droite, couleur noire */
     box-shadow: 6px 6PX 10px var(--gris);
     border-radius: 15px;
@@ -533,7 +537,7 @@ header{
    /* Largeur de 100% */
     width: 100%;
    /* Hauteur de 250 pixels */
-   height: 250px;
+   height: auto;
    border-radius: 15px;
 
 
@@ -610,11 +614,6 @@ header{
      box-shadow: 2px 2px 1px 0px rgba(245, 94, 0, 0.20);
   }
 
-  .dropdown-content_dp {
-
-    
-
-  }
   
   /* Links inside the dropdown */
   .dropdown-content a {
