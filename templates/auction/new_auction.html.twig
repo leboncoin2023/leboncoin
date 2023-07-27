@@ -1,14 +1,15 @@
-{% extends 'base.html.twig' %}
+ {% extends 'base.html.twig' %}
 
 {% block title %}Lebon<code> | Nouvelle enchère{% endblock %}
 
+
 {% block stylesheets %}
- 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1 class="mt-5 mb-4">Nouvelle enchère</h1>
+<div class="container mb-5">
+    <h1 class="mt-5 mb-4">Nouvelle enchère</h1>
 
 
         {% if form.vars.errors|length > 0 %}
@@ -18,297 +19,270 @@
                 {% endfor %}
             </div>
         {% endif %}
+    
+    <section class="container">
+        <form method="post" action="{{ path('app_auction_new_auction') }}" enctype="multipart/form-data">
+                {{ form_start(form) }}
+                
+            <!-- titre & categorie de l'annonce -->
+                <div class="row mb-5">
+                    <div class=" cardensar col-8 ps-4 pb-5 pe-5 pt-4">
+                        <div class="d-flex align-items-start">
+                            <h2 class="mb-4">Commençons par l'essentiel!</h3>
+                        </div>
 
-
-<main>
-
-        <div class="container">
-            <div class="row">
-                <div class="card cardensar col-9">
-
-                    <h3>Commençons par l'essentiel</h3>
-
-                    <div class="auction-title">
-                        <label for="annonce">Quel est le titre de l'annonce</label>
-
-                        <input type="text" class="largeurinput">
-
-                    </div>
-
-
-                    <p>Choisissez une catégorie</p>
-
-                    <select name="choisissez" class="choix">
-                        <option value="">Choisissez</option>
-                        <option value="media">Multimédia</option>
-                        <option value="img">image et son</option>
-                        <option value="service">services</option>
-                    </select>
-
-                </div>
-                <div class="col-2 d-flex justify-content-center amp_right">
-
-
-                    <img src="./assets/img/ampoule_traits.svg" alt="ampoule">
-                    <p class="desc_ampoule">Votre annonce sera trouvé plus facilement !</p>
-                    <p class="desc_ampoule"> Vous aurez 50% de chances en plus d’être contacté votre annonce est dans la
-                        bonne catégorie</p>
-
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="card cardensar col-9">
-
-                    <div class="p-3">
-                        <div class="title_texarea">
-                            <div>
-                                <p>description de l'annonce</p>
-                            </div>
-                            <div>
-                                <p class="chps_req">Champs requis</p>
+                        <div class="auction-title mb-4">
+                            <label for="annonce" class="mb-2">Quel est le titre de l'annonce</label>
+                            <div class="form-group input_new_auction" id="tt">
+                                {# {{ form_label(form.title) }} #}
+                                {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
                             </div>
                         </div>
 
                         <div>
-                            <textarea name="decrir" class="description" cols=80 rows="5"></textarea>
+                            <label for="annonce" class="mb-2">Choisissez une catégorie</label>
+                            <div class="form-group input_new_auction">
+                                {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
+                            </div>
                         </div>
                     </div>
-
-
-                </div>
-                <div class="col-2 d-flex justify-content-center amp_right">
-
-
-                    <img src="./assets/img/ampoule_traits.svg" alt="ampoule">
-
-                    <p class="desc_ampoule"> Mettez en valeur votre bien !
-                        Plus il y a de détails, plus votre
-                        votre annonce sera de qualité.
-                        Détaillez ici ce qui a de la
-                        valeur.</p>
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="card cardensar col-9">
-                    <h3>Quel est votre prix ?</h3>
-
-                    <div class="priceflex">
-                        <div>
-                            <p>Votre prix de vente</p>
-                            <input type="text" class="inputradius bordered">
-                        </div>
-
-                        <div>
-                            <p> Prix plancher</p>
-                            <input type="text" class="inputradius">
-                        </div>
-                    </div>
-
-
-                </div>
-                <div class="col-2 d-flex justify-content-center amp_right">
-
-
-                    <img src="./assets/img/ampoule_traits.svg" alt="ampoule">
-                    <p class="desc_ampoule">Vous le savez, le prix est
-                        important, autant pour vous que
-                        pour l’acheteur, Soyez juste,
-                        mais ayez en tête une marge
-                        de négociation si besoin.</p>
-
-                </div>
-
-
-                <div class="row">
-                    <div class="card cardensar col-9">
-
-                        <h3>Déterminez la date, l'heure et la durée de l'enchère </h3>
-                        <label for="Date">Date:</label>
-                        <input type="search" class="inputradius" name="day">
-                        <label for="heure">Heure:</label>
-                        <input type="search" class="inputradius" name="time">
-                        <label for="duree">Durée:</label>
-                        <input type="search" class="inputradius" name="dur">
-
-                    </div>
+                
+                <!-- ampoule -->
                     <div class="col-2 d-flex justify-content-center amp_right">
+                        <img src="/assets/icones/information/ampoule.svg" alt="ampoule">
+                        <p class="desc_ampoule">Votre annonce sera trouvé plus facilement !</p>
+                        <p class="desc_ampoule"> Vous aurez 50% de chances en plus d’être contacté votre annonce est dans la bonne catégorie</p>
+                    </div>
+                <!-- ampoule -->
+
+                </div>
+            <!-- titre & categorie de l'annonce -->
+
+            <!-- description de l'annonce -->
+
+                <div class="row mb-5">
+                    <div class="cardensar col-8 pt-4 ps-4 pb-5 pe-5">
+
+                        <div>
+                            <div class="title_texarea">
+                                <div>
+                                    <label for="annonce" class="mb-2">Description de l'annonce</label>
+                                </div>
+                                <div>
+                                    <p class="chps_req">Champs requis</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                {{ form_widget(form.description , {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ampoule -->
+                        <div class="col-2 d-flex justify-content-center amp_right">
+                            <img src="/assets/icones/information/ampoule.svg" alt="ampoule">
+                            <p class="desc_ampoule">Mettez en valeur votre bien !</p>
+                            <p class="desc_ampoule">Plus il y a de détails, plus votre annonce sera de qualité. Détaillez ici ce qui a de la valeur.</p>
+                        </div>
+                    <!-- ampoule -->
+                </div>
+            <!-- description de l'annonce -->
 
 
-                        <img src="./assets/img/ampoule_traits.svg" alt="ampoule">
-                        <p class="desc_ampoule">Choisissez un créneau horaire
+            <!-- Prix de l'annonce -->
+                <div class="row mb-5">
+                        <div class="cardensar col-8 pt-4 ps-4 pb-5 pe-5">
+                            <h2 class="mb-4">Quel est votre prix ?</h2>
+
+                            <div class="d-flex flex-row justify-content-around">
+                                <div>
+                                    <label for="annonce" class="mb-2">Votre prix de départ</label>
+                                    {{ form_widget(form.start_price  , {'attr': {'class': 'form-control'}}) }}
+                                </div>
+
+                                <div>
+                                    <label for="annonce" class="mb-2">Prix de reserve</label>
+                                    {{ form_widget(form.reserve_price , {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+
+
+                        </div>
+                    <!-- ampoule -->
+                        <div class="col-2 d-flex justify-content-center amp_right">
+                            <img src="/assets/icones/information/ampoule.svg" alt="ampoule">
+                            <p class="desc_ampoule">Vous le savez, le prix est important, autant pour vous que
+                                pour l’acheteur, Soyez juste,
+                                mais ayez en tête une marge
+                                de négociation si besoin.</p>
+                        </div>
+                    <!-- ampoule -->
+                </div>
+            <!-- Prix de l'annonce -->
+
+
+            <!-- Date et durée de l'enchère -->
+                <div class="row mb-5">
+                    <div class="cardensar col-8 pt-4 ps-4 pb-5 pe-5">
+
+                        <h2>Déterminez la date, l'heure et la durée de l'enchère </h2>
+                        
+                        <div>
+                            <label for="annonce" class="mb-2">Date de début de l'enchère</label>
+                            {{ form_widget(form.start_date  , {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div>
+                            <label for="annonce" class="mb-2">Durée de l'enchère</label>
+                            {{ form_widget(form.duration  , {'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                    </div>
+
+                    <!-- ampoule -->
+                        <div class="col-2 d-flex justify-content-center amp_right">
+                            <img src="/assets/icones/information/ampoule.svg" alt="ampoule">
+                            <p class="desc_ampoule">Choisissez un créneau horaire
                             qui vous permettra d’être
                             disponible lors d’éventuel message
                             de l’acheteur.</p>
+                        </div>
+                    <!-- ampoule -->
+                </div>
+            <!--  Date et durée de l'enchère -->
 
+
+            <!--  Remise du bien -->
+            <div class="row mb-5">
+                <div class="cardensar col-8 pt-4 ps-4 pb-5 pe-5">
+
+                    <h2>Remise du bien</h2>
+                    <div>
+                        <div class="border">
+                            <div>
+                                <p class="radius">Nouveau</p>
+                            </div>
+
+                            <h4>Un nouveau transporteur arrive sur leboncoin</h4>
+                            <p class="nouveau">Faites livrer vos colis dans l'un des 16 000 point de retrait
+                                SHop2shop by Chronopost
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="card cardensar dimension">
+                    <div class="active">
+                        <div class="border">
+                            <h4>Remise en main propre</h4>
+                            <p class="radius">Activé</p>
 
-                        <h3>Remise du bien</h3>
-                        <div>
-                            <div class="border">
-                                <div>
-                                    <p class="radius">Nouveau</p>
-                                </div>
-
-                                <h4>Un nouveau transporteur arrive sur leboncoin</h4>
-                                <p class="nouveau">Faites livrer vos colis dans l'un des 16 000 point de retrait
-                                    SHop2shop by Chronopost
-                                </p>
-                            </div>
+                            <p>Vous acceptez de remettre l’article a votre acheteur en main propre</p>
                         </div>
+                    </div>
 
+                    <div class="livraison">
+                        <div class="border">
+                            <h4>Livraison</h4>
+                            <p class="radius">Activé</p>
 
+                            <p>Vous acceptez d’envoyer l’article à votre acheteur gratuitement via nos partenaires
+                                de livraison</p>
 
-                        <div class="active">
-                            <div class="border">
-                                <h4>Remise en main propre</h4>
-                                <p class="radius">Activé</p>
-
-                                <p>Vous acceptez de remettre l’article a votre acheteur en main propre</p>
-                            </div>
-                        </div>
-
-
-
-                        <div class="livraison">
-                            <div class="border">
-                                <h4>Livraison</h4>
-                                <p class="radius">Activé</p>
-
-                                <p>Vous acceptez d’envoyer l’article à votre acheteur gratuitement via nos partenaires
-                                    de livraison
-                                </p>
-
-                                <div class="livré">
-
-                                    <p> La poste</p>
-                                    <p> Mondial Relay</p>
-                                    <p> shope Chronopost</p>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                        <!--  faire glisser les photos pour la vente -->
-
-                        <!--    Map  -->
-                        <div>
-                            <div class="Continuer">
-                                <button type="button" class="btn btn-outline-dark quit_hover ">Retour</button>
-                                <button type="button" class="btn btn-secondary quit_hover">Continuer</button>
+                            <div class="livré">
+                                <p class="fw-bolder"> La poste</p>
+                                <p class="fw-bolder"> Mondial Relay</p>
+                                <p class="fw-bolder"> shope Chronopost</p>
                             </div>
                         </div>
                     </div>
 
-
-
-
-                    </section>
                 </div>
             </div>
-        </div>
+            <!--  Remise du bien -->
 
 
+            <!--  photos & videos -->
+            <div class="row mb-5">
+                <div class="cardensar col-8 pt-4 ps-4 pb-5 pe-5">
 
-    </main>
+                    <h2>Ajouter des photos et des vidéos</h2>
 
-       {#  ___________________________________________________________________________________________________________________ #}
-
-
-
-        <form method="post" action="{{ path('app_auction_new_auction') }}" enctype="multipart/form-data">
-            {{ form_start(form) }}
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        {{ form_label(form.title) }}
-                        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                    <div class="d-flex flex-column">
+                        <div class="mt-3 mb-4 input_new_auction">
+                            <label for="annonce" class="mb-2">Selectionner vos photos</label>
+                            {{ form_widget(form.pictures, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="mb-4 input_new_auction">
+                            <label for="annonce" class="mb-2">Ajouter une video</label>
+                            {{ form_widget(form.video, {'attr': {'class': 'form-control'}}) }}
+                        </div>
                     </div>
-                    
-                    <div class="form-group">
-                        {{ form_label(form.category) }}
-                        {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                    {#  <div class="form-group">
-                        {{ form_label(form.subcategory) }}
-                        {{ form_widget(form.subcategory , {'attr': {'class': 'form-control'}}) }}
-                    </div> #}
-                    
-                    <div class="form-group">
-                        {{ form_label(form.description) }}
-                        {{ form_widget(form.description , {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                     <div class="form-group">
-                        {{ form_label(form.start_price) }}
-                        {{ form_widget(form.start_price  , {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                     <div class="form-group">
-                        {{ form_label(form.reserve_price) }}
-                        {{ form_widget(form.reserve_price , {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                     <div class="form-group">
-                        {{ form_label(form.start_date) }}
-                        {{ form_widget(form.start_date  , {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                     <div class="form-group">
-                        {{ form_label(form.duration) }}
-                        {{ form_widget(form.duration  , {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                     <div class="form-group">
-                        {{ form_label(form.delivery_mode) }}
-                        {{ form_widget(form.delivery_mode , {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                     <div class="form-group">
-                        {# {{ form_label(form.pictures) }} #}
-                        {{ form_row(form.pictures, {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-
-                     <div class="form-group">
-                        {{ form_label(form.video) }}
-                        {{ form_widget(form.video , {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                     <div class="form-group">
-                        {{ form_label(form.localisation) }}
-                        {{ form_widget(form.localisation , {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                    <!--<div class="form-group">
-                        {#{{ form_label(form.seller_id, null, {'label_attr': {'class': 'hidden-label'}}) }}
-                        {{ form_row(form.seller_id, {'attr': {'class': 'form-control'}}) }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ form_label(form.buyer_id, null, {'label_attr': {'class': 'hidden-label'}}) }}
-                        {{ form_row(form.buyer_id, {'attr': {'class': 'form-control'}}) }}#}
-                    </div>-->
-
-                    <!-- En ajoutant cette ligne dans le formulaire, vous vous assurez que le jeton CSRF est inclus dans le formulaire
-                         lorsqu'il est soumis. Cela garantit la sécurité de votre application en protégeant contre les attaques CSRF.  -->
-                    {{ form_row(form._token) }}
-
-                    <!-- Ajoutez ici les autres champs du formulaire -->
                 </div>
+                <!-- ampoule -->
+                    <div class="col-2 d-flex justify-content-center amp_right">
+                        <img src="/assets/icones/information/ampoule.svg" alt="ampoule">
+                        <p class="desc_ampoule">Plus de 8 photos dans une annonce augmente de 30% le nombre de contacts!</p>
+                        <p class="desc_ampoule">N'oubliez pas de mettre une vidéo, cela aidera beaucoup l'acheteur a avoir confiance.</p>
+                    </div>
+                <!-- ampoule -->
             </div>
-            {{ form_row(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+            <!--  photos & videos -->
 
-            {# <button type="submit" class="btn btn-primary">Créer l'enchère</button> #}
-           {{ form_end(form, {render_rest: false}) }}
+
+
+            <!-- adresse et map -->
+            <div class="row mb-5">
+                <div class="cardensar col-8 pt-4 ps-4 pb-5 pe-5">
+
+                    <h2 class="mb-4">Où se situe votre bien?</h2>
+                            
+                    <div class="map_frame">
+                        <div class="mb-2 d-flex map_input">
+                            {#
+                            <input type="text" id="address_input" placeholder="Renseigner l'adresse de livraison">
+                            <button class=" btn-orange" id="getMap">Afficher l'adresse</button>
+                            #}
+                            <span id="address_input">
+                                {{ form_widget(form.localisation , {'attr': {'class': 'form-control'}}) }}
+                            </span>
+                            
+                        </div>
+                        <div class="mb-2 d-flex map_input">
+                            <!-- <i class="fa-solid fa-location-dot" style="color: #ff9200;"></i>-->
+                            <div id="maCarte"></div>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- ampoule -->
+                <div class="col-2 d-flex justify-content-center amp_right">
+                    <img src="/assets/icones/information/ampoule.svg" alt="ampoule">
+                    <p class="desc_ampoule">Pour des raisons de confidentialité, si vous renseignez votre adresse exacte, celle-ci n'apparaitra jamais sur votre annonce!</p>
+                </div>
+            <!-- ampoule -->
+            </div>
+            <!--  adresse et map -->
+
+
+
+                <!-- En ajoutant cette ligne dans le formulaire, vous vous assurez que le jeton CSRF est inclus dans le formulaire
+                lorsqu'il est soumis. Cela garantit la sécurité de votre application en protégeant contre les attaques CSRF.  -->
+                {{ form_row(form._token) }}
+       
+                <div class="text-end col-8">
+                    {{ form_row(form.save, {'attr': {'class': 'btn btn-primary btn_valid_form'}}) }}
+                </div>
+                {# <button type="submit" class="btn btn-primary">Créer l'enchère</button> #}
+            {{ form_end(form, {render_rest: false}) }}
         </form>
-    </div>
+    </section>
+</div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>               
+<script src="/assets/js/script_maps_seller.js"></script>
 {% endblock %}
 
 

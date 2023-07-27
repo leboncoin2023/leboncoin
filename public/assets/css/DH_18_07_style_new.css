@@ -538,6 +538,10 @@ header{
 
 
 }
+.slide_label{
+   margin-top: -20px;
+}
+
 /*______________________*/
 
 /*____DROPDOWN CARDS______*/
@@ -945,20 +949,9 @@ p{
 /******END HEADER ******/
 
 
-/****** MAIN  ******/
+/****** MAIN  ******MODIF 27/07 GA***********/
 
-.cardensar{
-    background-color: var(--vintage_white);
-    border : solid 1.5px var(--gris);
-    margin-bottom: 50px;
-    padding: 40px;
-    border-radius: 10px;
-   }
 
-.auction-title{
-    display: flex;
-    flex-direction: column;
-    }
 
 .largeurinput{
         
@@ -1178,3 +1171,40 @@ header p{
 
 
 /* ********* END  INSCRIPTION _ SOLENNE **************/
+
+
+/*=================GA 27/07===============*/
+/*_______NEW AUCTION______________________*/
+
+.input_new_auction{
+    width: 600px;
+    border-radius: 10px;
+}
+.form-control{
+    background-color: gray;
+}
+
+.cardensar{
+    background-color: var(--vintage_white);
+    border : solid 2px;
+    border-color: var(--gris);
+    border-radius: 15px;
+   }
+
+.auction-title{
+    display: flex;
+    flex-direction: column;
+    }
+
+    #maCarte_seller{
+        height: 400px;
+        width: 800px;
+        border: 1px solid lightgray;
+        border-radius: 20px;
+        background-color: var(--gris);
+    
+    }
+
+    .btn_valid_form{
+        background-color: #F55E00;
+    }

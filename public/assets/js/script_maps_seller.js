@@ -1,18 +1,31 @@
-    
+    console.log('contenu adresse:',document.getElementsByClassName('address_input').innerHTML);
+
     let address_input = document.getElementById('address_input');
-    let search_btn = document.getElementById('search');
-    let maps_address = document.getElementById('maCarte_seller');
-    //let lat="48.830624";
-    //let lon="2.380269";
+    let search_btn = document.getElementById('getMap');
+    let maps_address = document.getElementById('maCarte');
+ 
+    //Récupération des coordonnées GPS de l'adresse entrée par l'utilisateur
+    function getLocation(){
 
+        window.fetch('https://api-adresse.data.gouv.fr/search/?q=' + document.getElementById('address_input').innerHTML)
+        .then(response => response.json())
+        .then(results => {
+            
+                lat = results.features[0].geometry.coordinates[1];
+                lon = results.features[0].geometry.coordinates[0];
+                console.log(lat, lon);
+                showMap(lat,lon);
+                
+            }, 
+        )
+        
+    }
 
-    //showMap("48.830624","2.380269");
-
-    
+    getLocation();
         
     // Affichage et initialisation de la carte 
     function showMap(lat, lon){
-        let carte = L.map('maCarte_seller').setView([lat, lon], 18);
+        let carte = L.map('maCarte').setView([lat, lon], 18);
 
         L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
             //lien vers la source des données
@@ -30,24 +43,7 @@
 
 
 
-    //Récupération des coordonnées GPS de l'adresse entrée par l'utilisateur
-    function getLocation(){
 
-        window.fetch('https://api-adresse.data.gouv.fr/search/?q=' + address_input.value)
-        .then(response => response.json())
-        .then(results => {
-          
-                lat = results.features[0].geometry.coordinates[1];
-                lon = results.features[0].geometry.coordinates[0];
-                console.log(lat, lon);
-                showMap(lat,lon);
-                
-                
-                
-            }, 
-        )
-        
-    }
 
     
 
@@ -83,6 +79,7 @@ function getMap(){
 
 // ---- ECOUTEUR D'EVENEMEMENTS
 
+//search_btn.addEventListener('click', getLocation);
 search_btn.addEventListener('click', getLocation);
 
 
