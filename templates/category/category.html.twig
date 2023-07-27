@@ -19,7 +19,7 @@
 
                     {% for auction in sub.auctions %}
                     
-                        <a class="col-3 mx-3" href="{{ path('app_auction_detail', {'id': auction.id}) }}">
+                        <a class="col-3 mx-3 cardlink" href="{{ path('app_auction_detail', {'id': auction.id}) }}">
                             <div class="cardlbc">
                                 {% if auction.pictures is empty %}
                                 <div class="card-img-top cardimglbc"></div>

@@ -1,7 +1,7 @@
-    console.log('contenu adresse:',document.getElementsByClassName('address_input').innerHTML);
+   
 
     let address_input = document.getElementById('address_input');
-    let search_btn = document.getElementById('getMap');
+    //let search_btn = document.getElementById('getMap');
     let maps_address = document.getElementById('maCarte');
  
     //Récupération des coordonnées GPS de l'adresse entrée par l'utilisateur
@@ -20,8 +20,9 @@
         )
         
     }
-
+   
     getLocation();
+    console.log('contenu adresse:',document.getElementById('address_input').innerText);
         
     // Affichage et initialisation de la carte 
     function showMap(lat, lon){
@@ -80,7 +81,7 @@ function getMap(){
 // ---- ECOUTEUR D'EVENEMEMENTS
 
 //search_btn.addEventListener('click', getLocation);
-search_btn.addEventListener('click', getLocation);
+//search_btn.addEventListener('click', getLocation);
 
 
 

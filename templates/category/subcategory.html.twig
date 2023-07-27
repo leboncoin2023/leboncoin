@@ -6,52 +6,49 @@
 <main>
 
  <!-- ***** PRODUITS SUB CAT *****  -->
-        <section class="container">
+    <section class="container">
+        <div class="flex sub_cat">
+            <img src="/assets/icones/marteau/marteau_black_M.svg" alt="marteau_noir">
+            <h1 class="h_one_sub_cat">{{ auctions.category }} > {{ auctions.subcategory }}</h1>
+        </div>
 
-{# {{ auctions.category }}
-{{ auctions.subcategory }}
-
-{% for auction in auctions.auctions %}
-
-    {{ auction.title }}
-
-{% endfor %} #}
-
-            <div class="flex sub_cat">
-                <img src="/assets/icones/marteau/marteau_black_M.svg" alt="marteau_noir">
-                <h1 class="h_one_sub_cat">{{ auctions.category }} > {{ auctions.subcategory }}</h1>
-            </div>
-
-            <div class="row row_sub_cat row_one">
-            {% for auction in auctions.auctions %}
-                <a class="col-12 col-md-3" href="{{ path('app_auction_detail', {'id': auction.id}) }}">
-                    <div class="card">
+        <div class="row row_sub_cat row_one my-4">
+        {% for auction in auctions.auctions %}
+            <a class="col-3 mx-3 cardlink" href="{{ path('app_auction_detail', {'id': auction.id}) }}">
+                <div class="cardlbc">
                     {% if auction.pictures is empty %}
-                        <div class="card-img-top cardimgbg"> </div>
+                        <div class="card-img-top cardimglbc"></div>
                     {% else %}
-                        <div {# class="card-img-top cardimgbg" #}><img src="/uploads/pictures/{{ auction.pictures[0] }}" alt="Image du produit"></div>
+                        <div class="card-img-top cardimglbc">
+                            <img src="/uploads/pictures/{{ auction.pictures[0] }}" class="img_card_auction" alt="image de l'enchère">
+                        </div>
                     {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title-sub-cat">{{ auction.title }}</h5>
-                            <h6 class="card_offre_sub_cat">OFFRE ACTUELLE</h6>
-                            <h5 class="card-title-sub-cat"> {{ auction.soldPrice }}</h5>
-                            <p class="description_sub_cat">{{ auction.description }}</p>
-                            <p class="time">IL RESTE {{ auction.duration }}</p>
-                            <div class="flex local_heart">
-                                <div class="flex local_heart_two">
+
+                    <div class="card-body-subcat px-3 d-flex flex-column">
+                    
+                        <span class="cat-card-title myb-1">{{ auction.title }}</span>
+                        <span class="card-subtitle mb-1">OFFRE ACTUELLE</span>
+                        <span class="cat-card-title mb-1"> 100 € </span>
+                        <span class="card-subtitle mb-1">{{ auction.description }}</span>
+                        <span class="card-subtitle-orange mb-1">IL RESTE {{ auction.duration }}</span>
+                        <div class="d-flex flex-row">
+                            <div class="d-flex col-10">
+                                <div class="d-flex justify-content-center me-2">
                                     <img src="/assets/icones/localisation/localisation_small_noir.svg" alt="localisation">
-                                    <p class="localisation">{{ auction.localisation }}</p>
                                 </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="localisation-card">{{ auction.localisation }}</span>
+                                </div>
+                            </div>
+                            <div class="col-2">
                                 <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
                             </div>
                         </div>
                     </div>
-                </a>
-                {% endfor %}
-
-                
-
-        </section>
+                </div>
+            </a>
+        {% endfor %}
+    </section>
 
 <!-- ***** PRODUITS SUB CAT /VENTES ENCHERES A VENIR *****  -->
 

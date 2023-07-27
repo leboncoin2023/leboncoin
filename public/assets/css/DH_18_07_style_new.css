@@ -779,10 +779,7 @@ header{
     
 }
 
-.card-body{
-    object-fit: cover;
-    padding: 0;
-}
+
 
 
   /* ********************** */
@@ -1207,4 +1204,36 @@ header p{
 
     .btn_valid_form{
         background-color: #F55E00;
+    }
+
+    .card-body{
+        object-fit: cover;
+        padding: 0;
+    }
+    .card-body-subcat{
+       height: 200px;
+    }
+    .cardlink{
+        text-decoration: none;
+        color: black;
+    }
+    .card-subtitle{
+        font-size: small;
+        font-weight: 200;
+
+    }
+    .cat-card-title{
+        font-size: larger;
+        font-weight: bold;
+    }
+
+    .card-subtitle-orange{
+        font-size: small;
+        font-weight: 200;
+        color: var(--lb_orange);
+    }
+    .localisation-card{
+        font-size: x-small;
+        font-weight: lighter;
+        margin: 0;
     }
