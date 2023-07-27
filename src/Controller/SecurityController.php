@@ -32,6 +32,14 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
+
+
+
+            //introduir la methode présente dans auction service
+            
+
+
+
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername, 'error' => $error,
             'menu' => $repo->getAllCategoriesAndSub($dm)
