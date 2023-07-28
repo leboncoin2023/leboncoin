@@ -308,11 +308,28 @@ private $offre = [];
 
     public function setoffre(?array $offre)
     {
-        
         $this->offre = $offre;
-        
         return $this;
     }
 
-    
+    public function addOffre(?array $offre)
+    {
+        $this->offre[] = $offre;
+        return $this;
+    }
+
+    public function getCurrentValue(): int {
+        // recupération des offres de l'enchères
+        $offres = $this->getoffre();
+
+        // ajout de l'enchere de départ
+        $offre[] = $this->getStartPrice();
+
+        // recherche de la valeur max
+        usort($offres, fn($a, $b) => $b['offre'] <=> $a['offre']);
+
+        // récupération de l'offre la plus haute
+        return isset($offres[0]['offre']) ? $offres[0]['offre'] : 0;
+    } 
+
 } 

@@ -47,11 +47,11 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/auction', name: 'app_user_auction')]
-    public function auction(): Response
+    #[Route('/notifications', name: 'app_user_notifications')]
+    public function auction( DocumentManager $dm,CategoryRepository $repo,): Response
     {
-        return $this->render('user/auction.html.twig', [
-            'controller_name' => 'UserController',
+        return $this->render('user/Notifs.html.twig', [
+            'menu'          => $repo->getAllCategoriesAndSub($dm),
         ]);
     }
 

@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lebon<code> | Notifications{% endblock %}
+
+
+{% block body %}
+
+<main class="container">
+
+<!--  Onglets-->
+    <div class="ongletflex">
+
+        <div>
+            <p class="decodiv1"><img src="/assets/icones/marteau/marteau_orange_M.svg" alt="marteau orange">Ventes aux enchères</p>
+        </div>
+
+        <div>
+            <p class="decodiv2">LeBoncoin</p>
+        </div>
+
+    </div>
+
+<!--Notifs-->
+
+
+<section class="notifborder">
+
+    <div class="notiflex">
+        <div>
+            <p><strong>Vous avez remporté la vente aux enchères</strong></p>
+        </div>
+
+        <div>
+            <a class="bouton bouton_orange boutonS" href="">Payer</a>
+        </div>
+    </div>
+
+    <p>Title</p>
+    <p>Delivery</p>
+    <p>Terminé<img src="/assets/icones/timer/horloge.svg" alt="horloge"></p>
+
+    <div class="notiflex">
+        <p>Etre alerté des nouvelles offres <img src="/assets/icones/information/icone_phone.svg" alt="logo tel"><img src="/assets/icones/message/mail_orange.svg" alt="logo mail"></p>
+        <button class="suppnotif" href="">Supprimer</button>
+    </div>
+
+
+</section>
+
+<h4>Vous avez 1 enchère sauvegardée</h4>
+
+<!--Enchère sauvegardé-->
+
+<section class="notifborder">
+
+    <div class="notiflex">
+        <div>
+            <p><strong>Ordinateur portable AZUS </strong></p>
+        </div>
+
+        <div>
+            <a class="modifnotif" href=""><img src="" alt="">Modifier</a>
+        </div>
+    </div>
+
+    <p>Toute catégorie</p>
+    <p>toute la France</p>
+    <p>Le 5 juillet 2023 à 16h04</p>
+
+    <div class="notiflex">
+        <p>Etre alerté des nouvelles annonces <img src="/assets/icones/information/icone_phone.svg" alt="logo tel"><img src="/assets/icones/message/mail_orange.svg" alt="logo mail"></p>
+        <button class="suppnotif" href="">Supprimer</button>
+    </div>
+
+
+</section>
+
+
+
+</main>
+
+{% endblock %}

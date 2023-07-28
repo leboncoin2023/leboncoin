@@ -20,7 +20,7 @@
 
 @font-face {
     font-family: 'Satoshi';
-    src: url('/public/assets/font/Satoshi-Regular.woff2');
+    src: local('/public/assets/font/Satoshi-Regular.woff2');
 }
 
 /* BACKGROUND */
@@ -33,6 +33,7 @@ body{
 
 .body_bg{
     background-color: var(--vintage_white);
+
 }
 
 /* BOUTONS */
@@ -286,7 +287,7 @@ header{
 }   
 
 .liens-navhaut a{
-    font-family: satoshi;
+  
     font-size: 10px;
     font-weight: 500;
     color: #040404;
@@ -294,7 +295,7 @@ header{
 }
 
 .liens-navhaut a:hover{
-    font-family: satoshi;
+   
     font-size: 10px;
     font-weight: 500;
     color: var(--lb_orange);
@@ -320,7 +321,11 @@ header{
 
 .loupebtn{
     border: none;
-    background-color: #e9ecef;
+    background-color: transparent !important;
+}
+
+.loupearea{
+    background-color: transparent !important;
 }
 
   /*________________HEADER NAV 2e LIGNE _______________________*/
@@ -360,7 +365,7 @@ header{
 	padding: 0 14px;
 	text-decoration: none;
 	color: var(--almost_black);
-    font-family: satoshi;
+    
     font-weight: 500;
 	font-size: 12px;
 }
@@ -380,7 +385,7 @@ header{
 	line-height: 45px;
 	padding: 0 14px;
 	text-decoration: none;
-    font-family: satoshi;
+    
     font-weight: 500;
 	font-size: 12px;
 }
@@ -1277,3 +1282,61 @@ header p{
         color: var(--lb_orange);
         background-color: var(--shade_orange);
     }
+
+
+
+
+
+/*     __________________________Notifications ALEX_______________________
+ */
+
+ .inputbgc{
+    background-color: var(--vintage_white) !important;
+ }
+
+.ongletflex{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    
+}
+
+ .notiflex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+ }
+
+ .suppnotif{
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+ }
+
+ .notifborder{
+    border: solid 2px var(--lb_orange);
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 1em;
+    margin-bottom: 2em;
+ }
+
+ .decodiv1{
+    border-bottom: solid 2px var(--lb_orange);
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+ }
+
+ .decodiv2{
+    border-bottom: solid 2px var(--almost_black);
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+ }
+
+ .modifnotif{
+    text-decoration: none;
+    color: var(--almost_black);
+ }
