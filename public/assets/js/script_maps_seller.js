@@ -1,13 +1,38 @@
-   
+document.addEventListener('DOMContentLoaded', (e) => {
 
-    let address_input = document.getElementById('address_input');
-    //let search_btn = document.getElementById('getMap');
-    let maps_address = document.getElementById('maCarte');
+    // récupère le champ input de localisation dans le dom
+    const locationInput = document.getElementById('auction_localisation');
+    if (locationInput) {
+
+        // récupération du keyup sur le champ de localisayion
+        locationInput.addEventListener('keyup', (e) => {
+
+            // récupération de la valeur saisie par l'utilisateur
+            let localisation = e.target.value;
+            getLocation(localisation);
+            //console.log('contenu adresse:',document.getElementById('address_input').innerText);
+            
+        });
+    }
+
+
+// Fonctions
+
+
+    //initialisation des varibales
+        let address_input = document.getElementById('address_input');
+        //let search_btn = document.getElementById('getMap');
+        let maps_address = document.getElementById('maCarte');
+        //let carte="";
+
+        //Modifier le libellé du bouton de validation du formulaire
+        let save_btn = document.getElementById('auction_save');
+        save_btn.innerText="Valider";
  
     //Récupération des coordonnées GPS de l'adresse entrée par l'utilisateur
-    function getLocation(){
+    function getLocation(location){
 
-        window.fetch('https://api-adresse.data.gouv.fr/search/?q=' + document.getElementById('address_input').innerHTML)
+        window.fetch('https://api-adresse.data.gouv.fr/search/?q=' + location)
         .then(response => response.json())
         .then(results => {
             
@@ -21,11 +46,12 @@
         
     }
    
-    getLocation();
-    console.log('contenu adresse:',document.getElementById('address_input').innerText);
+
         
-    // Affichage et initialisation de la carte 
+    // Affichage de la carte 
     function showMap(lat, lon){
+        
+
         let carte = L.map('maCarte').setView([lat, lon], 18);
 
         L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
@@ -43,45 +69,9 @@
 
 
 
+});   
+
 
 
 
     
-
-
-
-
-
-/*
-let address_input = document.getElementById('address_input');
-let address_map = document.getElementById('address_map');
-let search_btn = document.getElementById('search')
-
-
-
-function getMap(){
-
-    let address_new=address_input.value.replaceAll(" ","+");
-
-    console.log(address_new);
-
-    window.fetch('https://nominatim.openstreetmap.org/search.php?q=' + address_new)
-    .then(response => response.json())
-    .then(results => {
-         
-        
-        address_map.innerHTML = `<p>${results.place_id}</p>`;
-    
- 
-    });
-
-}
-*/
-
-// ---- ECOUTEUR D'EVENEMEMENTS
-
-//search_btn.addEventListener('click', getLocation);
-//search_btn.addEventListener('click', getLocation);
-
-
-

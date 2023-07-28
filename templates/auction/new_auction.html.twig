@@ -132,11 +132,11 @@
                         
                         <div>
                             <label for="annonce" class="mb-2">Date de début de l'enchère</label>
-                            {{ form_widget(form.start_date  , {'attr': {'class': 'form-control'}}) }}
+                            {{ form_widget(form.start_date  , {'attr': {'class': 'form-control auction_start_date'}}) }}
                         </div>
                         <div>
                             <label for="annonce" class="mb-2">Durée de l'enchère</label>
-                            {{ form_widget(form.duration  , {'attr': {'class': 'form-control'}}) }}
+                            {{ form_widget(form.duration  , {'attr': {'class': 'form-control input_new_auction'}}) }}
                         </div>
 
                     </div>
@@ -271,7 +271,8 @@
                 {{ form_row(form._token) }}
        
                 <div class="text-end col-8">
-                    {{ form_row(form.save, {'attr': {'class': 'boutonspé btn_valid_form'}}) }}
+                    {{ form_row(form.save, {'attr': {'class': 'bouton boutonspé boutonM btn_valid_form'}}) }}
+                    {#{{ form_row(form.save, {'attr': {'class': 'bouton boutonspé boutonM btn_valid_form'}}) }} }
                 </div>
                 {# <button type="submit" class="btn btn-primary">Créer l'enchère</button> #}
             {{ form_end(form, {render_rest: false}) }}
