@@ -14,6 +14,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations;
 use App\Repository\AuctionsRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\UserRepository;
+use App\Services\AuctionService;
 use DateInterval;
 use DateTime;
 use Doctrine\ODM\MongoDB\DocumentManager;
@@ -192,41 +193,38 @@ class AuctionController extends AbstractController
      * Affichage du détail de l'enchère ( page permettant d'enchérir )
      */
     #[Route('/detail/{id}', name: 'app_auction_detail')]
-    public function detailAuction(Request $request, DocumentManager $dm, CategoryRepository $repo, UserRepository $userRepository ): Response
+    public function detailAuction(Request $request, DocumentManager $dm, CategoryRepository $repo, UserRepository $userRepository, AuctionService $auctionService): Response
     {          
 
         $id = $request->get('id');
 
         // récuperez l'objet 'auctions' avec l'id spécifié depuis la basse de données 
         $dauction = $dm->getRepository(Auctions::class)->find($id);
-
-        $seller = $userRepository->findUserById($dauction->getSellerId());
-       
-
-        $tabOffre = $dauction->getoffre();
-        if(!empty($tabOffre)){
-            usort($tabOffre, fn($a, $b) => $b['offre'] <=> $a['offre']);
-            $oldMaxPrice    = $tabOffre[0]['offre'];
-        }else{
-            $oldMaxPrice = $dauction->getStartPrice();
+        // Vérifiez si l'objet "Auctions" a été trouvé
+        if(!$dauction){
+            throw $this->createNotFoundException('Auction not found for ID: ' . $id);
         }
 
+        $seller = $userRepository->findUserById($dauction->getSellerId());
 
-        if(null != $request->request->get('offre')){
+        // récupère l'offre actuel la plus élevée de l'enchère (via le service)
+        $currentOffer = $auctionService->getCurrentAmount($id, $dm);
 
+        // HERE WAS YODA !!!!
+        if(null != $request->request->get('offre')) {
 
-            if(empty($tabOffre)){
-            
-                $oldMaxPrice = $dauction->getStartPrice();
-            }
             $offre  = $request->request->get('offre');
 
-            if($offre > $oldMaxPrice){
-                $tabOffre[] = ['offerUserId' => $this->getUser()->getId(), 'offre' => $offre, 'date' => date('Y-m-d h:i:s')];
-                $dauction   ->setoffre($tabOffre);
+            if($offre > $currentOffer){
+
+                $dauction   ->addOffre([
+                    'offerUserId' => $this->getUser()->getId(), 
+                    'offre' => $offre, 
+                    'date' => date('Y-m-d h:i:s')
+                ]);
                 $dm         ->persist($dauction);
                 $dm         ->flush();
-                $oldMaxPrice = $offre;
+                $currentOffer = $offre;
 
                 $this->addFlash(
                     'success',
@@ -242,16 +240,13 @@ class AuctionController extends AbstractController
 
 
         }
-        // Vérifiez si l'objet "Auctions" a été trouvé
-        if(!$dauction){
-            throw $this->createNotFoundException('Auction not found for ID: ' . $id);
-        }
+
       
        return $this->render('auction/auction_detail_buyer.html.twig',[
-            'dauction'      =>  $dauction ,
+            'dauction'      => $dauction ,
             'auctionId'     => $id,
             'menu'          => $repo->getAllCategoriesAndSub($dm),
-            'CurrentValue'  => $oldMaxPrice,
+            'CurrentValue'  => $currentOffer,
             'seller'        => $seller
         ]);
     }
