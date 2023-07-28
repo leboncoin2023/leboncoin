@@ -1220,7 +1220,7 @@ header p{
     .swiper-slide{
     
         /* Position de l'arrière-plan au centre */
-        background-position: center;
+        background-position:center;
         /* Largeur de 300 pixels */
         width: 480px;
         /* Hauteur automatique */
@@ -1241,6 +1241,7 @@ header p{
             }
 
             .swiper-slide img{
+                object-fit: cover;
                 display: block;
                 height: 100%;
                 width: 100%;
