@@ -89,12 +89,12 @@
 
     <section class="container my-4">
 
-        <div class="flex ventes_venir mt-5 mb-2">
+        <div class="flex ventes_venir mt-5 mb-2 justify-content-center">
             <img src="/assets/icones/marteau/marteau_orange_L.svg" alt="marteauorange">
             <h1 class="ve_venir_title ms-3">Ventes enchères à venir</h1>
         </div>
 
-
+    </section>
 <!-- SLIDER -->
     <section class="container my-4">
                 <!-- Slider main container -->
@@ -105,23 +105,29 @@
                     
 
                 {% for auction in auctions.auctions %}
-                    <div class="swiper-slide mx-5">
-                        <div class="col-3 mx-3 cardlink" href="{{ path('app_auction_detail', {'id': auction.id}) }}">
-                            <div class="cardlbc">
+                    <div class="swiper-slide mx-5 row" href="{{ path('app_auction_detail', {'id': auction.id}) }}">
+                            <div class="col-6 card_slid_subcat">
                                 {% if auction.pictures is empty %}
-                                    <div class="card-img-top cardimglbc"></div>
+                                        <img src="/assets/img/leboncoin_1.png" class="slider_subcat_img" alt="image de l'enchère">
                                 {% else %}
-                                    <div class="card-img-top cardimglbc">
-                                        <img src="/uploads/pictures/{{ auction.pictures[0] }}" class="img_card_auction" alt="image de l'enchère">
-                                    </div>
+                                        <img src="/uploads/pictures/{{ auction.pictures[0] }}" class=" slider_subcat_img" alt="image de l'enchère">
                                 {% endif %}
-
-                                <div class="card-body-subcat px-3 d-flex flex-column">
-                                    <span class="cat-card-title myb-1">{{ auction.title }}</span>
-                                    <span class="cat-card-title mb-1"> 100 € </span>
-                                </div>
                             </div>
-                        </div>
+                            <div class="col-6 d-flex flex-column justify-content-around">
+                                    <div>
+                                        <div><p class="cat-card-title myb-1">{{ auction.title }}</p></div>
+                                        <div><p class="cat-card-title mb-1 fw-bold"> 100 € </p></div>
+                                        <div><p class="cat-card-title mb-1 fw-light">{{ auction.startDate |date('d-m-Y')}}</p></div>
+                                    </div>
+                                    <div class="row justify-content-around">
+                                        <div class="col-10">
+                                            <button class="bouton bouton_orange boutonXS">Voir le produit</button>
+                                        </div>
+                                        <div class="col-2 p-1">
+                                            <img src="/assets/icones/coeurs/coeur_orange_vide.svg" alt="coeur">
+                                        </div>
+                                    </div>
+                            </div>
                     </div>
                 {% endfor %}        
 
@@ -131,7 +137,7 @@
      </section>
 <!-- /SLIDER -->
 
-<!-- /SLIDER -->
+
 
 
 
