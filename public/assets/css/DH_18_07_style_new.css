@@ -507,46 +507,7 @@ header{
 .img_marteau{
     margin: 32px;;
 }
-/*_____ slider_________*/
 
-.swiper{
-    /* Largeur de 100% */
-    width: 100%;
-    /* Espacement en haut et en bas de 50 pixels */
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-
-.swiper-slide{
-  
-    /* Position de l'arrière-plan au centre */
-    /*background-position: center;*/
-    /* Largeur de 300 pixels */
-    width: 300px;
-    /* Hauteur automatique */
-    height: 400px;
-     /* Ombre portée de 6 pixels vers le bas et la droite, couleur noire */
-    box-shadow: 6px 6PX 10px var(--gris);
-    border-radius: 15px;
-   
-}
-
-.swiper-slide img{
-    /* Affichage en tant que bloc */
-   display: block;
-   /* Largeur de 100% */
-    width: 100%;
-   /* Hauteur de 250 pixels */
-   height: auto;
-   border-radius: 15px;
-
-
-}
-.slide_label{
-   margin-top: -20px;
-}
-
-/*______________________*/
 
 /*____DROPDOWN CARDS______*/
 
@@ -1236,3 +1197,68 @@ header p{
         font-weight: lighter;
         margin: 0;
     }
+
+
+   
+    /*_____ slider_________*/
+
+    .swiper{
+        /* Largeur de 100% */
+        width: 100%;
+        /* Espacement en haut et en bas de 50 pixels */
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .swiper-slide{
+    
+        /* Position de l'arrière-plan au centre */
+        background-position: center;
+        /* Largeur de 300 pixels */
+        width: 480px;
+        /* Hauteur automatique */
+        height: 350px;
+        /* Ombre portée de 6 pixels vers le bas et la droite, couleur noire */
+        box-shadow: 6px 6PX 10px var(--gris);
+        border-radius: 10px;
+        position: relative;
+        
+    }
+
+            /* slider Homepage*/
+            .slider_home_img{
+                height: 100%;
+                width: 100%;
+                position: relative;
+                z-index: 1;
+            }
+
+            .swiper-slide img{
+                display: block;
+                height: 100%;
+                width: 100%;
+             
+                border-radius: 10px;
+
+            }
+
+            .slider_home_label{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                position: absolute;
+                z-index: 2;
+                background: none;
+                justify-content: center;
+                align-items: end;
+
+            }
+            .slider_home_label>p{
+                color: white;
+                font-family: 'Satoshi';
+                src: url('/assets/font/Satoshi-Regular.woff2');
+           
+            }
+
+    /*______________________*/
+        
