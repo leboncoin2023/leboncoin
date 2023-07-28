@@ -66,6 +66,13 @@ body{
     font-size: 15px;
 }
 
+.boutonXS {
+    padding: 5px 25px;
+    font-size:medium;
+    font-weight: 400;
+}
+
+
 .boutonM {
     padding: 10px 55px;
     font-size: 24px;
@@ -1261,4 +1268,10 @@ header p{
             }
 
     /*______________________*/
-        
+  
+
+    .boutonXS:hover{
+        text-decoration: none;
+        color: var(--lb_orange);
+        background-color: var(--shade_orange);
+    }
