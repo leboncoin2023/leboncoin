@@ -773,14 +773,22 @@ header{
     text-align: center;
     background-color: var(--vintage_white);
     border-radius: 12px;
+   /*  box-shadow: 1px 2px 8px 0px rgba(245, 94, 0, 0.50); */
+    padding: 10px;
+    border: solid 2px var(--lb_orange);
   }
 
   .btnpopup{
     border: solid 1px var(--lb_orange);
     background-color: var(--lb_orange);
     color: var(--vintage_white);
-    padding: 10px 25px 10px 25px;
+    padding: 8px 25px 8px 25px;
     border-radius: 8px;
+  }
+
+  .closecross{
+    border: none;
+    background-color: var(--vintage_white);
   }
 
   .popupstatus{
@@ -806,8 +814,10 @@ header{
     color: var(--lb_orange);
 }
 .card_border_bot{
-    border: 1px solid var(--lb_orange);
+    border: 2px solid var(--lb_orange);
     border-radius: 15px;
+    /* box-shadow: 1px 2px 8px 0px rgba(245, 94, 0, 0.50); */
+    box-shadow: 1px 6px 8px 1px #C4C4C4;
 }
 .card-title-cart>a{
     text-decoration: none;
@@ -1374,4 +1384,14 @@ header p{
  .modifnotif{
     text-decoration: none;
     color: var(--almost_black);
+ }
+
+ .modifnotif:hover{
+    color: var(--lb_orange);
+ }
+
+ .hoverlinkbtn:hover{
+    background-color: var(--shade_orange);
+    border: solid 1px var(--lb_orange);
+    color: var(--lb_orange);
  }
