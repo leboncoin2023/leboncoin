@@ -57,7 +57,15 @@ class CategoryController extends AbstractController
     public function subCategory(string $category, string $subcategory, Request $request, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm, AuctionService $auctionService): Response
     {      
 
+        
         $auctions = $auctionsRepository->getAuctionsByCategory($subcategory);
+
+      
+        foreach ($auctions['auctions'] as $auction){
+            $id = $auction->getId();
+            $currentOffer = $auctionService->getCurrentAmount($id, $dm);
+            $auction->setStartPrice($currentOffer);
+        }
         
         // récupère l'offre actuel la plus élevée de l'enchère (via le service)
     

@@ -6,7 +6,7 @@
     <nav class="container">
         <div class="flexnavhaut">
             <a class="" href="{{path('app_home') }}"><img src="/assets/icones/logo/Property 1=original.png" alt="logo"></a>
-            <a href="{{path('app_auction_new_auction') }}" class="boutonspé">Déposer&nbsp;une&nbsp;annonce</a>
+            <a href="{{path('app_auction_new_choice') }}" class="boutonspé">Déposer&nbsp;une&nbsp;annonce</a>
 
             {# Formulaire de recherche dans la navigation #}
             <form class="form-inline" method="post" action="{{ path('app_auction_search') }}">
@@ -83,7 +83,7 @@
             <li><a class="linkhover" href="#">Multimédia&nbsp;</a></li>
             <li><a class="linkhover" href="#">Materiel&nbsp;Professionnel&nbsp;</a></li>
             <li><a class="linkhover" href="#">Autres&nbsp;</a></li>
-            <li class="sub-menu-container mt-3"><a class="bouton bouton_orangeoutline boutonXS"><img src="/assets/icones/marteau/marteau_orange_M.svg" alt="Enchères"> Enchères</a>
+            <li class="sub-menu-container mt-3"><a class="bouton bouton_orangeoutline boutonXS"><img src="/assets/icones/marteau/marteau_orange_M.svg" alt="Enchères">&nbsp;Enchères</a>
             <ul class="sub-menus">
             <li class="titlesub"><h3>Enchères</h3></li>
                {% for key, submenu in menu %}

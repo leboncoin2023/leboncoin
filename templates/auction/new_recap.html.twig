@@ -3,28 +3,29 @@
 {% block title %}Lebon<code> | Récapitulatif de l'enchère{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1 class="mt-5 mb-4">Récapitulatif de l'enchère</h1>
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card mb-4 bg-orange text-black">
-                        {% if auction.getPictures|length > 0 %}
-                        {% for picturePath in auction.getPictures %}
-                             <img src="{{ asset('uploads/pictures/' ~ picturePath) }}" class="card-img-top" alt="Photo de l'enchère">
-                        {% endfor %}
-                    {% else %}
-                        <p>Aucune image disponible</p>
-                    {% endif %}
-                    <div class="card-body">
-                        <h2 class="card-title">title : {{ auction.title }}</h2>
-                        <p class="card-text">Prix de départ : {{ auction.startPrice }} €</p>
-                        <p class="card-text">Mode de livraison : {{ auction.deliveryMode }}</p>
-                    </div>
-                </div>
-            </div>
+    <div class="container text-center">
+        <p class="choicebold choicesize">Merci {{ seller.username }} de votre confiance</p>
+        <p class="choicebold">Votre annonce est publiée !</p>
+        <p class="choicebold">Récapitulatif</p>
+
+        {% if auction.getPictures|length > 0 %}
+        {% for picturePath in auction.getPictures %}
+            <img src="{{ asset('uploads/pictures/' ~ picturePath) }}" width="20%" class="recapic" alt="Photo de l'enchère">
+        {% endfor %}
+        {% else %}
+            <p class="choicebold">Aucune image disponible</p>
+        {% endif %}
+        <p class="choicebold">{{ auction.title }}</p>
+        <p class="choicebold">{{ auction.startPrice }} €</p>
+        {#  <p class="">Mode de livraison : {{ auction.deliveryMode }}</p> #}
+        <div class="choiceflex">
+        <img src="/assets/illustrations/confirmation.png" alt="illustration confirmation"  width="20%">
+        <a href="{{path('app_home')}}" class="btnrecap">Retour à l'acceuil</a>
         </div>
+                    
     </div>
+
 {% endblock %}
 
 

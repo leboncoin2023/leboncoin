@@ -64,12 +64,12 @@ class AuctionController extends AbstractController
 
         
         $auctions = $auctionsRepository->findAllFromBdd();
-        $form = $formFactory->create(AuctionType::class);
+        
 
         return $this->render('auction/new_choice.html.twig', [
             //'controller_name' => 'AuctionController',
             'auctions'  => $auctions,
-            'form'      => $form->createView(),
+            
             'menu'      => $repo->getAllCategoriesAndSub($dm)
         ]);
     }
@@ -169,7 +169,7 @@ class AuctionController extends AbstractController
      * Récapitulatif de l'enchère venant d'être créée
      */
     #[Route('/new_recap/{id}', name: 'app_auction_new_recap')]
-    public function newRecap($id, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm): Response
+    public function newRecap($id, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm, UserRepository $userRepository): Response
     {
         // Récupérez l'enchère à partir de la base de données en utilisant l'identifiant passé en paramètre
         $auction = $auctionsRepository->find($id);
@@ -182,7 +182,8 @@ class AuctionController extends AbstractController
         // Affichez les détails de l'enchère dans la vue
         return $this->render('auction/new_recap.html.twig', [
             'auction'   => $auction,
-            'menu'      => $repo->getAllCategoriesAndSub($dm)
+            'menu'      => $repo->getAllCategoriesAndSub($dm),
+            'seller'    => $userRepository->findUserById($auction->getSellerId())
         ]);
     }
 
