@@ -31,33 +31,42 @@ use MongoDB\Client;
 #[Route('/auction')]
 class AuctionController extends AbstractController
 {
-//home___________________________________________________________
 
-
-
+    /**
+     * Index non utilisé
+     *
+     * @param AuctionsRepository $auctionsRepository
+     * @param DocumentManager $dm
+     * @param CategoryRepository $repo
+     * @return Response
+     */
     #[Route('/', name: 'app_auction')]
-    public function index(AuctionsRepository $auctionsRepository, DocumentManager $dm, CategoryRepository $repo): Response
+    public function index(AuctionsRepository $auctionsRepository,
+     DocumentManager $dm, CategoryRepository $repo): Response
     {
-    $auctions = $auctionsRepository->findAllFromBdd();
 
-    return $this->render('auction/index.html.twig', [
-        'auctions' => $auctions,
-        'menu' => $repo->getAllCategoriesAndSub($dm)
-    ]);
+        $auctions = $auctionsRepository->findAllFromBdd();
+
+        return $this->render('auction/index.html.twig', [
+            'auctions' => $auctions,
+            'menu' => $repo->getAllCategoriesAndSub($dm)
+        ]);
     }
 
-
-/**
- * Propose de choisir entre une vente classique et une enchère
- *
- * @param AuctionsRepository $auctionsRepository
- * @param FormFactoryInterface $formFactory
- * @param CategoryRepository $repo
- * @param DocumentManager $dm
- * @return Response
- */
+    /**
+     * Propose de choisir entre une vente classique et une enchère
+     *
+     * @param AuctionsRepository $auctionsRepository
+     * @param FormFactoryInterface $formFactory
+     * @param CategoryRepository $repo
+     * @param DocumentManager $dm
+     * @return Response
+     */
     #[Route('/new_choice', name: 'app_auction_new_choice')]
-    public function newChoice(AuctionsRepository $auctionsRepository, FormFactoryInterface $formFactory, CategoryRepository $repo, DocumentManager $dm): Response
+    public function newChoice(AuctionsRepository $auctionsRepository,
+     FormFactoryInterface $formFactory,
+      CategoryRepository $repo,
+       DocumentManager $dm): Response
     {
 
         
@@ -72,7 +81,6 @@ class AuctionController extends AbstractController
         ]);
     }
 
-
     /**
      * Création d'une nouvelle enchère
      *
@@ -82,7 +90,9 @@ class AuctionController extends AbstractController
      * @return Response
      */
     #[Route('/new_auction', name: 'app_auction_new_auction')]
-    public function newAuction(Request $request, DocumentManager $documentManager, CategoryRepository $catRepo): Response
+    public function newAuction(Request $request,
+     DocumentManager $documentManager,
+      CategoryRepository $catRepo): Response
     {
 
         if (!$this->getUser())
@@ -157,12 +167,14 @@ class AuctionController extends AbstractController
         ]);
     }
 
-
     /**
      * Récapitulatif de l'enchère venant d'être créée
      */
     #[Route('/new_recap/{id}', name: 'app_auction_new_recap')]
-    public function newRecap($id, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm, UserRepository $userRepository): Response
+    public function newRecap($id, AuctionsRepository $auctionsRepository,
+     CategoryRepository $repo,
+      DocumentManager $dm,
+       UserRepository $userRepository): Response
     {
         // Récupérez l'enchère à partir de la base de données en utilisant l'identifiant passé en paramètre
         $auction = $auctionsRepository->find($id);
@@ -180,12 +192,15 @@ class AuctionController extends AbstractController
         ]);
     }
 
-
     /**
      * Affichage du détail de l'enchère ( page permettant d'enchérir )
      */
     #[Route('/detail/{id}', name: 'app_auction_detail')]
-    public function detailAuction(Request $request, DocumentManager $dm, CategoryRepository $repo, UserRepository $userRepository, AuctionService $auctionService): Response
+    public function detailAuction(Request $request,
+     DocumentManager $dm, 
+     CategoryRepository $repo,
+      UserRepository $userRepository,
+       AuctionService $auctionService): Response
     {          
 
         $id = $request->get('id');
@@ -210,9 +225,9 @@ class AuctionController extends AbstractController
             if($offre > $currentOffer){
 
                 $dauction   ->addOffre([
-                    'offerUserId' => $this->getUser()->getId(), 
-                    'offre' => $offre, 
-                    'date' => date('Y-m-d h:i:s')
+                    'offerUserId'   => $this->getUser()->getId(), 
+                    'offre'         => $offre, 
+                    'date'          => date('Y-m-d h:i:s')
                 ]);
                 $dm         ->persist($dauction);
                 $dm         ->flush();
@@ -243,17 +258,10 @@ class AuctionController extends AbstractController
         ]);
     }
     
-
-/**
- * Ayoub sais ce que c'est....
- *
- * @param Request $request
- * @param DocumentManager $dm
- * @param CategoryRepository $repo
- * @return Response
- */
     #[Route('/save', name: 'app_auction_save')]
-    public function saveAuction(Request $request, DocumentManager $dm, CategoryRepository $repo ): Response {
+    public function saveAuction(Request $request,
+     DocumentManager $dm,
+      CategoryRepository $repo ): Response {
 
         // retouve l'id de l'enchère
         $id = $request->get('auctionId');
@@ -278,14 +286,6 @@ class AuctionController extends AbstractController
         ]);
     }
     
-
-    /**
-     * Ayoub sais ce que c'est....
-     *
-     * @param Request $request
-     * @param DocumentManager $dm
-     * @return Response
-     */
     #[Route('/saveform', name: 'app_auction_saveform')]
     public function fAuction(Request $request, DocumentManager $dm ): Response {
         $id = $request->get('id');
@@ -310,7 +310,6 @@ class AuctionController extends AbstractController
         ]);
     }
  
-
     /**
      * Permet de faire une recherche dans la barre de recherche du header
      *
@@ -321,7 +320,10 @@ class AuctionController extends AbstractController
      * @return Response
      */
     #[Route('/search', name: 'app_auction_search')]
-    public function searchAuction(Request $request, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm): Response {
+    public function searchAuction(Request $request,
+     AuctionsRepository $auctionsRepository,
+      CategoryRepository $repo,
+       DocumentManager $dm): Response {
 
         $keyword    = $request->get('keyword');
         $result     = $auctionsRepository->findAuctionsByKeyword($keyword);
@@ -336,21 +338,47 @@ class AuctionController extends AbstractController
         ]);
     }
 
-
-
-    
+    /**
+     * Acces au tunnel de paiement 1/2
+     *
+     * @param Request $request
+     * @param AuctionsRepository $auctionsRepository
+     * @param CategoryRepository $repo
+     * @param DocumentManager $dm
+     * @return Response
+     */
     #[Route('/paiementun', name: 'app_paiementun')]
-    public function paiment1(Request $request, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm): Response {
+    public function paimentUn(Request $request,
+     AuctionsRepository $auctionsRepository,
+      CategoryRepository $repo, DocumentManager $dm): Response {
 
        
-        
-        
-        // Renvoyer le formulaire à la vue Twig pour l'affichage initial
         return $this->render('auction/paiementun.html.twig', [
            
             'menu'      => $repo->getAllCategoriesAndSub($dm),
            
+        ]);
+    }
 
+    /**
+     * Acces au tunnel de paiement 2/2
+     *
+     * @param Request $request
+     * @param AuctionsRepository $auctionsRepository
+     * @param CategoryRepository $repo
+     * @param DocumentManager $dm
+     * @return Response
+     */
+    #[Route('/paiementdeux', name: 'app_paiementdeux')]
+    public function paimentDeux(Request $request,
+     AuctionsRepository $auctionsRepository,
+      CategoryRepository $repo, DocumentManager $dm): Response {
+
+      
+        return $this->render('auction/paiementdeux.html.twig', [
+           
+            'menu'      => $repo->getAllCategoriesAndSub($dm),
+           
         ]);
     }
 

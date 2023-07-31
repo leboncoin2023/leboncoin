@@ -62,4 +62,17 @@ class HomeController extends AbstractController
             'menu' => $menu,
         ]);
     }
+
+
+    //acces à la page non trouvé
+    #[Route('/en_construction', name: 'app_en_construction')]
+    public function enConstruction(CategoryRepository $repo, DocumentManager $dm): Response
+    {
+        //dump($this->getUser());
+        $menu = $repo->getAllCategoriesAndSub($dm);
+
+        return $this->render('base/en_construction.html.twig', [
+            'menu' => $menu,
+        ]);
+    }
 }
