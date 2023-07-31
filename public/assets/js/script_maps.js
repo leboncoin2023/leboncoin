@@ -26,6 +26,13 @@
         
     // Affichage et initialisation de la carte 
     function showMap(lat, lon){
+
+           // si container deja initialisé on efface le contenu       
+           var container = L.DomUtil.get('maCarte');
+           if(container != null){
+             container._leaflet_id = null;
+           }
+
         let carte = L.map('maCarte').setView([lat, lon], 18);
 
         L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
@@ -35,9 +42,10 @@
             maxZoom: 20
         }).addTo(carte);
 
-        //maps_address.innerHTML =`<i class="fa-solid fa-location-dot" style="color: #ff9200;"></i>`;
-        //let marker = L.marker(lat, lon).addTo(carte);
-        //marker.bindPopup("house");
+        
+        L.marker([lat, lon]).addTo(carte)
+        .bindPopup('Le bien pourra être retiré ici')
+        .openPopup();
 
     }
 
