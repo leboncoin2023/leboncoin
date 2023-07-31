@@ -816,7 +816,7 @@ header{
     border: 2px solid var(--lb_orange);
     border-radius: 15px;
     /* box-shadow: 1px 2px 8px 0px rgba(245, 94, 0, 0.50); */
-    box-shadow: 1px 6px 8px 1px #C4C4C4;
+    /* box-shadow: 1px 6px 8px 1px #C4C4C4; */
 }
 .card-title-cart>a{
     text-decoration: none;
@@ -1011,13 +1011,23 @@ p{
         }
 
 .radius{
-            background-color: var(--shade_orange);
+            background-color: var(--lb_orange);
             border-radius: 50px;
             text-align: center;
             margin-left: 10px;
             display: inline-block;
             padding: 5px 12px;
+            color: var(--vintage_white);
         }
+
+.radius2{
+    border-radius: 50px;
+    text-align: center;
+    margin-left: 10px;
+    display: inline-block;
+    padding: 5px 12px;
+    background-color: var(--shade_orange);
+}
 
 .cardensar h4{
             display: inline-block;
@@ -1360,3 +1370,163 @@ header p{
     border: solid 1px var(--lb_orange);
     color: var(--lb_orange);
  }
+
+
+/*  ________________________________NEW CHOICE_______________________________ */
+
+ .choiceflex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 250px;
+ }
+
+ .choicep{
+    font-size: 24px;
+    margin-bottom: 47px;
+    margin-top: 190px;
+    font-weight: bold;
+ }
+
+ .btnchoice{
+    border: solid 2px var(--almost_black);
+    max-width: 474px;
+    margin-bottom: 47px;
+    color: var(--almost_black);
+    border:solid 1px var(--almost_black);
+ }
+
+ .btnchoice:hover{
+    color: var(--lb_orange);
+    border: solid 1px var(--lb_orange);
+ }
+
+ .btnpad{
+    padding-left: 29px;
+    padding-right: 29px;
+ }
+
+ .backpad{
+    
+    text-decoration: none;
+    color: var(--almost_black);
+ }
+
+ .backpad:hover{
+    color: var(--lb_orange);
+ }
+
+
+/*  _______________________________NEW RECAP___________________________ */
+
+.recapic{
+    border-radius: 10px;
+}
+
+.choicebold{
+    font-weight: bold;
+}
+
+.choicesize{
+    font-size: 20px;
+}
+
+.btnrecap{
+    border: solid 1px var(--almost_black);
+    color: var(--almost_black);
+    text-decoration: none;
+    padding: 10px 25px 10px 25px;
+    border-radius: 10px;
+    margin-top: 113px;
+    margin-bottom: 94px;
+}
+
+.btnrecap:hover{
+    border: solid 1px var(--lb_orange);
+    color: var(--lb_orange);
+}
+
+.choiceflex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* ___________________________LOGIN_________________________ */
+
+.headlog{
+    text-align: center;
+}
+
+.logtitle{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.logp{
+    margin-bottom: 50px;
+}
+
+.logcard{
+    box-shadow: 0px 4px 7px 0px rgba(4, 4, 4, 0.50);
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 35px;
+    max-width: 518px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.labellog{
+    text-align: left;
+}
+
+.inputlog{
+    max-width: 392.966px;
+}
+
+.flexlabellog{
+    padding-left: 30px;
+    margin-top: 30px;
+  
+}
+
+.flexinputlog{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pnglog{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.padbtnlog{
+    padding-top: 50px;
+}
+
+.flexendlog{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    padding-top: 50px;
+    
+}
+
+.linkendlog{
+    text-decoration: none;
+    color: var(--almost_black);
+}
+
+.linkendlog:hover{
+    color: var(--lb_orange);
+}

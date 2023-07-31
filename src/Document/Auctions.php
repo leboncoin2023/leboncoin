@@ -171,13 +171,26 @@ private $offre = [];
 
         return $this->seller_id;
     }
-
+    
     public function getBuyerId(): ?string
     {
-
+        
         return $this->buyer_id;
     }
-
+    
+    public function getCurrentValue(): int {
+        // recupération des offres de l'enchères
+        $offres = $this->getoffre();
+    
+        // ajout de l'enchere de départ
+        $offres[] = $this->getStartPrice();
+    
+        // recherche de la valeur max
+        usort($offres, fn($a, $b) => $b['offre'] <=> $a['offre']);
+    
+        // récupération de l'offre la plus haute
+        return isset($offres[0]['offre']) ? $offres[0]['offre'] : 0;
+    } 
     
 
 
@@ -318,18 +331,5 @@ private $offre = [];
         return $this;
     }
 
-    public function getCurrentValue(): int {
-        // recupération des offres de l'enchères
-        $offres = $this->getoffre();
 
-        // ajout de l'enchere de départ
-        $offre[] = $this->getStartPrice();
-
-        // recherche de la valeur max
-        usort($offres, fn($a, $b) => $b['offre'] <=> $a['offre']);
-
-        // récupération de l'offre la plus haute
-        return isset($offres[0]['offre']) ? $offres[0]['offre'] : 0;
-    } 
-
-} 
+}

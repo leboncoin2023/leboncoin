@@ -20,11 +20,14 @@ class AuctionService
         $offres = $auction->getoffre();
         
         // ajout de l'enchere de départ
-        $offre[] = $auction->getStartPrice();
+        $offres[] = ['offre'=>$auction->getStartPrice()];
 
         // recherche de la valeur max
         usort($offres, fn($a, $b) => $b['offre'] <=> $a['offre']);
 
+
+/* 
+        dd($offres); */
         // récupération de l'offre la plus haute
         return $offres[0]['offre'];
     }
