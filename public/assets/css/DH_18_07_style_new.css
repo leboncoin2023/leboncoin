@@ -639,6 +639,7 @@ header{
     border: 1px solid lightgray;
     border-radius: 20px;
     background-image: url("/assets/img/maps.png");
+    background-position: center;
     /*background-color: var(--gris);*/
 
 }
