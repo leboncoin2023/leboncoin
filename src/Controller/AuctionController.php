@@ -47,8 +47,6 @@ class AuctionController extends AbstractController
     }
 
 
-
-
 /**
  * Propose de choisir entre une vente classique et une enchère
  *
@@ -73,9 +71,6 @@ class AuctionController extends AbstractController
             'menu'      => $repo->getAllCategoriesAndSub($dm)
         ]);
     }
-
-
-
 
 
     /**
@@ -163,8 +158,6 @@ class AuctionController extends AbstractController
     }
 
 
-
-
     /**
      * Récapitulatif de l'enchère venant d'être créée
      */
@@ -186,8 +179,6 @@ class AuctionController extends AbstractController
             'seller'    => $userRepository->findUserById($auction->getSellerId())
         ]);
     }
-
-
 
 
     /**
@@ -252,7 +243,6 @@ class AuctionController extends AbstractController
         ]);
     }
     
-  
 
 /**
  * Ayoub sais ce que c'est....
@@ -347,8 +337,22 @@ class AuctionController extends AbstractController
     }
 
 
- 
+
     
-    
+    #[Route('/paiementun', name: 'app_paiementun')]
+    public function paiment1(Request $request, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm): Response {
+
+       
+        
+        
+        // Renvoyer le formulaire à la vue Twig pour l'affichage initial
+        return $this->render('auction/paiementun.html.twig', [
+           
+            'menu'      => $repo->getAllCategoriesAndSub($dm),
+           
+
+        ]);
+    }
+
 
 }

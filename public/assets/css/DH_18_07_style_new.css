@@ -127,6 +127,9 @@ h2{
 }
 
 .banner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--shade_orange);
     width: 952px;
     height: 161px;
@@ -509,11 +512,7 @@ header{
     align-items: center;
  
 }
-.banner_element{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+
 .banner_title{
     font-size:x-large;
 }
@@ -1565,4 +1564,18 @@ header p{
 
 .linkendlog:hover{
     color: var(--lb_orange);
+}
+
+/* __________________________________404______________________________ */
+
+#oups{
+    font-size: 50px;
+    font-weight: 700;
+    color: var(--lb_orange);
+}
+
+#desole{
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--almost_black);
 }
