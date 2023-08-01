@@ -1585,6 +1585,7 @@ header p{
 
 /*_____________________Tunnel de paiement 1/2____________________________________*/
 
+/*_____________________________block de gauche___________________________________*/
 .divorange{
     width: 60px;
     height: 10px;
@@ -1625,4 +1626,64 @@ header p{
 .flexstepright{
     display: flex;
     flex-direction: row;
+    align-items: baseline;
+}
+
+/*_________________________________block de droite___________________________________*/
+
+.margmoney{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+}
+
+.rightblock{
+    border: solid 2px var(--lb_orange);
+    border-radius: 12px;
+    /* padding: 20px; */
+    max-width: 338px;
+    margin-top: 38px;
+}
+
+.aligntop{
+    align-items: flex-start;
+}
+
+.spaceb{
+    justify-content: space-between;
+}
+
+.spacea{
+    justify-content: space-around;
+}
+
+.headrigthblock{
+    border-bottom: solid 2px var(--lb_orange);
+}
+
+.rightblockpadd{
+    padding: 20px;
+}
+
+.btnblock{
+    display: flex;
+    justify-content: center;
+    color: var(--almost_black);
+    text-decoration: none;
+    color: var(--vintage_white);
+}
+
+.btnblock:hover{
+    border: solid 2px var(--lb_orange);
+    background-color: var(--shade_orange);
+    color: var(--lb_orange);
+}
+
+.linkrightblock{
+    text-decoration: none;
+    color: var(--lb_orange);
+}
+
+.linkrightblock:hover{
+    color: var(--lb_orange);
 }
