@@ -1338,6 +1338,13 @@ header p{
         border: none;
     }
 
+.card_title_home{
+    font-family:'Satoshi';
+    src: url('/assets/fonts/Satoshi-Bold.woff2');
+    font-size:xx-large;
+    font-weight:bold;
+
+}
 
 
 

@@ -1,4 +1,4 @@
-
+/*
 
 //document.addEventListener('DOMContentLoaded', (e) => {
 
@@ -20,8 +20,35 @@ console.log(tab);
 //return tab;
 }
 
-/*
+
 results.forEach(subcat => {
     subCategory.innerHTML += `<option value="${subcat.name}"></option>`;
     
 });*/
+
+document.addEventListener('DOMContentLoaded', (e) => {
+
+    let categroyField = document.getElementById('auction_category');
+    categroyField.addEventListener('change', (objField) => {
+
+        let value = objField.currentTarget.value;
+        
+        fetch('/auction/getsubcategorybycategory', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({'category': value})
+        })
+        .then((header) => {
+            return header.json()
+        })
+        .then((body) => {
+            console.log(body);
+        })
+
+
+    })
+
+})

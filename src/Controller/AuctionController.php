@@ -26,7 +26,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
 
 use MongoDB\Client;
-
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 #[Route('/auction')]
 class AuctionController extends AbstractController
@@ -381,6 +381,31 @@ class AuctionController extends AbstractController
            
         ]);
     }
+
+
+    /**
+     * Acces au tunnel de paiement 2/2
+     *
+     * @param Request $request
+     * @param AuctionsRepository $auctionsRepository
+     * @param CategoryRepository $repo
+     * @param DocumentManager $dm
+     * @return Response
+     */
+    #[Route('/getsubcategorybycategory', name: 'app_paiementdeux')]
+    public function getsubcategorybycategory(Request $request,
+     AuctionsRepository $auctionsRepository,
+      CategoryRepository $repo, DocumentManager $dm): JsonResponse {
+
+        $category = json_decode($request->getContent())->category;
+
+        $data = $repo->getSubcategoryByCategory($dm, $category);
+
+        return new JsonResponse(['data' => $data]);
+
+    }
+
+    
 
 
 }
