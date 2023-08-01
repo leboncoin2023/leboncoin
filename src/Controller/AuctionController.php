@@ -142,6 +142,11 @@ class AuctionController extends AbstractController
                     // Save the picture filenames in the database
                     $auction->setPictures($fileNames);
 
+                    //dd($request->get('subcategory'));
+
+
+                    $auction->setCategory($auction->getCategory()."/".$request->get('subcategory'));
+
                     // Persist the updated Auctions entity with the picture filenames
                     $documentManager->persist($auction);
                     $documentManager->flush();
@@ -299,6 +304,7 @@ class AuctionController extends AbstractController
             $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            dd($request);
         // Sauvegardez l'entité Auctions en base de données
             $dm->persist($dauction);
             $dm->flush();

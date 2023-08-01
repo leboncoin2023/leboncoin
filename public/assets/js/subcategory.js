@@ -29,6 +29,8 @@ results.forEach(subcat => {
 document.addEventListener('DOMContentLoaded', (e) => {
 
     let categroyField = document.getElementById('auction_category');
+    let subcategory_select = document.getElementById('subCat_select');
+    
     categroyField.addEventListener('change', (objField) => {
 
         let value = objField.currentTarget.value;
@@ -46,6 +48,16 @@ document.addEventListener('DOMContentLoaded', (e) => {
         })
         .then((body) => {
             console.log(body);
+            /*body.forEach(subcat => {
+                subcategory_select.innerHTML += `<option value="${subcat}"></option>`;
+            */
+            body.data.forEach(subcat=> {
+                subcategory_select.innerHTML += `<option value="${subcat}">${subcat}</option>`;
+            });
+                
+            
+            //});
+
         })
 
 
