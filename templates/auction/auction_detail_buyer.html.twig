@@ -27,11 +27,13 @@
                 <div class="row my-5">
 
                             {% if dauction.getPictures|length > 0 %}
-                                {% for picturePath in dauction.getPictures %}
-                                <div class="col-5 img_auction m-2 p-0">
-                                    <img src="{{ asset('uploads/pictures/' ~ picturePath) }}" class="cropped3 m-2" alt="Photo de l'enchère">
-                                </div>
-                                {% endfor %}
+                             {% for picturePath in dauction.getPictures %}
+                                {% if loop.index <= 4 %}
+                                    <div class="col-5 img_auction m-2 p-0">
+                                        <img src="{{ asset('uploads/pictures/' ~ picturePath) }}" class="cropped3 m-2" alt="Photo de l'enchère">
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
                             {% else %}
                                 <div class="col-5 card-img-lbc_detail m-2">
                                     <p>Aucune image disponible</p>

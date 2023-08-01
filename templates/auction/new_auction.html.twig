@@ -44,10 +44,18 @@
 
                         <div>
                             <label for="annonce" class="mb-2">Choisissez une catégorie</label>
-                            <div class="form-group input_new_auction">
+                            <div class="form-group input_new_auction" id="cat_selected">
                                 {{ form_widget(form.category, {'attr': {'class': 'inputbgc form-control'}}) }}
                             </div>
                         </div>
+
+                        <div>
+                            <label for="annonce" class="mb-2">Choisissez une sous-catégorie</label>
+                            <div class="form-group input_new_auction">
+                                {{ form_widget(form.subcategory, {'attr': {'class': 'inputbgc form-control'}}) }}
+                            </div>
+                        </div>
+
                     </div>
                 
                 <!-- ampoule -->
