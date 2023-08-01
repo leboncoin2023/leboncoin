@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
             /*body.forEach(subcat => {
                 subcategory_select.innerHTML += `<option value="${subcat}"></option>`;
             */
+            subcategory_select.innerHTML += ``;
             body.data.forEach(subcat=> {
                 subcategory_select.innerHTML += `<option value="${subcat}">${subcat}</option>`;
             });
