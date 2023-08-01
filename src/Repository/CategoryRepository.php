@@ -60,8 +60,13 @@ class CategoryRepository extends ServiceDocumentRepository
     }
 
 
-/*
 
+    /**
+     * Undocumented function
+     *
+     * @param Category $category
+     * @return array
+     */
     public function getSubcategoryByCategory(Category $category): array {
 
         $subCat=[];
@@ -79,7 +84,7 @@ class CategoryRepository extends ServiceDocumentRepository
         return $subCat;
     }
 
-*/
+
 
 }
 
