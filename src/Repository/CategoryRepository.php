@@ -55,9 +55,31 @@ class CategoryRepository extends ServiceDocumentRepository
             // ajoute la sous categorie dans la catégorie
             $nav[$category][] = $subCategory;
         }
-
+        //dd($nav);
         return $nav;
     }
+
+
+/*
+
+    public function getSubcategoryByCategory(Category $category): array {
+
+        $subCat=[];
+
+
+
+        foreach($nav as $cat){
+            if ($cat == $category){
+                foreach($category as $subcategory){
+                    array_push($subCat, $subcategory);
+                }
+            }
+        }
+
+        return $subCat;
+    }
+
+*/
 
 }
 

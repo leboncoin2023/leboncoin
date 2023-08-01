@@ -31,10 +31,12 @@
 
                     <div class="card-body-subcat px-3 d-flex flex-column">
                     
-                        <span class="cat-card-title myb-1">{{ auction.title }}</span>
+                        {# Limiter l'affichage du titre sur 22 caractères max #}
+                        <span class="cat-card-title myb-1">{{ auction.title|length > 22 ? auction.title|slice(0, 22) ~ '...' : auction.title }}</span>
                         <span class="card-subtitle mb-1">OFFRE ACTUELLE</span>
                         <span class="cat-card-title mb-1"> {{ auction.startPrice }}&nbsp;€</span>
-                        <span class="card-subtitle mb-1">{{ auction.description }}</span>
+                        {# Limiter l'affichage du titre sur 60 caractères max #}
+                        <span class="card-subtitle mb-1">{{ auction.description|length > 60 ? auction.description|slice(0, 60) ~ '...' : auction.description }}</span>
                         <span class="card-subtitle-orange mb-1">IL RESTE {{ auction.duration }}</span>
                         <div class="d-flex flex-row">
                             <div class="d-flex col-10">
@@ -264,4 +266,5 @@
 {% block javascripts %}
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>               
     <script src="/assets/js/script.js"></script>
+
 {% endblock %}

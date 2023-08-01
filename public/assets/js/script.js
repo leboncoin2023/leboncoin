@@ -1,4 +1,5 @@
 
+// Affichage du slider
 const swiper = new Swiper(".mySwiper",{
         // Initialise un nouveau carrousel Swiper en utilisant la classe "mySwiper" comme sélecteur
       /*effect:"coverflow",// Utilise l'effet de coverflow pour la transition entre les diapositives*/
@@ -19,3 +20,5 @@ const swiper = new Swiper(".mySwiper",{
       el:".swiper-pagination"// Sélectionne l'élément avec la classe "swiper-pagination" pour afficher la pagination
   }   */
 })
+
+

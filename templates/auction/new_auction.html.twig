@@ -52,7 +52,9 @@
                         <div>
                             <label for="annonce" class="mb-2">Choisissez une sous-catégorie</label>
                             <div class="form-group input_new_auction">
-                                {{ form_widget(form.subcategory, {'attr': {'class': 'inputbgc form-control'}}) }}
+                                <select id="subCat">
+                                <option value="">--Choisissez une sous-catégorie--</option>
+                                </select>
                             </div>
                         </div>
 
@@ -298,6 +300,7 @@
 {% block javascripts %}
 <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>               
 <script src="/assets/js/script_maps_seller.js"></script>
+<script src="/assets/js/subcategory.js"></script>
 {% endblock %}
 
 

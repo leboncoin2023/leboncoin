@@ -1,23 +1,27 @@
 
 
-document.addEventListener('DOMContentLoaded', (e) => {
+//document.addEventListener('DOMContentLoaded', (e) => {
 
-let category_selected=document.getElementById("cat_selected")
+const catNavLinks = document.getElementById('catNav').querySelectorAll('a');
+//const catNavLinks = document.getElementById('catNav').querySelectorAll('a');
 
-function getSubCategory(category){
+function getSubCategory(){
 
-    let subcategory="";
+let tab=[];
 
-    for (i=0;i<category.length;i++){
-        if (category[i]=="/"){
-            subcategory=category.substring(i+1,category.length-1);
-        }
-    }
+//console.log(document.getElementById('catNav').href);
+//console.log(document.getElementsByClassName('subCatByCat'));
+//subCatByCat
 
-    
-
+catNavLinks.forEach(link => {
+  tab.push(link.href);
+});
+console.log(tab);
+//return tab;
 }
 
-getAllCategoriesAndSub();
-
-});
+/*
+results.forEach(subcat => {
+    subCategory.innerHTML += `<option value="${subcat.name}"></option>`;
+    
+});*/
