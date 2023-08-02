@@ -388,6 +388,19 @@ class AuctionController extends AbstractController
         ]);
     }
 
+    #[Route('/paiement_recap', name: 'app_paiement_recap')]
+    public function paimentRecap(Request $request,
+     AuctionsRepository $auctionsRepository,
+      CategoryRepository $repo, DocumentManager $dm): Response {
+
+      
+        return $this->render('auction/paiement_recap.html.twig', [
+           
+            'menu'      => $repo->getAllCategoriesAndSub($dm),
+           
+        ]);
+    }
+
 
     /**
      * Acces au tunnel de paiement 2/2
