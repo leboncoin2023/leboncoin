@@ -398,7 +398,7 @@ class AuctionController extends AbstractController
      * @param DocumentManager $dm
      * @return Response
      */
-    #[Route('/getsubcategorybycategory', name: 'app_paiementdeux')]
+    #[Route('/getsubcategorybycategory', name: 'app_subcategorychoice')]
     public function getsubcategorybycategory(Request $request,
      AuctionsRepository $auctionsRepository,
       CategoryRepository $repo, DocumentManager $dm): JsonResponse {

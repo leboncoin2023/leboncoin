@@ -1,26 +1,105 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Lebon<code> | Paiement 1/2{% endblock %}
+{% block title %}Lebon<code> | Paiement 2/2{% endblock %}
 
 {% block body %}
 
-<main>
+<main class="container margmoney">
 
-{# //Décoration #}
-<div>
-    <div></div>
-    <div></div>
-</div>
+    {# //Décoration #}
+    <div class="divorangeflex">
+        <div class="divorangelight"></div>
+        <div class="divorange"></div>
+    </div>
 
-{# //Partie gauche #}
-<div>
+    <div class="mt-5 ms-5 px-5">  
+        <h4><strong>Paiements</strong></h4>
+    </div>
+    <section class="container">
+        <div class="row my-4 justify-content-center">
+            
+            <div class="col-7 form-check payment_info p-3 me-3">
+                <div class="ms-4 mb-2">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                    <label class="form-check-label" for="flexRadioDefault2" id="card_label">Carte Bancaire</label>
+                </div>
+                <div>
+                    <img src="/assets/icones/paiement/visa.svg" alt="visa">
+                    <img src="/assets/icones/paiement/mastercard.svg" alt="mastercard">
+                    <img src="/assets/icones/paiement/cb.svg" alt="cb">
+                </div>
+                <div class="row my-3">
+                    <div class="col-6">
+                        <label for="card_number" class="form-label" id="card_label">Numéro de carte</label>
+                        <input type="text" id="card_number" class="form-control">
+                        <div id="card_helpers" class="form-text">Saisissez un numéro de carte</div>
+                    </div>
+                    <div class="col-6">
+                        <label for="card_tit" class="form-label" id="card_label">Titulaire de la carte</label>
+                        <input type="text" id="card_tit" class="form-control">
+                        <div id="card_helpers" class="form-text">Indiquez le nom écrit sur la carte</div>
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-6">
+                        <label for="card_exp" class="form-label" id="card_label">Date d'expiration</label>
+                        <input type="text" id="card_exp" class="form-control" placeholder="MM/ AA">
+                        <div id="card_helpers" class="form-text">Saisissez une date d'expiration</div>
+                    </div>
+                    <div class="col-6">
+                        <label for="card_crypt" class="form-label" id="card_label">Cryptogramme</label>
+                        <input type="text" id="card_crypt" class="form-control" placeholder="example 123">
+                        <div id="card_helpers" class="form-text">Saisissez un cryptogramme</div>
+                    </div>
+                </div>
 
-</div>
+                <div class="form-check mt-4">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault" id="card_label_regist">J'enregistre cette carte pour de futurs achats</label>
+                </div>
+            </div>
 
-{# //Partie droite #}
-<div>
+            <div class="col-3 payment_recap p-4">
+                <div class="py-5">
+                    <div class="row payment_amount">
+                        <div class="col text-start">
+                            <span>Total</span>
+                        </div>
+                        <div class="col text-end">
+                            <span>200 €</span>
+                        </div>
+                    </div>
+         
+                    <div class="my-5 column text-center">
+                        <div>
+                            <span class="payment_detail">Détails du paiement</span>
+                        </div>
+                        <div>
+                            <img src="/assets/icones/fleches/fleche_bas_noir.svg" alt="chevron">
+                        </div>
+                    </div>
+                    <div class="mx-5 justify-content-center">
+                        <a href="#" class="btnblock bouton bouton_orange boutonS">Payez</a>
+                    </div>
+                </div>
+            </div>
+            <div id="card_helpers" class="ms-5 p-5">
+                <p>Votre banque peut vous demander d'autoriser le paiement pour compléter votre achat.</p></br>
+                <p>Vous êtes sur un serveur de paiement sécurisé par les normes ssl (https) et pcidss de nos partenaires bancaires.</p>
+                <p>Vos données sont encryptées pour plus de sécurité.</p></br>
+                <p>Me renseigner sur les finalités du traitement de mes données personnelles, les durées de conservation et mes droits.</p>
+            </div>
+        </div>
 
-</div>
+        
+
+    </section>
+
+
+
+   
+
+
 
 </main>
 
