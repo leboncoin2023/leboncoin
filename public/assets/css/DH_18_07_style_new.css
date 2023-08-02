@@ -720,7 +720,7 @@ header{
   /* ****** CATEGORY ******* */
 
 .cardlbc{
-    background-color: var(--shade_orange);
+    /*background-color: var(--shade_orange);*/
     border-radius: 20px;
     border-style: none;
     /*border-color: var(--lb_orange);*/
@@ -730,15 +730,15 @@ header{
 .card-img-top{
     height: 250px;
     display: block;
+    border-radius: 18px;
 }
 
 .cardimglbc{
     background-image: url('/assets/img/leboncoin_1.png');
     background-size: cover;
     background-repeat: no-repeat;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    margin-bottom: 22px;
+    border-radius: 18px;
+
 
 }
 
@@ -747,10 +747,16 @@ header{
     max-height: 100%;
     min-width: 100%;
     object-fit: cover;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-
-    
+    border-radius: 18px;
+}
+.img_card_auction_search{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 18px; 
+}
+.search_card_title{
+    padding:0 !important;
 }
 
 
