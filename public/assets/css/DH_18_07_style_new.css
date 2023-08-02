@@ -1713,6 +1713,72 @@ header p{
     color: var(--lb_orange);
 }
 
+
+/*______________________________GA PAIEMENTDEUX___________________*/
+
+.form-control{
+    border-width: 1.5px !important;
+    border-color: #040404 !important;
+    border-radius: 8px !important;
+}
+.form-control::placeholder{
+    color: var(--gris) !important;
+}
+.form-check-input{
+    border-color: #040404 !important;
+    border-width: 1.5px !important;
+}
+
+.form-check-input:checked{
+    background-color: var(--lb_orange) !important;
+    border-color: var(--lb_orange) !important;
+}
+.form-check-input:focus{
+    box-shadow: 0px 0px 0px 2px #FFE5D7 !important;
+
+}
+#card_helpers{
+    font-size: smaller;
+    color: var(--gris) !important;
+}
+.payment_info{
+    border: 1px solid;
+    border-color: var(--lb_orange);
+    border-radius: 10px;
+}
+.payment_recap{
+    border: 1px solid;
+    border-color: var(--lb_orange);
+    border-radius: 10px;
+
+}
+#card_label{
+    font-weight:600;
+}
+#card_label_regist{
+    font-weight:600;
+    font-size: smaller;
+}
+.payment_amount{
+    font-size: x-large;
+    font-weight: 600;
+    width: 100%;
+}
+.payment_detail{
+    font-size: smaller;
+}
+.form-control:focus {
+    border-color: var(--lb_orange) !important;
+    box-shadow: 0px 0px 0px 2px #FFE5D7 !important;
+  }
+  #card_helpers>p{
+    color: var(--gris);
+    margin: 0 !important;
+  }
+  .legal_mention{
+    padding-left: 100rem;
+  }
+
 /*_________________________RECAP PAIEMENT______________________*/
 
 
