@@ -1716,11 +1716,18 @@ header p{
 
 /*______________________________GA PAIEMENTDEUX___________________*/
 
+/*
 .form-control{
     border-width: 1.5px !important;
     border-color: #040404 !important;
     border-radius: 8px !important;
+}*/
+#flexRadioPay{
+    border-width: 1.5px !important;
+    border-color: #040404 !important;
+    border-radius: 8px !important;
 }
+
 .form-control::placeholder{
     color: var(--gris) !important;
 }
