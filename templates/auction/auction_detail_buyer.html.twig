@@ -30,7 +30,7 @@
                              {% for picturePath in dauction.getPictures %}
                                 {% if loop.index <= 4 %}
                                     <div class="col-5 img_auction m-2 p-0">
-                                        <img src="{{ asset('uploads/pictures/' ~ picturePath) }}" class="cropped3 m-2" alt="Photo de l'enchère">
+                                        <img src="{{ asset('uploads/pictures/' ~ picturePath) }}" class="img_auction_dtl" alt="Photo de l'enchère">
                                     </div>
                                 {% endif %}
                             {% endfor %}
