@@ -734,7 +734,7 @@ header{
 }
 
 .cardimglbc{
-    background-image: url('/assets/img/leboncoin_1.png');
+    background-image: url('/assets/illustrations/card_photo_no_pic.png');
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 18px;
