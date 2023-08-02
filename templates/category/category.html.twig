@@ -25,20 +25,17 @@
                                     <div class="card-img-top cardimglbc"></div>
                                     {% else %}
                                         <div class="card-img-top cardimglbc">
-                                            <img src="/uploads/pictures/{{ auction.pictures[0] }}" class="img_card_auction" alt="image de l'enchère">
+                                            <img src="/uploads/pictures/{{ auction.pictures[0] }}" class="img_card_auction_search" alt="image de l'enchère">
                                         </div>
                                     {% endif %}
-                                    <div class="card-body">
-                                            <div class="d-flex flex-row justify-content-between">
-                                                <div>
-                                                    {# Limiter l'affichage du titre sur 25 caractères max #}
-                                                    <H5 class="cat-card-title myb-1">{{ auction.title|length > 25 ? auction.title|slice(0, 25) ~ '...' : auction.title }}</h5>
-                                                </div>
-                                                <div class="me-2">
-                                                    <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
-                                                </div>
-                                            
-                                            </div>
+                                    <div class="row card-body justify-content-between">
+                                        <div class="col-8 search_card_title">
+                                            {# Limiter l'affichage du titre sur 25 caractères max #}
+                                            <span class="cat-card-title card_search text-start">{{ auction.title|length > 25 ? auction.title|slice(0, 25) ~ '...' : auction.title }}</span>
+                                        </div>
+                                        <div class="col-4 d-flex justify-content-end align-items-center">
+                                            <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
+                                        </div>
                                     </div>
                                 </div>
                             </a>
