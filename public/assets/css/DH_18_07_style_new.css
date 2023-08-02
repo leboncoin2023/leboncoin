@@ -1712,3 +1712,55 @@ header p{
 .linkrightblock:hover{
     color: var(--lb_orange);
 }
+
+/*_________________________RECAP PAIEMENT______________________*/
+
+
+.fullrecap{
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.titlerecap{
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.flexrecap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.leftrecap{
+    max-width: 120px;
+}
+
+.linkrecapend{
+    color: var(--lb_orange);
+    text-decoration: none;
+}
+
+.linkrecapend:hover{
+    color: var(--lb_orange);
+}
+
+.flexendrecap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnrecapend{
+    margin-top: 50px;
+}
+
+.btnstylerecap:hover{
+    border:solid 2px var(--lb_orange);
+    color: var(--lb_orange);
+    background-color: var(--shade_orange);
+}

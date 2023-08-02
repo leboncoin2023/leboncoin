@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lebon<code> | Récapitulatif du paiement{% endblock %}
+
+{% block body %}
+
+
+<main class="container">
+
+    <section class="fullrecap">
+
+        <div>
+            <p class="titlerecap"><strong>Merci Alex de votre cofiance :)<br>Votre commande est confirmée!</strong></p>
+            <p class="btnrecapend">Vous recevrez bientôt un email de notre part<br>avec les informations sur votre achat.</p>
+            <p>Numéro de référence: <a href="{{ path('app_en_construction')}}" class="linkrecapend">0854317887</a></p>
+        </div>
+
+        <div class="flexrecap btnrecapend">
+
+            <div class="leftrecap">
+                <img src="/assets/img/iphone.jpg" width="100%" alt="Iphone13">
+                <p>Iphone&nbsp;13</p>
+                <p>200&nbsp;€</p>
+            </div>
+
+            <div>
+                <p><strong>Vendeur</strong></p>
+                <p><strong>Antoine Dupont</strong></p>
+                <p>+33 07 89 56 98</p>
+                <p>28 rue Lecourbe</p>
+                <p>Paris 15e</p>
+                <p>75015, France</p>
+                <p><strong>Livraison:</strong></p>
+                <p><strong>Remise en main propre</strong></p>
+            </div>
+
+        </div>
+
+        <div class="flexendrecap">
+            <img src="/assets/illustrations/confirmation.png" width="30%" class="btnrecapend" alt="Celebration">
+            <a href="{{path('app_home')}}" class="bouton bouton_orange boutonS btnrecapend btnstylerecap" >Retour à l'acceuil</a>
+        </div>
+
+    </section>
+
+</main>
+
+
+{% endblock %}

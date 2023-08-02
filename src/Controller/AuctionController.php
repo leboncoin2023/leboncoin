@@ -388,6 +388,27 @@ class AuctionController extends AbstractController
         ]);
     }
 
+    /**
+     * Acces au récaputilatif de paiement d'un enchère
+     *
+     * @param Request $request
+     * @param AuctionsRepository $auctionsRepository
+     * @param CategoryRepository $repo
+     * @param DocumentManager $dm
+     * @return Response
+     */
+    #[Route('/paiement_recap', name: 'app_paiement_recap')]
+    public function paimentRecap(Request $request,
+     AuctionsRepository $auctionsRepository,
+      CategoryRepository $repo, DocumentManager $dm): Response {
+
+      
+        return $this->render('auction/paiement_recap.html.twig', [
+           
+            'menu'      => $repo->getAllCategoriesAndSub($dm),
+           
+        ]);
+    }
 
     /**
      * Acces au tunnel de paiement 2/2
@@ -398,7 +419,7 @@ class AuctionController extends AbstractController
      * @param DocumentManager $dm
      * @return Response
      */
-    #[Route('/getsubcategorybycategory', name: 'app_paiementdeux')]
+    #[Route('/getsubcategorybycategory', name: 'app_choice_sub')]
     public function getsubcategorybycategory(Request $request,
      AuctionsRepository $auctionsRepository,
       CategoryRepository $repo, DocumentManager $dm): JsonResponse {
@@ -410,8 +431,5 @@ class AuctionController extends AbstractController
         return new JsonResponse(['data' => $data]);
 
     }
-
-    
-
 
 }
