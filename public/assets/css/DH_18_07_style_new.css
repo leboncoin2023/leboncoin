@@ -447,7 +447,7 @@ header{
 }
 
 .sub-menu-container {
-    position: relative;
+    /*position: relative;*/
    
 }
 
@@ -455,6 +455,9 @@ header{
     color: var(--almost_black);
     font-size: 20px;
     background-color: var(--gris);
+    text-align: start;
+    font-weight: bold;
+    min-height: 100%;
 }
 
 
@@ -473,9 +476,20 @@ header{
    
 }
 
+
+.catNav>a{
+    text-align: left !important;
+    font-weight: 300;
+}
+
+.subcatheader{
+    text-align:left;
+    justify-content: start;
+
+}
 .cat{
     color: var(--almost_black);
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .cat:hover{
@@ -494,9 +508,9 @@ header{
   /*  justify-content: center; */
  /*   align-items: center; /* Centrer verticalement les éléments du sous-menu */ 
     background-color: var(--shade_orange);
-    border-bottom: solid 1px var(--lb_orange);
-    border-top: solid 1px var(--lb_orange);
-    
+    /*border-bottom: solid 1px var(--lb_orange);
+    border-top: solid 1px var(--lb_orange);*/
+    text-align:left;
     
 }
 
@@ -504,6 +518,10 @@ header{
 	
     color: var(--lb_orange);
 	/* color: #444444; */
+}
+
+.sub-menus{
+    text-align:left;
 }
 
 /*=====================HOME PAGE___GUILLAUME=========================================*/
