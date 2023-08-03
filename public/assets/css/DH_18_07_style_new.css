@@ -67,6 +67,10 @@ body{
     font-size: 15px;
 }
 
+.boutonS:hover {
+color: var(--lb_orange);
+}
+
 .boutonXS {
     padding: 5px 25px;
     font-size:medium;
@@ -1258,6 +1262,9 @@ header p{
     .cardlink{
         text-decoration: none;
         color: black;
+    }
+    .cardlink:hover{
+        color: var(--lb_orange) !important;
     }
     .card-subtitle{
         font-size: small;
