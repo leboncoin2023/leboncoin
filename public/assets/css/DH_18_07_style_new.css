@@ -49,7 +49,7 @@ body{
 
 .bouton_orange {
     background-color: var(--lb_orange);
-    color: var(--vintage_white);
+    color: var(--vintage_white) !important;
     font-weight: 700;
 
 }
@@ -70,11 +70,15 @@ body{
 .boutonS:hover {
 color: var(--lb_orange);
 }
-illustration-bienvenue
+
 .boutonXS {
+    
     padding: 5px 25px;
     font-size:medium;
     font-weight: 400;
+}
+.boutonXS>a{
+    color: var(--vintage_white) !important;
 }
 
 
