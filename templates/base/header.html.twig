@@ -72,6 +72,7 @@
     </nav>
 
 <!-- _______________________________nav ligne 2 ____________________-->
+   <section class="container">
     <nav id='menu' class="container">
         <ul class="navbas">
             <li><a class="linkhover" href="{{ path('app_en_construction')}}">Immobilier&nbsp;</a></li>
@@ -84,30 +85,30 @@
             <li><a class="linkhover" href="{{ path('app_en_construction')}}">Materiel&nbsp;Professionnel&nbsp;</a></li>
             <li><a class="linkhover" href="{{ path('app_en_construction')}}">Autres&nbsp;</a></li>
             <li class="sub-menu-container mt-3"><a class="bouton bouton_orangeoutline boutonXS"><img src="/assets/icones/marteau/marteau_orange_M.svg" alt="Enchères">&nbsp;Enchères</a>
-            <ul class="sub-menus">
-            <li class="titlesub"><h3>Enchères</h3></li>
+            <ul class="sub-menus container">
+            <li class="titlesub flex align-items-start"><span class="titlesub mt-2">Enchères</span></li>
                {% for key, submenu in menu %}
                 <li>
                     <!--<a href="\category\{{key}}"><p class="cat">{{key}}</p></a>-->
-                    <a href="{{ path('app_category',  {'category':key}) }}"><p class="cat">{{key}}</p></a>
-                    <ul class="align-left">
+                    <a href="{{ path('app_category',  {'category':key}) }}"><p class="cat mt-3">{{key}}</p></a>
+                    <ul class="subcatheader">
                         {% for subCat in submenu %}
-                            <li>
-                                <!--<a href="\category\{{key}}\{{subCat}}">
-                                    <p>{{subCat}}</p>
-                                </a>-->
-                                <a href="{{ path('app_subcategory', {'category':key, 'subcategory':subCat}) }}" id="catNav">
-                                    <p>{{subCat}}</p>
-                                </a>
+                            <li class=" text-start">
+                                <div class="catNav align-items-start">
+                                    <a href="{{ path('app_subcategory', {'category':key, 'subcategory':subCat}) }}">
+                                        {#<span class="subcatheader">{{subCat}}</span>#}
+                                        {{subCat}}
+                                    </a>
+                                </div>
                             </li>
                         {% endfor %}    
                     </ul>
                 </li>
                 {% endfor %}
-            </ul>
-
-             
+        </ul>   
     </nav>
+</section>
+
 <section class="container">
 <hr>
 </section>
