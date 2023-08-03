@@ -70,7 +70,7 @@ body{
 .boutonS:hover {
 color: var(--lb_orange);
 }
-
+illustration-bienvenue
 .boutonXS {
     padding: 5px 25px;
     font-size:medium;
@@ -1199,6 +1199,9 @@ header p{
 
 .illustration-bienvenue{
     width: 100%;
+}
+.illustration-bienvenue>img{
+    max-width: 100%;
 }
 
 
