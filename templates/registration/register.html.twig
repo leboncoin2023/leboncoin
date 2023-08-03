@@ -63,9 +63,11 @@
 
 
 
+    {{ form_errors(registrationForm) }}
+   
+    {{ form_start(registrationForm) }}
 
-
-            <form>
+            <form method="post" action="{{ path('app_register') }}" enctype="multipart/form-data">
 
                 <!-- étape email -->
 
@@ -75,11 +77,12 @@
                         <h3>Commençons par un email</h3>
                     </div>
 
-                    <div>
+                    {#<div>
                         <label for="email">E-mail</label>
-                    </div>
+                    </div>#}
                     <div>
-                        <input type="email" name="email" id="email" class="input-transforme">
+                        {#<input type="email" name="email" id="email" class="input-transforme">#}
+                        {{ form_row(registrationForm.email, { label: 'E-mail' }) }}
                     </div>
 
 
@@ -105,14 +108,13 @@
                     </div>
 
 
+                    
+                    
                     <div>
-                        <div>
-                            <label for="userPassword">Mot de passe</label>
-                        </div>
-                        <div>
-                            <input id="userPassword" type="password" class="input-transforme">
-                        </div>
+                        {#<input id="userPassword" type="password" class="input-transforme">#}
+                        {{ form_row(registrationForm.plainPassword, { label: 'Mot de passe   ' }) }}
                     </div>
+                    
 
 
                 </div>
@@ -126,11 +128,12 @@
                     </div>
 
                     <div>
-                        <div>
+                        {#<div>
                             <label for="phone">Numéro de téléphone</label>
-                        </div>
+                        </div>#}
                         <div>
-                            <input type="tel" name="tel" id="tel" class="input-transforme">
+                            {#<input type="tel" name="tel" id="tel" class="input-transforme">#}
+                            {{ form_row(registrationForm.phone, { label: 'Numéro de téléphone' }) }}
                         </div>
                     </div>
 
@@ -150,11 +153,12 @@
                         <h3>Et pour finir, choisissez un nom d'utilisateur</h3>
                     </div>
 
-                    <div>
+                    {#<div>
                         <label for="name">Nom d'utilisateur</label>
-                    </div>
+                    </div>#}
                     <div>
-                        <input type="text" id="name" name="name" placeholder="Ex: Camille" class="input-transforme">
+                        {#<input type="text" id="name" name="name" placeholder="Ex: Camille" class="input-transforme">#}
+                        {{ form_row(registrationForm.username, { label: 'Nom d\'utilisateur' }) }}
                     </div>
 
                     <p class="info-inscription">Votre nom d’utilisateur sera visible sur votre profil ainsi que sur vos
@@ -163,16 +167,27 @@
                 </div>
 
                 <div class="acceptation-conditions">
+                    <div class="mb-4">
+                        <span>En créant mon compte, je reconnais avoir lu et accepté les <a href="#">Conditions Générales de ventes</a> et les <a href="#">Conditions Générales d’utilisation</a> et je confirme être âgé d’au moins 18
+                            ans.</span>
+                        {{ form_row(registrationForm.agreesTerms, { label: 'Accepter' }) }} 
+                    </div>
+
                     <button type="submit" class="bouton-inscription">Créer un compte</button>
 
-                    <div>
-                        <p>En créant mon compte, je reconnais avoir lu et accepté les <a href="#">Conditions Générales de ventes</a> et les <a href="#">Conditions Générales d’utilisation</a> et je confirme être âgé d’au moins 18
-                            ans.</p>
-                    </div>
+                 
+
 
 
                 </div>
-
+                {{ form_row(registrationForm._token) }}
+       
+                <div class="text-end col-8">
+                    {#{{ form_row(registrationForm.save, {'attr': {'class': 'bouton bouton_orange boutonM btn_valid_form'}}) }}#}
+                    <button type="submit" class="btn">Register</button>
+                </div>
+       
+    {{ form_end(registrationForm) }}
 
 
             </form>
@@ -200,7 +215,7 @@
 
     </main>
 
-{# _________________________________________________________________________________ #}
+{# _________________________________________________________________________________ 
 
     <h1>Register</h1>
 
@@ -233,5 +248,5 @@
        
         <button type="submit" class="btn">Register</button>
        
-    {{ form_end(registrationForm) }}
+    {{ form_end(registrationForm) }} #}
 {% endblock %}

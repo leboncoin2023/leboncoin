@@ -125,7 +125,11 @@
                                     </div>
                                     <div class="row justify-content-around">
                                         <div class="col-10">
-                                            <button class="bouton bouton_orange boutonXS">Voir le produit</button>
+                                            <button class="bouton bouton_orange boutonXS">
+                                                <a class="col-3 m-3 cardlink" href="{{ path('app_auction_detail', {'id': auction.id}) }}">
+                                                    Voir le produit
+                                                </a>
+                                            </button>
                                         </div>
                                         <div class="col-2 p-1">
                                             <img src="/assets/icones/coeurs/coeur_orange_vide.svg" alt="coeur">
@@ -145,7 +149,7 @@
 
 
 
-<!-- ***** PRODUITS SUB CAT /SUGGESTIONS*****  -->
+<!-- ***** PRODUITS SUB CAT /SUGGESTIONS*****  
 
         <section class="container">
 
@@ -239,7 +243,7 @@
 
         </section>
 
-<!-- ***** PRODUITS SUB CAT /AVIS *****  -->
+ ***** PRODUITS SUB CAT /AVIS ***** 
 
         <section class="container">
 
@@ -258,10 +262,10 @@
                 </div>
               </div>
             
-            <!-- SLIDER  -->
+        
 
         </section>
-
+   -->
 
     </main>
 {% endblock %}
