@@ -317,6 +317,12 @@ header{
     color: var(--vintage_white);
 }
 
+.btndepo:hover{
+    background-color:var(--shade_orange);
+    color: var(--lb_orange);
+    border: solid 2px var(--lb_orange);
+}
+
 .boutonspé:hover{
     background-color:var(--shade_orange);
     border-radius: 1em;
