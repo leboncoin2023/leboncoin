@@ -293,28 +293,28 @@ class AuctionController extends AbstractController
         ]);
     }
     
-   //     public function fAuction(Request $request, DocumentManager $dm ): Response {          
-   //     $id = $request->get('id');
-  //     $dauction = $dm->getRepository(Auctions::class)->find($id);
+     //     public function fAuction(Request $request, DocumentManager $dm ): Response {          
+     //     $id = $request->get('id');
+      //     $dauction = $dm->getRepository(Auctions::class)->find($id);
  
-  //     // Vérifiez si l'objet "Auctions" a été trouvé
- //     if(!$dauction){
- //         throw $this->createNotFoundException('Auction not found for ID: ' . $id);
- //     }
-  //     dump($dauction);
-  //     $form = $this->createForm(AuctionType::class, $dauction);
-  //     $form->handleRequest($request);
+      //     // Vérifiez si l'objet "Auctions" a été trouvé
+      //     if(!$dauction){
+      //         throw $this->createNotFoundException('Auction not found for ID: ' . $id);
+       //     }
+      //     dump($dauction);
+       //     $form = $this->createForm(AuctionType::class, $dauction);
+      //     $form->handleRequest($request);
 
-  //     if ($form->isSubmitted() && $form->isValid()) {
-  //         // Sauvegardez l'entité Auctions en base de données
-  //         $dm->persist($dauction);
-  //         $dm->flush();
-  //     }
-            'seller'    => $sellerid,
-             'mauction' => $mauction,
-             'menu'     => $repo->getAllCategoriesAndSub($dm)
-        ]);
-    }
+       //     if ($form->isSubmitted() && $form->isValid()) {
+       //         // Sauvegardez l'entité Auctions en base de données
+      //         $dm->persist($dauction);
+       //         $dm->flush();
+     //     }
+           // 'seller'    => $sellerid,
+             //'mauction' => $mauction,
+             //'menu'     => $repo->getAllCategoriesAndSub($dm)
+    
+    //};
     
     #[Route('/saveform', name: 'app_auction_saveform')]
     public function fAuction(Request $request, DocumentManager $dm ): Response {
@@ -394,7 +394,7 @@ class AuctionController extends AbstractController
             'form' => $form->createView(), // Assurez-vous que vous avez ajouté cette ligne
         ]);
     }*/
-    } */
+    
 
     /**
      * Acces au tunnel de paiement 1/2
