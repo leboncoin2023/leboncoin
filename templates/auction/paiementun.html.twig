@@ -1,0 +1,172 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lebon<code> | Paiement 1/2{% endblock %}
+
+{% block body %}
+
+<main class="container margmoney">
+
+    {# //Décoration #}
+    <div class="divorangeflex">
+        <div class="divorange"></div>
+        <div class="divorangelight"></div>
+    </div>
+
+
+
+
+    <div class="flexstep aligntop spacea">  {# class="flexstep" #}
+
+        {# //Partie gauche #}
+        <div>
+
+            <p><strong>Mode de remise</strong></p>
+
+            <section class="leftblock">
+                <p><strong>Remise de l'achat en main propre</strong></p>
+                <p><strong>Les étapes de la remise en main propre :</strong></p>
+                
+                <div class="flexstep">
+                    <img src="/assets/icones/etapes/etape_number1.svg" alt="étape 1">
+                    <p class="pmargin">Le vendeur vous confirme la disponibilité de la commande</p>
+                </div>
+
+                <div class="flexstep">
+                    <img src="/assets/icones/etapes/etape_number2.svg" alt="étape 2">
+                    <p class="pmargin">Vous vous organisez avec le vendeur pour défénir le lieu et la date de votre rendez-vous</p>
+                </div>
+
+                <div class="flexstep">
+                    <img src="/assets/icones/etapes/etape_number3.svg" alt="étape 3">
+                    <p class="pmargin">Pensez à prendre votre téléphone portable pour déclancher la paiement depuis votre messagerie leboncoin pendant le rendez-vous</p>
+                </div>
+                
+            </section>
+
+            <p>Vous serez débité lorsque le vendeur aura confirmé la commande</p>
+
+        </div>
+
+        {# //Partie droite #}
+        <div class="rightblock">
+            <section>
+                {# card header #}
+                <div class="flexstepright spaceb headrigthblock rightblockpadd">
+
+                    <div class="flexstepright">
+                       {#  <img src="/assets/img/leboncoin_1.png" width="40%" alt=""> #}
+                        <p><strong>Iphone&nbsp;13</strong></p>
+                    </div>
+
+                    <p><strong>200&nbsp;€</strong></p>
+
+                </div>
+
+                {# card body #}
+                <div class="rightblockpadd">
+                    <p><strong>Mode de remise</strong></p>
+
+                    {# remise en main propre #}
+                    <div class="flexstepright">
+                        <input type="radio" name="" id="">
+                        <p><strong>Remise en main propre</strong></p>
+                    </div>
+
+                    <div>
+                        <div class="flexstepright">
+                            <img src="/assets/icones/localisation/localisation_noir.svg" alt="Pointeur">
+                            <p><strong>Saint-Denis (97490)</strong></p>
+                        </div>
+                        <p>Payez en ligne et récupérez votre achat en main propre lors de votre rendez-vous avec le vendeur</p>
+                    </div>
+
+                    {# Mondial Relay #}
+                    <div>
+
+                        <div class="flexstepright spaceb">
+                            <div class="flexstepright">
+                                <input type="radio" name="" id="">
+                                <p><strong>Mondial Relay</strong></p>
+                            </div>
+                            <p><strong>10,99&nbsp;€</strong></p>
+                        </div>
+
+                        <p>En point Mondial Relay sous 3-5 jours</p>
+
+                    </div>
+
+                    {# CHRONOPOST #}
+                    <div>
+                    
+                        <div class="flexstepright spaceb">
+                            <div class="flexstepright">
+                                <input type="radio" name="" id="">
+                                <p><strong>Chronopost</strong></p>
+                            </div>
+                            <p><strong>12,99&nbsp;€</strong></p>
+                        </div>
+
+                        <p>En point pickup sous 1-2 jours</p>
+
+                    </div>
+
+                    {# Eco'lissimo #}
+                    <div>
+                    
+                        <div class="flexstepright spaceb">
+                            <div class="flexstepright">
+                                <input type="radio" name="" id="">
+                                <p><strong>Eco'lissimo</strong></p>
+                            </div>
+                            <p><strong>12,99&nbsp;€</strong></p>
+                        </div>
+
+                        <p>A votre domicile sous sous 2-4 jours</p>
+
+                    </div>
+
+                    {# Protection leboncoin #}
+                    <div class="flexstepright spaceb">
+                        <p><strong>Protection leboncoin</strong></p>
+                        <p><strong>5,00&nbsp;€</strong></p>
+                    </div>
+
+
+                    <div class="flexstepright">
+                        <img src="/assets/icones/check/check_orange.svg" alt="checked">
+                        <p>Votre argent est conservé jusqu'à ce que vous ayez confirmé l'achat en main propre</p>
+                    </div>
+
+                    <div class="flexstepright">
+                        <img src="/assets/icones/check/check_orange.svg" alt="checked">
+                        <p>Une équipe dédiée à votre service</p>
+                    </div>
+
+                    <a href="{{ path('app_en_construction')}}" class="linkrightblock">Pourquoi c'est important?</a>
+
+
+                    <div class="flexstepright spaceb">
+                        <p><strong>Total</strong></p>
+                        <p><strong>200,00&nbsp;€</strong></p>
+                    </div>
+
+
+
+
+
+                
+                </div>
+            </section>
+
+            <a href="{{ path('app_paiementdeux')}}" class="btnblock bouton bouton_orange boutonS">Continuer</a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+
+{% endblock %}

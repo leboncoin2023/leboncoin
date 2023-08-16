@@ -38,6 +38,9 @@ private ?string $reservePrice = null;
 #[MongoDB\Field(type: 'date')]
 private ?\DateTimeInterface $startDate = null;
 
+#[MongoDB\Field(type: 'date')]
+private ?\DateTimeInterface $endDate = null;
+
 #[MongoDB\Field(type:'string')]
 private ?string $duration = null;
 
@@ -125,6 +128,13 @@ private $offre = [];
 
     }
 
+    public function getEndDate(): ?\DateTimeInterface
+    {
+
+    return $this->endDate;
+
+    }
+
     public function getDuration(): ?string
     {
 
@@ -161,13 +171,26 @@ private $offre = [];
 
         return $this->seller_id;
     }
-
+    
     public function getBuyerId(): ?string
     {
-
+        
         return $this->buyer_id;
     }
-
+    
+    public function getCurrentValue(): int {
+        // recupération des offres de l'enchères
+        $offres = $this->getoffre();
+    
+        // ajout de l'enchere de départ
+        $offres[] = $this->getStartPrice();
+    
+        // recherche de la valeur max
+        usort($offres, fn($a, $b) => $b['offre'] <=> $a['offre']);
+    
+        // récupération de l'offre la plus haute
+        return isset($offres[0]['offre']) ? $offres[0]['offre'] : 0;
+    } 
     
 
 
@@ -239,6 +262,14 @@ private $offre = [];
         return $this;
     }
 
+    public function setEndDate(?\DateTimeInterface $endDate): self
+    {
+
+        $this->endDate = $endDate;
+        
+        return $this;
+    }
+
     public function setDuration(?string $duration)
     {
         
@@ -290,11 +321,15 @@ private $offre = [];
 
     public function setoffre(?array $offre)
     {
-        
         $this->offre = $offre;
-        
         return $this;
     }
 
-    
-} 
+    public function addOffre(?array $offre)
+    {
+        $this->offre[] = $offre;
+        return $this;
+    }
+
+
+}

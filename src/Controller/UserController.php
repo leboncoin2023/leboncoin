@@ -2,7 +2,12 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
+use App\Repository\UserRepository;
+use App\Services\AuctionService;
+use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -11,13 +16,29 @@ class UserController extends AbstractController
 {
     
     #[Route('/', name: 'app_user')]
-    public function index(): Response
+    public function index(Request $request, DocumentManager $dm,CategoryRepository $repo, AuctionService $auctionService): Response
     {
+
+        //dump($auctionService->test());
+
+        if (!$this->getUser())
+        return $this->redirectToRoute('app_login');
+
+
+        $id = $this->getUser()->getId();
+
+
         return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
+            'id' => $id,
+            'menu'      => $repo->getAllCategoriesAndSub($dm)
         ]);
+      
     }
 
+
+
+
+    
     #[Route('/edit', name: 'app_user_edit')]
     public function edit(): Response
     {
@@ -26,11 +47,11 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/auction', name: 'app_user_auction')]
-    public function auction(): Response
+    #[Route('/notifications', name: 'app_user_notifications')]
+    public function auction( DocumentManager $dm,CategoryRepository $repo,): Response
     {
-        return $this->render('user/auction.html.twig', [
-            'controller_name' => 'UserController',
+        return $this->render('user/Notifs.html.twig', [
+            'menu'          => $repo->getAllCategoriesAndSub($dm),
         ]);
     }
 

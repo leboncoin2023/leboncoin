@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\AuctionsRepository;
 use App\Repository\CategoryRepository;
+use App\Services\AuctionService;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -53,14 +54,24 @@ class CategoryController extends AbstractController
      * 
      */
     #[Route('/{category}/{subcategory}', name: 'app_subcategory')]
-    public function subCategory(string $category, string $subcategory, Request $request, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm): Response
+    public function subCategory(string $category, string $subcategory, Request $request, AuctionsRepository $auctionsRepository, CategoryRepository $repo, DocumentManager $dm, AuctionService $auctionService): Response
     {      
 
+        
         $auctions = $auctionsRepository->getAuctionsByCategory($subcategory);
+
+      
+        foreach ($auctions['auctions'] as $auction){
+            $id = $auction->getId();
+            $currentOffer = $auctionService->getCurrentAmount($id, $dm);
+            $auction->setStartPrice($currentOffer);
+        }
+        
+        // récupère l'offre actuel la plus élevée de l'enchère (via le service)
     
         return $this->render('category/subcategory.html.twig', [
             'auctions' => $auctions,
-            'menu' => $repo->getAllCategoriesAndSub($dm)
+            'menu' => $repo->getAllCategoriesAndSub($dm),
         ]);
     }
 }

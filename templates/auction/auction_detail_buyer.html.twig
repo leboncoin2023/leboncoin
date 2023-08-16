@@ -1,46 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détail de l'enchère{% endblock %}
+{% block title %}Lebon<code> | Détail de l'enchère{% endblock %}
+
+    {% block stylesheets %}
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    {% endblock %}
 
 {% block body %}
 
-    <main>
+ <main>
+
 
 
         <article>
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-8">
+            
+        <!-- FIL D'ARIANE -->
+            <div class="col-11 mt-3">
+                <span class="h_one_sub_cat">Accueil > Ventes aux enchères > {{ dauction.category }} > {#{{ dauction.subcategory }} >#} </span>
+            </div>            
+        <!-- FIL D'ARIANE -->
 
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                                <li class="breadcrumb-item"><a href="#">Multimédia</a></li>
-                                <li class="breadcrumb-item"><a href="#">Smartphone</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Iphone 13</li>
-                            </ol>
-                        </nav>
             <!-- catalogue de photos -->
                 <div class="row my-5">
 
                             {% if dauction.getPictures|length > 0 %}
-                                {% for picturePath in dauction.getPictures %}
-                                <div class="col-5 img_auction m-2 p-0">
-                                    <img src="{{ asset('uploads/pictures/' ~ picturePath) }}" class="cropped3 m-2" alt="Photo de l'enchère">
-                                </div>
-                                {% endfor %}
+                             {% for picturePath in dauction.getPictures %}
+                                {% if loop.index <= 4 %}
+                                    <div class="col-5 img_auction m-2 p-0">
+                                        <img src="{{ asset('uploads/pictures/' ~ picturePath) }}" class="img_auction_dtl" alt="Photo de l'enchère">
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
                             {% else %}
                                 <div class="col-5 card-img-lbc_detail m-2">
                                     <p>Aucune image disponible</p>
                                 </div>
                             {% endif %}
-                        
+                        <!--
                         <div class="col-6 voir_plus">
                             <a href="#">
                                 <img src="/assets/icones/fleches/fleche_voirplus.svg" alt="fleche voir plus">
                                 <p>Voir plus</p>   
                             </a>
                         </div>
+                        -->
                 </div>
             <!-- catalogue de photos -->
 
@@ -48,22 +54,16 @@
 
 
 
-                        <div class="">
-                            <div class="d-flex">
-                                <div>
-                                    <h1>{{ dauction.title }}</h1>
-                                </div>
-                                <div>
-                                    <p>État:</p>
-                                </div>
-                                <div>
-                                    <p> Très bon</p>
-                                </div>
-                            </div>
+
+                        <div class="d-flex flex-column">
                             <div>
-                                <p>Annonce publiée le: xxxxxxx</p>
+                                <h1 class="text-start">{{ dauction.title }}</h1>
                             </div>
+                            <!--  <div>
+                                <p>Annonce publiée le: xxxxxxx</p>
+                            </div>-->
                         </div>
+
 
                         <hr>
 
@@ -82,23 +82,23 @@
                                     <div class="col-4 d-flex flex-column">
                                         <div class="d-flex mb-5">
                                             <img src="/assets/icones/criteres/critere_etat.svg" class="me-2" alt="etat">
-                                            <span>État: Très bon état</span>
+                                            <span>État :</span>
                                         </div>
                                         <div class="d-flex mb-1">
                                             <img src="/assets/icones/criteres/criteres_couleur.svg" class="me-2" alt="Couleur">
-                                            <span>Couleur: Noir</span>
+                                            <span>Couleur :</span>
                                         </div>
                                     </div>
 
                                     <div class="col-4 d-flex flex-column mb-4">
                                         <div class="d-flex mb-5">
                                             <img src="/assets/icones/criteres/critere_marque.svg" class="me-2" alt="marque">
-                                            <span>Marque: Apple</span>
+                                            <span>Marque :</span>
                                         </div>
 
                                         <div class="d-flex mb-1">
                                             <img src="/assets/icones/criteres/criteres_stockage.svg" class="me-2" alt="Stockage">
-                                            <span>Stockage: 128 GO</span>
+                                            <span>Stockage :</span>
                                         </div>
 
                                     </div>
@@ -106,7 +106,7 @@
                                     <div class="col-4 d-flex flex-column mb-4">
                                         <div class="d-flex mb-5">
                                             <img src="/assets/icones/criteres/critere_marque.svg" class="me-2" alt="Modèle">
-                                            <span>Modèle: Iphone 13</span>
+                                            <span>Modèle :</span>
                                         </div>
                                     </div>
                                 </div>
@@ -190,85 +190,105 @@
                             </div>
                         </div>
 
-                        <hr> <!--  MAPS  -->
+                        <hr> 
 
-                        <div>
-                            <div class="d-flex">
-                                <img src="assets/icones/localisation/localisation_noir.svg" alt="">
-                                <h3>
-                                    Moulins
-                                    <span>(03000)</span>
-                                </h3>
+                <!--  MAPS  -->
+                    
+                        <div class="map_frame">
+                            <div>
+                                <h2 class="mt-2 mb-5">Adresse de retrait</h2>
                             </div>
-                            <div id="map" class="">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d33331.95175492223!2d3.3089362651047494!3d46.555986152583635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f11c3130b4dc93%3A0x4093cafcbebbfa0!2s03000%20Moulins!5e0!3m2!1sfr!2sfr!4v1689598072679!5m2!1sfr!2sfr"
-                                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <div class="d-flex align-items-center mb-2 ms-3">
+                                <div>
+                                    <img src="/assets/icones/localisation/localisation_noir.svg" class="icon_liv mx-2" alt="badge_certif">
+                                </div>
+                                <span id="address_input">{{ dauction.localisation }}</span>
+                            </div>
+                            <div class="mb-2 d-flex map_input">
+                                <div id="maCarte"></div>
                             </div>
                         </div>
+
+                <!--  MAPS  -->
+
 
                     </div>
 
                     <aside class="col-12 col-md-4">
-                        <div class="card_border_top profil">
-                            <img src="assets/icones/profil/profil_cercle_certif.svg" alt="photo de profil">
-                            <div>
-                                <h2>Antoine</h2>
-                                <p>
-                                    7 annonces
-                                </p>
-                                <div class="row tps_restant">
-                                    <div class="col-2">
-                                        <img src="assets/icones/timer/chrono_noir.svg" alt="timer">
+
+                    <!--  DETAIL VENDEUR  -->
+                        <div class="card_border_top mt-5 p-3">
+                            <div class="d-flex flex-column align-items-center mt-4">
+                                <div class="d-flex flex-row">
+                                    <div class="col-4 justify-content-center me-1">
+                                        <img src="/assets/icones/profil/profil_cercle_certif.svg" alt="photo de profil">
                                     </div>
-                                    <div class="col-10 d-flex align-center sixh">
-                                        <p class="rep_gen">
-                                            Répond généralement dans les 6 heures
-                                        </p>
+                                    <div class="d-flex flex-column ms-2">
+                                        <div class="d-flex col-8 align-items-center">
+                                            <h2>{{ seller.username }}</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <span>7 annonces</span>
+                                        </div>
+                                        <div class="d-flex flex-row mb-2 justify-content-center">
+                                            <div>
+                                                <img src="/assets/icones/etoile/etoile_orange.svg" alt="Étoiles">
+                                                <img src="/assets/icones/etoile/etoile_orange.svg" alt="Étoiles">
+                                                <img src="/assets/icones/etoile/etoile_orange.svg" alt="Étoiles">
+                                                <img src="/assets/icones/etoile/etoile_orange.svg" alt="Étoiles">
+                                                <img src="/assets/icones/etoile/demi_etoile_orange.svg" alt="Étoiles">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="m-3">
-                                    <img src="assets/icones/etoile/etoile_orange.svg" alt="Étoiles">
-                                    <img src="assets/icones/etoile/etoile_orange.svg" alt="Étoiles">
-                                    <img src="assets/icones/etoile/etoile_orange.svg" alt="Étoiles">
-                                    <img src="assets/icones/etoile/etoile_orange.svg" alt="Étoiles">
-                                    <img src="assets/icones/etoile/demi_etoile_orange.svg" alt="Étoiles">
+                                
+                            </div>
+                       
+                            <div class="d-flex flex-row tps_restant align-items-center my-4">
+                                <div class="d-flex col-2 justify-content-center">
+                                    <img src="/assets/icones/timer/chrono_noir.svg" alt="timer">
                                 </div>
-
+                                <div class="col-10 d-flex align-items-center">
+                                    <span class="rep_gen">Répond généralement dans les 6 heures</span>
+                                </div>
                             </div>
 
+                            
 
-                            <div class="m-2">
-                                <a class="bouton bouton_orangeoutline boutonS" href="#">Message</a>
+                            <div class="d-flex flex-column align-items-center my-3">
+                                <div class="col-6 m-2 mb-5 d-flex justify-content-center">
+                                    <button class="bouton bouton_orangeoutline boutonL" href="#">Message</button>
+                                </div>
+                                <div class="col-6 d-flex detail_vend justify-content-center">
+                                    <a href="#">Détails vendeur</a>
+                                </div>
                             </div>
-
-
-                            <div class="detail_vend">
-                                <a href="#">Détails vendeur</a>
-                            </div>
-
+                          
                         </div>
-                        <div class="card_border enchères">
+                    <!--  DETAIL VENDEUR  -->
 
-                            <div class="d-flex">
-                                <img src="assets/icones/marteau/marteau_orange_small copie.svg" alt="icon enchères">
-                                <p>La vente se termine dans 00:30 minutes</p>
+                    <!--  DETAIL ENCHERE  -->
+
+                        <div class="card_border_bot mt-4 p-3 text-center">
+
+                            <div class="d-flex flex-row tps_restant align-items-center my-4">
+                                <div class="col-2 d-flex justify-content-center">
+                                    <img src="/assets/icones/marteau/marteau_orange_M.svg" alt="enchères">
+                                </div>
+                                <div class="col-10 d-flex align-items-center">
+                                    <span class="rep_gen">La vente se termine dans 00:30 minutes</span>
+                                </div>
                             </div>
-                            <div>
-                                <h2>
-                                    Enchères actuelle :
-                                </h2>
-                                <h3>
-                                    {{ CurrentValue}}€
-                                </h3>
+
+                            <div class="my-4">
+                                <h2>Enchère actuelle :</h2>
+                                <span class="h3">{{ CurrentValue}}€</span>
                             </div>
 
                             <form method="POST">
-
-                                <div>
-                                    <p>Votre offre :</p>
-                                    <div class="input-group">
+                                <div class="my-4">
+                                    <span>Votre offre :</span>
+                                    <div class="input-group auction_proposed">
                                         <input name="offre" type="text" class="form-control"
                                             aria-label="Dollar amount (with dot and two decimal places)">
                                         <span class="input-group-text">€</span>
@@ -276,24 +296,20 @@
                                 </div>
 
                                 <div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            M’alerter en cas de nouvelle enchère
-                                        </label>
+                                    <div class="form-check my-4 d-flex justify-content-center">
+                                        <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">M’alerter en cas de nouvelle enchère</label>
                                     </div>
                                 </div>
 
-                                <div>
-                                <input class="bouton bouton_orange boutonS" type="submit" value="Valider">
-                                        
-                                    
+                                <div class="mb-5">
+                                    <input class="bouton bouton_orange boutonS" type="submit" value="Valider">
                                 </div>
-
                             </form>
-
-
                         </div>
+
+                    <!--  DETAIL ENCHERE  -->
+
 
                     </aside>
                 </div>
@@ -303,59 +319,69 @@
         </article>
 
 
-
+<!--  DETAIL PROFIL VENDEUR  -->
         <section class="container">
-
             <div class="col-12 col-md-8">
                 <hr>
-                <div>
-                    <div>
-                        <a href="#">
-                            <img src="assets/icones/profil/profil_cercle_certif.svg" alt="avatar de l’utilisateur">
-                        </a>
+                <div class="d-flex flex-row ms-3 align-items-start">
+                    <div class="col-1 justify-content-center me-1">
+                        <img src="/assets/icones/profil/profil_cercle_certif.svg" alt="photo de profil">
                     </div>
-                    <div class="d-flex">
-                        <div>
-                            <h2><a href="#">Anthony</a></h2>
-                            <a href="#">
-                                <p>29 annonces</p>
-                            </a>
-                        </div>
-                        <div>
-                            <button class="bouton bouton_orange boutonS">Suivre</button>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>
-                            Membre depuis janvier 2023
-                        </h3>
-                        <div class="d-flex">
-                            <img src="assets/icones/timer/chrono_noir.svg" alt="chrono noir">
-                            <p>
-                                Répond généralement dans les 6 heures
-                            </p>
-                        </div>
-                        <a href="#">Voir les annonces d'Antoine</a>
 
-                        <div class="d-flex">
-                            <div class="d-flex">
-                                <img src="assets/icones/information/drapeau.svg" alt="drapeau signaler">
-                                <p>Signaler l'annonce</p>
-                            </div>
-                            <div class="d-flex">
-                                <img src="assets/icones/information/information.svg" alt="icone information">
-                                <p>Vos droits et obligations</p>
-                            </div>
+                    <div class="col-11 d-flex flex-column ms-2 align-items-start">
+                        <div>
+                            <h2>{{ seller.username }}</h2>
+                        </div>
+                        <div>
+                            <span>7 annonces</span>
                         </div>
                     </div>
                 </div>
-                
-                <hr>
             </div>
 
+            <div class="my-4">
+                <span class="fw-bolder">Membre depuis janvier 2023</span>
+            </div>
+
+            <div class="d-flex flex-row tps_restant align-items-center my-4">
+                <div class="d-flex justify-content-start">
+                    <img src="/assets/icones/timer/chrono_noir.svg" alt="timer">
+                </div>
+                <div class="d-flex justify-content-start">
+                    <span class="rep_ft">Répond généralement dans les 6 heures</span>
+                </div>
+            </div>
+            <div class="my-4 link-auction">
+                <a href="#">Voir les annonces d'Antoine</a>
+            </div>
+            <div class="d-flex flex-row mb-5">
+                <div class="d-flex me-5">
+                    <div class="me-2">
+                        <img src="/assets/icones/information/drapeau.svg" alt="drapeau signaler">
+                    </div>
+                    <div>
+                        <sapn>Signaler l'annonce</span>
+                    </div>
+                </div>
+
+                <div class="d-flex">
+                    <div class="me-2">
+                        <img src="/assets/icones/information/information.svg" alt="icone information">
+                    </div>
+                    <div>
+                        <span>Vos droits et obligations</span>
+                    </div>
+                </div>
+            </div>
+    <!--  DETAIL PROFIL VENDEUR  -->
         </section>
 
     </main>
 
 
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>               
+<script src="/assets/js/script_maps.js"></script>
 {% endblock %}

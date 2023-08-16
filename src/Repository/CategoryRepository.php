@@ -55,9 +55,49 @@ class CategoryRepository extends ServiceDocumentRepository
             // ajoute la sous categorie dans la catégorie
             $nav[$category][] = $subCategory;
         }
-
+        //dd($nav);
         return $nav;
     }
+
+
+
+    /**
+     * Undocumented function
+     *
+     * @param Category $category
+     * @return array
+     */
+    public function getSubcategoryByCategory(DocumentManager $dm, string $categoryValue): array {
+
+        $categoriesRaw = $this->dm  ->createQueryBuilder(Auctions::class)
+                                    ->distinct('category')
+                                    ->getQuery()
+                                    ->execute();
+
+        $subCat = [];
+        // boucle sur toutes les categories en BDD
+        foreach ($categoriesRaw as $raw) {
+            $matches = [];
+
+            // récupère la catégorie et sous catégorie
+            if (!preg_match('/^([\S\s]+)\/([\S\s]+)$/i', $raw, $matches))
+                continue;
+
+            // récupération de la catégory et sous catégorie
+            $category       = $matches[1];
+            $subCategory    = $matches[2];
+
+            if($category == $categoryValue){
+                $subCat[] = $subCategory;
+            }
+
+        }
+
+       
+        return $subCat;
+    }
+
+
 
 }
 

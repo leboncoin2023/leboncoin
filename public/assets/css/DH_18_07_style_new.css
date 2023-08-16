@@ -20,7 +20,7 @@
 
 @font-face {
     font-family: 'Satoshi';
-    src: url('/public/assets/font/Satoshi-Regular.woff2');
+    src: local('/public/assets/font/Satoshi-Regular.woff2');
 }
 
 /* BACKGROUND */
@@ -31,31 +31,78 @@ body{
     margin-right: auto;
 }
 
-/* BOUTONS */
-.bouton_orange{
-    border-radius: 10px;
-    background-color: var(--lb_orange);
-    color: var(--vintage_white);
+.body_bg{
+    background-color: var(--vintage_white);
+
 }
 
-.bouton_orangeoutline{
+/* BOUTONS */
+/*********** BOUTONS **********************/
+
+.bouton {
+    text-decoration: none;
     border-radius: 10px;
+    border: none;
+    background-color: transparent;
+    padding: 10px 25px;
+}
+
+.bouton_orange {
+    background-color: var(--lb_orange);
+    color: var(--vintage_white) !important;
+    font-weight: 700;
+
+}
+
+.bouton_orangeoutline {
+   
     background-color: var(--vintage_white);
-    border: var(--lb_orange);
+    border: 2px solid var(--lb_orange);
     color: var(--lb_orange);
 }
 
-.boutonS{
-    height: 38px;
+
+.boutonS {
+    padding: 10px 25px;
+    font-size: 15px;
 }
 
-.boutonM{
-    height: 52px;
+.boutonS:hover {
+color: var(--lb_orange);
 }
 
-.boutonL{
-    height: 70px;
+.boutonXS {
+    
+    padding: 5px 25px;
+    font-size:medium;
+    font-weight: 400;
 }
+.boutonXS>a{
+    color: var(--vintage_white) !important;
+}
+
+
+.boutonM {
+    padding: 10px 55px;
+    font-size: 24px;
+}
+
+.boutonL {
+    padding: 10px 60px;
+    font-size: 24px;
+}
+
+/****** LIENS ********/
+a{
+    text-decoration: none;
+    color: var(--almost_black);
+    font-weight: 700;   
+}
+
+a:hover {
+    color: var(--lb_orange)
+  }
+
 
 
 /* ------------------------- */
@@ -70,7 +117,7 @@ body{
         */
 
 h1{
-    text-align: center;
+    /*text-align: center;*/
     /*font-weight: 700;
     font-size: 20px; 
     margin-top: 40px;
@@ -88,12 +135,16 @@ h2{
 }
 
 .banner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--shade_orange);
     width: 952px;
     height: 161px;
     border-radius: 12px;
     box-shadow: 1px 2px 8px 0px rgba(245, 94, 0, 0.50);
-    margin-bottom: 50px;
+    margin-bottom: 25px;
+
 
     
 
@@ -247,7 +298,7 @@ header{
 }   
 
 .liens-navhaut a{
-    font-family: satoshi;
+  
     font-size: 10px;
     font-weight: 500;
     color: #040404;
@@ -255,7 +306,7 @@ header{
 }
 
 .liens-navhaut a:hover{
-    font-family: satoshi;
+   
     font-size: 10px;
     font-weight: 500;
     color: var(--lb_orange);
@@ -270,6 +321,12 @@ header{
     color: var(--vintage_white);
 }
 
+.btndepo:hover{
+    background-color:var(--shade_orange);
+    color: var(--lb_orange);
+    border: solid 2px var(--lb_orange);
+}
+
 .boutonspé:hover{
     background-color:var(--shade_orange);
     border-radius: 1em;
@@ -281,7 +338,11 @@ header{
 
 .loupebtn{
     border: none;
-    background-color: #e9ecef;
+    background-color: transparent !important;
+}
+
+.loupearea{
+    background-color: transparent !important;
 }
 
   /*________________HEADER NAV 2e LIGNE _______________________*/
@@ -321,7 +382,7 @@ header{
 	padding: 0 14px;
 	text-decoration: none;
 	color: var(--almost_black);
-    font-family: satoshi;
+    
     font-weight: 500;
 	font-size: 12px;
 }
@@ -341,7 +402,7 @@ header{
 	line-height: 45px;
 	padding: 0 14px;
 	text-decoration: none;
-    font-family: satoshi;
+    
     font-weight: 500;
 	font-size: 12px;
 }
@@ -390,7 +451,7 @@ header{
 }
 
 .sub-menu-container {
-    position: relative;
+    /*position: relative;*/
    
 }
 
@@ -398,6 +459,9 @@ header{
     color: var(--almost_black);
     font-size: 20px;
     background-color: var(--gris);
+    text-align: start;
+    font-weight: bold;
+    min-height: 100%;
 }
 
 
@@ -416,9 +480,20 @@ header{
    
 }
 
+
+.catNav>a{
+    text-align: left !important;
+    font-weight: 300;
+}
+
+.subcatheader{
+    text-align:left;
+    justify-content: start;
+
+}
 .cat{
     color: var(--almost_black);
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .cat:hover{
@@ -437,9 +512,9 @@ header{
   /*  justify-content: center; */
  /*   align-items: center; /* Centrer verticalement les éléments du sous-menu */ 
     background-color: var(--shade_orange);
-    border-bottom: solid 1px var(--lb_orange);
-    border-top: solid 1px var(--lb_orange);
-    
+    /*border-bottom: solid 1px var(--lb_orange);
+    border-top: solid 1px var(--lb_orange);*/
+    text-align:left;
     
 }
 
@@ -447,6 +522,10 @@ header{
 	
     color: var(--lb_orange);
 	/* color: #444444; */
+}
+
+.sub-menus{
+    text-align:left;
 }
 
 /*=====================HOME PAGE___GUILLAUME=========================================*/
@@ -465,52 +544,14 @@ header{
     align-items: center;
  
 }
-.banner_element{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+
 .banner_title{
     font-size:x-large;
 }
 .img_marteau{
     margin: 32px;;
 }
-/*_____ slider_________*/
 
-.swiper{
-    /* Largeur de 100% */
-    width: 100%;
-    /* Espacement en haut et en bas de 50 pixels */
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-
-.swiper-slide{
-  
-    /* Position de l'arrière-plan au centre */
-    /*background-position: center;*/
-    /* Largeur de 300 pixels */
-    width: 300px;
-    /* Hauteur automatique */
-    height: auto;
-     /* Ombre portée de 6 pixels vers le bas et la droite, couleur noire */
-    box-shadow: 6px 6PX 10px black;
-    /* Arrière-plan blanc */
-    /*background: white;*/
-}
-
-.swiper-slide img{
-    /* Affichage en tant que bloc */
-   display: block;
-   /* Largeur de 100% */
-    width: 100%;
-   /* Hauteur de 250 pixels */
-   height: 250px;
-
-
-}
-/*______________________*/
 
 /*____DROPDOWN CARDS______*/
 
@@ -578,11 +619,6 @@ header{
      box-shadow: 2px 2px 1px 0px rgba(245, 94, 0, 0.20);
   }
 
-  .dropdown-content_dp {
-
-    
-
-  }
   
   /* Links inside the dropdown */
   .dropdown-content a {
@@ -634,12 +670,13 @@ header{
 }
 
   #maCarte{
-    height: 70vh;
-    width: 100vh;
+    height: 500px;
+    width: 800px;
     border: 1px solid lightgray;
     border-radius: 20px;
+    background-image: url("/assets/img/maps.png");
+    background-position: center;
     /*background-color: var(--gris);*/
-    background-image: url(../img/france_map.png);
 
 }
 
@@ -665,10 +702,22 @@ header{
 .img_auction {
   width: 450px; 
   height: 400px; 
-  border-radius: 15px;
-  position: relative;
-  overflow: hidden;
-  background-color: var(--shade_orange);
+  border-radius: 18px;
+  /*position: relative;
+  overflow: hidden;*/
+  object-fit: cover;
+  /*background-color: var(--shade_orange);*/
+  background-image: url("/assets/illustrations/card_photo_no_pic.png");
+  background-position: center;
+  background-size: f;
+  
+}
+
+.img_auction_dtl {
+   height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 18px; 
 }
 
 /*
@@ -715,7 +764,7 @@ header{
   /* ****** CATEGORY ******* */
 
 .cardlbc{
-    background-color: var(--shade_orange);
+    /*background-color: var(--shade_orange);*/
     border-radius: 20px;
     border-style: none;
     /*border-color: var(--lb_orange);*/
@@ -725,17 +774,15 @@ header{
 .card-img-top{
     height: 250px;
     display: block;
+    border-radius: 18px;
 }
 
 .cardimglbc{
-    background-image: url('/assets/img/leboncoin_1.png');
+    background-image: url('/assets/illustrations/card_photo_no_pic.png');
     background-size: cover;
     background-repeat: no-repeat;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    margin-bottom: 22px;
+    border-radius: 18px;
+
 
 }
 
@@ -744,18 +791,1105 @@ header{
     max-height: 100%;
     min-width: 100%;
     object-fit: cover;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-
-    
+    border-radius: 18px;
 }
-
-.card-body{
+.img_card_auction_search{
+    height: 100%;
+    width: 100%;
     object-fit: cover;
-    padding: 0;
+    border-radius: 18px; 
 }
+.search_card_title{
+    padding:0 !important;
+}
+
+
 
 
   /* ********************** */
+
+
+
+
+  /*___________________________POP-UP ALEX___________________________________*/
+
+  .popheader{
+    display: flex;
+    justify-content: flex-end;
+    
+  }
+
+  .popup{
+    text-align: center;
+    background-color: var(--vintage_white);
+    border-radius: 12px;
+   /*  box-shadow: 1px 2px 8px 0px rgba(245, 94, 0, 0.50); */
+    padding: 10px;
+    border: solid 2px var(--lb_orange);
+  }
+
+  .btnpopup{
+    border: solid 1px var(--lb_orange);
+    background-color: var(--lb_orange);
+    color: var(--vintage_white);
+    padding: 8px 25px 8px 25px;
+    border-radius: 8px;
+  }
+
+  .closecross{
+    border: none;
+    background-color: var(--vintage_white);
+  }
+
+  .popupstatus{
+   padding-top: 50px;
+   padding-bottom: 30px;
+  }
+
+/*=======GA======26/07===============================================*/
+
+.card_border_top{
+    box-shadow: 1px 6px 8px 1px #C4C4C4;
+    border-radius: 15px;
+}
+.rep_gen{
+    font-size: smaller;
+    font-weight: bolder;
+}
+.detail_vend>a{
+    color: black;
+    font-size: small;
+}
+.detail_vend>a:hover{
+    color: var(--lb_orange);
+}
+.card_border_bot{
+    border: 2px solid var(--lb_orange);
+    border-radius: 15px;
+    /* box-shadow: 1px 2px 8px 0px rgba(245, 94, 0, 0.50); */
+    /* box-shadow: 1px 6px 8px 1px #C4C4C4; */
+}
+.card-title-cart>a{
+    text-decoration: none;
+    color: black;
+}
+
+.rep_ft{
+    font-size: smaller;
+}
+
+.link-auction>a{
+    color: black;
+}
+.link-auction>a:hover{
+    color: var(--lb_orange);
+}
+.h_one_sub_cat{
+    font-weight: bolder;
+}
+a>*{
+    text-decoration: none;
+    color: black;
+}
+a:hover>*{
+    color: var(--lb_orange);
+}
+
+
+/*___________________Bryan Profil User _____________________________*/
+
+.card_profil{
+    
+    border-radius: 8px;
+    /*margin-bottom: 2em;*/
+    padding: 1em;
+  
+   
+    
+    box-shadow: 0px 4px 7px 0px rgba(4, 4, 4, 0.50);
+}
+
+.se_deconnecter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.se_deconnecter>a:hover{
+    color: var(--lb_orange);
+}
+.icones_profil{
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+}
+.pm_title{
+    font-size: x-large;
+    font-weight:600;
+}
+.pm_subtitle{
+ 
+    font-weight:600;
+}
+
+.pp{
+    border: solid 1.5px var(--gris);
+    border-radius: 8px;
+    /*padding: 1rem;
+    margin-right: 1rem;*/
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 1em;
+}
+
+.porte_monnaie{
+    border: solid 1.5px var(--lb_orange);
+    border-radius: 8px;
+}
+
+.profil_a{
+    color: black;  
+}
+.profil_a:hover{
+    color: var(--lb_orange);  
+}
+
+.profil_a_nu{
+    text-decoration: none;
+    color: black;  
+}
+.profil_a_nu:hover{
+    color: var(--lb_orange);  
+}
+
+
+
+
+
+/* ********* VENDEUR Déposer_annoce _ ENSAR **************/
+
+/********* HEADER ***************/
+
+.headerflex{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+
+
+.elemheaderflex{
+    display: flex;
+    justify-content: center;
+}
+
+.slogan{
+    font-weight: bold;
+}
+/****** HOVER BOUTTON******/
+
+
+.quit_hover:hover {
+    color: var(--almost_black);
+    background-color: var(--shade_orange);
+    border-color: var(--shade_orange);
+}
+
+/******END HEADER ******/
+
+
+/****** MAIN  ******MODIF 27/07 GA***********/
+
+
+
+.largeurinput{
+        
+        max-width: 400px;
+        
+        border-radius: 5px;
+        border: solid 1px var(--gris);
+        margin-bottom: 50px;
+        
+        margin-top: 2%;
+       }
+
+.choix{
+        border: solid 1px var(--gris);
+        max-width: 250px;
+        height: 30%;
+        border-radius: 5px;
+    }
+
+.amp_right{
+        display: flex;
+        flex-direction: column;
+        margin-left: 30px;
+       }    
+    
+.desc_ampoule{
+        font-size:small;
+        text-align: center;
+        font-weight: bold;
+    }
+
+.title_texarea{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 85%;
+    }
+
+
+ .chps_req{
+        font-size: x-small;
+        color: var(--gris);
+        padding-top: 6px;
+    }
+
+.description{
+        border-radius: 5px;
+        border: solid 1px var(--gris);
+        max-width: 100%;
+    }
+
+.priceflex{
+        display: flex;
+        justify-content:space-around;
+      }
+
+.priceflexcol{
+    display: flex;
+    flex-direction: column;
+}
+/* .inputradius{
+        max-width: 200px;
+        margin-right: 200px; */
+        /* border: solid 1px var(--gris); */
+       /*  border-radius: 5px;
+        margin: 2% 0;
+       } */
+    
+.dimension{
+        max-width: 75%;
+    }
+
+.border{
+        border-radius: 10px;
+        padding: 2%;
+        margin: 2% 0;
+        }
+
+.radius{
+            background-color: var(--lb_orange);
+            border-radius: 50px;
+            text-align: center;
+            margin-left: 10px;
+            display: inline-block;
+            padding: 5px 12px;
+            color: var(--vintage_white);
+        }
+
+.radius2{
+    border-radius: 50px;
+    text-align: center;
+    margin-left: 10px;
+    display: inline-block;
+    padding: 5px 12px;
+    background-color: var(--shade_orange);
+}
+
+.cardensar h4{
+            display: inline-block;
+        }
+        
+.nouveau{
+        padding-top: 2%;
+        }
+
+.active{
+    display: flex;
+
+}
+.livraison{
+    display: flex;
+    
+}
+.livré{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2%;
+}
+
+/****** BOUTON RETOUR ET CONTINUER ******/
+.continuer{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3 0px;
+    padding-top: 50px;
+}
+
+.btn-secondary{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--lb_orange);
+    border-color: var(--vintage_white);
+}
+
+.btn-outline-dark{
+    display: flex;
+    background-color: var(--vintage_white);
+}
+
+/* ********* VENDEUR Déposer_annoce _ ENSAR **************/
+
+
+/* ********* INSCRIPTION _ SOLENNE **************/
+
+/*** HEADER page inscription solenne  ***/
+
+
+header{
+    justify-content: space-between;
+    align-items: center;
+    padding: 1% 0;
+}
+
+.logo-leboncoin{
+    padding: 0 5%;
+}
+
+.badge-connexion{
+    
+    justify-content: space-between;
+    align-items: center;
+    border-left-style: solid;
+    border-color: #040404;
+    padding: 0 5%;  
+}
+
+.badge-connexion p{
+    margin-bottom: 0;
+    padding: 0 2%;
+}
+
+
+header p{
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.nav-logo-badge{
+    justify-content: center;
+    align-items: center;    
+}
+
+
+.info-inscription{
+    color: var(--gris);
+    font-size: 0,8rem;
+}
+
+.info-inscription a{
+    color: var(--gris);
+    margin-top: 5%;
+}
+
+.info-inscription a:hover {
+    color: var(--lb_orange)
+  }
+
+
+.etapes-inscription{
+    width: 70%;
+    border-radius: 10px;
+    border : solid 1.5px var(--gris);
+    margin: 5% auto;
+    padding: 5% 5%;
+}
+
+.acceptation-conditions{
+    width: 70%;
+    margin: 5% auto;
+    text-align: center;
+}
+
+.bouton-inscription{
+    border-radius: 10px;
+    border: none;
+    padding: 15px 150px;
+    background-color: var(--lb_orange);
+    color: var(--vintage_white);
+    font-size: 1.2rem;
+    margin-bottom: 2%;
+    font-weight: 700;
+}
+
+.illustration-bienvenue{
+    width: 100%;
+}
+.illustration-bienvenue>img{
+    max-width: 100%;
+}
+
+
+/* ********* END  INSCRIPTION _ SOLENNE **************/
+
+
+/*=================GA 27/07===============*/
+/*_______NEW AUCTION______________________*/
+
+.input_new_auction{
+    width: 600px;
+    border-radius: 10px;
+}
+#input_new_auction{
+    width: 600px;
+    border-radius: 10px;
+}
+
+.form-control{
+    background-color: gray;
+}
+
+.cardensar{
+    background-color: var(--vintage_white);
+    border : solid 2px;
+    border-color: var(--gris);
+    border-radius: 15px;
+   }
+
+.auction-title{
+    display: flex;
+    flex-direction: column;
+    }
+
+    #maCarte_seller{
+        height: 400px;
+        width: 800px;
+        border: 1px solid lightgray;
+        border-radius: 20px;
+        background-color: var(--gris);
+    
+    }
+
+    .btn_valid_form{
+        background-color: #F55E00;
+    }
+
+    .card-body{
+        object-fit: cover;
+        padding: 0;
+    }
+    .card-body-subcat{
+       height: 200px;
+    }
+    .cardlink{
+        text-decoration: none;
+        color: black;
+    }
+    .cardlink:hover{
+        color: var(--lb_orange) !important;
+    }
+    .card-subtitle{
+        font-size: small;
+        font-weight: 200;
+
+    }
+    .cat-card-title{
+        font-size: larger;
+        font-weight: bold;
+    }
+
+    .card-subtitle-orange{
+        font-size: small;
+        font-weight: 200;
+        color: var(--lb_orange);
+    }
+    .localisation-card{
+        font-size: x-small;
+        font-weight: lighter;
+        margin: 0;
+    }
+
+
+   
+    /*_____ slider_________*/
+
+    .swiper{
+        /* Largeur de 100% */
+        width: 100%;
+        /* Espacement en haut et en bas de 50 pixels */
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .swiper-slide{
+    
+        /* Position de l'arrière-plan au centre */
+        background-position:center;
+        /* Largeur de 300 pixels */
+        width: 480px;
+        /* Hauteur automatique */
+        height: 350px;
+        /* Ombre portée de 6 pixels vers le bas et la droite, couleur noire */
+        /*box-shadow: 6px 6PX 10px var(--gris);*/
+        border-radius: 10px;
+        position: relative;
+        
+    }
+
+            /* slider Homepage*/
+            .slider_home_img{
+                height: 100%;
+                width: 100%;
+                position: relative;
+                z-index: 1;
+            }
+
+            .swiper-slide img{
+                object-fit: cover;
+                display: block;
+                height: 100%;
+                width: 100%;
+             
+                border-radius: 10px;
+
+            }
+
+            .slider_home_label{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                position: absolute;
+                z-index: 2;
+                background: none;
+                justify-content: center;
+                align-items: end;
+
+            }
+            .slider_home_label>p{
+                color: white;
+                font-family: 'Satoshi';
+                src: url('/assets/font/Satoshi-Regular.woff2');
+           
+            }
+
+            /* slider sous-catégories*/
+            .slider_subcat_img{
+                object-fit: cover;
+                border-radius: 10px;
+          
+            }
+            .card_slid_subcat{
+                width: 100%;
+                height: 100%;
+                padding-top: 30px;
+                padding-bottom: 30px;
+             
+            }
+            .card_slid_subcat_lib{
+               
+            }
+
+
+    /*______________________*/
+  
+
+    .boutonXS:hover{
+        text-decoration: none;
+        color: var(--lb_orange);
+        background-color: var(--shade_orange);
+    }
+
+    .maps{
+        background-image: url("/assets/img/maps.png");
+    }
+
+    /*=============création d'une enchère ===========*/
+
+    #auction_start_date{
+        background-color: var(--vintage_white);
+        border: none;
+    }
+
+.card_title_home{
+    font-family:'Satoshi';
+    src: url('/assets/fonts/Satoshi-Bold.woff2');
+    font-size:xx-large;
+    font-weight:bold;
+
+}
+
+
+
+/*     __________________________Notifications ALEX_______________________
+ */
+
+ .inputbgc{
+    background-color: var(--vintage_white) !important;
+ }
+
+.ongletflex{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    
+}
+
+ .notiflex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+ }
+
+ .suppnotif{
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+ }
+
+ .notifborder{
+    border: solid 2px var(--lb_orange);
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 1em;
+    margin-bottom: 2em;
+ }
+
+ .decodiv1{
+    border-bottom: solid 2px var(--lb_orange);
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+ }
+
+ .decodiv2{
+    border-bottom: solid 2px var(--almost_black);
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+ }
+
+ .modifnotif{
+    text-decoration: none;
+    color: var(--almost_black);
+ }
+
+ .modifnotif:hover{
+    color: var(--lb_orange);
+ }
+
+ .hoverlinkbtn:hover{
+    background-color: var(--shade_orange);
+    border: solid 1px var(--lb_orange);
+    color: var(--lb_orange);
+ }
+
+
+/*  ________________________________NEW CHOICE_______________________________ */
+
+ .choiceflex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 250px;
+ }
+
+ .choicep{
+    font-size: 24px;
+    margin-bottom: 47px;
+    margin-top: 190px;
+    font-weight: bold;
+ }
+
+ .btnchoice{
+    border: solid 2px var(--almost_black);
+    max-width: 474px;
+    margin-bottom: 47px;
+    color: var(--almost_black);
+    border:solid 1px var(--almost_black);
+ }
+
+ .btnchoice:hover{
+    color: var(--lb_orange);
+    border: solid 1px var(--lb_orange);
+ }
+
+ .btnpad{
+    padding-left: 29px;
+    padding-right: 29px;
+ }
+
+ .backpad{
+    
+    text-decoration: none;
+    color: var(--almost_black);
+ }
+
+ .backpad:hover{
+    color: var(--lb_orange);
+ }
+
+
+/*  _______________________________NEW RECAP___________________________ */
+
+.recapic{
+    border-radius: 10px;
+}
+
+.choicebold{
+    font-weight: bold;
+}
+
+.choicesize{
+    font-size: 20px;
+}
+
+.btnrecap{
+    border: solid 1px var(--almost_black);
+    color: var(--almost_black);
+    text-decoration: none;
+    padding: 10px 25px 10px 25px;
+    border-radius: 10px;
+    margin-top: 113px;
+    margin-bottom: 94px;
+}
+
+.btnrecap:hover{
+    border: solid 1px var(--lb_orange);
+    color: var(--lb_orange);
+}
+
+.choiceflex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* ___________________________LOGIN_________________________ */
+
+.headlog{
+    text-align: center;
+}
+
+.logtitle{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.logp{
+    margin-bottom: 50px;
+}
+
+.logcard{
+    box-shadow: 0px 4px 7px 0px rgba(4, 4, 4, 0.50);
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 35px;
+    max-width: 518px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.labellog{
+    text-align: left;
+}
+
+.inputlog{
+    max-width: 392.966px;
+}
+
+.flexlabellog{
+    padding-left: 30px;
+    margin-top: 30px;
+  
+}
+
+.flexinputlog{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pnglog{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.padbtnlog{
+    padding-top: 50px;
+}
+
+.flexendlog{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    padding-top: 50px;
+    
+}
+
+.linkendlog{
+    text-decoration: none;
+    color: var(--almost_black);
+}
+
+.linkendlog:hover{
+    color: var(--lb_orange);
+}
+
+/* __________________________________404______________________________ */
+
+#oups{
+    font-size: 50px;
+    font-weight: 700;
+    color: var(--lb_orange);
+}
+
+#desole{
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--almost_black);
+    
+}
+
+
+
+/*_____________________Tunnel de paiement 1/2____________________________________*/
+
+/*_____________________________block de gauche___________________________________*/
+.divorange{
+    width: 60px;
+    height: 10px;
+    border-bottom: solid 3px var(--lb_orange);
+}
+
+.divorangelight{
+    width: 60px;
+    height: 10px;
+    border-bottom: solid 3px var(--shade_orange);
+}
+
+.divorangeflex{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.flexstep{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+
+.pmargin{
+    margin-top: 14px;
+    margin-bottom: 16px;
+}
+
+.leftblock{
+    border: solid 2px var(--lb_orange);
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 606px;
+}
+
+.flexstepright{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+/*_________________________________block de droite___________________________________*/
+
+.margmoney{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+}
+
+.rightblock{
+    border: solid 2px var(--lb_orange);
+    border-radius: 12px;
+    /* padding: 20px; */
+    max-width: 338px;
+    margin-top: 38px;
+}
+
+.aligntop{
+    align-items: flex-start;
+}
+
+.spaceb{
+    justify-content: space-between;
+}
+
+.spacea{
+    justify-content: space-around;
+}
+
+.headrigthblock{
+    border-bottom: solid 2px var(--lb_orange);
+}
+
+.rightblockpadd{
+    padding: 20px;
+}
+
+.btnblock{
+    display: flex;
+    justify-content: center;
+    color: var(--almost_black);
+    text-decoration: none;
+    color: var(--vintage_white);
+}
+
+.btnblock:hover{
+    border: solid 2px var(--lb_orange);
+    background-color: var(--shade_orange);
+    color: var(--lb_orange);
+}
+
+.linkrightblock{
+    text-decoration: none;
+    color: var(--lb_orange);
+}
+
+.linkrightblock:hover{
+    color: var(--lb_orange);
+}
+
+
+/*______________________________GA PAIEMENTDEUX___________________*/
+
+/*
+.form-control{
+    border-width: 1.5px !important;
+    border-color: #040404 !important;
+    border-radius: 8px !important;
+}*/
+#flexRadioPay{
+    border-width: 1.5px !important;
+    border-color: #040404 !important;
+    border-radius: 8px !important;
+}
+
+.form-control::placeholder{
+    color: var(--gris) !important;
+}
+.form-check-input{
+    border-color: #040404 !important;
+    border-width: 1.5px !important;
+}
+
+.form-check-input:checked{
+    background-color: var(--lb_orange) !important;
+    border-color: var(--lb_orange) !important;
+}
+.form-check-input:focus{
+    box-shadow: 0px 0px 0px 2px #FFE5D7 !important;
+
+}
+#card_helpers{
+    font-size: smaller;
+    color: var(--gris) !important;
+}
+.payment_info{
+    border: 1px solid;
+    border-color: var(--lb_orange);
+    border-radius: 10px;
+}
+.payment_recap{
+    border: 1px solid;
+    border-color: var(--lb_orange);
+    border-radius: 10px;
+
+}
+#card_label{
+    font-weight:600;
+}
+#card_label_regist{
+    font-weight:600;
+    font-size: smaller;
+}
+.payment_amount{
+    font-size: x-large;
+    font-weight: 600;
+    width: 100%;
+}
+.payment_detail{
+    font-size: smaller;
+}
+.form-control:focus {
+    border-color: var(--lb_orange) !important;
+    box-shadow: 0px 0px 0px 2px #FFE5D7 !important;
+  }
+  #card_helpers>p{
+    color: var(--gris);
+    margin: 0 !important;
+  }
+  .legal_mention{
+    padding-left: 100rem;
+  }
+
+/*_________________________RECAP PAIEMENT______________________*/
+
+
+.fullrecap{
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.titlerecap{
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.flexrecap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.leftrecap{
+    max-width: 120px;
+}
+
+.linkrecapend{
+    color: var(--lb_orange);
+    text-decoration: none;
+}
+
+.linkrecapend:hover{
+    color: var(--lb_orange);
+}
+
+.flexendrecap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnrecapend{
+    margin-top: 50px;
+}
+
+.btnstylerecap:hover{
+    border:solid 2px var(--lb_orange);
+    color: var(--lb_orange);
+    background-color: var(--shade_orange);
+}

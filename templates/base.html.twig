@@ -11,7 +11,7 @@
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
         <!-- SWIPER -->
      
-        <link rel="stylesheet" href="{{ asset('./assets/css/DH_18_07_style_new.css') }}">
+        <link rel="stylesheet" href="{{ asset('/assets/css/DH_18_07_style_new.css') }}">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('./assets/css/general.css') }}">
@@ -25,18 +25,24 @@
         {% endblock %}
 
     </head>
-    <body>
+    <body class="body_bg">
         {% for label, messages in app.flashes %}
             {% for message in messages %}
-                <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-                    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                        <div class="toast-header text-white bg-{{ label }}">
-                            <strong class="me-auto">Notification</strong>
-                            <small>Maintenant</small>
-                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                <div class=" position-fixed top-50 start-50 translate-middle p-3" style="z-index: 11">
+                    <div id="liveToast" class="  popup" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="popheader">
+                            <button type="button" class=" closepopup closecross" data-bs-dismiss="toast" aria-label="Close"><img src="/assets/icones/croix/croix_noir.svg" alt=""></button>
                         </div>
                         <div class="toast-body">
-                            {{ message }}
+                        <strong>{{ message }}</strong>
+                            {% if message  == 'Votre offre a bien été enregistrée.' %}
+                                <p class="popupstatus">Nous la transmettons auprès du vendeur.<br>
+                                Vous serez informé si une nouvelle enchère intervient.</p>
+                            {% else %}
+                                <p class="popupstatus">Votre enchère ne peut être prise en compte.<br>
+                                Pensez à vérifier le montant actuel de l'enchère.</p>
+                            {% endif %}
+                            <button type="button" class="btnpopup closepopup" data-bs-dismiss="toast" aria-label="Close">Ok</button>
                         </div>
                     </div>
                 </div>
@@ -50,20 +56,19 @@
 
             
                 
-    {% block javascripts %} 
-               
-    {% endblock %}
-           
+   
 {% endblock %}
         
         {% include 'base/footer.html.twig' %}
-        <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>                     
-        <script src="/assets/js/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>      
         <script src="/assets/js/toast.js"></script>
     </body>
         
 
+ {% block javascripts %} 
+ {% endblock %}
 
+           
 
 </html>
 

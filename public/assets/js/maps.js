@@ -1,7 +1,7 @@
     
     let address_input = document.getElementById('address_input');
     let search_btn = document.getElementById('search');
-    let maps_address = document.getElementById('maCarte');
+    let maps_address = document.getElementById('maCarte_seller');
     //let lat="48.830624";
     //let lon="2.380269";
 
@@ -12,7 +12,7 @@
         
     // Affichage et initialisation de la carte 
     function showMap(lat, lon){
-        let carte = L.map('maCarte').setView([lat, lon], 18);
+        let carte = L.map('maCarte_seller').setView([lat, lon], 18);
 
         L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
             //lien vers la source des données

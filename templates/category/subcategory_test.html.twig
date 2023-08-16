@@ -1,0 +1,204 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lebon<code> | Recherche par sous-catégorie{% endblock %}
+
+{% block body %}
+
+ <!-- ***** PRODUITS SUB CAT *****  -->
+    <section class="container">
+
+<!-- ***** BREADCRUMB *****  -->
+
+        <div class="flex sub_cat mb-4 mt-2">
+            <img src="/assets/icones/marteau/marteau_black_M.svg" class="me-3" alt="marteau_noir">
+            <span class="h_one_sub_cat fw-bolder">{{ auctions.category }} > {{ auctions.subcategory }}</span>
+        </div>
+
+
+<!-- ***** BREADCRUMB *****  -->
+
+<!-- ***** ENCHERES ACTUELLES *****  -->
+
+        <div class="d-flex flex-row mt-2 mb-5">
+            {% for auction in auctions.auctions %}
+                <div class="col-12 col-md-3">
+                    <div class="card">
+                        {% if auction.pictures is empty %}
+                            <div class="card-img-top cardimgbg"> </div>
+                        {% else %}
+                            <div class="card-img-top cardimglbc">
+                                <img src="/uploads/pictures/{{ auction.pictures[0] }}" alt="Image du produit">
+                            </div>
+                        {% endif %}
+                        <div class="card-body">
+                            <h5>{{ auction.title }}</h5>
+                            <h6>OFFRE ACTUELLE</h6>
+                            <h5> {{ auction.soldPrice }}</h5>
+                            <p>{{ auction.description }}</p>
+                            <p >IL RESTE {{ auction.duration }}</p>
+                            <div>
+                            <div class="flex local_heart_two">
+                                <img src="/assets/icones/localisation/localisation_small_noir.svg" alt="localisation">
+                                <p class="localisation">{{ auction.localisation }}</p>
+                            </div>
+                            <div>
+                                <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %} 
+        </div>
+    </section>
+
+<!-- ***** PRODUITS SUB CAT /VENTES ENCHERES A VENIR *****  -->
+
+
+    <section class="container">
+
+            <div class="d-flex ventes_venir justify-content-center m-5">
+                <img src="/assets/icones/marteau/marteau_orange_L.svg" class="me-2" alt="marteauorange">
+                <h1 class="ve_venir_title">Ventes enchères à venir</h1>
+            </div>
+            
+            <!-- SLIDER  -->
+
+            <div class="card">
+                <div class="flex">
+                    <img class="img_card_ve_venir" src="/assets/img/picture_test.png" alt="picture_test">
+                    <div class="row inside_card_venir">
+                        <h7 id="text_card_ve_venir"> MacBook 13"inch</h7>
+                        <h7 id="text_card_ve_venir"> MARDI  08/08</h7>
+                        <h7 id="text_card_ve_venir"> 14:00</h7>
+                        <div class="flex btn_heart_ve_venir">
+                            <div><a href="#" class="bouton bouton_orange boutonS">Voir le produit</a></div>
+                            <img src="/assets/icones/coeurs/coeur_orange_vide.svg" alt="coeur_orange_vide">
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+
+        </section>
+
+<!-- ***** PRODUITS SUB CAT /SUGGESTIONS*****  -->
+
+        <section class="container">
+            <div class="d-flex ventes_venir justify-content-center m-5">
+                <h1 class="title_sub_cat">Suggestions</h1>
+            </div>
+
+            <div class="row row_sub_cat row_one">
+                <div class="col-12 col-md-3">
+                    <div class="card">
+                        <div class="card-img-top cardimgbg"> </div>
+                        <div class="card-body">
+                            <h5 class="card-title-sub-cat">Title</h5>
+                            <h6 class="card_offre_sub_cat">OFFRE ACTUELLE</h6>
+                            <h5 class="card-title-sub-cat"> PRICE</h5>
+                            <p class="description_sub_cat">Description du produit Description du produit Description du produit Description du produit Description du produit</p>
+                            <p class="time">IL RESTE 2h</p>
+                            <div class="flex local_heart">
+                                <div class="flex local_heart_two">
+                                    <img src="/assets/icones/localisation/localisation_small_noir.svg" alt="localisation">
+                                    <p class="localisation">Paris 15eme</p>
+                                </div>
+                                <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3">
+                    <div class="card">
+                        <div class="card-img-top cardimgbg"> </div>
+                        <div class="card-body">
+                            <h5 class="card-title-sub-cat">Title</h5>
+                            <h6 class="card_offre_sub_cat">OFFRE ACTUELLE</h6>
+                            <h5 class="card-title-sub-cat"> PRICE</h5>
+                            <p class="description_sub_cat">Description du produit Description du produit Description du produit Description du produit Description du produit</p>
+                            <p class="time">IL RESTE 2h</p>
+                            <div class="flex local_heart">
+                                <div class="flex local_heart_two">
+                                    <img src="/assets/icones/localisation/localisation_small_noir.svg" alt="localisation">
+                                    <p class="localisation">Paris 15eme</p>
+                                </div>
+                                <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3">
+                    <div class="card">
+                        <div class="card-img-top cardimgbg"> </div>
+                        <div class="card-body">
+                            <h5 class="card-title-sub-cat">Title</h5>
+                            <h6 class="card_offre_sub_cat">OFFRE ACTUELLE</h6>
+                            <h5 class="card-title-sub-cat"> PRICE</h5>
+                            <p class="description_sub_cat">Description du produit Description du produit Description du produit Description du produit Description du produit</p>
+                            <p class="time">IL RESTE 2h</p>
+                            <div class="flex local_heart">
+                                <div class="flex local_heart_two">
+                                    <img src="assets/icones/localisation/localisation_small_noir.svg" alt="localisation">
+                                    <p class="localisation">Paris 15eme</p>
+                                </div>
+                                <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3">
+                    <div class="card">
+                        <div class="card-img-top cardimgbg"> </div>
+                        <div class="card-body">
+                            <h5 class="card-title-sub-cat">Title</h5>
+                            <h6 class="card_offre_sub_cat">OFFRE ACTUELLE</h6>
+                            <h5 class="card-title-sub-cat"> PRICE</h5>
+                            <p class="description_sub_cat">Description du produit Description du produit Description du produit Description du produit Description du produit</p>
+                            <p class="time">IL RESTE 2h</p>
+                            <div class="flex local_heart">
+                                <div class="flex local_heart_two">
+                                    <img src="/assets/icones/localisation/localisation_small_noir.svg" alt="localisation">
+                                    <p class="localisation">Paris 15eme</p>
+                                </div>
+                                <img src="/assets/icones/coeurs/coeur_vide_gris.svg" alt="coeur">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               
+
+
+            </div>
+
+        </section>
+
+<!-- ***** PRODUITS SUB CAT /AVIS *****  -->
+
+        <section class="container">
+            <div class="d-flex ventes_venir justify-content-center m-5">
+                <h1 class="title_sub_cat">Avis</h1>
+            </div>
+            <div class="card-body-avis">
+                    <h5 class="text_avis">Prenom</h5>
+                    <p class="text_avis">Je suis fan !
+                    Tout se passe bien, en général. Contact avec le vendeur facile et rapide, payement via l’application sans soucis. Je recommande.
+                    </p>
+                    <div class="flex text_avis_ver_date">
+                        <p id="text_avi_ver">Avis verifiée</p>
+                        <p class="text_avis"> 27/07/2022</p>
+                    </div>
+
+                </div>
+              </div>
+            
+            <!-- SLIDER  -->
+
+        </section>
+
+
+    </main>
+{% endblock %}

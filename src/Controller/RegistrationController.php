@@ -9,6 +9,7 @@ use App\Repository\UserRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
 
 use App\Form\RegistrationFormType;
+use App\Repository\CategoryRepository;
 use App\Repository\RegistrationsRepository;
 use App\Security\AppCustomAuthenticator;
 use App\Security\EmailVerifier;
@@ -40,9 +41,10 @@ class RegistrationController extends AbstractController
    // {
       //  $this->emailVerifier = $emailVerifier;
    // }
- 
+
+
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, DocumentManager $dm): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, DocumentManager $dm, CategoryRepository $repo): Response
     {
 
         //$user = new User();
@@ -50,24 +52,26 @@ class RegistrationController extends AbstractController
 
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
-
+            
             // Récupérer la valeur du champ "firstname" du formulaire
             // $firstname = $form->get('firstname')->getData();
             //dump($user);
             // Définir la valeur du prénom dans l'objet User
             // $user->setFirstname($firstname);
-
+            
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
-                     $form->get('plainPassword')->getData()
-                )
-            );
+                    $form->get('plainPassword')->getData()
+                    )
+                );
+
             $dm->persist($user);
             $dm->flush();
+
 
 
             //$entityManager->persist($user);
@@ -92,6 +96,7 @@ class RegistrationController extends AbstractController
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'menu' => $repo->getAllCategoriesAndSub($dm)
         ]);
     }
 
